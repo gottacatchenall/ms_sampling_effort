@@ -1,0 +1,4 @@
+[deps]
+ColorSchemes = "35d6a980-a343-548e-a6ea-1d62b119f2f4"
+Distributions = "31c24e10-a181-5473-b8eb-7969acd0382f"
+EcologicalNetworks = "f03a62fe-f8ab-5b77-a061-bb599b765229"

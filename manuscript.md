@@ -28,7 +28,7 @@ Yet interaction
 detection is unlikely to benefit from this as they require identification of
 two species. Interactions vary in space and time.
 
-![](./figures/bernoulli.png)
+![caption todo](./figures/bernoulli.png)
 Figure 1: The probability of a "true negative". Another thing is
 true, which is that this function will never reach 1!
 

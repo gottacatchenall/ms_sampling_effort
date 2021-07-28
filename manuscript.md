@@ -48,7 +48,7 @@ probability. It's the birthday paradox, but backwards.
 
 
 
-# False-negatives as a product of relative abundance
+# False-negatives due to relative abundances
 
 In this section we demonstrate the realized false-negative rate (FNR) can be
 change drastically with sampling effort simply as a function of the distribution

@@ -4,6 +4,7 @@ using Distributions
 using DataFrames
 using Plots
 
+
 function observe(A; falsepositive=0.1, falsenegative=0.3)
     mat = Matrix(A.edges)
     for (i,el) in enumerate(mat)
@@ -77,7 +78,6 @@ df = DataFrame(fpr=falsepositiverate, fnr=falsenegativerate,mse_indeg=mse_indegr
 
 for fp in unique(df[!,:fpr])
     thisdf = filter(r -> r.fpr == fp && r.fnr == fn, df)
-        
 end
 
 plot(plotlist...)

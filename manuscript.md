@@ -35,6 +35,7 @@ true, which is that this function will never reach 1!
 So many assumptions here about probability.
 
 
+# False-negatives as a product of relative abundance
 
 Does a false negative rate of 0.9 seem unrealistic? Consider
 how the probability of observation occurs as a function of abundance.
@@ -53,6 +54,16 @@ What if there is a strength of association? Covariance of biomass of i and bioma
 
 
 # Effects of false-negatives on network properties
+
+
+
+# Effects of false negatives on ability to make predictions
+
+Use the same model and data as [@Strydom2021]. Seed the training
+data with false negatives at a rate $p_{fn}$. Don't do anything to
+the test data. Make ROC-PR AUC plots for 3 levels of $p_{fn}$. Same
+model, same data, different levels of predictive capacity.
+
 
 # Conclusion
 

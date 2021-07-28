@@ -21,21 +21,21 @@ for t in numtimesobserved
 end
 
 
-c1 = get(cs, 0.1)
-c25 = get(cs, 0.25)
-c5 = get(cs, 0.5)
-c75 = get(cs, 0.75)
-c9 = get(cs, 0.9)
-
 
 function makeplot(cs)
     col(f) = get(cs,f)
 
+    c1 = get(cs, 0.1)
+    c25 = get(cs, 0.25)
+    c5 = get(cs, 0.5)
+    c75 = get(cs, 0.75)
+    c9 = get(cs, 0.9)
+    
     function add!(plt, x,y,sc)
         plot!(plt, x, y, lw=3, lc=col(sc),label="$(sc)")
         scatter!(plt, x, y, ms=5, msw=1.5, msc=col(sc), mc=:white, label="")    
     end
-    plt = plot(legend=:outerright, legendtitle="false negative rate", xlim=(0, length(numtimesobserved)), ylim=(0,1), frame=:box, size=(800,500), dpi=300)
+    plt = plot(legend=:outerright, legendtitle="false negative rate", xlim=(0, length(numtimesobserved)), ylim=(0,1), frame=:box, size=(800,400), dpi=300)
     xaxis!("Number of observed negatives")
     yaxis!("Probability interaction is a true negative")
     

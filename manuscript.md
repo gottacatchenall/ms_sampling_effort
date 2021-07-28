@@ -82,6 +82,8 @@ probability of observing both $A$ and $B$, $P(AB)$, is _not_ equal to $P(A)P(B)$
 as $P(A)$ and $P(B)$ are not independent. --> This implies that interactions
 that are variable/opportunistic are subject to ever higher false-negative rate.
 
+This doesn't consider variation in abundance in space and time which is kind of
+a problem.
 
 **fig here: x-axis: sampling effort , y-axis false negative prob, different
 colors are different strengths of association**

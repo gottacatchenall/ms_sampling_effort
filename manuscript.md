@@ -31,14 +31,16 @@ negative? 2) How "wrong" are the measurements of network structure modularity as
 a function of false-negative probability? 3) How do false-negatives impact our
 ability to make reliable predictions about interactions?
 
-A naive model of interaction detection would assume at every observation there is a fixed probability that interaction is a false negative.  
-false-negative
+A naive model of interaction detection would assume at every observation there
+is an independent, fixed probability that an existing interaction is observed as
+a negative, which we denote $p_{FN}$. If we observe the same species
+not-interacting $N$ times, the probability of a true negative, denoted $p_{TN}$, is given by $p_{TN} = 1 - (p_{FN})^N$. This relation is shown in @fig:bernoulli.
 
 
 ![The probability an observed interaction is a "true negative" (y-axis) given
 how many times it has been sampled as a non-interaction. Another thing is true,
 which is that this function will never reach 1. So many assumptions here about
-probability. ](./figures/bernoulli.png){#fig:bernoulli}
+probability. It's the birthday paradox, but backwards. ](./figures/bernoulli.png){#fig:bernoulli}
 
 
 

@@ -69,7 +69,7 @@ at the $o$-th observation is drawn from the abundance distribution. Here, $O$ is
 indicative of sampling effort.
 
 
-![sampling effort fnr](./figures/samplingeffort_fnr.png){#fig:samplingeffort}
+![sampling effort fnr. 95% ci in fill.](./figures/samplingeffort_fnr.png){#fig:samplingeffort}
 
 Consider a probability of false negative detection per unit biomass. In this
 model every observation is drawn from the distribution of the biomass
@@ -98,7 +98,7 @@ properties of the "true" networks to the computed properties on
 the observed network in order to see how much false negatives
 effect our quantification of network structure.
 
-![fig](./figures/properties_error.png){#fig:properties}
+![fig. 1σ in first grad, 2σ in second ](./figures/properties_error.png){#fig:properties}
 
 # Effects of false negatives on ability to make predictions
 

@@ -70,6 +70,8 @@ $P(B)$ are not independent.
   --> This implies that interactions that are variable/opportunistic are subject
   to ever higher false-negative rate.
 
+![sampling effort fnr](./figures/samplingeffort_fnr.png){#fig:samplingeffort}
+
 
 **fig here: x-axis: sampling effort , y-axis false negative prob, different
 colors are different strengths of association**

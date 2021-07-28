@@ -5,25 +5,24 @@ bibliography: [references.bib]
 # Introduction
 
 
-Ecological interactions are hard to sample [@Jordano2016SamNet]. Collecting
-data about species interactions is imperative to measure and mitigate the
-effects of human activity on Earth's biodiversity [@Jordano2016ChaEco], and to
-predict potential spillover of zoonotic diseases [@cite]. Biodiversity data has
-become increasingly available: remote sensing has enabled data on spatial scales
-previously unsampleable, and cameras/etc. Yet sampling of ecological
+Ecological interactions are hard to sample [@Jordano2016SamNet]. Still,
+collecting data about species interactions is imperative to measure and mitigate
+the effects of human activity on Earth's biodiversity [@Jordano2016ChaEco], and
+to predict potential spillover of zoonotic diseases [@cite]. Biodiversity data
+has become increasingly available: remote sensing has enabled data on spatial
+scales previously unsampleable, and cameras/etc. Yet sampling of ecological
 interactions detection often requires human sampling as coexistance is not
 indicative of interaction [@cite]. This induces constraints on sampling of
 interactions based on the spatial and temporal scales feasible to human
 sampling.
 
-This goes on to bias species interaction data: we are more likely to observe
-interactions between species with high relative abundance [@cite], and we only
-capture some of the variance in species interactions in space and time
-[@Poisot2015SpeWhy].
-As a result of these biases, the data we collect is noisy and likely contains
-many false-negatives [@Poisot2021ImpMam]. This has many practical consequences
-for answering questions about species interactions and how human activity is
-effecting them.
+These sampling constraints go on to bias species interaction data: we are more
+likely to observe interactions between species with high relative abundance
+[@cite], and we only observe but a small fraction of the variance in species
+interactions in space and time [@Poisot2015SpeWhy]. As a result of these biases,
+the data we collect is noisy and likely contains many false-negatives
+[@Poisot2021ImpMam]. This has many practical consequences for answering
+questions about species interactions and how human activity is effecting them.
 
 In this manuscript we seek to answer: 1) How many times do you have to observe a
 non-interaction between two species to be confident in saying that is a true
@@ -31,16 +30,20 @@ negative? 2) How "wrong" are the measurements of network structure modularity as
 a function of false-negative probability? 3) How do false-negatives impact our
 ability to make reliable predictions about interactions?
 
-A naive model of interaction detection would assume at every observation there
-is an independent, fixed probability that an existing interaction is observed as
-a negative, which we denote $p_{FN}$. If we observe the same species
-not-interacting $N$ times, the probability of a true negative, denoted $p_{TN}$, is given by $p_{TN} = 1 - (p_{FN})^N$. This relation is shown in @fig:bernoulli.
-
+A naive model of interaction detection would assume that every existing
+interaction is incorrectly observed as a non-interaction with an independent,
+fixed probability, which we denote $p_{fn}$. If we observe the same species
+not-interacting $N$ times, the probability of a true negative, denoted $p_{tn}$,
+is given by $p_{tn} = 1 - (p_{fn})^N$. This relation is shown in @fig:bernoulli
+for varying values of the false negative rate $p_{fn}$. This shows a fundamental
+dependency between our ability to reliably say an interaction doesn't
+exist---measured by $p_{tn}$---and our sampling effort $N$.
 
 ![The probability an observed interaction is a "true negative" (y-axis) given
 how many times it has been sampled as a non-interaction. Another thing is true,
 which is that this function will never reach 1. So many assumptions here about
-probability. It's the birthday paradox, but backwards. ](./figures/bernoulli.png){#fig:bernoulli}
+probability. It's the birthday paradox, but backwards.
+](./figures/bernoulli.png){#fig:bernoulli}
 
 
 

@@ -207,7 +207,7 @@ roc50, pr50 = train(x,labels_fnr50, 0.5)
 
 cols = [:cyan2,:dodgerblue,:teal, :mediumpurple]
 
-rocplt = plot(aspectratio=1, legend=:outerright, frame=:box, legendtitle="FNR", size=(750,500))
+rocplt = plot(aspectratio=1, legend=:outerright, frame=:box, legendtitle="FNR")
 plot!(rocplt,rocReal[1], rocReal[2], lw=2.5, c=cols[1], label="")
 scatter!(rocplt,rocReal[1], rocReal[2], lw=2.5, label="0", msw=1,msc=cols[1], mc=:white, ms=2)
 
@@ -227,28 +227,28 @@ yaxis!(rocplt,"True positive rate", (0, 1))
 
 savefig(rocplt, "roc.png")
 
-prplt =  plot(aspectratio=1, legend=:none, frame=:box, size=(500,500))
-plot!(prplt,prReal[1], prReal[2], lw=3,c=cols[1])
+prplt =  plot(aspectratio=1, legend=:outerright, frame=:box, legend_title="FNR")
+plot!(prplt,prReal[1], prReal[2], lw=3,c=cols[1], label="")
 scatter!(prplt,prReal[1], prReal[2], lw=2.5, label="0", msw=1,msc=cols[1], mc=:white, ms=2)
 
-plot!(prplt,pr10[1], pr10[2], lw=3,c=cols[2])
+plot!(prplt,pr10[1], pr10[2], lw=3,c=cols[2], label="")
 scatter!(prplt,pr10[1], pr10[2], lw=2.5, label="0.1", msw=1,msc=cols[2], mc=:white, ms=2)
 
-plot!(prplt,pr25[1], pr25[2], lw=3,c=cols[3])
+plot!(prplt,pr25[1], pr25[2], lw=3,c=cols[3], label="")
 scatter!(prplt,pr25[1], pr25[2], lw=2.5, label="0.25", msw=1,msc=cols[3], mc=:white, ms=2)
 
-plot!(prplt,pr50[1], pr50[2], lw=3, c=cols[4])
+plot!(prplt,pr50[1], pr50[2], lw=3, c=cols[4], label="")
 scatter!(prplt,pr50[1], pr50[2], lw=2.5, label="0.5", msw=1,msc=cols[4], mc=:white, ms=2)
 
 
-plot!(prplt, [0,1], [1,0], c=:grey, ls=:dash, la=0.5, aspectratio=1)
+plot!(prplt, [0,1], [1,0], c=:grey, ls=:dash, la=0.5, aspectratio=1, label="random")
 xaxis!(prplt,"True positive rate", (0, 1))
 yaxis!(prplt,"Postive predictive value", (0, 1))
 
 prplt
 
 
-comb = plot(rocplt, prplt, size=(1250, 500), dpi=300)
+comb = plot(rocplt, prplt, size=(900, 700), dpi=300)
 
 savefig(comb, "rocpr_falsenegatives.png")
 

@@ -10,9 +10,30 @@
       ],
       "familyname": "Catchen",
       "givennames": "M.D.",
+      "status": ["corresponding"],
       "email": "michael.catchen@mail.mcgill.ca",
       "orcid": "0000-0002-6506-6487"
-    }
+    },
+    {
+   "affiliations": [
+     "Université de Montréal",
+     "Québec Centre for Biodiversity Sciences"
+   ],
+   "familyname": "Poisot",
+   "givennames": "Timothée",
+   "email": "timothee.poisot@umontreal.ca",
+   "orcid": "0000-0002-0735-5184"
+ },
+ {
+  "affiliations": [
+    "McGill University",
+    "Québec Centre for Biodiversity Sciences"
+  ],
+  "familyname": "Gonzalez",
+  "givennames": "Andrew",
+  "email": "andrew.gonzalez@mcgill.ca",
+  "orcid": "0000-0001-6075-8081"
+  }
   ],
   "description": "abstract ",
   "keywords": [

@@ -37,21 +37,14 @@ probability. ](./figures/bernoulli.png){#fig:bernoulli}
 
 # False-negatives as a product of relative abundance
 
-Does a false negative rate of 0.9 seem unrealistic? Consider how the probability
-of observation occurs as a function of abundance.
+In this section we demonstrate the realized false-negative rate (FNR) can be
+change drastically with sampling effort simply as a function of the distribution
+of species abundances
 
-In this section we demonstrate the realised false-negative rate (FNR) is
-different for high abundance vs low abundance species.
-
-Consider a probability of false negative detection per unit biomass.
-In this model every observation is drawn from the distribution of the biomass
-distribution at a particular place and time. If we assume that this distribution
-is the same everywhere (again unlikely), we can express the probability that
-we observe species $A$ and $B$ as
-$P(AB)$.
-
-Seeing two low biomass species interacting requires two relatively low prob
-events, which is detecting each species of low biomass.
+If we assume each individual observation of species occurs according to the
+distribution of those species' abundances, seeing two low biomass species
+interacting requires two relatively low probability events, which is detecting
+each species of low biomass.
 
 Controversies around theory of species abundance distributions and neutral
 theory aside, for simplicity we simulate abundances from $N_S$ independent draws
@@ -62,15 +55,19 @@ simulating a distribution of $O$ total observations, where the species observed
 at the $o$-th observation is drawn from the abundance distribution. Here, $O$ is
 indicative of sampling effort.
 
-What if there is a strength of association?
-Covariance of biomass of i and biomass of j due to cooccurence because this
-interaction is "important" for each species. In this case, the probability of
-observing both $A$ and $B$, $P(AB)$, is _not_ equal to $P(A)P(B)$ as $P(A)$ and
-$P(B)$ are not independent.
-  --> This implies that interactions that are variable/opportunistic are subject
-  to ever higher false-negative rate.
 
 ![sampling effort fnr](./figures/samplingeffort_fnr.png){#fig:samplingeffort}
+
+Consider a probability of false negative detection per unit biomass. In this
+model every observation is drawn from the distribution of the biomass
+distribution at a particular place and time. If we assume that this distribution
+is the same everywhere (again unlikely), we can express the probability that we
+observe species $A$ and $B$ as $P(AB)$. What if there is a strength of
+association? Covariance of biomass of i and biomass of j due to cooccurence
+because this interaction is "important" for each species. In this case, the
+probability of observing both $A$ and $B$, $P(AB)$, is _not_ equal to $P(A)P(B)$
+as $P(A)$ and $P(B)$ are not independent. --> This implies that interactions
+that are variable/opportunistic are subject to ever higher false-negative rate.
 
 
 **fig here: x-axis: sampling effort , y-axis false negative prob, different

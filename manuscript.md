@@ -92,6 +92,9 @@ data with false negatives at a rate $p_{fn}$. Don't do anything to
 the test data. Make ROC-PR AUC plots for 3 levels of $p_{fn}$. Same
 model, same data, different levels of predictive capacity.
 
+Way more effect on PR space, probably unsurprisingly. 
+
+![fig](./figures/rocpr_falsenegatives.png)
 
 # Conclusion
 

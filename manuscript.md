@@ -5,27 +5,35 @@ bibliography: [references.bib]
 # Introduction
 
 
+Ecological interactions are hard to sample [@Jordano2016SamNet]. Collecting
+data about species interactions is imperative to measure and mitigate the
+effects of human activity on Earth's biodiversity [@Jordano2016ChaEco], and to
+predict potential spillover of zoonotic diseases [@cite]. Biodiversity data has
+become increasingly available: remote sensing has enabled data on spatial scales
+previously unsampleable, and cameras/etc. Yet sampling of ecological
+interactions detection often requires human sampling as coexistance is not
+indicative of interaction [@cite]. This induces constraints on sampling of
+interactions based on the spatial and temporal scales feasible to human
+sampling.
 
-As we enter a new generation of biodiversity monitoring, many forms of data are
-increasingly available---remote sensing, . Ecological interactions are hard to
-find [@Jordano2016ChaEco].
-
-Yet sampling of ecological interactions detection requires in-situ observation.
-This is subject to many biases:
-
-Interactions vary in space and time [@Poisot2015SpeWhy], we are more likely to
-observe interactions between species with high relative abundance [@cite]. As a
-result of these biases, the data we collect is noisy and likely contains  many
-false-negatives [@Poisot2021ImpMam]. This has many practical consequences for
-answering questions about species interactions and how human activity is
+This goes on to bias species interaction data: we are more likely to observe
+interactions between species with high relative abundance [@cite], and we only
+capture some of the variance in species interactions in space and time
+[@Poisot2015SpeWhy].
+As a result of these biases, the data we collect is noisy and likely contains
+many false-negatives [@Poisot2021ImpMam]. This has many practical consequences
+for answering questions about species interactions and how human activity is
 effecting them.
 
 In this manuscript we seek to answer: 1) How many times do you have to observe a
 non-interaction between two species to be confident in saying that is a true
-negative? 2) How "wrong" are the measurements of network structure (connectance,
-nestedness, modularity) as a function of false-negative probability? 3) How do
-false-negatives impact our ability to make reliable predictions about
-interactions?
+negative? 2) How "wrong" are the measurements of network structure modularity as
+a function of false-negative probability? 3) How do false-negatives impact our
+ability to make reliable predictions about interactions?
+
+A naive model of interaction detection would assume at every observation there is a fixed probability that interaction is a false negative.  
+false-negative
+
 
 ![The probability an observed interaction is a "true negative" (y-axis) given
 how many times it has been sampled as a non-interaction. Another thing is true,
@@ -87,12 +95,14 @@ effect our quantification of network structure.
 
 # Effects of false negatives on ability to make predictions
 
-Use the same model and data as [@Strydom2021]. Seed the training
+Use the same model and data as [@Strydom2021RoaPre]. Seed the training
 data with false negatives at a rate $p_{fn}$. Don't do anything to
 the test data. Make ROC-PR AUC plots for 3 levels of $p_{fn}$. Same
 model, same data, different levels of predictive capacity.
 
-Way more effect on PR space, probably unsurprisingly. 
+Big takeaway here is false-negatives have way more effect on
+PR space, unsurprisingly. Sadly this is also where the potential application of
+is greatest.
 
 ![fig](./figures/rocpr_falsenegatives.png)
 

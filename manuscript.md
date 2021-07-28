@@ -73,7 +73,7 @@ $P(B)$ are not independent.
 
 **fig here: x-axis: sampling effort , y-axis false negative prob, different
 colors are different strengths of association**
-
+alternatively, two panels: one with varying connectance, other with varying association
 
 # Effects of false-negatives on network properties
 

@@ -10,6 +10,7 @@ function samplingeffort_and_fnr(;
     A = nichemodel(S, 0.1),
     numreplicates = 50,
     samplingeffort = vcat(1,25, 50:50:1500),
+    λ=nothing
 )
     sampling = []
     fnr_mean = []
@@ -28,8 +29,25 @@ function samplingeffort_and_fnr(;
 
             abundances = rand(LogNormal(),S)
             abundance_dist = abundances ./ sum(abundances)
+
             species_observered = zeros(Int64, samp)
             for i in 1:samp
+
+                if !isnothing(λ)
+                    Sigmamat = zeros(S,S)
+                    for i in 1:S
+                        for j in 1:S
+                            if A[i,j] == 1
+                                Sigmamat[i,j] = rand(Exponential(λ))
+                            end
+                        end
+
+                        Sigmamat[i,i] = 1.0-sum(Sigmamat[i,:])
+                    end
+                    abundance_dist = Sigmamat * (abundances ./ sum(abundances))
+                    abundance_dist =abundance_dist ./ sum(abundance_dist)  # renormalize due to occasional numerical instability
+                end
+
                 species_observered[i] = rand(Categorical(abundance_dist))
             end
 
@@ -62,13 +80,16 @@ function samplingeffort_and_fnr(;
 end
 
 samp, fnr_mean, fnr_05, fnr_25, fnr_75, fnr_95 = samplingeffort_and_fnr(A=nichemodel(100, 0.1), numreplicates = 500)
-
-
 plot(samp, fnr_mean, ribbon=(fnr_mean .- fnr_05, fnr_mean .-  fnr_95), dpi=300, fa=0.3, c=:dodgerblue, size=(700,500))
 scatter!(samp, fnr_mean, ylim=(0,1), frame=:box,c=:white, ms=5, msw=2.5,msc=:dodgerblue, legend=:none, label="0.1",legendtitle="connectance")
 yaxis!("false negative rate")
 xaxis!("number of individual observations", xticks=0:100:1500, xlim=(0,1500))
 savefig("samplingeffort_fnr.png")
+
+
+
+
+
 
 
 

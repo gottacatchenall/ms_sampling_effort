@@ -46,14 +46,17 @@ different for high abundance vs low abundance species.
 Consider a probability of false negative detection per unit biomass.
 In this model every observation is drawn from the distribution of the biomass
 distribution at a particular place and time. If we assume that this distribution
-is the same everywhere (again unlikely)
+is the same everywhere (again unlikely), we can express the probability that
+we observe species $A$ and $B$ as
+$$  .
 
 Seeing two low biomass species interacting requires two relatively low prob
 events, which is detecting each species of low biomass.
 
 What if there is a strength of association? Covariance of biomass of i and
 biomass of j due to cooccurence because this interaction is "important" for each
-species.
+species. In this case, the probability of observing both $A$ and $B$,
+$P(AB)$, is _not_ equal to $P(A)P(B)$ as $P(A)$ and $P(B)$ are not independent.
 
   --> This implies that interactions that are variable/opportunistic are subject
   to ever higher false-negative rate.

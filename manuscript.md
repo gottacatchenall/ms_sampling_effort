@@ -20,17 +20,17 @@ false-negatives [@Poisot2021ImpMam]. This has many practical consequences for
 answering questions about species interactions and how human activity is
 effecting them.
 
-In this manuscript we seek to answer:
-How "wrong" are the measurements of network structure
-(connectance, nestedness, modularity) as a function of false-negative probability?
-How wrong are predictions about interactions?
-
+In this manuscript we seek to answer: 1) How many times do you have to observe a
+non-interaction between two species to be confident in saying that is a true
+negative? 2) How "wrong" are the measurements of network structure (connectance,
+nestedness, modularity) as a function of false-negative probability? 3) How do
+false-negatives impact our ability to make reliable predictions about
+interactions?
 
 ![The probability an observed interaction is a "true negative" (y-axis) given
 how many times it has been sampled as a non-interaction. Another thing is true,
-which is that this function will never reach
-1. So many assumptions here about probability.
-](./figures/bernoulli.png){#fig:bernoulli}
+which is that this function will never reach 1. So many assumptions here about
+probability. ](./figures/bernoulli.png){#fig:bernoulli}
 
 
 
@@ -48,18 +48,31 @@ In this model every observation is drawn from the distribution of the biomass
 distribution at a particular place and time. If we assume that this distribution
 is the same everywhere (again unlikely), we can express the probability that
 we observe species $A$ and $B$ as
-$$  .
+$P(AB)$.
 
 Seeing two low biomass species interacting requires two relatively low prob
 events, which is detecting each species of low biomass.
 
-What if there is a strength of association? Covariance of biomass of i and
-biomass of j due to cooccurence because this interaction is "important" for each
-species. In this case, the probability of observing both $A$ and $B$,
-$P(AB)$, is _not_ equal to $P(A)P(B)$ as $P(A)$ and $P(B)$ are not independent.
+Controversies around theory of species abundance distributions and neutral
+theory aside, for simplicity we simulate abundances from $N_S$ independent draws
+from a log-normal distribution with parameters [@Volkov2003NeuThe]. We then
+simulate a random food web $A$ with $N_S$ species. For each interaction ($A_{ij}
+= 1$) we estimate the probability of observing both species $i$ and $j$ by
+simulating a distribution of $O$ total observations, where the species observed
+at the $o$-th observation is drawn from the abundance distribution. Here, $O$ is
+indicative of sampling effort.
 
+What if there is a strength of association?
+Covariance of biomass of i and biomass of j due to cooccurence because this
+interaction is "important" for each species. In this case, the probability of
+observing both $A$ and $B$, $P(AB)$, is _not_ equal to $P(A)P(B)$ as $P(A)$ and
+$P(B)$ are not independent.
   --> This implies that interactions that are variable/opportunistic are subject
   to ever higher false-negative rate.
+
+
+**fig here: x-axis: sampling effort , y-axis false negative prob, different
+colors are different strengths of association**
 
 
 # Effects of false-negatives on network properties

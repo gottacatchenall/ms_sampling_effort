@@ -11,6 +11,7 @@
 using Mangal
 using DataFrames
 using ProgressMeter
+using SparseArrays
 using CSV
 
 mangal_networks = nothing 
@@ -69,7 +70,7 @@ function querymangal()
 end
 
 
-function mangaldata()
+function writemangaldata()
     fw_df = CSV.read("artifacts/foodwebs.csv", DataFrame)
     para_df = CSV.read("artifacts/parasite.csv", DataFrame)
     mutu_df = CSV.read("artifacts/mutualist.csv", DataFrame)
@@ -80,9 +81,53 @@ function mangaldata()
     mutu = network.(mutu_df.id)
     misc =  network.(misc_df.id)
 
-    return fw, para, mutu, misc
+    writeedgelists(fw, "foodweb")
+    writeedgelists(para, "parasite")
+    writeedgelists(mutu, "mutualist")
+    writeedgelists(misc, "misc")
+
+end
+
+function writeedgelists(thewebs, typepath)
+    for w in thewebs
+        thismat = convert(UnipartiteNetwork,w)
+        pathname = joinpath("./artifacts/$typepath/$(w.name).csv") 
+        Is,Js,trash = findnz(thismat.edges)
+        CSV.write(pathname,  DataFrame([Is, Js], [:i,:j]))
+    end
+end
+
+function read_edgelist(filepath, type)
+    df = CSV.read(filepath, DataFrame)
+
+    sz = max(max(df.i...), max(df.j...))
+    A = zeros(sz,sz)
+
+    
+    for r in 1:nrow(df)
+        i = df[r, :i]
+        j = df[r, :j]
+        A[i,j] = 1
+    end
+    return type(Bool.(A))
 end
 
 
-mangaldata()
+function read_edgelists(dir, type::Type{T}) where {T<: AbstractEcologicalNetwork}
+    filenames = filter(x->endswith(x, ".csv"), readdir(dir))
+    nets = []
+    for file in filenames 
+        push!(nets, read_edgelist(joinpath(dir, file), type))
+    end
+    return nets
+end
 
+
+function mangaldata()
+    fw = read_edgelists("./artifacts/foodweb/", UnipartiteNetwork)
+    para = read_edgelists("./artifacts/parasite/", BipartiteNetwork)
+    mutu = read_edgelists("./artifacts/parasite/", BipartiteNetwork)
+    misc = read_edgelists("./artifacts/misc/", UnipartiteNetwork)
+
+    fw, para, mutu, misc
+end

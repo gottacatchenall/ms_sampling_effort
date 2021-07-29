@@ -97,13 +97,19 @@ include("get_mangal_data.jl")
 fw, para, mutu, misc = mangaldata()
 
 
-pl = plot(size=(700,700), dpi=300, ylim=(0,1), frame=:box, legend=:none,)
-@showprogress for thisfw in fw[begin:5]
-    samp, fnr_mean, fnr_05, fnr_25, fnr_75, fnr_95 = samplingeffort_and_fnr(A=convert(UnipartiteNetwork, thisfw) ,numreplicates = 500)
-    plot!(pl, samp, fnr_mean, la=0.1, c=:dodgerblue)
-    scatter!(pl, samp, fnr_mean,c=:dodgerblue, ma=0.1)
+samps_per_fw = []
+means_per_fw = []
+
+@showprogress for thisfw in fw
+    net = convert(UnipartiteNetwork, thisfw) 
+    samp, fnr_mean, fnr_05, fnr_25, fnr_75, fnr_95 = samplingeffort_and_fnr(A=net,numreplicates = 500)
+    push!(samps_per_fw, samp)
+    push!(means_per_fw, fnr_mean)
 end
-pl
+
+
+
+
 
 plot(samp, fnr_mean, ribbon=(fnr_mean .- fnr_05, fnr_mean .-  fnr_95), dpi=300, fa=0.3, c=:dodgerblue, size=(700,500))
 scatter!(samp, fnr_mean, ylim=(0,1), frame=:box,c=:white,msc=:dodgerblue, legend=:none, label="0.1",legendtitle="connectance")

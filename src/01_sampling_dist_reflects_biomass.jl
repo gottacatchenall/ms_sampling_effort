@@ -15,15 +15,9 @@ function samplingeffort_and_fnr(;
     S = richness(A)
     sampling = []
     fnr_mean = []
-    fnr_05 = []
-    fnr_25 = []
-    fnr_75 = []
-    fnr_95 = []
-
+    fnr_sigma = []
 
     for samp in samplingeffort
-
-
         thesefnrs = zeros(numreplicates)
         for rep in 1:numreplicates
             tp,fn = 0,0
@@ -53,18 +47,15 @@ function samplingeffort_and_fnr(;
 
         push!(sampling, samp)
 
-        push!(fnr_75, percentile(thesefnrs, 0.75))
-        push!(fnr_25, percentile(thesefnrs, 0.25))
-        push!(fnr_95, percentile(thesefnrs, 0.95))
-        push!(fnr_05, percentile(thesefnrs, 0.05))
-
+        push!(fnr_sigma, sqrt(var(thesefnrs)))
         push!(fnr_mean, mean(thesefnrs))
         
     end
-    return sampling, fnr_mean, fnr_05, fnr_25, fnr_75, fnr_95
-end
+    return sampling, fnr_mean, fnr_sigma
+end 
 
-samp, fnr_mean, fnr_05, fnr_25, fnr_75, fnr_95 = samplingeffort_and_fnr(A=nichemodel(100, 0.1) ,numreplicates = 500)
+
+samp, fnr_mean, fnr_sd = samplingeffort_and_fnr(A=nichemodel(100, 0.1) ,numreplicates = 300)
 plot(samp, fnr_mean, ribbon=(fnr_mean .- fnr_05, fnr_mean .-  fnr_95), dpi=300, fa=0.3, c=:dodgerblue, size=(700,500))
 scatter!(samp, fnr_mean, ylim=(0,1), frame=:box,c=:white, ms=5, msw=2.5,msc=:dodgerblue, legend=:none, label="0.1",legendtitle="connectance")
 yaxis!("false negative rate")
@@ -79,16 +70,6 @@ savefig("samplingeffort_fnr.png")
 
 #=
 
-    DIFFERENT TOPOLOGICAL MODELS SECTION 
-
-=#
-
-samp, fnr_mean, fnr_05, fnr_25, fnr_75, fnr_95 = samplingeffort_and_fnr(A=nichemodel(100, 0.1) ,numreplicates = 500)
-
-
-
-#=
-
     Running on MANGAL NETWORKS SECITON 
 
 =#
@@ -96,13 +77,14 @@ include("get_mangal_data.jl")
 
 fw, para, mutu, misc = mangaldata()
 
+samp, generated_fnr_mean, generated_fnr_sd = samplingeffort_and_fnr(A=nichemodel(100, 0.1) ,numreplicates = 500)
+
 
 samps_per_fw = []
 means_per_fw = []
 
 @showprogress for thisfw in fw
-    net = convert(UnipartiteNetwork, thisfw) 
-    samp, fnr_mean, fnr_05, fnr_25, fnr_75, fnr_95 = samplingeffort_and_fnr(A=net,numreplicates = 500)
+    samp, fnr_mean, fnr_sd = samplingeffort_and_fnr(A=thisfw,numreplicates = 50)
     push!(samps_per_fw, samp)
     push!(means_per_fw, fnr_mean)
 end
@@ -110,11 +92,20 @@ end
 
 
 
+plt = plot()
+for (sa, mn) in zip(samps_per_fw, means_per_fw)
+    plot!(plt, sa, mn, c=:teal, la=0.15)
+end
+plt
 
-plot(samp, fnr_mean, ribbon=(fnr_mean .- fnr_05, fnr_mean .-  fnr_95), dpi=300, fa=0.3, c=:dodgerblue, size=(700,500))
-scatter!(samp, fnr_mean, ylim=(0,1), frame=:box,c=:white,msc=:dodgerblue, legend=:none, label="0.1",legendtitle="connectance")
+
+
+plot!(plt, samp, generated_fnr_mean, ribbon=generated_fnr_sd, dpi=300, fa=0.3, c=:dodgerblue, size=(700,500))
+plot!(plt, samp, generated_fnr_mean, ribbon=2generated_fnr_sd, dpi=300, fa=0.2, c=:dodgerblue, size=(700,500))
+
+scatter!(plt,samp, generated_fnr_mean, ylim=(0,1), frame=:box,c=:white,msc=:dodgerblue, legend=:none, label="0.1",legendtitle="connectance")
 yaxis!("false negative rate")
 xaxis!("number of individual observations", xticks=0:100:1500, xlim=(0,1500))
+savefig("samplingeffort_fnr_foodwebs.png")
 
 
-convert(UnipartiteNetwork, fw[1])

@@ -123,3 +123,19 @@ plot(connectplt, degplt, degcentrplt, entplt, size=(700,700), dpi=300, padding=1
 
 
 savefig("properties_error.png")
+
+
+
+
+
+
+
+
+#=
+
+    Running on MANGAL NETWORKS SECITON 
+
+=#
+include("get_mangal_data.jl")
+
+fw, para, mutu, misc = mangaldata()

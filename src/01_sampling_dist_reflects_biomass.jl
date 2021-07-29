@@ -103,7 +103,7 @@ samps_per_fw = []
 means_per_fw = []
 
 @showprogress for thisfw in fw
-    samp, fnr_mean, fnr_sd = samplingeffort_and_fnr(A=thisfw,numreplicates = 50)
+    samp, fnr_mean, fnr_sd = samplingeffort_and_fnr(A=thisfw,numreplicates = 200)
     push!(samps_per_fw, samp)
     push!(means_per_fw, fnr_mean)
 end
@@ -116,7 +116,7 @@ rich = [richness(f) for f in fw]
 means = means_per_fw[sortperm(rich)]
 cs1 = ColorScheme(range(colorant"dodgerblue", colorant"cyan4", length=length(rich)))
 empplt=plot(samps_per_fw,means,dpi=300, la=0.3,frame=:box, palette=cs1, legend=:none, colorbar=:right, size=(500,500))
-yaxis!(empplt, "false negative rate")
+yaxis!(empplt, "false negative rate", ylim=(0,1))
 xaxis!(empplt, "number of individual observations", xticks=0:200:1500, xlim=(0,1500))
 
 
@@ -125,16 +125,16 @@ xaxis!(empplt, "number of individual observations", xticks=0:200:1500, xlim=(0,1
 
 cs2 = ColorScheme(range(colorant"dodgerblue", colorant"cyan4", length=3))
 
-genplt = plot(dpi=300, la=0.3, ylims=(0,1),frame=:box, legendtitle="species", palette=cs2, colorbar=:right, size=(500,500))
+genplt = plot(dpi=300, la=0.3, ylims=(0,1),frame=:box, legendtitlefontsize=8, legendtitle="species richness", palette=cs2, colorbar=:right, size=(500,500))
 plot!(genplt, samp, generated30_fnr_mean, label="",c=cs2[1], ribbon=generated30_fnr_sd, fa=0.3)
 plot!(genplt, samp, generated30_fnr_mean, label="", c=cs2[1], ribbon=2generated30_fnr_sd, fa=0.1)
-scatter!(genplt, samp, generated30_fnr_mean,msw=2,label="30", msc=:dodgerblue, mc=:white)
+scatter!(genplt, samp, generated30_fnr_mean, ms=4, msw=2,label="30", msc=:dodgerblue, mc=:white)
 plot!(genplt, samp, generated100_fnr_mean, label="",c=cs2[2] ,ribbon=generated100_fnr_sd, dpi=300, fa=0.3)
 plot!(genplt, samp, generated100_fnr_mean, label="",c=cs2[2] ,ribbon=2generated100_fnr_sd, dpi=300, fa=0.1)
-scatter!(genplt, samp, generated100_fnr_mean, msw=2,label="100",msc=cs2[2], mc=:white)
+scatter!(genplt, samp, generated100_fnr_mean, ms=4,msw=2,label="100",msc=cs2[2], mc=:white)
 plot!(genplt, samp, generated250_fnr_mean, label="",ribbon=generated250_fnr_sd, dpi=300, fa=0.3, c=cs2[3])
 plot!(genplt, samp, generated250_fnr_mean, label="",ribbon=2generated250_fnr_sd, dpi=300, fa=0.1, c=cs2[3])
-scatter!(genplt, samp, generated250_fnr_mean, msw=2,label="250",msc=cs2[3], mc=:white)
+scatter!(genplt, samp, generated250_fnr_mean, ms=4,msw=2,label="250",msc=cs2[3], mc=:white)
 yaxis!(genplt, "false negative rate")
 xaxis!(genplt, "number of individual observations", xticks=0:200:1500, xlim=(0,1500))
 
@@ -145,9 +145,6 @@ l = @layout [grid(1,2)]
 plot(genplt, empplt, dpi=300,size=(800,450), margin=4mm)
 savefig("samplingdist.png")
 
-
-
-scatter!(plt,samp, generated_fnr_mean, ylim=(0,1), frame=:box,c=:white,msc=:dodgerblue, legend=:none, label="0.1",legendtitle="connectance")
 yaxis!("false negative rate")
 xaxis!("number of individual observations", xticks=0:200:1500, xlim=(0,1500))
 savefig("samplingeffort_fnr_foodwebs.png")

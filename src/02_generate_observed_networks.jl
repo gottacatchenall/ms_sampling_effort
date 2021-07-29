@@ -52,11 +52,15 @@ function entropy(net)
     return EcologicalNetworks.entropy(net)
 end
 
-function samplenetworks(truenet, fpr, fnr, property; numreplicates = 500)
+function samplenetworks(A, fpr, fnr, property; numreplicates = 500)
+
+
     realstat = zeros(numreplicates)
     obstat = zeros(numreplicates)
     for r in 1:numreplicates
-        real, obs = generate(truenet, falsepositive=fpr,falsenegative=fnr)    
+        metaweb = typeof(A) <: Function ? A(1) : A             
+
+        real, obs = generate(metaweb, falsepositive=fpr,falsenegative=fnr)    
         realstat[r] = property(real)
         obstat[r] = property(obs)
     end
@@ -88,10 +92,10 @@ function get_error(truenet, fp, property)
 end
 
 
-fnr, mean_connectance_err, connectance_1sigma  = get_error(nichemodel(100,0.1),0.0, connectance)
+fnr, mean_connectance_err, connectance_1sigma  = get_error((_ -> nichemodel(100,0.1)),0.0, connectance)
 connectplt = plot(frame=:box, legend=:none, size=(400,400))
-plot!(connectplt, fnr, mean_connectance_err, ribbon=connectance_1sigma, fc=:dodgerblue,fa=0.5)
-plot!(connectplt,fnr, mean_connectance_err, ribbon=2connectance_1sigma, fc=:dodgerblue, fa=0.2)
+plot!(connectplt, fnr, mean_connectance_err, ribbon=connectance_1sigma,  c=:dodgerblue, fc=:dodgerblue,fa=0.5)
+plot!(connectplt,fnr, mean_connectance_err, ribbon=2connectance_1sigma, c=:dodgerblue, fa=0.2)
 scatter!(connectplt,fnr, mean_connectance_err, c=:white, ms=3, msw=1.5, msc=:dodgerblue, label="FPR = 0")
 xaxis!(connectplt,"false negative rate", xlims=(0,1))
 yaxis!(connectplt,"Error in estimated connectance", ylims=(0,.15))
@@ -125,10 +129,10 @@ xaxis!(entplt,"false negative rate", xlims=(0,1))
 yaxis!(entplt,"Error in estimated entropy")
 
 
-plot(connectplt, specdistplt, degcentrplt, entplt, margin=2mm,size=(700,700), dpi=300, padding=10)
+plot(connectplt, specdistplt, degcentrplt, entplt, margin=5mm,size=(700,700), dpi=300)
 
 
-savefig("properties_error.png", )
+savefig("properties_error.png")
 
 
 

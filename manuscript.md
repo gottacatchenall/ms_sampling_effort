@@ -8,13 +8,13 @@ bibliography: [references.bib]
 Ecological interactions are hard to sample [@Jordano2016SamNet]. Still,
 collecting data about species interactions is imperative to measure and mitigate
 the effects of human activity on Earth's biodiversity [@Jordano2016ChaEco], and
-to predict potential spillover of zoonotic diseases [@cite]. Biodiversity data
-has become increasingly available: remote sensing has enabled data on spatial
-scales previously unsampleable, and cameras/etc. Yet sampling of ecological
-interactions detection often requires human sampling as coexistance is not
-indicative of interaction [@cite]. This induces constraints on sampling of
-interactions based on the spatial and temporal scales feasible to human
-sampling.
+to predict potential spillover of zoonotic diseases [@cite]. Over the past
+decade biodiversity data has become increasingly available: remote sensing has
+enabled data on spatial scales previously unsampleable, and cameras/etc. Yet
+sampling of ecological interactions detection often requires human sampling as
+coexistance is not indicative of interaction [@cite]. This induces constraints
+on sampling of interactions based on the spatial and temporal scales feasible to
+human sampling.
 
 These sampling constraints go on to bias species interaction data: we are more
 likely to observe interactions between species with high relative abundance
@@ -43,7 +43,7 @@ exist---measured by $p_{tn}$---and our sampling effort $N$.
 how many times it has been sampled as a non-interaction. Another thing is true,
 which is that this function will never reach 1. So many assumptions here about
 probability. It's the birthday paradox, but backwards.
-](./figures/bernoulli.png){#fig:bernoulli}
+](./figures/negative_binom.png){#fig:bernoulli}
 
 
 
@@ -70,7 +70,7 @@ indicative of sampling effort.
 
 
 ![False negative rate as a function of sampling effort and network size, computed
-using the method described above. Left panel:  in blue. Right empirical food webs from Mangal database in teal.](./figures/samplingdist.png){#fig:samplingeffort}
+using the method described above. Left panel:  in blue. Right empirical food webs from Mangal database in teal. The outlier on panel B is a 714 species network. ](./figures/samplingdist.png){#fig:samplingeffort}
 
 
 Caveats: this doesn't consider variation in abundance in space and time which is

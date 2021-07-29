@@ -97,12 +97,10 @@ interactions in the future.
 
 # Effects of false-negatives on network properties
 
-Here we simulate a bunch of food webs using generative models.
-We then simulate the effects of observation error to generate
-false negatives in the sample and compare the computed network
-properties of the "true" networks to the computed properties on
-the observed network in order to see how much false negatives
-effect our quantification of network structure.
+Here we simulate the effects of observation error to generate false negatives in
+the samples of ecological networks and compare the computed network properties
+of the original network to the computed properties on the observed network in
+order to see how false negatives effect our quantification of network structure.
 
 ![fig. 1$\sigma$ in first grad, 2$\sigma$ in second ](./figures/properties_error.png){#fig:properties}
 

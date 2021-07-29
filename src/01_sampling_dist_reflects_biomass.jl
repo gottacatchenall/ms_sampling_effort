@@ -41,8 +41,6 @@ function samplingeffort_and_fnr(;
                                 Sigmamat[i,j] = rand(Exponential(λ))
                             end
                         end
-
-                        Sigmamat[i,i] = 1.0-sum(Sigmamat[i,:])
                     end
                     abundance_dist = Sigmamat * (abundances ./ sum(abundances))
                     abundance_dist =abundance_dist ./ sum(abundance_dist)  # renormalize due to occasional numerical instability
@@ -79,7 +77,7 @@ function samplingeffort_and_fnr(;
     return sampling, fnr_mean, fnr_05, fnr_25, fnr_75, fnr_95
 end
 
-samp, fnr_mean, fnr_05, fnr_25, fnr_75, fnr_95 = samplingeffort_and_fnr(A=nichemodel(100, 0.1), numreplicates = 500)
+samp, fnr_mean, fnr_05, fnr_25, fnr_75, fnr_95 = samplingeffort_and_fnr(A=nichemodel(100, 0.1) ,numreplicates = 500)
 plot(samp, fnr_mean, ribbon=(fnr_mean .- fnr_05, fnr_mean .-  fnr_95), dpi=300, fa=0.3, c=:dodgerblue, size=(700,500))
 scatter!(samp, fnr_mean, ylim=(0,1), frame=:box,c=:white, ms=5, msw=2.5,msc=:dodgerblue, legend=:none, label="0.1",legendtitle="connectance")
 yaxis!("false negative rate")
@@ -92,7 +90,10 @@ savefig("samplingeffort_fnr.png")
 
 
 
+#=
 
-histogram(species_observered, xlim=(1,100))
-xlabel!("species by increasing abundance ->")
-ylabel!("number of observations")
+    DIFFERENT TOPOLOGICAL MODELS SECTION 
+
+=#
+
+samp, fnr_mean, fnr_05, fnr_25, fnr_75, fnr_95 = samplingeffort_and_fnr(A=nichemodel(100, 0.1) ,numreplicates = 500)

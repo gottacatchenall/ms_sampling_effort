@@ -50,9 +50,9 @@ probability. It's the birthday paradox, but backwards.
 
 # False-negatives due to relative abundances
 
-In this section we demonstrate the realized false-negative rate (FNR) can be
-change drastically with sampling effort simply as a function of the distribution
-of species abundances
+In this section we demonstrate the realized false-negative rate (FNR) changes
+drastically with sampling effort simply as a function of the distribution
+of species abundances.
 
 If we assume each individual observation of species occurs according to the
 distribution of those species' abundances, seeing two low biomass species
@@ -114,6 +114,9 @@ is greatest.
 ![fig](./figures/rocpr_falsenegatives.png)
 
 # Conclusion
+
+How does this influence our understanding of the structure of ecological
+networks, and how we infer other things based on that.  
 
 How does this influence our models of interaction prediction?
 

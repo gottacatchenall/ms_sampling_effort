@@ -6,12 +6,13 @@ using StatsBase
 
 
 function samplingeffort_and_fnr(;
-    S = 100 ,
     A = nichemodel(S, 0.1),
     numreplicates = 50,
     samplingeffort = vcat(1,25, 50:50:1500),
     λ=nothing
 )
+
+    S = richness(A)
     sampling = []
     fnr_mean = []
     fnr_05 = []
@@ -32,20 +33,6 @@ function samplingeffort_and_fnr(;
 
             species_observered = zeros(Int64, samp)
             for i in 1:samp
-
-                if !isnothing(λ)
-                    Sigmamat = zeros(S,S)
-                    for i in 1:S
-                        for j in 1:S
-                            if A[i,j] == 1
-                                Sigmamat[i,j] = rand(Exponential(λ))
-                            end
-                        end
-                    end
-                    abundance_dist = Sigmamat * (abundances ./ sum(abundances))
-                    abundance_dist =abundance_dist ./ sum(abundance_dist)  # renormalize due to occasional numerical instability
-                end
-
                 species_observered[i] = rand(Categorical(abundance_dist))
             end
 
@@ -97,3 +84,31 @@ savefig("samplingeffort_fnr.png")
 =#
 
 samp, fnr_mean, fnr_05, fnr_25, fnr_75, fnr_95 = samplingeffort_and_fnr(A=nichemodel(100, 0.1) ,numreplicates = 500)
+
+
+
+#=
+
+    Running on MANGAL NETWORKS SECITON 
+
+=#
+include("get_mangal_data.jl")
+
+fw, para, mutu, misc = mangaldata()
+
+
+pl = plot(size=(700,700), dpi=300, ylim=(0,1), frame=:box, legend=:none,)
+@showprogress for thisfw in fw[begin:5]
+    samp, fnr_mean, fnr_05, fnr_25, fnr_75, fnr_95 = samplingeffort_and_fnr(A=convert(UnipartiteNetwork, thisfw) ,numreplicates = 500)
+    plot!(pl, samp, fnr_mean, la=0.1, c=:dodgerblue)
+    scatter!(pl, samp, fnr_mean,c=:dodgerblue, ma=0.1)
+end
+pl
+
+plot(samp, fnr_mean, ribbon=(fnr_mean .- fnr_05, fnr_mean .-  fnr_95), dpi=300, fa=0.3, c=:dodgerblue, size=(700,500))
+scatter!(samp, fnr_mean, ylim=(0,1), frame=:box,c=:white,msc=:dodgerblue, legend=:none, label="0.1",legendtitle="connectance")
+yaxis!("false negative rate")
+xaxis!("number of individual observations", xticks=0:100:1500, xlim=(0,1500))
+
+
+convert(UnipartiteNetwork, fw[1])

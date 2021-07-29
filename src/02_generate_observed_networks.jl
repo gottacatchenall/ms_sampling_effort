@@ -41,7 +41,7 @@ function entropy(net)
     return EcologicalNetworks.entropy(net)
 end
 
-function samplenetworks(truenet, fpr, fnr, property; numreplicates = 200)
+function samplenetworks(truenet, fpr, fnr, property; numreplicates = 50)
     realstat = zeros(numreplicates)
     obstat = zeros(numreplicates)
     for r in 1:numreplicates
@@ -146,12 +146,11 @@ mutu_errs = []
 mutu_sigmas = []
 
 
-for thispara in para
+@showprogress for thispara in para
     fnr, err, sigma = get_error(thispara, fpr, η)
     push!(fnr, fnrs)
     push!(para_errs, err)
-    push!(para_sigmas, sigmas)
-
+    push!(para_sigmas, sigma)
 end
 
 for thismutu in mutu

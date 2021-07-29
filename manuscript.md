@@ -69,7 +69,7 @@ at the $o$-th observation is drawn from the abundance distribution. Here, $O$ is
 indicative of sampling effort.
 
 
-![Sampling effort vs False negative Rate. Niche model generated food webs in blue, empirical food webs from Mangal in teal.](./figures/samplingeffort_fnr_foodwebs.png){#fig:samplingeffort}
+![Sampling effort vs False negative Rate. Niche model generated food webs in blue, empirical food webs from Mangal in teal.](./figures/samplingdist.png){#fig:samplingeffort}
 
 Consider a probability of false negative detection per unit biomass. In this
 model every observation is drawn from the distribution of the biomass

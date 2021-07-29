@@ -6,7 +6,7 @@ using StatsBase
 using Plots
 using SparseArrays
 
-function observe(A::T; falsepositive=0.1, falsenegative=0.3) where {T}
+function observe(A::T; falsepositive=0.1, falsenegative=0.3) where {T <: BipartiteNetwork}
     mat = Matrix(A.edges)
     for (i,el) in enumerate(mat)
         if el == 1 && rand() < falsenegative
@@ -18,6 +18,17 @@ function observe(A::T; falsepositive=0.1, falsenegative=0.3) where {T}
     return T(sparse(mat), A.T, A.B)
 end
 
+function observe(A::T; falsepositive=0.1, falsenegative=0.3) where {T <: UnipartiteNetwork}
+    mat = Matrix(A.edges)
+    for (i,el) in enumerate(mat)
+        if el == 1 && rand() < falsenegative
+            mat[i] = 0 
+        elseif el == 0 && rand() < falsepositive
+            mat[i] = 1
+        end
+    end
+    return UnipartiteNetwork(mat)
+end
 
 function generate(truenet; richness=30, connectance=0.3, forbidden=nothing, kw...)
     O = observe(truenet; kw...)
@@ -41,7 +52,7 @@ function entropy(net)
     return EcologicalNetworks.entropy(net)
 end
 
-function samplenetworks(truenet, fpr, fnr, property; numreplicates = 50)
+function samplenetworks(truenet, fpr, fnr, property; numreplicates = 500)
     realstat = zeros(numreplicates)
     obstat = zeros(numreplicates)
     for r in 1:numreplicates
@@ -77,49 +88,47 @@ function get_error(truenet, fp, property)
 end
 
 
-fnr, mean_connectance_err, connectance_1sigma, connectance_2sigma  = get_error(0.0, connectance)
+fnr, mean_connectance_err, connectance_1sigma  = get_error(nichemodel(100,0.1),0.0, connectance)
 connectplt = plot(frame=:box, legend=:none, size=(400,400))
 plot!(connectplt, fnr, mean_connectance_err, ribbon=connectance_1sigma, fc=:dodgerblue,fa=0.5)
-plot!(connectplt,fnr, mean_connectance_err, ribbon=connectance_2sigma, fc=:dodgerblue, fa=0.2)
-scatter!(connectplt,fnr, meanerr_fp0, c=:white, ms=3, msw=1.5, msc=:dodgerblue, label="FPR = 0")
+plot!(connectplt,fnr, mean_connectance_err, ribbon=2connectance_1sigma, fc=:dodgerblue, fa=0.2)
+scatter!(connectplt,fnr, mean_connectance_err, c=:white, ms=3, msw=1.5, msc=:dodgerblue, label="FPR = 0")
 xaxis!(connectplt,"false negative rate", xlims=(0,1))
-yaxis!(connectplt,"Error in estimated connectance", ylims=(0,1))
-
-
-fnr, indeg_err, indeg_1sigma, indeg_2sigma  = get_error(0.0, meanindeg)
-degplt = plot(frame=:box, legend=:none, size=(400,400))
-plot!(degplt,fnr, indeg_err, ribbon=indeg_1sigma,lc=:seagreen4, fc=:seagreen4,fa=0.5)
-plot!(degplt,fnr, indeg_err, ribbon=indeg_2sigma, lc=:seagreen4,fc=:seagreen4, fa=0.2)
-scatter!(degplt,fnr, indeg_err, c=:white, ms=3, msw=1.5,msc=:seagreen4, label="FPR = 0")
-xaxis!(degplt,"false negative rate", xlims=(0,1))
-yaxis!(degplt,"Error in estimated degree", ylims=(0,10))
+yaxis!(connectplt,"Error in estimated connectance", ylims=(0,.15))
 
 
 
-fnr, degcentrality_err,  degcentrality_1sigma,  degcentrality_2sigma  = get_error(0.0, meandegcentrallity)
+fnr, specdist_err,  specdist_1sigma  = get_error(nichemodel(100,0.1),0.0, ρ)
+specdistplt = plot(frame=:box, legend=:none, size=(400,400))
+plot!(specdistplt, fnr, specdist_err, ribbon=specdist_1sigma,lc=:seagreen4, fc=:seagreen4,fa=0.5)
+plot!(specdistplt, fnr, specdist_err, ribbon=2specdist_1sigma, lc=:seagreen4,fc=:seagreen4, fa=0.2)
+scatter!(specdistplt, fnr, specdist_err, c=:white, ms=3, msw=1.5,msc=:seagreen4, label="FPR = 0")
+xaxis!(specdistplt,"false negative rate", xlims=(0,1))
+yaxis!(specdistplt,"Error in estimated spectral radius", xlims=(0,1))
+
+
+fnr, degcentrality_err,  degcentrality_1sigma  = get_error(nichemodel(100,0.1),0.0, meandegcentrallity)
 degcentrplt = plot(frame=:box, legend=:none, size=(400,400))
 plot!(degcentrplt, fnr, degcentrality_err, ribbon=degcentrality_1sigma,lc=:teal, fc=:teal,fa=0.5)
-plot!(degcentrplt, fnr, degcentrality_err, ribbon=degcentrality_2sigma, lc=:teal,fc=:teal, fa=0.2)
+plot!(degcentrplt, fnr, degcentrality_err, ribbon=2degcentrality_1sigma, lc=:teal,fc=:teal, fa=0.2)
 scatter!(degcentrplt, fnr, degcentrality_err, c=:white, ms=3, msw=1.5,msc=:teal, label="FPR = 0")
 xaxis!(degcentrplt,"false negative rate", xlims=(0,1))
-yaxis!(degcentrplt,"Error in estimated mean degree centality", xlims=(0,1))
+yaxis!(degcentrplt,"Error in estimated mean degree centality", ylims=(0,0.3))
 
 
-
-
-fnr, ent_err, ent_1sigma, ent_2sigma  = get_error(0.0, entropy)
+fnr, ent_err, ent_1sigma  = get_error(nichemodel(100,0.1),0.0, entropy)
 entplt = plot(frame=:box, legend=:none, ylim=(0,7), size=(400,400))
 plot!(entplt,fnr, ent_err, ribbon=ent_1sigma,lc=:mediumpurple4, fc=:mediumpurple4,fa=0.5)
-plot!(entplt,fnr, ent_err, ribbon=ent_2sigma, lc=:mediumpurple4,fc=:mediumpurple4, fa=0.2)
+plot!(entplt,fnr, ent_err, ribbon=2ent_1sigma, lc=:mediumpurple4,fc=:mediumpurple4, fa=0.2)
 scatter!(entplt,fnr, ent_err, c=:white, ms=3, msw=1.5,msc=:mediumpurple4, label="FPR = 0")
 xaxis!(entplt,"false negative rate", xlims=(0,1))
 yaxis!(entplt,"Error in estimated entropy")
 
 
-plot(connectplt, degplt, degcentrplt, entplt, size=(700,700), dpi=300, padding=10)
+plot(connectplt, specdistplt, degcentrplt, entplt, margin=2mm,size=(700,700), dpi=300, padding=10)
 
 
-savefig("properties_error.png")
+savefig("properties_error.png", )
 
 
 
@@ -153,14 +162,20 @@ mutu_sigmas = []
     push!(para_sigmas, sigma)
 end
 
-for thismutu in mutu
+@showprogress for thismutu in mutu
     fnr, err, sigma = get_error(thismutu, fpr, η)
     push!(fnr, fnrs)
     push!(mutu_errs, err)
     push!(mutu_sigmas, sigma)
 end
 
-entplt = plot(frame=:box, legend=:none, ylim=(0,1), size=(400,400))
-plot!(entplt,fnr, ent_err, ribbon=ent_1sigma,lc=:mediumpurple4, fc=:mediumpurple4,fa=0.5)
-plot!(entplt,fnr, ent_err, ribbon=ent_2sigma, lc=:mediumpurple4,fc=:mediumpurple4, fa=0.2)
-scatter!(entplt,fnr, ent_err, c=:white, ms=3, msw=1.5,msc=:mediumpurple4, label="FPR = 0")
+fn_continuum = 0.0:0.02:1
+
+pl = plot()
+for (mn,sg) in zip(mutu_errs, mutu_sigmas)
+    plot!(pl, fn_continuum, mn, c=:red)
+end
+for (mn,sg) in zip(para_errs, para_sigmas)
+    plot!(pl, fn_continuum, mn, c=:blue)
+end
+pl

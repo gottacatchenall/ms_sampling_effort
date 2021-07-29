@@ -123,9 +123,9 @@ xaxis!(empplt, "number of individual observations", xticks=0:200:1500, xlim=(0,1
 
 
 
-cs2 = ColorScheme(range(colorant"dodgerblue", colorant"cyan4", length=4))
+cs2 = ColorScheme(range(colorant"dodgerblue", colorant"cyan4", length=3))
 
-genplt = plot(dpi=300, la=0.3,frame=:box, legendtitle="species", palette=cs2, colorbar=:right, size=(500,500))
+genplt = plot(dpi=300, la=0.3, ylims=(0,1),frame=:box, legendtitle="species", palette=cs2, colorbar=:right, size=(500,500))
 plot!(genplt, samp, generated30_fnr_mean, label="",c=cs2[1], ribbon=generated30_fnr_sd, fa=0.3)
 plot!(genplt, samp, generated30_fnr_mean, label="", c=cs2[1], ribbon=2generated30_fnr_sd, fa=0.1)
 scatter!(genplt, samp, generated30_fnr_mean,msw=2,label="30", msc=:dodgerblue, mc=:white)

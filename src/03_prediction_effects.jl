@@ -92,23 +92,21 @@ function train(x, y, fnp; proportion=0.8,n_batches = 50000, batch_size=64, mat_a
     test = filter(i -> !(i in train), 1:size(x, 2))
 
 # todo only add to training set
-    training_with_falsenegatives = add_falsenegatives(y[:, train], fnp)
+    y[:, train] = add_falsenegatives(y[:, train], fnp)
+    data = (x[:, train], y[:, train])
 
 
-    data = (x[:, train], training_with_falsenegatives)
-
-
-    data_test = (x[:, test], y[:, test])
+    data_test = (x[:, test], y[:,test])
 
     # This is the main training loop
     @showprogress for i in 1:n_batches
         # We pick a random batch out of the training set
         ord = sample(train, batch_size; replace=false)
-        data_batch = (x[:, ord], y[:, ord])
+        data_batch = (x[:, ord], y[:,ord])
         # If the training batch is too unbalanced, we draw another one
         while sum(data_batch[2]) < ceil(Int64, 0.25batch_size)
             ord = sample(train, batch_size; replace=false)
-            data_batch = (x[:, ord], y[:, ord])
+            data_batch = (x[:, ord], y[:,ord])
         end
         # This trains the model
         Flux.train!(loss, ps, [data_batch], opt)
@@ -198,27 +196,20 @@ end
 
 
 
+basetruth = y
+rocReal, prReal = train(x,y, 0)
+roc10, pr10 = train(x,y, 0.1)
+roc25, pr25 = train(x,y, 0.25)
+roc50, pr50 = train(x,y, 0.5)
 
-rocReal, prReal = train(x,basetruth, 0)
-roc10, pr10 = train(x,labels_fnr10, 0.1)
-roc25, pr25 = train(x,labels_fnr25, 0.25)
-roc50, pr50 = train(x,labels_fnr50, 0.5)
 
-
-cols = [:cyan2,:dodgerblue,:teal, :mediumpurple]
+cols = [ColorSchemes.tableau_sunset_sunrise[i] for i in [1,2,3,4]]
 
 rocplt = plot(aspectratio=1, legend=:outerright, frame=:box, legendtitle="FNR")
-plot!(rocplt,rocReal[1], rocReal[2], lw=2.5, c=cols[1], label="")
-scatter!(rocplt,rocReal[1], rocReal[2], lw=2.5, label="0", msw=1,msc=cols[1], mc=:white, ms=2)
-
-plot!(rocplt,roc10[1], roc10[2], lw=2.5, c=cols[2], label="")
-scatter!(rocplt,roc10[1], roc10[2], lw=2.5, c=cols[2], label="0.1", msw=1,msc=cols[2], mc=:white, ms=2)
-
-plot!(rocplt,roc25[1], roc25[2], lw=2.5, c=cols[3], label="")
-scatter!(rocplt,roc25[1], roc25[2], lw=2.5, label="0.25", msw=1,msc=cols[3], mc=:white, ms=2)
-
-plot!(rocplt,roc50[1], roc50[2], lw=2.5, c=cols[4], label="")
-scatter!(rocplt,roc50[1], roc50[2], lw=2.5, label="0.5", msw=1,msc=cols[4], mc=:white, ms=2)
+plot!(rocplt,rocReal[1], rocReal[2], lw=3, la=0.75, c=cols[1], label="0")
+plot!(rocplt,roc10[1], roc10[2], lw=3, la=0.75,c=cols[2], label="0.1")
+plot!(rocplt,roc25[1], roc25[2], lw=3, la=0.75,c=cols[3], label="0.25")
+plot!(rocplt,roc50[1], roc50[2], lw=3, la=0.75, c=cols[4], label="0.5")
 
 
 plot!(rocplt, [0,1], [0,1], c=:grey, ls=:dash, la=0.8, aspectratio=1, label="random")
@@ -228,17 +219,10 @@ yaxis!(rocplt,"True positive rate", (0, 1))
 savefig(rocplt, "roc.png")
 
 prplt =  plot(aspectratio=1, legend=:outerright, frame=:box, legend_title="FNR")
-plot!(prplt,prReal[1], prReal[2], lw=3,c=cols[1], label="")
-scatter!(prplt,prReal[1], prReal[2], lw=2.5, label="0", msw=1,msc=cols[1], mc=:white, ms=2)
-
-plot!(prplt,pr10[1], pr10[2], lw=3,c=cols[2], label="")
-scatter!(prplt,pr10[1], pr10[2], lw=2.5, label="0.1", msw=1,msc=cols[2], mc=:white, ms=2)
-
-plot!(prplt,pr25[1], pr25[2], lw=3,c=cols[3], label="")
-scatter!(prplt,pr25[1], pr25[2], lw=2.5, label="0.25", msw=1,msc=cols[3], mc=:white, ms=2)
-
-plot!(prplt,pr50[1], pr50[2], lw=3, c=cols[4], label="")
-scatter!(prplt,pr50[1], pr50[2], lw=2.5, label="0.5", msw=1,msc=cols[4], mc=:white, ms=2)
+plot!(prplt,prReal[1], prReal[2], lw=3,c=cols[1], la=0.8, label="0")
+plot!(prplt,pr10[1], pr10[2], lw=3,c=cols[2], la=0.8, label="0.1")
+plot!(prplt,pr25[1], pr25[2], lw=3,c=cols[3], la=0.8,label="0.25")
+plot!(prplt,pr50[1], pr50[2], lw=3, c=cols[4], la=0.8, label="0.5")
 
 
 plot!(prplt, [0,1], [1,0], c=:grey, ls=:dash, la=0.5, aspectratio=1, label="random")
@@ -248,7 +232,7 @@ yaxis!(prplt,"Postive predictive value", (0, 1))
 prplt
 
 
-comb = plot(rocplt, prplt, size=(900, 700), dpi=300)
+comb = plot(rocplt, prplt, size=(900, 700), dpi=300, margin=3mm)
 
 savefig(comb, "rocpr_falsenegatives.png")
 

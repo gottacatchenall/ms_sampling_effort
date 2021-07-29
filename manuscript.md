@@ -69,25 +69,25 @@ at the $o$-th observation is drawn from the abundance distribution. Here, $O$ is
 indicative of sampling effort.
 
 
-![Sampling effort vs False negative Rate. Niche model generated food webs in blue, empirical food webs from Mangal in teal.](./figures/samplingdist.png){#fig:samplingeffort}
+![False negative rate as a function of sampling effort and network size, computed
+using the method described above. Left panel:  in blue. Right empirical food webs from Mangal database in teal.](./figures/samplingdist.png){#fig:samplingeffort}
 
-Consider a probability of false negative detection per unit biomass. In this
-model every observation is drawn from the distribution of the biomass
-distribution at a particular place and time. If we assume that this distribution
-is the same everywhere (again unlikely), we can express the probability that we
-observe species $A$ and $B$ as $P(AB)$. What if there is a strength of
-association? Covariance of biomass of i and biomass of j due to cooccurence
-because this interaction is "important" for each species. In this case, the
-probability of observing both $A$ and $B$, $P(AB)$, is _not_ equal to $P(A)P(B)$
-as $P(A)$ and $P(B)$ are not independent. --> This implies that interactions
-that are variable/opportunistic are subject to ever higher false-negative rate.
 
-This doesn't consider variation in abundance in space and time which is kind of
-a problem.
+Caveats: this doesn't consider variation in abundance in space and time which is
+kind of a problem. In this model every observation is drawn from the
+distribution of the biomass distribution at a particular place and time. If we
+assume that this distribution is the same everywhere (again unlikely), we can
+express the probability that we observe species $A$ and $B$ as $P(AB)$. What if
+there is a strength of association? Covariance of biomass of i and biomass of j
+due to cooccurence because this interaction is "important" for each species. In
+this case, the probability of observing both $A$ and $B$, $P(AB)$, is _not_
+equal to $P(A)P(B)$ as $P(A)$ and $P(B)$ are not independent. --> This implies
+that interactions that are variable/opportunistic are subject to ever higher
+false-negative rate.
 
-**fig here: x-axis: sampling effort , y-axis false negative prob, different
-colors are different strengths of association**
-alternatively, two panels: one with varying connectance, other with varying association
+Transition to next two sections: testing the effects of false negatives in our data
+on the properties derived from these measurements, and for use as data for predicting
+interactions in the future.
 
 # Effects of false-negatives on network properties
 

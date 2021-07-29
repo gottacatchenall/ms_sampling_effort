@@ -4,9 +4,9 @@ using Distributions
 using DataFrames
 using StatsBase
 using Plots
+using SparseArrays
 
-
-function observe(A; falsepositive=0.1, falsenegative=0.3)
+function observe(A::T; falsepositive=0.1, falsenegative=0.3) where {T}
     mat = Matrix(A.edges)
     for (i,el) in enumerate(mat)
         if el == 1 && rand() < falsenegative
@@ -15,15 +15,14 @@ function observe(A; falsepositive=0.1, falsenegative=0.3)
             mat[i] = 1
         end
     end
-    return UnipartiteNetwork(mat)
+    return T(sparse(mat), A.T, A.B)
 end
 
 
-function generate(; richness=30, connectance=0.3, forbidden=nothing, kw...)
-    A = nichemodel(richness, connectance)
-    O = observe(A; kw...)
+function generate(truenet; richness=30, connectance=0.3, forbidden=nothing, kw...)
+    O = observe(truenet; kw...)
 
-    return A,O
+    return truenet,O
 end
 
 function meanindeg(net) 
@@ -42,11 +41,11 @@ function entropy(net)
     return EcologicalNetworks.entropy(net)
 end
 
-function samplenetworks(fpr, fnr, property; numreplicates = 500)
+function samplenetworks(truenet, fpr, fnr, property; numreplicates = 200)
     realstat = zeros(numreplicates)
     obstat = zeros(numreplicates)
     for r in 1:numreplicates
-        real, obs = generate(falsepositive=fpr,falsenegative=fnr)    
+        real, obs = generate(truenet, falsepositive=fpr,falsenegative=fnr)    
         realstat[r] = property(real)
         obstat[r] = property(obs)
     end
@@ -58,25 +57,23 @@ end
 
 real, obs = generate()
 
-function get_error(fp, property)
+function get_error(truenet, fp, property)
 
     fn_continuum = 0.0:0.02:1
     fnr = []
     meanerr = []
     err1σ = []
-    err2σ = []
     for fn in fn_continuum
-        error = samplenetworks(fp, fn, property)
+        error = samplenetworks(truenet, fp, fn, property)
         push!(fnr, fn)
         push!(meanerr, mean(error))
 
         σ = sqrt(var(error))
 
         push!(err1σ, σ)
-        push!(err2σ, 2σ)
     end
 
-    return fnr, meanerr, err1σ, err2σ
+    return fnr, meanerr, err1σ
 end
 
 
@@ -139,3 +136,32 @@ savefig("properties_error.png")
 include("get_mangal_data.jl")
 
 fw, para, mutu, misc = mangaldata()
+
+fpr = 0
+
+fnrs = []
+para_errs = []
+para_sigmas = []
+mutu_errs = []
+mutu_sigmas = []
+
+
+for thispara in para
+    fnr, err, sigma = get_error(thispara, fpr, η)
+    push!(fnr, fnrs)
+    push!(para_errs, err)
+    push!(para_sigmas, sigmas)
+
+end
+
+for thismutu in mutu
+    fnr, err, sigma = get_error(thismutu, fpr, η)
+    push!(fnr, fnrs)
+    push!(mutu_errs, err)
+    push!(mutu_sigmas, sigma)
+end
+
+entplt = plot(frame=:box, legend=:none, ylim=(0,1), size=(400,400))
+plot!(entplt,fnr, ent_err, ribbon=ent_1sigma,lc=:mediumpurple4, fc=:mediumpurple4,fa=0.5)
+plot!(entplt,fnr, ent_err, ribbon=ent_2sigma, lc=:mediumpurple4,fc=:mediumpurple4, fa=0.2)
+scatter!(entplt,fnr, ent_err, c=:white, ms=3, msw=1.5,msc=:mediumpurple4, label="FPR = 0")

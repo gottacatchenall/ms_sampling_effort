@@ -98,7 +98,7 @@ properties of the "true" networks to the computed properties on
 the observed network in order to see how much false negatives
 effect our quantification of network structure.
 
-![fig. 1σ in first grad, 2σ in second ](./figures/properties_error.png){#fig:properties}
+![fig. 1$\sigma$ in first grad, 2$\sigma$ in second ](./figures/properties_error.png){#fig:properties}
 
 # Effects of false negatives on ability to make predictions
 

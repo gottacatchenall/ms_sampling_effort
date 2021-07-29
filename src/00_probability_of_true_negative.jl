@@ -22,7 +22,7 @@ end
 
 
 
-cs = ColorSchemes.thermal
+cs = ColorSchemes.Paired_5
 plt = plot(legend=:outerright, xlim=numtimesobserved, legendtitle="false negative rate", ylim=(0,1), frame=:box, size=(800,400), dpi=300)
 
 function add!(plt, x,y,sc)
@@ -33,7 +33,7 @@ xaxis!("Number of observed negatives")
 yaxis!("Probability interaction is a true negative")
 
 xticks!(0:15)
-xlimit!(plt, (0,15))
+plot!(plt, xlims=(0,15))
 add!(plt, numtimesobserved, truenegativeprob_fnr10, 0.1)
 add!(plt, numtimesobserved, truenegativeprob_fnr25, 0.25)
 add!(plt, numtimesobserved, truenegativeprob_fnr50, 0.5)
@@ -41,4 +41,6 @@ add!(plt, numtimesobserved, truenegativeprob_fnr75, 0.75)
 add!(plt, numtimesobserved, truenegativeprob_fnr90, 0.9)
 plt
 
+
+plot(plt, margin=5mm)
 savefig("true_negatives.png")

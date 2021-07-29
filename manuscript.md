@@ -7,37 +7,46 @@ bibliography: [references.bib]
 
 Ecological interactions are hard to sample [@Jordano2016SamNet]. Still,
 collecting data about species interactions is imperative to measure and mitigate
-the effects of human activity on Earth's biodiversity [@Jordano2016ChaEco], and
-to predict potential spillover of zoonotic diseases [@cite]. Over the past
-decade biodiversity data has become increasingly available: remote sensing has
-enabled data on spatial scales previously unsampleable, and cameras/etc. Yet
-sampling of ecological interactions detection often requires human sampling as
-coexistance is not indicative of interaction [@cite]. This induces constraints
-on sampling of interactions based on the spatial and temporal scales feasible to
-human sampling.
+the effects of human activity on Earth's biodiversity
+[@Andys90AuthorPaper;@Jordano2016ChaEco], and to predict potential spillover of
+zoonotic diseases [@cite]. Over the past decade biodiversity data has become
+increasingly available. Remote sensing has enabled data on spatial scales
+previously unsampleable, and in-situ observations in the form of both cameras
+and environmental sensing have .
 
-These sampling constraints go on to bias species interaction data: we are more
-likely to observe interactions between species with high relative abundance
-[@cite], and we only observe but a small fraction of the variance in species
-interactions in space and time [@Poisot2015SpeWhy]. As a result of these biases,
-the data we collect is noisy and likely contains many false-negatives
-[@Poisot2021ImpMam]. This has many practical consequences for answering
-questions about species interactions and how human activity is effecting them.
 
-In this manuscript we seek to answer: 1) How many times do you have to observe a
-non-interaction between two species to be confident in saying that is a true
-negative? 2) How "wrong" are the measurements of network structure modularity as
-a function of false-negative probability? 3) How do false-negatives impact our
-ability to make reliable predictions about interactions?
+Yet sampling of ecological interactions detection often requires human sampling
+as coexistance is not necessarily indicative of interaction [@cite]. This
+induces constraints on sampling of interactions based on the spatial and
+temporal scales feasible to human sampling. These sampling constraints go on to
+bias species interaction data: we are more likely to observe interactions
+between species with high relative abundance, and we only observe but a small
+fraction of the variance in species interactions in space and time
+[@Poisot2015SpeWhy]. Further sampling of species interactions is geographically
+biased [@Poisot2021Biases]. As a result of these biases, the data we collect is
+noisy and likely contains many false-negatives,This has many practical
+consequences for answering questions about species interactions and how human
+activity is effecting them.
 
-A naive model of interaction detection would assume that every existing
-interaction is incorrectly observed as a non-interaction with an independent,
-fixed probability, which we denote $p_{fn}$. If we observe the same species
-not-interacting $N$ times, the probability of a true negative, denoted $p_{tn}$,
-is given by $p_{tn} = 1 - (p_{fn})^N$. This relation is shown in @fig:bernoulli
-for varying values of the false negative rate $p_{fn}$. This shows a fundamental
-dependency between our ability to reliably say an interaction doesn't
-exist---measured by $p_{tn}$---and our sampling effort $N$.
+In this manuscript we seek to determine how false negatives impact analysis and
+prediction of ecological networks, and how understanding the relationship
+between sampling effort and probability of a true negative can guide how we
+design surveys of ecological interactions [@Jordano2016SamNet]. The fundemental
+questions here are: 1) How many times do you have to observe a non-interaction
+between two species to be confident in saying that is a true negative? 2) How
+"wrong" are the measurements of network structure modularity as a function of
+false-negative probability? 3) How do false-negatives impact our ability to make
+reliable predictions about interactions?
+
+
+A naive model of interaction detection would assume that every true interaction
+is incorrectly observed as a non-interaction with an independent and fixed
+probability, denoted $p_{fn}$. In this model, if we observe the same species
+not-interacting $N$ times the probability of a true negative, $p_{tn}$, is given
+by $p_{tn} = 1 - (p_{fn})^N$. This relation is shown in @fig:bernoulli for
+varying values of the false negative rate $p_{fn}$. This illustrates a
+fundamental link between our ability to reliably say an interaction doesn't
+exist---$p_{tn}$---and our sampling effort $N$.
 
 ![The probability an observed interaction is a "true negative" (y-axis) given
 how many times it has been sampled as a non-interaction. Another thing is true,
@@ -45,20 +54,17 @@ which is that this function will never reach 1. So many assumptions here about
 probability. It's the birthday paradox, but backwards.
 ](./figures/negative_binom.png){#fig:bernoulli}
 
-
-
-
 # False-negatives due to relative abundances
 
 In this section we demonstrate the realized false-negative rate (FNR) changes
 drastically with sampling effort simply as a function of the distribution
 of species abundances.
+Here we assume each individual observation of a given single species $i$ wihtin
+a species pool occurs according to the distribution the abundances of the species in that species pool .
 
-If we assume each individual observation of species occurs according to the
-distribution of those species' abundances, seeing two low biomass species
+Seeing two low biomass species
 interacting requires two relatively low probability events, which is detecting
 each species of low biomass.
-
 Controversies around theory of species abundance distributions and neutral
 theory aside, for simplicity we simulate abundances from $N_S$ independent draws
 from a log-normal distribution with parameters [@Volkov2003NeuThe]. We then

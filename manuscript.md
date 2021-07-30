@@ -8,16 +8,16 @@ Understanding how different species interact is fundamental to community ecology
 and an increasing imperative both to measure and mitigate the effects of human
 activity on Earth's biodiversity [@Andys90AuthorPaper; @Jordano2016ChaEco] and
 to predict potential spillover of zoonotic diseases [@cite]. Over the past
-decade biodiversity data has become increasingly available, both due to improved
-sensing technology [@Stephenson2020TecAdv] but also because of increased
-adoption of open and FAIR data sharing practices. Modern remote-sensing has
-enabled data on spatial scales previously unimaginable to the ecologists of the
-past, and in-situ observations in the form of both camera-traps and
-environmental sensors have greatly improved the resolution of in-situ data.
-Yet widespread data about species interactions has remained illusive as
-ecological interactions detection often requires human sampling as measures of
-cooccurence is not necessarily indicative of interaction [@Blanchet2020CooNot].
-This induces constraints on sampling of interactions based on the spatial and
+decade biodiversity data has become increasingly available due to improved
+sensing technology [@Stephenson2020TecAdv] and increased adoption of open and
+FAIR data sharing practices. Modern remote-sensing has enabled data on spatial
+scales previously unimaginable to the ecologists of the past, and in-situ
+observations in the form of both camera-traps and environmental sensors have
+greatly improved the resolution of in-situ data. Yet widespread data about
+species interactions has remained illusive as detection of an interaction
+between two species often requires human sampling as cooccurence is not
+necessarily indicative of interaction [@Blanchet2020CooNot]. This limitation
+induces constraints on sampling of interactions based on the spatial and
 temporal scales feasible to human sampling.
 
 These sampling constraints go on to bias species interaction data: we only
@@ -49,11 +49,13 @@ A naive model of interaction detection would assume that every true interaction
 between two species is incorrectly observed as a non-interaction with an
 independent and fixed probability, which we denote $p_{fn}$ and subsequently
 refer to as the False-Negative Rate (FNR). In this model, if we observe the same
-species not-interacting $O$ times the probability of a true negative, $p_{tn}$,
-is given by $p_{tn} = 1 - (p_{fn})^O$. This relation is shown in
+species not-interacting $O$ times the probability of a true negative, denoted
+$p_{tn}$, is given by $p_{tn} = 1 - (p_{fn})^O$. This relation is shown in
 @fig:negativebinom for varying values of the false negative rate $p_{fn}$. This
 illustrates a fundamental link between our ability to reliably say an
-interaction doesn't exist---$p_{tn}$---and our sampling effort $O$.
+interaction doesn't exist---$p_{tn}$---and our sampling effort $O$, and further
+that there is no non-zero $p_{fn}$ for which we can ever _prove_ that an
+interaction does not exist.
 
 ![The probability an observed interaction is a "true negative" (y-axis) given
 how many times it has been sampled as a non-interaction. Another thing is true,
@@ -65,7 +67,7 @@ From @fig:negativebinom it is evident that the more times we see two species
 _present_ but _not interacting_, the more likely the interaction is a true
 negative. But what should this threshold of number of observations be?
 The false-negative rates presented in @fig:negativebinom may seem unrealistically
-high, however species are not observed indepdent of their relative abundance.  
+high, however species are not observed independent of their relative abundance.  
 In the next section we demonstrate can lead to high realized values of $p_{fn}$
 for species with low relative abundance.
 
@@ -181,7 +183,8 @@ unsurprisingly. Sadly this is also where the potential application of is
 greatest. Still, performance doesn't matter with many added false-negatives!
 Good evidence in favor of this type of model. Same caveat as previous section
 that this is data that _already_ is likely to have many false-negatives. So, the
-effects of adding more, as we do in this illustration, might be mitigated.
+effects of adding more, as we do in this illustration, might be mitigated because
+there are still the false-negatives in the original data present in the $FNR=0$ simulation.
 
 # Conclusion
 

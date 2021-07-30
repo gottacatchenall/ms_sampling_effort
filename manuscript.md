@@ -39,7 +39,7 @@ between two species to be confident in saying that is a true negative? 2) How
 false-negative probability? 3) How do false-negatives impact our ability to make
 reliable predictions about interactions?
 
-# How many observations of a non-interaction do we need to call it a negative?
+# How many observations of a non-interaction do we need to classify it as a true negative?
 
 A naive model of interaction detection would assume that every true interaction
 is incorrectly observed as a non-interaction with an independent and fixed
@@ -77,7 +77,9 @@ low probability events, which is detecting each species of low biomass.
 Generally across communities, the shape of this abundance distribution can be
 reasonably-well described by a log-normal distribution [@Volkov2003NeuThe].
 Controversies around theory of species abundance distributions and neutral
-theory aside, for simplicity we simulate abundances from $N_S$ independent draws
+theory aside,
+
+For simplicity we simulate abundances from $N_S$ independent draws
 from a standard-log-normal distribution. For an ecological network $A$
 with $N_S$ species, for each interaction ($A_{ij} = 1$) we estimate the
 probability of observing both species $i$ and $j$ by simulating a distribution

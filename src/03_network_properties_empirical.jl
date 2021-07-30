@@ -93,7 +93,9 @@ fnr, para_err, para_sigma = get_error(para, fpr, η)
 fnr, mutu_err, mutu_sigma = get_error(mutu, fpr, η)
 
 
-pl = plot()
+plot(fnr, para_err)
+
+
 for (mn,sg) in zip(mutu_errs, mutu_sigmas)
     plot!(pl, fn_continuum, mn, c=:red)
 end

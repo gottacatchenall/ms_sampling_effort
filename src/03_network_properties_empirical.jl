@@ -103,3 +103,9 @@ for (mn,sg) in zip(para_errs, para_sigmas)
     plot!(pl, fn_continuum, mn, c=:blue)
 end
 pl
+
+
+fnr, para_err, para_sigma = get_error(para, fpr, connectance)
+fnr, mutu_err, mutu_sigma = get_error(mutu, fpr, connectance)
+
+

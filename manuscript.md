@@ -54,7 +54,7 @@ exist---$p_{tn}$---and our sampling effort $N$.
 how many times it has been sampled as a non-interaction. Another thing is true,
 which is that this function will never reach 1. So many assumptions here about
 probability. It's the birthday paradox, but backwards.
-](./figures/negative_binom.png){#fig:negativebinom}
+](./figures/negativebinom.png){#fig:negativebinom}
 
 What does this tell us? If we see two species _present_ but _not interacting_
 many times, its probability a true negative. What, then, is meant by "many
@@ -108,7 +108,9 @@ interaction $P(AB) = P(A)P(B)$. In this case, the probability of observing both
 $A$ and $B$, which we denote $P(AB)$, is not equal to $P(A)P(B)$ as $P(A)$ and
 $P(B)$ are not independent. If there some positive strength of association
 between observing both $A$ and $B$ because this interaction is "important" for
-each species, then $$P(AB) > P(A)P(B)$$
+each species, then
+
+$$P(AB) > P(A)P(B)$$
 
 In this case, the probability of observing a false negative is $p_{fn} = 1 -
 P(AB)$ which due to the above inequality due to positive associated implies

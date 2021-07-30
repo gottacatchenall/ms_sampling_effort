@@ -109,3 +109,5 @@ fnr, para_err, para_sigma = get_error(para, fpr, connectance)
 fnr, mutu_err, mutu_sigma = get_error(mutu, fpr, connectance)
 
 
+
+scatter!(fnr, para_err)

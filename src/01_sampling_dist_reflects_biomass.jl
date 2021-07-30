@@ -59,7 +59,10 @@ end
 
 
 samp, fnr_mean, fnr_sd = samplingeffort_and_fnr(A=(_->nichemodel(100, 0.1)) ,numreplicates = 300)
-plot(samp, fnr_mean, ribbon=(fnr_mean .- fnr_05, fnr_mean .-  fnr_95), dpi=300, fa=0.3, c=:dodgerblue, size=(700,500))
+
+fnt = font(20, "Roboto")
+
+plot(samp, fnr_mean,fontfamily=fnt,  ribbon=fnr_sd, dpi=300, fa=0.3, c=:dodgerblue, size=(700,500))
 scatter!(samp, fnr_mean, ylim=(0,1), frame=:box,c=:white, ms=5, msw=2.5,msc=:dodgerblue, legend=:none, label="0.1",legendtitle="connectance")
 yaxis!("false negative rate")
 xaxis!("number of individual observations", xticks=0:200:1500, xlim=(0,1500))
@@ -87,7 +90,7 @@ samp, generated50_fnr_mean, generated50_fnr_sd = samplingeffort_and_fnr(A=(_->ni
 samp, generated25_fnr_mean, generated25_fnr_sd = samplingeffort_and_fnr(A=(_->nichemodel(25, 0.1)),numreplicates = 500)
 
 
-plot(dpi=300, frame=:box, legendtitle="species")
+plot(dpi=300, fontfamily=fnt, frame=:box, legendtitle="species")
 plot!(samp, generated25_fnr_mean, ribbon=generated25_fnr_sd, label="25", fa=0.3)
 plot!(samp, generated50_fnr_mean, ribbon=generated50_fnr_sd, label="50", fa=0.3)
 plot!(samp, generated100_fnr_mean, ribbon=generated100_fnr_sd, label="100", fa=0.3)

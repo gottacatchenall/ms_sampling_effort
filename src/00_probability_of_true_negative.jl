@@ -5,7 +5,7 @@ using Colors
 using Measures
 numtimesobserved = 0:15
 
-fnt = font(20, "Computer Modern")
+fnt = font(20, "Roboto")
 
 truenegativeprob_fnr10  = []
 truenegativeprob_fnr25  = []

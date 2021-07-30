@@ -57,10 +57,9 @@ probability. It's the birthday paradox, but backwards.
 
 What does this tell us? If we see two species _present_ but _not interacting_
 many times, its probability a true negative. What, then, is meant by "many
-times"?
-
-Observations of species occur according to their relative abundance, and
-this can lead to high realized pvalues of $p_{fn}$.
+times"?  Observations of species occur according to their relative abundance, and
+this can lead to high realized values of $p_{fn}$ for species with low relative
+abundance.
 
 # False-negatives as a product of relative abundance
 
@@ -94,10 +93,9 @@ network. ](./figures/samplingdist.png){#fig:samplingeffort}
 
 This simple model doesn't consider the possibility that there are positive or
 negative associations between observing two species together based their
-interaction.
-Here we assume each individual observation of a given single species $i$ within
-a species pool occurs according to the distribution the abundances of the
-species in that species pool .
+interaction. Here we assume each individual observation of a given single
+species $i$ within a species pool occurs according to the distribution the
+abundances of the species in that species pool .
 
 
 However, we can demonstrate that the probability of observing a false negative
@@ -109,12 +107,10 @@ interaction $P(AB) = P(A)P(B)$. In this case, the probability of observing both
 $A$ and $B$, which we denote $P(AB)$, is not equal to $P(A)P(B)$ as $P(A)$ and
 $P(B)$ are not independent. If there some positive strength of association
 between observing both $A$ and $B$ because this interaction is "important" for
-each species, then
-$$P(AB) > P(A)P(B)$$
+each species, then $$P(AB) > P(A)P(B)$$
 
-In this case, the probability of observing a false negative is
-$p_{fn} = 1 - P(AB)$ which due to the above inequality due to positive
-associated implies
+In this case, the probability of observing a false negative is $p_{fn} = 1 -
+P(AB)$ which due to the above inequality due to positive associated implies
 
 $$p_{fn} \geq 1 - P(A)P(B)$$
 
@@ -153,12 +149,12 @@ across XX sites. We partition the data into 80-20 training-test split, and then
 seed the training data with false negatives varying rates, but crucially do
 nothing to the test data.
 
-The model---a neural-network with 3 layers to predict outputs based on
-features extracted from cooccurence, see @Strydom2021RoaPre for more details).
+The model---a neural-network with 3 layers to predict outputs based on features
+extracted from cooccurence, see @Strydom2021RoaPre for more details).
 
-
-In @fig:rocpr, we show receiving-operating-characteristic (ROC) and precision-recall (PR) curves for the model with varying levels of false-negatives added to
-the data.
+In @fig:rocpr, we show receiving-operating-characteristic (ROC) and
+precision-recall (PR) curves for the model with varying levels of
+false-negatives added to the data.
 
 ![fig](./figures/rocpr_falsenegatives.png){#fig:rocpr}
 
@@ -171,7 +167,7 @@ have many false-negatives. So, the effects of adding more might be mitigated.
 
 # Conclusion
 
-In this paper we have demonstrated that false negatives can
+In this paper we have demonstrated that false negatives can impact 
 
 How does this influence our understanding of the structure of ecological
 networks, and how we infer other things based on that.  

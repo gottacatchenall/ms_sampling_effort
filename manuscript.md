@@ -15,7 +15,8 @@ also growth of open and FAIR databases. Remote sensing has enabled data on
 spatial scales previously unsampleable, and in-situ observations in the form of
 both cameras and environmental sensors have greatly improved the resolution of
 data. Yet sampling of ecological interactions detection often requires human
-sampling as coexistance is not necessarily indicative of interaction [@cite].
+sampling as coexistance is not necessarily indicative of interaction
+[@Blanchet2020CooNot].
 
 This induces constraints on sampling of interactions based on the spatial and
 temporal scales feasible to human sampling. These sampling constraints go on to
@@ -23,7 +24,7 @@ bias species interaction data: we are more likely to observe interactions
 between species with high relative abundance, and we only observe but a small
 fraction of the variance in species interactions in space and time
 [@Poisot2015SpeWhy]. Further sampling of species interactions is geographically
-biased toward the usual suspects [@Poisot2021Biases]. These biases the data we.
+biased toward the usual suspects [@Poisot2021GloKno]. These biases the data we.
 collect is noisy and likely contains many false-negatives. This has many
 practical consequences for answering questions about species interactions and
 how human activity is effecting them [@deAguiar2019RevBia].
@@ -67,7 +68,7 @@ In this section we demonstrate the realized probability of false-negative
 changes drastically with sampling effort simply as a function of the
 distribution of species abundances within a community.
 One sentence of how you do this, and that you use both simulated food-webs and
-real mangal data [@cite mangal].
+real mangal data [@Banville2021ManJl].
 
 Each observation of a species is distributed according to this abundance
 distribution. Seeing two low biomass species interacting requires two relatively
@@ -144,10 +145,10 @@ to make predictions about interactions.
 We use the predictive model and dataset as in @Strydom2021RoaPre to predict
 interactions between species never observed at the same place and time.
 
-This dataset from @Hadfield describes host-parasite interaction networks sampled
-across XX sites. We partition the data into 80-20 training-test split, and then
-seed the training data with false negatives varying rates, but crucially do
-nothing to the test data.
+This dataset from @Hadfield2014TalTwo describes host-parasite interaction
+networks sampled across 51 sites. We partition the data into 80-20 training-test
+split, and then seed the training data with false negatives varying rates, but
+crucially do nothing to the test data.
 
 The model---a neural-network with 3 layers to predict outputs based on features
 extracted from cooccurence, see @Strydom2021RoaPre for more details).
@@ -167,7 +168,7 @@ have many false-negatives. So, the effects of adding more might be mitigated.
 
 # Conclusion
 
-In this paper we have demonstrated that false negatives can impact 
+In this paper we have demonstrated that false negatives can impact
 
 How does this influence our understanding of the structure of ecological
 networks, and how we infer other things based on that.  

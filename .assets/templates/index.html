@@ -33,7 +33,6 @@
 
 <body>
     <header>
-        <div class="container">
             <div class="header--title">${ title }</div>
             <div class="header--authors">
                 ${ for(authors)}
@@ -50,10 +49,9 @@
                     ${ endfor }
                 </span>
                 ${ endfor }
-            </div>
         </div>
     </header>
-    
+
     <main class="container">
         <section class="abstract">
             <b>Abstract:</b> ${ description }<br />
@@ -62,7 +60,7 @@
                 <a href="preprint.pdf" title="Preprint PDF" target="_blank">preprint</a>
             </div>
         </section>
-        
+
         <article>
             ${ body }
         </article>
@@ -70,12 +68,12 @@
 
     <footer>
         <div class="container">
-            <h2>Affiliations</h2> 
+            <h2>Affiliations</h2>
             ${ institutions:_list_institutions()[; ] }
             <br />
             ${ metadata.equalcontributions:_list_institutions()[; ] }
         </div>
     </footer>
-    
+
 </body>
 </html>

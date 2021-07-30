@@ -20,9 +20,9 @@ sampling as coexistance is not necessarily indicative of interaction
 
 This induces constraints on sampling of interactions based on the spatial and
 temporal scales feasible to human sampling. These sampling constraints go on to
-bias species interaction data: we are more likely to observe interactions
-between species with high relative abundance, and we only observe but a small
-fraction of the variance in species interactions in space and time
+bias species interaction data: we only observe but a small fraction of the
+variance in species interactions in space and time, and these observations
+themselves reflect the distribution of abundance within communities.
 [@Poisot2015SpeWhy]. Further sampling of species interactions is geographically
 biased toward the usual suspects [@Poisot2021GloKno]. These biases the data we.
 collect is noisy and likely contains many false-negatives. This has many
@@ -43,13 +43,14 @@ We conclude by arguing for using null models such as those used
 # How many observations of a non-interaction do we need to classify it as a true negative?
 
 A naive model of interaction detection would assume that every true interaction
-is incorrectly observed as a non-interaction with an independent and fixed
-probability, denoted $p_{fn}$. In this model, if we observe the same species
-not-interacting $N$ times the probability of a true negative, $p_{tn}$, is given
-by $p_{tn} = 1 - (p_{fn})^N$. This relation is shown in @fig:negativebinom for
-varying values of the false negative rate $p_{fn}$. This illustrates a
-fundamental link between our ability to reliably say an interaction doesn't
-exist---$p_{tn}$---and our sampling effort $N$.
+between two species is incorrectly observed as a non-interaction with an
+independent and fixed probability, which we denote $p_{fn}$ and subsequently
+refer to as the False-Negative Rate (FNR). In this model, if we observe the same
+species not-interacting $O$ times the probability of a true negative, $p_{tn}$,
+is given by $p_{tn} = 1 - (p_{fn})^O$. This relation is shown in
+@fig:negativebinom for varying values of the false negative rate $p_{fn}$. This
+illustrates a fundamental link between our ability to reliably say an
+interaction doesn't exist---$p_{tn}$---and our sampling effort $O$.
 
 ![The probability an observed interaction is a "true negative" (y-axis) given
 how many times it has been sampled as a non-interaction. Another thing is true,
@@ -57,9 +58,15 @@ which is that this function will never reach 1. So many assumptions here about
 probability. It's the birthday paradox, but backwards.
 ](./figures/negativebinom.png){#fig:negativebinom}
 
-What does this tell us? If we see two species _present_ but _not interacting_
-many times, its probability a true negative. What, then, is meant by "many
-times"?  Observations of species occur according to their relative abundance, and
+From @fig:negativebinom it is evident that the more times we see two species
+_present_ but _not interacting_, the more likely the interaction is a true
+negative. But what should this threshold of number of observations be?
+
+
+
+
+
+Observations of species occur according to their relative abundance, and
 this can lead to high realized values of $p_{fn}$ for species with low relative
 abundance.
 
@@ -72,24 +79,25 @@ We do this by simulating the observation process on both NN empirical food webs
 from the Mangal database [@Banville2021ManJl] and food-webs generated using
 the niche model.
 
-Each observation of a species is distributed according to this abundance
-distribution. Seeing two low biomass species interacting requires two relatively
-low probability events, which is detecting each species of low biomass.
+A simple model of observation assumes each observed species is drawn from this
+abundance distribution. Seeing two low biomass species interacting requires two
+relatively low probability events, which is detecting each species of low
+biomass. Generally across communities, the shape of this abundance distribution
+can be reasonably-well described by a log-normal distribution
+[@Volkov2003NeuThe]. Controversies around theory of species abundance
+distributions and neutral theory aside,
 
-Generally across communities, the shape of this abundance distribution can be
-reasonably-well described by a log-normal distribution [@Volkov2003NeuThe].
-Controversies around theory of species abundance distributions and neutral
-theory aside,
-
-For simplicity we simulate abundances from $N_S$ independent draws
-from a standard-log-normal distribution. For an ecological network $A$
-with $N_S$ species, for each interaction ($A_{ij} = 1$) we estimate the
-probability of observing both species $i$ and $j$ by simulating a distribution
-of $O$ total observations, where the species observed at the $o$-th observation
-is drawn from the abundance distribution. Here, $O$ is indicative of sampling
-effort. If both $i$ and $j$ are present in the $O$ observations, the observation
-is computed as a true-negative, and if not, as a false-negative.
-
+For simplicity we simulate abundances from $N_S$ independent draws from a
+standard-log-normal distribution. For an ecological network $A$ with $N_S$
+species, for each true interaction $A_{ij} = 1$ we estimate the probability of
+observing both species $i$ and $j$ at given place and time by simulating a
+distribution of $O$ observations, where the species observed at the
+$1,2,\dots,O$-th observation is drawn from the abundance distribution. If both
+$i$ and $j$ are present in the $O$ observations, the observation is computed as
+a true-negative, and if not, as a false-negative. The results for applying this
+can be found in @fig:samplingeffort, where the left panel is
+this model applied NUM empirical food-webs from the Mangal database [@] , and
+on the right the niche model [@].
 
 ![False negative rate as a function of sampling effort and network size,
 computed using the method described above. Left panel:  in blue. Right empirical
@@ -170,19 +178,19 @@ false-negatives added to the data.
 
 ![fig](./figures/rocpr_falsenegatives.png){#fig:rocpr}
 
-Big takeaway here is false-negatives have way more effect on PR space,
+Big takeaway here is false-negatives have more effect on PR space,
 unsurprisingly. Sadly this is also where the potential application of is
-greatest.
-
-Same caveat as previous section that this is data that _already_ is likely to
-have many false-negatives. So, the effects of adding more might be mitigated.
+greatest. Still, performance doesn't matter with many added false-negatives!
+Good evidence in favor of this type of model. Same caveat as previous section
+that this is data that _already_ is likely to have many false-negatives. So, the
+effects of adding more, as we do in this illustration, might be mitigated.
 
 # Conclusion
 
 
 ***The primary takeaways from this paper***
 In this paper we have demonstrated that false negatives are likely purely due
-to the distribution of
+to the distribution of.
 
 
 ***The primary recommendations for study design that this paper provides***
@@ -192,6 +200,7 @@ true-negative probability given a number of observations of individuals at
 a given place and time.
 
 ***What does the future hold for this research***
+A brief note on false positives.
 How does this influence our understanding of the structure of ecological
 networks, and how we infer other things based on that?
 How does this influence our models of interaction prediction?

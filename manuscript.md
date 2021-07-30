@@ -38,7 +38,7 @@ between two species to be confident in saying that is a true negative? 2) How
 false-negative probability? 3) How do false-negatives impact our ability to make
 reliable predictions about interactions?
 
-# How many times do you have to observe two species not-interacting to be label it a negative?
+# How many observations of a non-interaction do we need to call it a negative?
 
 A naive model of interaction detection would assume that every true interaction
 is incorrectly observed as a non-interaction with an independent and fixed
@@ -144,17 +144,21 @@ order to see how false negatives effect our quantification of network structure.
 
 In this section, we assess the effect of false negatives in data on our ability
 to make predictions about interactions.
-uses data from @Hadfield host-parasite interactions sampled across XX sites.
 
-We use the same model and data as [@Strydom2021RoaPre], which uses a
-neural-network with 3 layers to predict outputs based on features extracted from
-cooccurence, see @Strydom2021RoaPre for more details.
+We use the predictive model and dataset as in @Strydom2021RoaPre to predict
+interactions between species never observed at the same place and time.
 
-We then seed the training data with false negatives at a rate $p_{fn}$.
-But crucially do nothing to the test data.
+This dataset from @Hadfield describes host-parasite interaction networks sampled
+across XX sites. We partition the data into 80-20 training-test split, and then
+seed the training data with false negatives varying rates, but crucially do
+nothing to the test data.
+
+The model---a neural-network with 3 layers to predict outputs based on
+features extracted from cooccurence, see @Strydom2021RoaPre for more details).
+
 
 In @fig:rocpr, we show receiving-operating-characteristic (ROC) and precision-recall (PR) curves for the model with varying levels of false-negatives added to
-the data. 
+the data.
 
 ![fig](./figures/rocpr_falsenegatives.png){#fig:rocpr}
 

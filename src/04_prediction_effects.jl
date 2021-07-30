@@ -205,7 +205,9 @@ roc50, pr50 = train(x,y, 0.5)
 
 cols = [ColorSchemes.tableau_sunset_sunrise[i] for i in [1,2,3,4]]
 
-rocplt = plot(aspectratio=1, legend=:outerright, frame=:box, legendtitle="FNR")
+fnt = font(20, "Roboto")
+
+rocplt = plot(aspectratio=1, fontfamily=fnt, legend=:outerright, frame=:box, legendtitle="FNR")
 plot!(rocplt,rocReal[1], rocReal[2], lw=3, la=0.75, c=cols[1], label="0")
 plot!(rocplt,roc10[1], roc10[2], lw=3, la=0.75,c=cols[2], label="0.1")
 plot!(rocplt,roc25[1], roc25[2], lw=3, la=0.75,c=cols[3], label="0.25")
@@ -218,7 +220,7 @@ yaxis!(rocplt,"True positive rate", (0, 1))
 
 savefig(rocplt, "roc.png")
 
-prplt =  plot(aspectratio=1, legend=:outerright, frame=:box, legend_title="FNR")
+prplt =  plot(aspectratio=1, fontfamily=fnt,legend=:outerright, frame=:box, legend_title="FNR")
 plot!(prplt,prReal[1], prReal[2], lw=3,c=cols[1], la=0.8, label="0")
 plot!(prplt,pr10[1], pr10[2], lw=3,c=cols[2], la=0.8, label="0.1")
 plot!(prplt,pr25[1], pr25[2], lw=3,c=cols[3], la=0.8,label="0.25")
@@ -232,7 +234,7 @@ yaxis!(prplt,"Postive predictive value", (0, 1))
 prplt
 
 
-comb = plot(rocplt, prplt, size=(900, 700), dpi=300, margin=3mm)
+comb = plot(rocplt, prplt, size=(900, 450), dpi=300, margin=3mm)
 
 savefig(comb, "rocpr_falsenegatives.png")
 

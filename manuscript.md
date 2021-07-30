@@ -4,10 +4,10 @@ bibliography: [references.bib]
 
 # Introduction
 
-Understanding how different species interact is fundamental to community ecology
-and an increasing imperative both to measure and mitigate the effects of human
-activity on Earth's biodiversity [@Andys90AuthorPaper; @Jordano2016ChaEco] and
-to predict potential spillover of zoonotic diseases [@cite]. Over the past
+Understanding how different species interact is a fundamental question of
+community ecology and an increasing imperative both to mitigate the effects of
+human activity on Earth's biodiversity [@Andys90AuthorPaper; @Jordano2016ChaEco]
+and to predict potential spillover of zoonotic diseases [@cite]. Over the past
 decade biodiversity data has become increasingly available due to improved
 sensing technology [@Stephenson2020TecAdv] and increased adoption of open and
 FAIR data sharing practices. Modern remote-sensing has enabled data on spatial

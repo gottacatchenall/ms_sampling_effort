@@ -66,15 +66,14 @@ and this can lead to high realized pvalues of $p_{fn}$.
 In this section we demonstrate the realized false-negative rate (FNR) changes
 drastically with sampling effort simply as a function of the distribution of
 species abundances. In the above model, $p_{fn}$ is fixed, however in real
-ecosystems species exhibit a charactaristic distribution of abundances.
+ecosystems species exhibit a characteristic distribution of abundances.
 
+One sentence of how you do this, and that you use both simulated food-webs and
+real mangal data [@cite mangal].
 
-One sentence of how you do this, and that you use both
-simulated food-webs and real mangal data [@cite mangal].
-
-Here we assume each individual observation of a given single
-species $i$ within a species pool occurs according to the distribution the
-abundances of the species in that species pool .
+Here we assume each individual observation of a given single species $i$ within
+a species pool occurs according to the distribution the abundances of the
+species in that species pool .
 
 Seeing two low biomass species interacting requires two relatively low
 probability events, which is detecting each species of low biomass.

@@ -118,20 +118,21 @@ using ColorSchemes
 rich = [richness(f) for f in fw]
 means = means_per_fw[sortperm(rich)]
 cs1 = ColorScheme(range(colorant"dodgerblue", colorant"cyan4", length=length(rich)))
-empplt=plot(samps_per_fw,means,dpi=300, la=0.3,frame=:box, palette=cs1, legend=:none, colorbar=:right, size=(500,500))
+empplt=plot(samps_per_fw,means,dpi=300, fontfamily=fnt, la=0.3,frame=:box, palette=cs1, legend=:none, colorbar=:right, size=(500,500))
 yaxis!(empplt, "false negative rate", ylim=(0,1))
 xaxis!(empplt, "number of individual observations", xticks=0:200:1500, xlim=(0,1500))
 
 
 
+fnt = font(20, "Roboto")
 
 
 cs2 = ColorScheme(range(colorant"dodgerblue", colorant"cyan4", length=3))
 
-genplt = plot(dpi=300, la=0.3, ylims=(0,1),frame=:box, legendtitlefontsize=8, legendtitle="species richness", palette=cs2, colorbar=:right, size=(500,500))
-plot!(genplt, samp, generated30_fnr_mean, label="",c=cs2[1], ribbon=generated30_fnr_sd, fa=0.3)
-plot!(genplt, samp, generated30_fnr_mean, label="", c=cs2[1], ribbon=2generated30_fnr_sd, fa=0.1)
-scatter!(genplt, samp, generated30_fnr_mean, ms=4, msw=2,label="30", msc=:dodgerblue, mc=:white)
+genplt = plot(dpi=300, la=0.3, ylims=(0,1),frame=:box, fontfamily=fnt,legendtitlefontsize=8, legendtitle="species richness", palette=cs2, colorbar=:right, size=(500,500))
+plot!(genplt, samp, generated50_fnr_mean, label="",c=cs2[1], ribbon=generated50_fnr_sd, fa=0.3)
+plot!(genplt, samp, generated50_fnr_mean, label="", c=cs2[1], ribbon=2generated50_fnr_sd, fa=0.1)
+scatter!(genplt, samp, generated50_fnr_mean, ms=4, msw=2,label="50", msc=:dodgerblue, mc=:white)
 plot!(genplt, samp, generated100_fnr_mean, label="",c=cs2[2] ,ribbon=generated100_fnr_sd, dpi=300, fa=0.3)
 plot!(genplt, samp, generated100_fnr_mean, label="",c=cs2[2] ,ribbon=2generated100_fnr_sd, dpi=300, fa=0.1)
 scatter!(genplt, samp, generated100_fnr_mean, ms=4,msw=2,label="100",msc=cs2[2], mc=:white)
@@ -145,7 +146,7 @@ xaxis!(genplt, "number of individual observations", xticks=0:200:1500, xlim=(0,1
 using Measures
 
 l = @layout [grid(1,2)]
-plot(genplt, empplt, dpi=300,size=(800,450), margin=4mm)
+plot(genplt, empplt, dpi=300,size=(800,450), fontfamily=fnt,margin=4mm)
 savefig("samplingdist.png")
 
 yaxis!("false negative rate")

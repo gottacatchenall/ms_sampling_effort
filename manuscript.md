@@ -4,41 +4,45 @@ bibliography: [references.bib]
 
 # Introduction
 
-
-Ecological interactions are hard to sample [@Jordano2016SamNet]. Still,
-collecting data about species interactions is imperative to measure and mitigate
-the effects of human activity on Earth's biodiversity [@Andys90AuthorPaper;
-@Jordano2016ChaEco], and to predict potential spillover of zoonotic diseases
-[@cite]. Over the past decade biodiversity data has become increasingly
-available, both due to improved sensing technology [@Stephenson2020TecAdv] but
-also growth of open and FAIR databases. Remote sensing has enabled data on
-spatial scales previously unsampleable, and in-situ observations in the form of
-both cameras and environmental sensors have greatly improved the resolution of
-data. Yet sampling of ecological interactions detection often requires human
-sampling as coexistance is not necessarily indicative of interaction
-[@Blanchet2020CooNot].
-
+Understanding how different species interact is fundamental to community ecology
+and an increasing imperative both to measure and mitigate the effects of human
+activity on Earth's biodiversity [@Andys90AuthorPaper; @Jordano2016ChaEco] and
+to predict potential spillover of zoonotic diseases [@cite]. Over the past
+decade biodiversity data has become increasingly available, both due to improved
+sensing technology [@Stephenson2020TecAdv] but also because of increased
+adoption of open and FAIR data sharing practices. Modern remote-sensing has
+enabled data on spatial scales previously unimaginable to the ecologists of the
+past, and in-situ observations in the form of both camera-traps and
+environmental sensors have greatly improved the resolution of in-situ data.
+Yet widespread data about species interactions has remained illusive as
+ecological interactions detection often requires human sampling as measures of
+cooccurence is not necessarily indicative of interaction [@Blanchet2020CooNot].
 This induces constraints on sampling of interactions based on the spatial and
-temporal scales feasible to human sampling. These sampling constraints go on to
-bias species interaction data: we only observe but a small fraction of the
-variance in species interactions in space and time, observations reflect the
-distribution of abundance within communities [@Poisot2015SpeWhy], and sampling
-of species interactions is geographically biased toward the usual suspects
-[@Poisot2021GloKno]. These biases the data we. collect is noisy and likely
-contains many false-negatives. This has many practical consequences for
-answering questions about species interactions and how human activity is
-effecting them [@deAguiar2019RevBia].
+temporal scales feasible to human sampling.
 
-Here we seek to determine how false negatives impact analysis and
-prediction of ecological networks, and how understanding the relationship
-between sampling effort and probability of a true negative can guide how we
-design surveys of ecological interactions [@Jordano2016SamNet]. The fundemental
-questions we seek to answer are: 1) How many times do you have to observe a
-non-interaction between two species to be confident in saying that is a true
-negative? 2) How "wrong" are the measurements of network structure modularity as
-a function of false-negative probability? 3) How do false-negatives impact our
-ability to make reliable predictions about interactions?
-We conclude by arguing for using null models such as those used  
+These sampling constraints go on to bias species interaction data: we only
+observe but a small fraction of the variance in species interactions in space
+and time, observations reflect the distribution of abundance within communities
+[@Poisot2015SpeWhy], and sampling of species interactions is geographically
+biased toward the usual suspects [@Poisot2021GloKno]. These biases have
+practical consequences for answering questions about species interactions and
+how human activity is effecting them [@deAguiar2019RevBia]. The data we collect
+is noisy and likely contains many _false-negatives_, where we have no
+observation of two species interacting even though they do in some capacity.
+
+
+Here we seek to determine how false negatives in ecological interaction data
+impact the analysis and prediction of ecological networks, and how understanding
+the relationship between sampling effort and probability of a true negative can
+guide how we design surveys of ecological interactions [@Jordano2016SamNet]. The
+fundemental questions we seek to answer are: 1) How many times do you have to
+observe a non-interaction between two species to be confident in saying that is
+a true negative? 2) How "wrong" are the measurements of network structure
+modularity as a function of false-negative probability? 3) How do
+false-negatives impact our ability to make reliable predictions about
+interactions? We conclude by arguing for using null models such as those used
+here.
+
 
 # How many observations of a non-interaction do we need to classify it as a true negative?
 

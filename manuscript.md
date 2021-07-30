@@ -10,15 +10,15 @@ human activity on Earth's biodiversity [@Andys90AuthorPaper; @Jordano2016ChaEco]
 and to predict potential spillover of zoonotic diseases [@cite]. Over the past
 decade biodiversity data has become increasingly available due to improved
 sensing technology [@Stephenson2020TecAdv] and increased adoption of open and
-FAIR data sharing practices. Modern remote-sensing has enabled data on spatial
-scales previously unimaginable to the ecologists of the past, and in-situ
-observations in the form of both camera-traps and environmental sensors have
-greatly improved the resolution of in-situ data. Yet widespread data about
-species interactions has remained illusive as detection of an interaction
-between two species often requires human sampling as cooccurence is not
-necessarily indicative of interaction [@Blanchet2020CooNot]. This limitation
-induces constraints on sampling of interactions based on the spatial and
-temporal scales feasible to human sampling.
+FAIR data sharing practices. Modern remote-sensing has enabled collection of
+data on spatial scales previously unimaginable, and in-situ observations in the
+form of both camera-traps and environmental sensors have greatly improved the
+resolution of in-situ data. Yet widespread data about species interactions has
+remained illusive as detection of an interaction between two species often
+requires human sampling as cooccurence is not necessarily indicative of
+interaction [@Blanchet2020CooNot]. This limitation induces constraints on
+sampling of interactions based on the spatial and temporal scales feasible to
+human sampling.
 
 These sampling constraints go on to bias species interaction data: we only
 observe a small fraction of the variance in species interactions in space and

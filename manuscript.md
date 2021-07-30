@@ -33,11 +33,12 @@ In this manuscript we seek to determine how false negatives impact analysis and
 prediction of ecological networks, and how understanding the relationship
 between sampling effort and probability of a true negative can guide how we
 design surveys of ecological interactions [@Jordano2016SamNet]. The fundemental
-questions here are: 1) How many times do you have to observe a non-interaction
-between two species to be confident in saying that is a true negative? 2) How
-"wrong" are the measurements of network structure modularity as a function of
-false-negative probability? 3) How do false-negatives impact our ability to make
-reliable predictions about interactions?
+questions we seek to answer are: 1) How many times do you have to observe a
+non-interaction between two species to be confident in saying that is a true
+negative? 2) How "wrong" are the measurements of network structure modularity as
+a function of false-negative probability? 3) How do false-negatives impact our
+ability to make reliable predictions about interactions?
+We conclude by arguing for using null models such as those used  
 
 # How many observations of a non-interaction do we need to classify it as a true negative?
 
@@ -67,8 +68,9 @@ abundance.
 In this section we demonstrate the realized probability of false-negative
 changes drastically with sampling effort simply as a function of the
 distribution of species abundances within a community.
-One sentence of how you do this, and that you use both simulated food-webs and
-real mangal data [@Banville2021ManJl].
+We do this by simulating the observation process on both NN empirical food webs
+from the Mangal database [@Banville2021ManJl] and food-webs generated using
+the niche model.
 
 Each observation of a species is distributed according to this abundance
 distribution. Seeing two low biomass species interacting requires two relatively
@@ -94,12 +96,17 @@ computed using the method described above. Left panel:  in blue. Right empirical
 food webs from Mangal database in teal. The outlier on panel B is a 714 species
 network. ](./figures/samplingdist.png){#fig:samplingeffort}
 
+Empirical data on interactions, limited by the practical realities of funding
+and human-work hours, tends to fall on the order on 100s [@JordanoTable1].
+Yet species richness clearly effects this and should be taken into account when
+designing samples.
+
+
 This simple model doesn't consider the possibility that there are positive or
 negative associations between observing two species together based their
 interaction. Here we assume each individual observation of a given single
 species $i$ within a species pool occurs according to the distribution the
 abundances of the species in that species pool .
-
 
 However, we can demonstrate that the probability of observing a false negative
 is _higher_ if there is some positive association between occurrence of species
@@ -126,7 +133,7 @@ distribution of the biomass distribution at a particular place and time. We
 assume that this distribution is the same everywhere (again unlikely).
 
 
-Transition to next two sections: testing the effects of false negatives in our
+We now transition toward assessing the effects of false negatives in our
 data on the properties derived from these measurements, and for use as data for
 predicting interactions in the future. What levels of false negatives are
 acceptable to infer network properties and predict interactions.
@@ -172,15 +179,23 @@ have many false-negatives. So, the effects of adding more might be mitigated.
 
 # Conclusion
 
-In this paper we have demonstrated that false negatives can impact
 
+***The primary takeaways from this paper***
+In this paper we have demonstrated that false negatives are likely purely due
+to the distribution of
+
+
+***The primary recommendations for study design that this paper provides***
+Take species richness and relative abundance into account. A model similar
+to that which we show here can be used to provide a neutral expectation of
+true-negative probability given a number of observations of individuals at
+a given place and time.
+
+***What does the future hold for this research***
 How does this influence our understanding of the structure of ecological
-networks, and how we infer other things based on that.  
-
+networks, and how we infer other things based on that?
 How does this influence our models of interaction prediction?
-
 How does this effect how we design samples of interactions?
-
 How can we correct for this bias in existing data?
 
 # References

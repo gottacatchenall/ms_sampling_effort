@@ -38,12 +38,13 @@ between two species to be confident in saying that is a true negative? 2) How
 false-negative probability? 3) How do false-negatives impact our ability to make
 reliable predictions about interactions?
 
+# How many times do you have to observe two species not-interacting to be label it a negative?
 
 A naive model of interaction detection would assume that every true interaction
 is incorrectly observed as a non-interaction with an independent and fixed
 probability, denoted $p_{fn}$. In this model, if we observe the same species
 not-interacting $N$ times the probability of a true negative, $p_{tn}$, is given
-by $p_{tn} = 1 - (p_{fn})^N$. This relation is shown in @fig:bernoulli for
+by $p_{tn} = 1 - (p_{fn})^N$. This relation is shown in @fig:negativebinom for
 varying values of the false negative rate $p_{fn}$. This illustrates a
 fundamental link between our ability to reliably say an interaction doesn't
 exist---$p_{tn}$---and our sampling effort $N$.
@@ -52,7 +53,11 @@ exist---$p_{tn}$---and our sampling effort $N$.
 how many times it has been sampled as a non-interaction. Another thing is true,
 which is that this function will never reach 1. So many assumptions here about
 probability. It's the birthday paradox, but backwards.
-](./figures/negative_binom.png){#fig:bernoulli}
+](./figures/negative_binom.png){#fig:negativebinom}
+
+What does this tell us? Well, if we see two species around but not interacting
+like 10,000 times, its probability a true negative. It is
+
 
 # False-negatives as a product of relative abundance
 
@@ -127,6 +132,10 @@ order to see how false negatives effect our quantification of network structure.
 ![fig. 1$\sigma$ in first grad, 2$\sigma$ in second ](./figures/properties_error.png){#fig:properties}
 
 # Effects of false negatives on ability to make predictions
+
+In this section, we assess the effect of false negatives in data on our ability
+to predict
+
 
 Use the same model and data as [@Strydom2021RoaPre]. Seed the training
 data with false negatives at a rate $p_{fn}$. Don't do anything to

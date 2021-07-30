@@ -57,34 +57,34 @@ probability. It's the birthday paradox, but backwards.
 
 What does this tell us? If we see two species _present_ but _not interacting_
 many times, its probability a true negative. What, then, is meant by "many
-times"? Observations of species occur according to their relative abundance,
-and this can lead to high realized pvalues of $p_{fn}$.
+times"?
+
+Observations of species occur according to their relative abundance, and
+this can lead to high realized pvalues of $p_{fn}$.
 
 # False-negatives as a product of relative abundance
 
-
-In this section we demonstrate the realized false-negative rate (FNR) changes
-drastically with sampling effort simply as a function of the distribution of
-species abundances. In the above model, $p_{fn}$ is fixed, however in real
-ecosystems species exhibit a characteristic distribution of abundances.
-
+In this section we demonstrate the realized probability of false-negative
+changes drastically with sampling effort simply as a function of the
+distribution of species abundances within a community.
 One sentence of how you do this, and that you use both simulated food-webs and
 real mangal data [@cite mangal].
 
-Here we assume each individual observation of a given single species $i$ within
-a species pool occurs according to the distribution the abundances of the
-species in that species pool .
+Each observation of a species is distributed according to this abundance
+distribution. Seeing two low biomass species interacting requires two relatively
+low probability events, which is detecting each species of low biomass.
 
-Seeing two low biomass species interacting requires two relatively low
-probability events, which is detecting each species of low biomass.
+Generally across communities, the shape of this abundance distribution can be
+reasonably-well described by a log-normal distribution [@Volkov2003NeuThe].
 Controversies around theory of species abundance distributions and neutral
 theory aside, for simplicity we simulate abundances from $N_S$ independent draws
-from a log-normal distribution with parameters [@Volkov2003NeuThe]. We then
-simulate a random food web $A$ with $N_S$ species. For each interaction ($A_{ij}
-= 1$) we estimate the probability of observing both species $i$ and $j$ by
-simulating a distribution of $O$ total observations, where the species observed
-at the $o$-th observation is drawn from the abundance distribution. Here, $O$ is
-indicative of sampling effort.
+from a standard-log-normal distribution. For an ecological network $A$
+with $N_S$ species, for each interaction ($A_{ij} = 1$) we estimate the
+probability of observing both species $i$ and $j$ by simulating a distribution
+of $O$ total observations, where the species observed at the $o$-th observation
+is drawn from the abundance distribution. Here, $O$ is indicative of sampling
+effort. If both $i$ and $j$ are present in the $O$ observations, the observation
+is computed as a true-negative, and if not, as a false-negative.
 
 
 ![False negative rate as a function of sampling effort and network size,
@@ -95,6 +95,10 @@ network. ](./figures/samplingdist.png){#fig:samplingeffort}
 This simple model doesn't consider the possibility that there are positive or
 negative associations between observing two species together based their
 interaction.
+Here we assume each individual observation of a given single species $i$ within
+a species pool occurs according to the distribution the abundances of the
+species in that species pool .
+
 
 However, we can demonstrate that the probability of observing a false negative
 is _higher_ if there is some positive association between occurrence of species
@@ -139,21 +143,31 @@ order to see how false negatives effect our quantification of network structure.
 # Effects of false negatives on ability to make predictions
 
 In this section, we assess the effect of false negatives in data on our ability
-to predict
+to make predictions about interactions.
+uses data from @Hadfield host-parasite interactions sampled across XX sites.
 
+We use the same model and data as [@Strydom2021RoaPre], which uses a
+neural-network with 3 layers to predict outputs based on features extracted from
+cooccurence, see @Strydom2021RoaPre for more details.
 
-Use the same model and data as [@Strydom2021RoaPre]. Seed the training
-data with false negatives at a rate $p_{fn}$. Don't do anything to
-the test data. Make ROC-PR AUC plots for 3 levels of $p_{fn}$. Same
-model, same data, different levels of predictive capacity.
+We then seed the training data with false negatives at a rate $p_{fn}$.
+But crucially do nothing to the test data.
 
-Big takeaway here is false-negatives have way more effect on
-PR space, unsurprisingly. Sadly this is also where the potential application of
-is greatest.
+In @fig:rocpr, we show receiving-operating-characteristic (ROC) and precision-recall (PR) curves for the model with varying levels of false-negatives added to
+the data. 
 
-![fig](./figures/rocpr_falsenegatives.png)
+![fig](./figures/rocpr_falsenegatives.png){#fig:rocpr}
+
+Big takeaway here is false-negatives have way more effect on PR space,
+unsurprisingly. Sadly this is also where the potential application of is
+greatest.
+
+Same caveat as previous section that this is data that _already_ is likely to
+have many false-negatives. So, the effects of adding more might be mitigated.
 
 # Conclusion
+
+In this paper we have demonstrated that false negatives can
 
 How does this influence our understanding of the structure of ecological
 networks, and how we infer other things based on that.  

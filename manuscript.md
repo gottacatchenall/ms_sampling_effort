@@ -64,12 +64,15 @@ probability. It's the birthday paradox, but backwards.
 ](./figures/negativebinom.png){#fig:negativebinom}
 
 From @fig:negativebinom it is evident that the more times we see two species
-_present_ but _not interacting_, the more likely the interaction is a true
+_present_ but **not** interacting, the more likely the interaction is a true
 negative. But what should this threshold of number of observations be?
-The false-negative rates presented in @fig:negativebinom may seem unrealistically
-high, however species are not observed independent of their relative abundance.  
-In the next section we demonstrate can lead to high realized values of $p_{fn}$
-for species with low relative abundance.
+
+Here we suggest using neutral models of species abundances to design the number
+of observations sufficient to say an interaction doesnt exist. If false-negative
+rates presented in @fig:negativebinom may seem unrealistically high, consider
+that species are not observed independent of their relative abundance. In the
+next section we demonstrate can lead to high realized values of $p_{fn}$ for
+species with low relative abundance.
 
 # False-negatives as a product of relative abundance
 

@@ -21,15 +21,14 @@ This induces constraints on sampling of interactions based on the spatial and
 temporal scales feasible to human sampling.
 
 These sampling constraints go on to bias species interaction data: we only
-observe but a small fraction of the variance in species interactions in space
-and time, observations reflect the distribution of abundance within communities
-[@Poisot2015SpeWhy], and sampling of species interactions is geographically
-biased toward the usual suspects [@Poisot2021GloKno]. These biases have
-practical consequences for answering questions about species interactions and
-how human activity is effecting them [@deAguiar2019RevBia]. The data we collect
-is noisy and likely contains many _false-negatives_, where we have no
-observation of two species interacting even though they do in some capacity.
-
+observe a small fraction of the variance in species interactions in space and
+time, these observations reflect the distribution of abundance within
+communities [@Poisot2015SpeWhy], and sampling of species interactions is
+geographically biased toward the usual suspects [@Poisot2021GloKno]. These
+biases have practical consequences for answering questions about species
+interactions [@deAguiar2019RevBia]. The data we collect is noisy and likely
+contains many _false-negatives_, where we have no observation of two species
+interacting even though they do in some capacity.
 
 Here we seek to determine how false negatives in ecological interaction data
 impact the analysis and prediction of ecological networks, and how understanding
@@ -73,9 +72,9 @@ for species with low relative abundance.
 # False-negatives as a product of relative abundance
 
 In this section we demonstrate the realized probability of false-negative
-changes drastically with sampling effort. We do this by simulating the
-observation process on both 243 empirical food webs from the Mangal database
-[@Banville2021ManJl] and also food-webs generated using the niche model [@cite].
+changes drastically with sampling effort. We do this by simulating the process of
+interaction observation on both 243 empirical food webs from the Mangal database
+[@Banville2021ManJl] and random food-webs generated using the niche model [@cite].
 
 A simple model of observation assumes each observed species is drawn from the
 distribution of those species' abundances at that place and time. Across
@@ -83,20 +82,18 @@ communities, the shape of this abundance distribution can be reasonably-well
 described by a log-normal distribution [@Volkov2003NeuThe]. Controversies around
 theory of species abundance distributions and neutral theory aside, this means
 seeing two low biomass species interacting requires two low probability events,
-which is observing two species of low biomass.
-
-For simplicity we simulate abundances from $N_S$ independent draws from a
-standard-log-normal distribution. For an ecological network $A$ with $N_S$
-species, for each true interaction $A_{ij} = 1$ we estimate the probability of
-observing both species $i$ and $j$ at given place and time by simulating a
-distribution of $O$ individual observations of a species, where the species
-observed at the $1,2,\dots,O$-th observation is drawn from the abundance
-distribution. If in those $O$ observations both $i$ and $j$ are present, the
-observation is computed as a true-negative, and if not as a false-negative.
-@fig:samplingeffort shows the results for applying this to both the panel is
-this model applied to 243 food-webs from the Mangal database [@], and on the
-right side the 500 replicates of the niche model [@Wil2001GenFoo] per unique
-number of observations $o$.
+which is observing two species of low biomass. For an ecological network $A$
+with $N_S$ species, we simulate abundances from $N_S$ independent draws from a
+standard-log-normal distribution. For each true interaction $A_{ij} = 1$ we
+estimate the probability of observing both species $i$ and $j$ at given place
+and time by simulating a distribution of $O$ individual observations of a
+species, where the species observed at the $1,2,\dots,O$-th observation is drawn
+from the abundance distribution. If in those $O$ observations both $i$ and $j$
+are present, the observation is computed as a true-negative, and if not as a
+false-negative. @fig:samplingeffort shows the results for applying this to both
+the panel is this model applied to 243 food-webs from the Mangal database [@],
+and on the right side the 500 replicates of the niche model [@Wil2001GenFoo] per
+unique number of observations $O$.
 
 ![False negative rate as a function of sampling effort and network size,
 computed using the method described above. Left panel:  in blue. Right empirical

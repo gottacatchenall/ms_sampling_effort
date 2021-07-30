@@ -4,7 +4,7 @@
 
 :root {
     --citation: #4F7294;
-    --structure: hsl(151.9, 23.2%, 60.2%);
+    --structure: #5f9edc;
 
     --light: #474747;
     --pale: #a5a5a5;
@@ -167,7 +167,7 @@ tbody {
 
 
 h1 {
-    font-size: 2.5em;
+    font-size: 2.3em;
 }
 
 h2 {

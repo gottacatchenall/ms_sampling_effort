@@ -55,19 +55,18 @@ which is that this function will never reach 1. So many assumptions here about
 probability. It's the birthday paradox, but backwards.
 ](./figures/negative_binom.png){#fig:negativebinom}
 
-What does this tell us? Well, if we see two species _present_ but _not
-interacting_ like 10,000 times, its probability a true negative. Now we turn to
-demonstrating  that samples reflect relative abundance, and this can lead to
-high realized pvalues of $f_{nr}$.
+What does this tell us? If we see two species _present_ but _not interacting_
+many times, its probability a true negative. What, then, is meant by "many
+times"? Observations of species occur according to their relative abundance,
+and this can lead to high realized pvalues of $p_{fn}$.
 
 # False-negatives as a product of relative abundance
 
 
 In this section we demonstrate the realized false-negative rate (FNR) changes
 drastically with sampling effort simply as a function of the distribution of
-species abundances.
-In the above model, $p_{fn}$ is fixed, however in real ecosystems species exhibit
-a charactaristic distribution of abundances.
+species abundances. In the above model, $p_{fn}$ is fixed, however in real
+ecosystems species exhibit a charactaristic distribution of abundances.
 
 
 One sentence of how you do this, and that you use both

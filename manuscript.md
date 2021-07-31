@@ -143,12 +143,13 @@ positively correlated---
 
 $$P(AB) > P(A)P(B)$$
 
-In this case, the probability of observing a false negative is $p_{fn} = 1 -
-P(AB)$ which due to the above inequality due to positive associated implies
+In this case, the probability of observing a false negative in our naive model
+from before is $p_{fn} = 1 - P(AB)$ which due to the above inequality due to
+positive associated implies
 
 $$p_{fn} \geq 1 - P(A)P(B)$$
 
-
+which indicates greater probability of a false negative if $P(AB) >> P(A)P(B)$. 
 The caveats here are that this doesn't consider variation in abundance in space
 and time which is kind of a problem. If these positive association go on to
 structure variation in the distribution of $P(AB)$ across space. If the samples

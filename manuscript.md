@@ -154,12 +154,13 @@ positive associated implies
 
 $$p_{fn} \geq 1 - P(A)P(B)$$
 
-which indicates greater probability of a false negative if $P(AB) >> P(A)P(B)$.
-The caveats here are that this doesn't consider variation in abundance in space
-and time which is kind of a problem. If these positive association go on to
-structure variation in the distribution of $P(AB)$ across space. If the samples
-are biased spatially or temporally, this further goes on the impact the data.
-FNR is not constant even for each pair of species, and may vary across space.
+which indicates greater probability of a false negative if $P(AB) \gg P(A)P(B)$.
+This should be noted with caveat that within this model we do not consider
+variation in abundance in space and time. If positive or negative associations
+go on to structure variation in the distribution of $P(AB)$ across space, then
+the spatial and temporal structure of data collection will further impact our
+data as in this case the probability of false negative would not be constant for
+each pair of species across sites.
 
 We now transition toward assessing the effects of false negatives in our data on
 the properties derived from these measurements, and for use as data for
@@ -169,17 +170,21 @@ acceptable to infer network properties and predict interactions.
 
 # The impact of false-negatives on network analysis and prediction
 
-In this section we quantify the effects of false-negatives in interaction network
-data on structural network properties, and to determine how they impact the quality
-of our predictive models of network structure [@Strydom2021RoaPre].
+In this section we quantify the effects of false-negatives in interaction data
+on the properties of interaction networks, and to determine how false negatives
+in data impact the quality of our predictive models of network structure
+[@Strydom2021RoaPre].
 
 ## Effects of false-negatives on network properties
 
-Here we simulate the effects of observation error to generate false negatives in
-the samples of ecological networks and compare the computed network properties
-of the original network to the computed properties on the observed network in
-order to see how false negatives effect our quantification of network structure.
-In @fig:properties we show the effects of niche model [@Williams2000SimRul].
+Here we simulate the effects of observation error to generate synthetic data
+with a known proportion of false negatives to compare the computed network
+properties of the original "true" network to the computed properties of the
+"observed" network with added false-negatives. In @fig:properties we show four
+properties (connectance, spectral radius, mean degree centrality, and entropy)
+computed  across 200 replicates at each value of the false negative rate $p_{fn}$.
+Each replicate uses a random food web simnulated using the niche model [@Williams2000SimRul]
+with $N$ species and true connectance $C=0.1$.
 
 ![fig. 1$\sigma$ in first grad, 2$\sigma$ in second ](./figures/properties_error.png){#fig:properties}
 

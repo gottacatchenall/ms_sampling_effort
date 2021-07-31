@@ -50,7 +50,7 @@ henceforth.
 # How many observations of a non-interaction do we need to classify it as a true negative?
 
 To answer the titular question of this section, we present a naive model of
-interaction detection, which assumes that every true interaction between two
+interaction detection: we assume that every true interaction between two
 species is incorrectly observed as a non-interaction with an independent and
 fixed probability, which we denote $p_{fn}$ and subsequently refer to as the
 False-Negative Rate (FNR). In this model, if we observe the same species
@@ -97,19 +97,25 @@ For an ecological network $A$ with $N_S$ species, we simulate abundances from
 $N_S$ independent draws from a standard-log-normal distribution. For each true
 interaction $A_{ij} = 1$ we estimate the probability of observing both species
 $i$ and $j$ at given place and time by simulating a distribution of $O$
-individual observations of a species, where the species observed at the
-$1,2,\dots,O$-th observation is drawn from the abundance distribution. If in
-those $O$ observations both $i$ and $j$ are present, the observation is computed
-as a true-negative, and if not as a false-negative. @fig:samplingeffort shows
-the results for applying this---applied to 243 food-webs from the Mangal
-database on the left, and on the right side the niche model
-[@Williams2000SimRul] across varying levels of species richness. All simulations
-were done with 500 replicates of per unique number of observations $O$, and
-analyses presented here are done in Julia v1.6 [@cite] using both
-EcologicalNetworks.jl v0.5 and Mangal.jl v0.? [@Banville2021ManJl]. Note that
-this empirical data also is very likely to _already_ have many false negatives,
-which is why we are interested in prediction of networks in the first
-place---we'll revisit this in the final section.
+individual observations, where the species observed at the $o=1,2,\dots,O$-th
+observation is drawn from the lognormal distribution of abundances. For each
+pair of species $(i,j)$, if both $i$ and $j$ are observed within the $O$
+observations, the interaction is tallyed as a true positive if $A{ij}=1$ and a
+false positive otherwise. Similarly, if $i$ and $j$ are _not_ observed in these
+$O$ observations, but $A_{i,j}=1$, this is counted as a false-negative, and a
+true-negative otherwise.
+
+
+ @fig:samplingeffort shows the
+results for applying this---applied to 243 food-webs from the Mangal database on
+the left, and on the right side the niche model [@Williams2000SimRul] across
+varying levels of species richness. All simulations were done with 500
+replicates of per unique number of observations $O$, and analyses presented here
+are done in Julia v1.6 [@cite] using both EcologicalNetworks.jl v0.5 and
+Mangal.jl v0.? [@Banville2021ManJl]. Note that this empirical data also is very
+likely to _already_ have many false negatives, which is why we are interested in
+prediction of networks in the first place---we'll revisit this in the final
+section.
 
 ![False negative rate as a function of sampling effort and network size,
 computed using the method described above. Left panel:  in blue. Right empirical
@@ -209,11 +215,13 @@ details. In @fig:rocpr, we show receiving-operating-characteristic (ROC) and
 precision-recall (PR) curves for the model with varying levels of
 false-negatives added to the data.
 
-![fig](./figures/rocpr_falsenegatives.png){#fig:rocpr}
+![Receiver-operating-characteristic (left) and precision-recall (right) curves
+for the model on varying levels of false-negatives in the data (colors). Replica
+of figure 1 in @Strydom2021RoaPre](./figures/rocpr_falsenegatives.png){#fig:rocpr}
 
 The primary takeaway here is false-negatives have more effect on PR space,
 unsurprisingly, but sadly this is also where the potential application of is
-greatest. Still, performance doesn't change that much with many added
+greatest. Still, model performance changes little with many added
 false-negatives, which is good evidence in favor of this type of model. Similar
 to our caveat in the previous section, this data is _already_ likely to have
 many false-negatives. So, the effects of adding more, as we do in this

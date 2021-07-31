@@ -220,9 +220,34 @@ for r in 1:reps
     push!(pr75, this75_pr)
 end 
 
+using ColorSchemes
 cols = [ColorSchemes.tableau_sunset_sunrise[i] for i in [1,2,3,4]]
 
 fnt = font(20, "Roboto")
+
+
+function dothing(input, numreps)
+    mn1, mn2, sd1, sd2 = [], []
+    @show input
+    for r in 1:numreps
+        push!(mn1, mean(input[r][1]))
+        push!(sd1, sqrt(var(input[r][1])))
+        push!(mn2, mean(input[r][2]))
+        push!(sd2, sqrt(var(input[r][2])))
+    end
+    # pass total mean and mean sd 
+    return ((mn1,sd1), (mn2,sd2))
+end
+
+roc_mn0,roc_sd0 = dothing(rocReal,reps)
+pr_mn0,pr_sd0 = dothing(prReal, reps)
+
+
+
+
+
+
+
 
 rocplt = plot(aspectratio=1, fontfamily=fnt, legend=:outerright, frame=:box, legendtitle="FNR")
 plot!(rocplt,rocReal[1], rocReal[2], lw=3, la=0.75, c=cols[1], label="0")

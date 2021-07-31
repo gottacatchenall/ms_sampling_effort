@@ -7,14 +7,14 @@ bibliography: [references.bib]
 Understanding how different species interact is a fundamental question of
 community ecology and an increasing imperative both to mitigate the effects of
 human activity on Earth's biodiversity [@Makiola2020KeyQue; @Jordano2016ChaEco]
-and to predict potential spillover of zoonotic disease [@Becker2020PreWila].
-Over the past decade biodiversity data has become increasingly available due to
+and to predict potential spillover of zoonotic disease [@Becker2020PreWil]. Over
+the past decade biodiversity data has become increasingly available due to
 improved sensing technology [@Stephenson2020TecAdv] and increased adoption of
-open and FAIR data sharing practices. Modern remote-sensing has enabled
-collection of data on spatial scales previously unimaginable, and in-situ
-observations in the form of both camera-traps and environmental sensors have
-greatly improved the resolution of in-situ data. Yet widespread data about
-species interactions has remained illusive as detection of an interaction
+open and FAIR data sharing practices [@cite]. Modern remote-sensing has enabled
+collection of data on spatial scales and resolutions previously unimaginable,
+and in-situ observations in the form of both camera-traps and environmental
+sensors have substantially improved amount of in-situ data. Yet widespread data
+about species interactions has remained illusive as detection of an interaction
 between two species often requires human sampling---cooccurrence is not
 necessarily indicative of interaction [@Blanchet2020CooNot]. This limitation
 induces constraints on sampling of interactions based on the spatial and

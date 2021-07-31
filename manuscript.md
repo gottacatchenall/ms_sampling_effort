@@ -15,10 +15,11 @@ enabled collection of data on spatial scales and resolutions previously
 unimaginable, and in-situ observations in the form of both camera-traps and
 environmental sensors have substantially improved amount of in-situ data. Yet
 widespread data about species interactions has remained illusive as detection of
-an interaction between two species often requires human sampling---cooccurrence
-is not necessarily indicative of interaction [@Blanchet2020CooNot]. This
-limitation induces constraints on sampling of interactions based on the spatial
-and temporal scales feasible to human sampling.
+an interaction between two species often requires human sampling---although
+remote methods can be used to detect cooccurrence, this itself  is not
+necessarily indicative of interaction [@Blanchet2020CooNot]. This limitation
+induces constraints on sampling of interactions based on the spatial and
+temporal scales feasible to human sampling.
 
 These sampling constraints go on to bias species interaction data: we only
 observe a small fraction of the variance in species interactions in space and
@@ -67,7 +68,6 @@ probability. It's the birthday paradox, but backwards.
 From @fig:negativebinom it is evident that the more times we see two species
 _present_ but **not** interacting, the more likely the interaction is a true
 negative. But what should this threshold of number of observations be?
-
 If false-negative rates presented in @fig:negativebinom seem unrealistically
 high, consider that species are not observed independent of their relative
 abundance. In the next section we demonstrate can lead to high realized values
@@ -130,8 +130,9 @@ to the distribution the abundances of the species in that species pool However,
 we can demonstrate that the probability of observing a false negative is
 _higher_ if there is some positive association between occurrence of species $A$
 and $B$. If we denote the probability that we observe an existing interaction
-between as $P(AB)$, and if there is no association between probability of
-observing $A$ and observing $B$, then the probability of observing the
+between $A$ and $B$ as $P(AB)$, and if there is no association between the
+separate marginal probabilities of observing $A$ and observing $B$, denoted
+$P(A)$ and $P(B)$ respectfully, then the probability of observing the
 interaction $P(AB) = P(A)P(B)$.
 
 In the other case where there is some positive strength of association between
@@ -241,7 +242,6 @@ a given place and time.
 A brief note on false positives. How does this influence our understanding of
 the structure of ecological networks, and how we infer other things based on
 that?
-
 How does this influence our models of interaction prediction?
 Toward models which explicitly account for uncertainty in detection and
 sampling, [@Young2021RecPla; @Johnson2021BayEst]. Such has been done in

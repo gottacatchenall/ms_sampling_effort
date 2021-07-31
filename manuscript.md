@@ -10,15 +10,15 @@ human activity on Earth's biodiversity [@Makiola2020KeyQue; @Jordano2016ChaEco]
 and to predict potential spillover of zoonotic disease [@Becker2020PreWil]. Over
 the past decade biodiversity data has become increasingly available due to
 improved sensing technology [@Stephenson2020TecAdv] and increased adoption of
-open and FAIR data sharing practices [@cite]. Modern remote-sensing has enabled
-collection of data on spatial scales and resolutions previously unimaginable,
-and in-situ observations in the form of both camera-traps and environmental
-sensors have substantially improved amount of in-situ data. Yet widespread data
-about species interactions has remained illusive as detection of an interaction
-between two species often requires human sampling---cooccurrence is not
-necessarily indicative of interaction [@Blanchet2020CooNot]. This limitation
-induces constraints on sampling of interactions based on the spatial and
-temporal scales feasible to human sampling.
+open data sharing practices [@Kenall2014OpeFut]. Modern remote-sensing has
+enabled collection of data on spatial scales and resolutions previously
+unimaginable, and in-situ observations in the form of both camera-traps and
+environmental sensors have substantially improved amount of in-situ data. Yet
+widespread data about species interactions has remained illusive as detection of
+an interaction between two species often requires human sampling---cooccurrence
+is not necessarily indicative of interaction [@Blanchet2020CooNot]. This
+limitation induces constraints on sampling of interactions based on the spatial
+and temporal scales feasible to human sampling.
 
 These sampling constraints go on to bias species interaction data: we only
 observe a small fraction of the variance in species interactions in space and
@@ -183,34 +183,36 @@ properties of the original "true" network to the computed properties of the
 "observed" network with added false-negatives. In @fig:properties we show four
 properties (connectance, spectral radius, mean degree centrality, and entropy)
 computed  across 200 replicates at each value of the false negative rate $p_{fn}$.
-Each replicate uses a random food web simnulated using the niche model [@Williams2000SimRul]
-with $N$ species and true connectance $C=0.1$.
+Each replicate uses a random food web simulated using the niche model [@Williams2000SimRul]
+with $100$ species and true connectance $C=0.1$.
 
 ![fig. 1$\sigma$ in first grad, 2$\sigma$ in second ](./figures/properties_error.png){#fig:properties}
 
-Primary point here is that some properties vary in their response.
-Spectral radius (generally a measure of global structure) and connectance show
-roughly linear responses to false negatives, whereas mean degree centrality and
-entropy .
-
-An appropriate additional comparison for inference of network properties
+The primary point of interest in @fig:properties is that properties vary in
+their response---spectral radius (generally a measure of global structure) and
+connectance show roughly linear responses to false negatives, whereas mean
+degree centrality and entropy show non-linear responses. Here we simulating the
+effects of false negatives in data can serve as an additional tool for detecting
+structural properties of networks using generative null models
 [@Connor2017UsiNul].
 
 
 ## Effects of false negatives on ability to make predictions
 
 In this section, we assess the effect of false negatives in data on our ability
-to make predictions about interactions.
+to make predictions about interactions. False negatives are in fact the
+practical reason for interaction prediction in the first place. However, if
+there are too many false negatives in a dataset, this could induce too much
+noise for a interaction prediction model to detect the signal of interaction
+due to the latent properties of each species derived from the empirical network.
 
-We use the predictive model and dataset as in @Strydom2021RoaPre to predict
-interactions between species never observed at the same place and time.
-
-This dataset from @Hadfield2014TalTwo describes host-parasite interaction
-networks sampled across 51 sites. We partition the data into 80-20 training-test
-split, and then seed the training data with false negatives varying rates, but
-crucially do nothing to the test data.
-
-The model---a neural-network with 3 layers to predict outputs based on features
+To test this, we use the same predictive model and dataset as in
+@Strydom2021RoaPre to predict a metaweb from various slices of the species  pool
+observed across space. This dataset from @Hadfield2014TalTwo describes
+host-parasite interaction networks sampled across 51 sites. We partition the
+data into 80-20 training-test split, and then seed the training data with false
+negatives varying rates, but crucially do nothing to the test data. The
+model---a neural-network with 3 layers to predict outputs based on features
 extracted from cooccurence, see @Strydom2021RoaPre for more details).
 
 In @fig:rocpr, we show receiving-operating-characteristic (ROC) and
@@ -224,8 +226,9 @@ unsurprisingly. Sadly this is also where the potential application of is
 greatest. Still, performance doesn't matter with many added false-negatives!
 Good evidence in favor of this type of model. Same caveat as previous section
 that this is data that _already_ is likely to have many false-negatives. So, the
-effects of adding more, as we do in this illustration, might be mitigated because
-there are still the false-negatives in the original data present in the $FNR=0$ simulation.
+effects of adding more, as we do in this illustration, might be mitigated
+because there are still the false-negatives in the original data present in the
+$FNR=0$ simulation.
 
 # Conclusion
 
@@ -242,11 +245,20 @@ true-negative probability given a number of observations of individuals at
 a given place and time.
 
 ***What does the future hold for this research***
-A brief note on false positives.
-How does this influence our understanding of the structure of ecological
-networks, and how we infer other things based on that?
-How does this influence our models of interaction prediction? [@Young2021RecPla]
+
+A brief note on false positives. How does this influence our understanding of
+the structure of ecological networks, and how we infer other things based on
+that?
+
+How does this influence our models of interaction prediction?
+
+Toward models which explicitly account for uncertainty in detection and
+sampling, [@Young2021RecPla; @Johnson2021BayEst]. Such has been done in
+occupancy modeling, in neural nets [@MaxPaper], could be integrated in the
+predictive models of the future. Can we correct for this bias in existing data?
+[@Poisot2021ImpMam]
+
+
 How does this effect how we design samples of interactions?
-How can we correct for this bias in existing data? [@Poisot2021ImpMam]
 
 # References

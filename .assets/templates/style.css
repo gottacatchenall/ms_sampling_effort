@@ -79,6 +79,7 @@ footer {
 .abstract {
     color: var(--light);
     margin: 0em auto 5em;
+    font-size: 0.8em;
     max-width: 700px;
 }
 figure {

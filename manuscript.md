@@ -45,12 +45,13 @@ here.
 
 # How many observations of a non-interaction do we need to classify it as a true negative?
 
-A naive model of interaction detection would assume that every true interaction
-between two species is incorrectly observed as a non-interaction with an
-independent and fixed probability, which we denote $p_{fn}$ and subsequently
-refer to as the False-Negative Rate (FNR). In this model, if we observe the same
-species not-interacting $O$ times the probability of a true negative, denoted
-$p_{tn}$, is given by $p_{tn} = 1 - (p_{fn})^O$. This relation is shown in
+To answer the titular question of this section, we present a naive model of
+interaction detection, which assumes that every true interaction between two
+species is incorrectly observed as a non-interaction with an independent and
+fixed probability, which we denote $p_{fn}$ and subsequently refer to as the
+False-Negative Rate (FNR). In this model, if we observe the same species
+not-interacting $O$ times the probability of a true negative, denoted $p_{tn}$,
+is given by $p_{tn} = 1 - (p_{fn})^O$. This relation is shown in
 @fig:negativebinom for varying values of the false negative rate $p_{fn}$. This
 illustrates a fundamental link between our ability to reliably say an
 interaction doesn't exist---$p_{tn}$---and our sampling effort $O$, and further
@@ -100,14 +101,20 @@ $1,2,\dots,O$-th observation is drawn from the abundance distribution. If in
 those $O$ observations both $i$ and $j$ are present, the observation is computed
 as a true-negative, and if not as a false-negative. @fig:samplingeffort shows
 the results for applying this to both the panel is this model applied to 243
-food-webs from the Mangal database, and on the right side the 500 replicates
-of the niche model [@Williams2000SimRul] per unique number of observations $O$.
-All analyses presented here are done in Julia v1.6 [@cite] using both EcologicalNetworks.jl v0.5 and Mangal.jl v0.? [@Banville2021ManJl].
+food-webs from the Mangal database, and on the right side the 500 replicates of
+the niche model [@Williams2000SimRul] per unique number of observations $O$. All
+analyses presented here are done in Julia v1.6 [@cite] using both
+EcologicalNetworks.jl v0.5 and Mangal.jl v0.? [@Banville2021ManJl].
 
 ![False negative rate as a function of sampling effort and network size,
 computed using the method described above. Left panel:  in blue. Right empirical
 food webs from Mangal database in teal. The outlier on panel B is a 714 species
 network. ](./figures/samplingdist.png){#fig:samplingeffort}
+
+Caveat: In this model every observation is drawn from the biomass distribution
+at a particular place and time. We assume that this distribution is the same
+everywhere (again unlikely).
+
 
 Empirical data on interactions, limited by the practical realities of funding
 and human-work hours, tends to fall on the order on 100s or 1000s per site
@@ -115,9 +122,6 @@ and human-work hours, tends to fall on the order on 100s or 1000s per site
 The number of species in the species pool clearly effects this and should be
 taken into account when designing samples.
 
-Caveat: In this model every observation is drawn from the biomass distribution
-at a particular place and time. We assume that this distribution is the same
-everywhere (again unlikely).
 
 
 ## Positive associations can increase the probability of false-negatives
@@ -126,14 +130,12 @@ This simple model above doesn't consider the possibility that there are positive
 or negative associations between observing two species together based their
 interaction. Here we assume each individual observation of a given single
 species $i$ within a species pool occurs according to the distribution the
-abundances of the species in that species pool
-
-However, we can demonstrate that the probability of observing a false negative
-is _higher_ if there is some positive association between occurrence of species
-$A$ and $B$. If we denote the probability that we observe an existing
-interaction between as $P(AB)$, and if there is no association between
-probability of observing $A$ and observing $B$, then the probability of
-observing the interaction $P(AB) = P(A)P(B)$.
+abundances of the species in that species pool However, we can demonstrate that
+the probability of observing a false negative is _higher_ if there is some
+positive association between occurrence of species $A$ and $B$. If we denote the
+probability that we observe an existing interaction between as $P(AB)$, and if
+there is no association between probability of observing $A$ and observing $B$,
+then the probability of observing the interaction $P(AB) = P(A)P(B)$.
 
 In the other case where there is some positive strength of association between
 observing both $A$ and $B$ because this interaction is "important" for each
@@ -149,7 +151,7 @@ positive associated implies
 
 $$p_{fn} \geq 1 - P(A)P(B)$$
 
-which indicates greater probability of a false negative if $P(AB) >> P(A)P(B)$. 
+which indicates greater probability of a false negative if $P(AB) >> P(A)P(B)$.
 The caveats here are that this doesn't consider variation in abundance in space
 and time which is kind of a problem. If these positive association go on to
 structure variation in the distribution of $P(AB)$ across space. If the samples

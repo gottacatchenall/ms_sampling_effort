@@ -67,14 +67,12 @@ From @fig:negativebinom it is evident that the more times we see two species
 _present_ but **not** interacting, the more likely the interaction is a true
 negative. But what should this threshold of number of observations be?
 
-
-
- If false-negative rates presented in @fig:negativebinom seem unrealistically
- high, consider that species are not observed independent of their relative
- abundance. In the next section we demonstrate can lead to high realized values
- of $p_{fn}$ for species with low relative abundance. We suggest using neutral
- models of species abundances to design the number of observations sufficient to
- say an interaction doesn't exist.
+If false-negative rates presented in @fig:negativebinom seem unrealistically
+high, consider that species are not observed independent of their relative
+abundance. In the next section we demonstrate can lead to high realized values
+of $p_{fn}$ for species with low relative abundance. We suggest using neutral
+models of species abundances to design the number of observations sufficient to
+say an interaction doesn't exist.
 
 ## False-negatives as a product of relative abundance
 
@@ -116,6 +114,11 @@ and human-work hours, tends to fall on the order on 100s or 1000s per site
 species in the species pool clearly effects this and should be taken into
 account when designing samples.
 
+Caveat: In this model every observation is drawn from the biomass distribution
+at a particular place and time. We assume that this distribution is the same
+everywhere (again unlikely).
+
+
 ## Positive associations increase the probability of false-negatives
 
 This simple model above doesn't consider the possibility that there are positive
@@ -124,17 +127,19 @@ interaction. Here we assume each individual observation of a given single
 species $i$ within a species pool occurs according to the distribution the
 abundances of the species in that species pool
 
-However, here we can demonstrate that the probability of observing a false negative
+However, we can demonstrate that the probability of observing a false negative
 is _higher_ if there is some positive association between occurrence of species
 $A$ and $B$. If we denote the probability that we observe an existing
-interaction between as $P(AB)$, and if there is no correlation between probability
-of observing $A$ and observing $B$, then the probability of observing the
-interaction $P(AB) = P(A)P(B)$.
-In this case, $P(AB)$ is not equal to $P(A)P(B)$ as $P(A)$ and
-$P(B)$ are not independent. If there some positive strength of association
-between observing both $A$ and $B$ because this interaction is "important" for
-each species, then
-strength
+interaction between as $P(AB)$, and if there is no association between
+probability of observing $A$ and observing $B$, then the probability of
+observing the interaction $P(AB) = P(A)P(B)$.
+
+In the other case where there is some positive strength of association between
+observing both $A$ and $B$ because this interaction is "important" for each
+species, then the probability of observation both $A$ and $B$, $P(AB)$, is
+greater than $P(A)P(B)$ as $P(A)$ and $P(B)$ are not independent and instead are
+positively correlated---
+
 $$P(AB) > P(A)P(B)$$
 
 In this case, the probability of observing a false negative is $p_{fn} = 1 -
@@ -143,16 +148,14 @@ P(AB)$ which due to the above inequality due to positive associated implies
 $$p_{fn} \geq 1 - P(A)P(B)$$
 
 
-Caveats: this doesn't consider variation in abundance in space and time which is
-kind of a problem. If the samples are biased spatially or temporally, this
-further goes on the impact the data.
+The caveats here are that this doesn't consider variation in abundance in space
+and time which is kind of a problem. If these positive association go on to
+structure variation in the distribution of $P(AB)$ across space. If the samples
+are biased spatially or temporally, this further goes on the impact the data.
+FNR is not constant even for each pair of species, and may vary across space.
 
-In this model every observation is drawn from the biomass distribution at a
-particular place and time. We assume that this distribution is the same
-everywhere (again unlikely).
-
-We now transition toward assessing the effects of false negatives in our
-data on the properties derived from these measurements, and for use as data for
+We now transition toward assessing the effects of false negatives in our data on
+the properties derived from these measurements, and for use as data for
 predicting interactions in the future. What levels of false negatives are
 acceptable to infer network properties and predict interactions.
 
@@ -170,7 +173,8 @@ order to see how false negatives effect our quantification of network structure.
 
 Primary point here is that some properties vary in their response.
 
-An appropriate additional comparison for inference of network properties [@ConnorClauset]
+An appropriate additional comparison for inference of network properties
+[@ConnorClauset]
 
 
 ## Effects of false negatives on ability to make predictions

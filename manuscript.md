@@ -103,7 +103,10 @@ database on the left, and on the right side the niche model
 [@Williams2000SimRul] across varying levels of species richness. All simulations
 were done with 500 replicates of per unique number of observations $O$, and
 analyses presented here are done in Julia v1.6 [@cite] using both
-EcologicalNetworks.jl v0.5 and Mangal.jl v0.? [@Banville2021ManJl].
+EcologicalNetworks.jl v0.5 and Mangal.jl v0.? [@Banville2021ManJl]. Note that
+this empirical data also is very likely to _already_ have many false negatives,
+which is why we are interested in prediction of networks in the first
+place---we'll revisit this in the final section.
 
 ![False negative rate as a function of sampling effort and network size,
 computed using the method described above. Left panel:  in blue. Right empirical
@@ -116,20 +119,11 @@ and human-work hours, tends to fall on the order on 100s or 1000s per site
 The number of species in the species pool clearly effects this and should be
 taken into account when designing samples.
 
-Caveat: In this model every observation is drawn from the biomass distribution
-at a particular place and time. We assume that this distribution is the same
-everywhere (again unlikely).
-
-Further this empirical data also is very likely to _already_ have many false
-negatives, which is why we are interested in prediction of networks in the first
-place---we'll revisit this in the final section.
-
-
 
 ## Positive associations can increase the probability of false-negatives
 
-This simple model above doesn't consider the possibility that there are positive
-or negative associations which shift the realized probability of observing two
+This model above doesn't consider the possibility that there are positive or
+negative associations which shift the realized probability of observing two
 species together because of their interaction. Here we assume each individual
 observation of a given single species $i$ within a species pool occurs according
 to the distribution the abundances of the species in that species pool However,
@@ -144,8 +138,8 @@ In the other case where there is some positive strength of association between
 observing both $A$ and $B$ because this interaction is "important" for each
 species, then the probability of observation both $A$ and $B$, $P(AB)$, is
 greater than $P(A)P(B)$ as $P(A)$ and $P(B)$ are not independent and instead are
-positively correlated, _i.e._ $P(AB) > P(A)P(B)$. In this case, the probability of
-observing a false negative in our naive model from before is $p_{fn} = 1 -
+positively correlated, _i.e._ $P(AB) > P(A)P(B)$. In this case, the probability
+of observing a false negative in our naive model from before is $p_{fn} = 1 -
 P(AB)$ which due to the above inequality due to positive associated implies
 $p_{fn} \geq 1 - P(A)P(B)$ which indicates greater probability of a false
 negative if $P(AB) \gg P(A)P(B)$. This should be noted with caveat that within
@@ -187,7 +181,7 @@ connectance show roughly linear responses to false negatives, whereas mean
 degree centrality and entropy show non-linear responses. Here we simulating the
 effects of false negatives in data can serve as an additional tool for detecting
 structural properties of networks using generative null models
-[@Connor2017UsiNul].
+[@Connor2017UsiNul].  
 
 
 ## Effects of false negatives on ability to make predictions
@@ -196,8 +190,8 @@ In this section, we assess the effect of false negatives in data on our ability
 to make predictions about interactions. False negatives are in fact the
 practical reason for interaction prediction in the first place. However, if
 there are too many false negatives in a dataset, this could induce too much
-noise for a interaction prediction model to detect the signal of interaction
-due to the latent properties of each species derived from the empirical network.
+noise for a interaction prediction model to detect the signal of interaction due
+to the latent properties of each species derived from the empirical network.
 
 To test this, we use the same predictive model and dataset as in
 @Strydom2021RoaPre to predict a metaweb from various empirical slices of the
@@ -207,32 +201,36 @@ partition the data into 80-20 training-test split, and then seed the training
 data with false negatives varying rates, but crucially do nothing to the test
 data. We use the same model, a neural-network with 3 layers to predict outputs
 based on features extracted from cooccurence, see @Strydom2021RoaPre for more
-details.
-
-In @fig:rocpr, we show receiving-operating-characteristic (ROC) and
+details. In @fig:rocpr, we show receiving-operating-characteristic (ROC) and
 precision-recall (PR) curves for the model with varying levels of
 false-negatives added to the data.
 
 ![fig](./figures/rocpr_falsenegatives.png){#fig:rocpr}
 
-Big takeaway here is false-negatives have more effect on PR space,
-unsurprisingly. Sadly this is also where the potential application of is
-greatest. Still, performance doesn't matter with many added false-negatives!
-Good evidence in favor of this type of model. Same caveat as previous section
-that this is data that _already_ is likely to have many false-negatives. So, the
-effects of adding more, as we do in this illustration, might be mitigated
-because there are still the false-negatives in the original data present in the
-$FNR=0$ simulation.
+The primary takeaway here is false-negatives have more effect on PR space,
+unsurprisingly, but sadly this is also where the potential application of is
+greatest. Still, performance doesn't change that much with many added
+false-negatives, which is good evidence in favor of this type of model. Similar
+to our caveat in the previous section, this data is _already_ likely to have
+many false-negatives. So, the effects of adding more, as we do in this
+illustration, might be mitigated because there are already non-simulated
+false-negatives in the original data present in the $FNR=0$ simulation.
 
 # Conclusion
 
 
 ***The primary takeaways from this paper***
-In this paper we have demonstrated that false negatives are likely purely due
-to the distribution of.
+
+In this paper we have demonstrated we expect a certain number of false negatives
+in species interaction datasets purely due to the distribution of abundances
+within a community. We have also shown that these false negatives can cause
+varying responses in our measurements of network properties and further could
+impact our ability to reliably predict interactions.
 
 
 ***The primary recommendations for study design that this paper provides***
+
+How does this effect how we design samples of interactions?
 Take species richness and relative abundance into account. A model similar
 to that which we show here can be used to provide a neutral expectation of
 true-negative probability given a number of observations of individuals at
@@ -245,7 +243,6 @@ the structure of ecological networks, and how we infer other things based on
 that?
 
 How does this influence our models of interaction prediction?
-
 Toward models which explicitly account for uncertainty in detection and
 sampling, [@Young2021RecPla; @Johnson2021BayEst]. Such has been done in
 occupancy modeling, in neural nets [@MaxPaper], could be integrated in the
@@ -253,6 +250,5 @@ predictive models of the future. Can we correct for this bias in existing data?
 [@Poisot2021ImpMam]
 
 
-How does this effect how we design samples of interactions?
 
 # References

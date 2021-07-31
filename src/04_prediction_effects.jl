@@ -80,6 +80,9 @@ opt = ADAM()
 # with 20% of data leftover for validation
 
 function train(x, y, fnp; proportion=0.8,n_batches = 50000, batch_size=64, mat_at = 500    )
+
+    Flux.reset!(m)
+
     epc = mat_at:mat_at:n_batches
     epc = vcat(1, epc...)
 
@@ -91,7 +94,6 @@ function train(x, y, fnp; proportion=0.8,n_batches = 50000, batch_size=64, mat_a
     train = sort(sample(1:size(x, 2), training_size; replace=false))
     test = filter(i -> !(i in train), 1:size(x, 2))
 
-# todo only add to training set
     y[:, train] = add_falsenegatives(y[:, train], fnp)
     data = (x[:, train], y[:, train])
 
@@ -103,11 +105,7 @@ function train(x, y, fnp; proportion=0.8,n_batches = 50000, batch_size=64, mat_a
         # We pick a random batch out of the training set
         ord = sample(train, batch_size; replace=false)
         data_batch = (x[:, ord], y[:,ord])
-        # If the training batch is too unbalanced, we draw another one
-        while sum(data_batch[2]) < ceil(Int64, 0.25batch_size)
-            ord = sample(train, batch_size; replace=false)
-            data_batch = (x[:, ord], y[:,ord])
-        end
+
         # This trains the model
         Flux.train!(loss, ps, [data_batch], opt)
         # We only save the loss at the correct interval
@@ -197,11 +195,30 @@ end
 
 
 basetruth = y
-rocReal, prReal = train(x,y, 0)
-roc10, pr10 = train(x,y, 0.1)
-roc25, pr25 = train(x,y, 0.25)
-roc50, pr50 = train(x,y, 0.5)
 
+rocReal, prReal = [],[]
+roc25, pr25 = [],[]
+roc50, pr50 = [],[]
+roc75, pr75 = [],[]
+
+reps = 50
+for r in 1:reps 
+    thisReal_roc, thisReal_pr = train(x,y, 0)
+    push!(rocReal, thisReal_roc)
+    push!(prReal, thisReal_pr)
+
+    this25_roc, this25_pr = train(x,y, 0.25)
+    push!(roc25, this25_roc)
+    push!(pr25, this25_pr)
+    
+    this50_roc, this50_pr = train(x,y, 0.50)
+    push!(roc50, this50_roc)
+    push!(pr50, this50_pr)
+
+    this75_roc, this75_pr = train(x,y, 0.75)
+    push!(roc75, this75_roc)
+    push!(pr75, this75_pr)
+end 
 
 cols = [ColorSchemes.tableau_sunset_sunrise[i] for i in [1,2,3,4]]
 

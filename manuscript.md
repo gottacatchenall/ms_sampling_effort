@@ -34,7 +34,7 @@ Here we seek to determine how false negatives in ecological interaction data
 impact the analysis and prediction of ecological networks, and how understanding
 the relationship between sampling effort and probability of a true negative can
 guide how we design surveys of ecological interactions [@Jordano2016SamNet]. The
-fundemental questions we seek to answer are: 1) How many times do you have to
+fundamental questions we seek to answer are: 1) How many times do you have to
 observe a non-interaction between two species to be confident in saying that is
 a true negative? 2) How "wrong" are the measurements of network structure
 modularity as a function of false-negative probability? 3) How do
@@ -144,23 +144,16 @@ In the other case where there is some positive strength of association between
 observing both $A$ and $B$ because this interaction is "important" for each
 species, then the probability of observation both $A$ and $B$, $P(AB)$, is
 greater than $P(A)P(B)$ as $P(A)$ and $P(B)$ are not independent and instead are
-positively correlated---
-
-$$P(AB) > P(A)P(B)$$
-
-In this case, the probability of observing a false negative in our naive model
-from before is $p_{fn} = 1 - P(AB)$ which due to the above inequality due to
-positive associated implies
-
-$$p_{fn} \geq 1 - P(A)P(B)$$
-
-which indicates greater probability of a false negative if $P(AB) \gg P(A)P(B)$.
-This should be noted with caveat that within this model we do not consider
-variation in abundance in space and time. If positive or negative associations
-go on to structure variation in the distribution of $P(AB)$ across space, then
-the spatial and temporal structure of data collection will further impact our
-data as in this case the probability of false negative would not be constant for
-each pair of species across sites.
+positively correlated, _i.e._ $P(AB) > P(A)P(B)$. In this case, the probability of
+observing a false negative in our naive model from before is $p_{fn} = 1 -
+P(AB)$ which due to the above inequality due to positive associated implies
+$p_{fn} \geq 1 - P(A)P(B)$ which indicates greater probability of a false
+negative if $P(AB) \gg P(A)P(B)$. This should be noted with caveat that within
+this model we do not consider variation in abundance in space and time. If
+positive or negative associations go on to structure variation in the
+distribution of $P(AB)$ across space, then the spatial and temporal structure of
+data collection will further impact our data as in this case the probability of
+false negative would not be constant for each pair of species across sites.
 
 We now transition toward assessing the effects of false negatives in our data on
 the properties derived from these measurements, and for use as data for
@@ -182,9 +175,9 @@ with a known proportion of false negatives to compare the computed network
 properties of the original "true" network to the computed properties of the
 "observed" network with added false-negatives. In @fig:properties we show four
 properties (connectance, spectral radius, mean degree centrality, and entropy)
-computed  across 200 replicates at each value of the false negative rate $p_{fn}$.
-Each replicate uses a random food web simulated using the niche model [@Williams2000SimRul]
-with $100$ species and true connectance $C=0.1$.
+computed  across 200 replicates at each value of the false negative rate
+$p_{fn}$. Each replicate uses a random food web simulated using the niche model
+[@Williams2000SimRul] with $100$ species and true connectance $C=0.1$.
 
 ![fig. 1$\sigma$ in first grad, 2$\sigma$ in second ](./figures/properties_error.png){#fig:properties}
 
@@ -207,13 +200,14 @@ noise for a interaction prediction model to detect the signal of interaction
 due to the latent properties of each species derived from the empirical network.
 
 To test this, we use the same predictive model and dataset as in
-@Strydom2021RoaPre to predict a metaweb from various slices of the species  pool
-observed across space. This dataset from @Hadfield2014TalTwo describes
-host-parasite interaction networks sampled across 51 sites. We partition the
-data into 80-20 training-test split, and then seed the training data with false
-negatives varying rates, but crucially do nothing to the test data. The
-model---a neural-network with 3 layers to predict outputs based on features
-extracted from cooccurence, see @Strydom2021RoaPre for more details).
+@Strydom2021RoaPre to predict a metaweb from various empirical slices of the
+species pool observed across space. This dataset from @Hadfield2014TalTwo
+describes host-parasite interaction networks sampled across 51 sites. We
+partition the data into 80-20 training-test split, and then seed the training
+data with false negatives varying rates, but crucially do nothing to the test
+data. We use the same model, a neural-network with 3 layers to predict outputs
+based on features extracted from cooccurence, see @Strydom2021RoaPre for more
+details.
 
 In @fig:rocpr, we show receiving-operating-characteristic (ROC) and
 precision-recall (PR) curves for the model with varying levels of

@@ -13,35 +13,38 @@ improved sensing technology [@Stephenson2020TecAdv] and increased adoption of
 open data sharing practices [@Kenall2014OpeFut]. Modern remote-sensing has
 enabled collection of data on spatial scales and resolutions previously
 unimaginable, and in-situ observations in the form of both camera-traps and
-environmental sensors have substantially improved amount of in-situ data. Yet
-widespread data about species interactions has remained illusive as detection of
-an interaction between two species often requires human sampling---although
-remote methods can be used to detect cooccurrence, this itself  is not
-necessarily indicative of interaction [@Blanchet2020CooNot]. This limitation
-induces constraints on sampling of interactions based on the spatial and
-temporal scales feasible to human sampling.
+environmental sensors have substantially increased the amount of in-situ data
+available to ecologists. Yet widespread data about species interactions has
+remained illusive as detection of an interaction between two species often
+requires human sampling [@Strydom2021RoaPre]---although remote methods can be
+used to detect cooccurrence, this itself is not necessarily indicative of
+interaction [@Blanchet2020CooNot]. This limitation induces constraints on
+sampling of interactions based on the spatial and temporal scales feasible to
+human sampling.
 
-These sampling constraints go on to bias species interaction data: we only
-observe a small fraction of the variance in species interactions in space and
-time, these observations reflect the distribution of abundance within
-communities [@Poisot2015SpeWhy], and sampling of species interactions is
-geographically biased toward the usual suspects [@Poisot2021GloKno]. These
-biases have practical consequences for answering questions about species
-interactions [@deAguiar2019RevBia]. The data we collect is noisy and likely
-contains many _false-negatives_, where we have no observation of two species
-interacting even though they do in some capacity.
+These sampling constraints go on to bias species interaction data in several
+ways: we only observe a small fraction of the variance in species interactions
+in space and time, sampling of species interactions is geographically biased
+toward the usual suspects [@Poisot2021GloKno], and these observations themselves
+are reflect the distribution of abundance within communities
+[@Poisot2015SpeWhy]. These biases have practical consequences for answering
+questions about species interactions [@deAguiar2019RevBia]. The data we collect
+is noisy and likely contains many _false-negatives_, where there is not an
+observation of two species interacting even though they actually do in some
+capacity.
 
 Here we seek to determine how false negatives in ecological interaction data
 impact the analysis and prediction of ecological networks, and how understanding
-the relationship between sampling effort and probability of a true negative can
-guide how we design surveys of ecological interactions [@Jordano2016SamNet]. The
-fundamental questions we seek to answer are: 1) How many times do you have to
-observe a non-interaction between two species to be confident in saying that is
-a true negative? 2) How "wrong" are the measurements of network structure
-modularity as a function of false-negative probability? 3) How do
-false-negatives impact our ability to make reliable predictions about
-interactions? We conclude by arguing for using null models such as those used
-here.
+the relationship between sampling effort and likelihood of a "true negative" can
+guide how we design surveys of ecological interactions [@Jordano2016SamNet]. In
+this manuscript the fundamental questions we seek to answer are: 1) How many
+times do you have to observe a non-interaction between two species to be
+confident in saying that is a true negative? 2) How "wrong" are the measurements
+of network structure modularity as a function of false-negative probability? and
+lastly 3) How do false-negatives impact our ability to make reliable predictions
+about interactions? We conclude by suggest use of null models similar to those
+presented here as a tool for guiding design of surveys of species interactions
+henceforth.
 
 
 # How many observations of a non-interaction do we need to classify it as a true negative?
@@ -60,20 +63,20 @@ that there is no non-zero $p_{fn}$ for which we can ever _prove_ that an
 interaction does not exist.
 
 ![The probability an observed interaction is a "true negative" (y-axis) given
-how many times it has been sampled as a non-interaction. Another thing is true,
-which is that this function will never reach 1. So many assumptions here about
-probability. It's the birthday paradox, but backwards.
+how many times it has been sampled as a non-interaction. Note that this function
+will never reach 1. Each color reflects a different value of $p_{fn}$, the
+false-negative rate (FNR). It's the birthday paradox, but backwards.
 ](./figures/negativebinom.png){#fig:negativebinom}
 
 From @fig:negativebinom it is evident that the more times we see two species
 _present_ but **not** interacting, the more likely the interaction is a true
-negative. But what should this threshold of number of observations be?
-If false-negative rates presented in @fig:negativebinom seem unrealistically
-high, consider that species are not observed independent of their relative
-abundance. In the next section we demonstrate can lead to high realized values
-of $p_{fn}$ for species with low relative abundance. We suggest using neutral
-models of species abundances to design the number of observations sufficient to
-say an interaction doesn't exist.
+negative. But what should this threshold of number of observations be? If
+false-negative rates presented in @fig:negativebinom seem unrealistically high,
+consider that species are not observed independent of their relative abundance.
+In the next section we demonstrate can lead to high realized values of $p_{fn}$
+for species with low relative abundance. We suggest using neutral models of
+species abundances to design the number of observations sufficient to say an
+interaction doesn't exist.
 
 ## False-negatives as a product of relative abundance
 

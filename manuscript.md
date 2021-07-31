@@ -7,7 +7,7 @@ bibliography: [references.bib]
 Understanding how different species interact is a fundamental question of
 community ecology and an increasing imperative both to mitigate the effects of
 human activity on Earth's biodiversity [@Andys90AuthorPaper; @Jordano2016ChaEco]
-and to predict potential spillover of zoonotic diseases [@cite]. Over the past
+and to predict potential spillover of zoonotic disease [@cite]. Over the past
 decade biodiversity data has become increasingly available due to improved
 sensing technology [@Stephenson2020TecAdv] and increased adoption of open and
 FAIR data sharing practices. Modern remote-sensing has enabled collection of
@@ -15,7 +15,7 @@ data on spatial scales previously unimaginable, and in-situ observations in the
 form of both camera-traps and environmental sensors have greatly improved the
 resolution of in-situ data. Yet widespread data about species interactions has
 remained illusive as detection of an interaction between two species often
-requires human sampling as cooccurence is not necessarily indicative of
+requires human sampling---cooccurrence is not necessarily indicative of
 interaction [@Blanchet2020CooNot]. This limitation induces constraints on
 sampling of interactions based on the spatial and temporal scales feasible to
 human sampling.
@@ -67,19 +67,23 @@ From @fig:negativebinom it is evident that the more times we see two species
 _present_ but **not** interacting, the more likely the interaction is a true
 negative. But what should this threshold of number of observations be?
 
-Here we suggest using neutral models of species abundances to design the number
-of observations sufficient to say an interaction doesnt exist. If false-negative
-rates presented in @fig:negativebinom may seem unrealistically high, consider
-that species are not observed independent of their relative abundance. In the
-next section we demonstrate can lead to high realized values of $p_{fn}$ for
-species with low relative abundance.
 
-# False-negatives as a product of relative abundance
 
-In this section we demonstrate the realized probability of false-negative
-changes drastically with sampling effort. We do this by simulating the process of
-interaction observation on both 243 empirical food webs from the Mangal database
-[@Banville2021ManJl] and random food-webs generated using the niche model [@cite].
+ If false-negative rates presented in @fig:negativebinom seem unrealistically
+ high, consider that species are not observed independent of their relative
+ abundance. In the next section we demonstrate can lead to high realized values
+ of $p_{fn}$ for species with low relative abundance. We suggest using neutral
+ models of species abundances to design the number of observations sufficient to
+ say an interaction doesn't exist.
+
+## False-negatives as a product of relative abundance
+
+In this section we demonstrate the realized false-negative rate changes
+drastically with sampling effort due to the intrinsic variation of abundances
+within a community. We do this by simulating the process of interaction
+observation on both 243 empirical food webs from the Mangal database
+[@Banville2021ManJl] and random food-webs generated using the niche model
+[@cite].
 
 A simple model of observation assumes each observed species is drawn from the
 distribution of those species' abundances at that place and time. Across
@@ -87,18 +91,19 @@ communities, the shape of this abundance distribution can be reasonably-well
 described by a log-normal distribution [@Volkov2003NeuThe]. Controversies around
 theory of species abundance distributions and neutral theory aside, this means
 seeing two low biomass species interacting requires two low probability events,
-which is observing two species of low biomass. For an ecological network $A$
-with $N_S$ species, we simulate abundances from $N_S$ independent draws from a
-standard-log-normal distribution. For each true interaction $A_{ij} = 1$ we
-estimate the probability of observing both species $i$ and $j$ at given place
-and time by simulating a distribution of $O$ individual observations of a
-species, where the species observed at the $1,2,\dots,O$-th observation is drawn
-from the abundance distribution. If in those $O$ observations both $i$ and $j$
-are present, the observation is computed as a true-negative, and if not as a
-false-negative. @fig:samplingeffort shows the results for applying this to both
-the panel is this model applied to 243 food-webs from the Mangal database [@],
-and on the right side the 500 replicates of the niche model [@Wil2001GenFoo] per
-unique number of observations $O$.
+which is observing two species of low biomass.
+
+For an ecological network $A$ with $N_S$ species, we simulate abundances from
+$N_S$ independent draws from a standard-log-normal distribution. For each true
+interaction $A_{ij} = 1$ we estimate the probability of observing both species
+$i$ and $j$ at given place and time by simulating a distribution of $O$
+individual observations of a species, where the species observed at the
+$1,2,\dots,O$-th observation is drawn from the abundance distribution. If in
+those $O$ observations both $i$ and $j$ are present, the observation is computed
+as a true-negative, and if not as a false-negative. @fig:samplingeffort shows
+the results for applying this to both the panel is this model applied to 243
+food-webs from the Mangal database [@], and on the right side the 500 replicates
+of the niche model [@Wil2001GenFoo] per unique number of observations $O$.
 
 ![False negative rate as a function of sampling effort and network size,
 computed using the method described above. Left panel:  in blue. Right empirical
@@ -107,9 +112,11 @@ network. ](./figures/samplingdist.png){#fig:samplingeffort}
 
 Empirical data on interactions, limited by the practical realities of funding
 and human-work hours, tends to fall on the order on 100s or 1000s per site
-[@JordanoTable1]. We think a metaanalysis is called for here. The number of
+[@JordanoTable1]. We think a meta-analysis is called for here. The number of
 species in the species pool clearly effects this and should be taken into
 account when designing samples.
+
+## Positive associations increase the probability of false-negatives
 
 This simple model above doesn't consider the possibility that there are positive
 or negative associations between observing two species together based their
@@ -150,7 +157,9 @@ predicting interactions in the future. What levels of false negatives are
 acceptable to infer network properties and predict interactions.
 
 
-# Effects of false-negatives on network properties
+# The impact of false-negatives on network analysis and prediction
+
+## Effects of false-negatives on network properties
 
 Here we simulate the effects of observation error to generate false negatives in
 the samples of ecological networks and compare the computed network properties
@@ -159,7 +168,12 @@ order to see how false negatives effect our quantification of network structure.
 
 ![fig. 1$\sigma$ in first grad, 2$\sigma$ in second ](./figures/properties_error.png){#fig:properties}
 
-# Effects of false negatives on ability to make predictions
+Primary point here is that some properties vary in their response.
+
+An appropriate additional comparison for inference of network properties [@ConnorClauset]
+
+
+## Effects of false negatives on ability to make predictions
 
 In this section, we assess the effect of false negatives in data on our ability
 to make predictions about interactions.

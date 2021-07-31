@@ -117,7 +117,7 @@ blockquote {
 }
 #refs {
     font-size: 90%;
-    column-count: 1;
+    column-count: 2;
     max-width: 700px;
     margin: 0px auto;
 }

@@ -45,10 +45,10 @@
   "orcid": "0000-0001-6075-8081"
   }
   ],
-  "description": "abstract ",
+  "description": "Species interactions, and the networks that emerge from them, structure ecosystem processes and enable biodiversity to persist through time. However a robust understanding of interactions between species, how human activity is effecting them, and how this will effect Earth's ecosystems in the future remains elusive. In large part this knowledge-gap is driven by a shortfall of data. Data on species interactions has lagged behind , largely due to the intrinsic difficulty of sampling interations. These sampling challenges bias data. Here, we demonstrate that the realized false-negative rate can be quite highly simply due to sampling being biased toward species with high relative abundance. We then simulate observation on both NNN empirical food webs and generated models to show.... something.",
   "keywords": [
-    "pandoc",
-    "pandoc-crossref",
-    "github actions"
+    "ecological networks",
+    "sampling effort",
+    "biogeography"
   ]
 }

@@ -120,7 +120,7 @@ at a particular place and time. We assume that this distribution is the same
 everywhere (again unlikely).
 
 
-## Positive associations increase the probability of false-negatives
+## Positive associations can increase the probability of false-negatives
 
 This simple model above doesn't consider the possibility that there are positive
 or negative associations between observing two species together based their
@@ -226,7 +226,7 @@ a given place and time.
 A brief note on false positives.
 How does this influence our understanding of the structure of ecological
 networks, and how we infer other things based on that?
-How does this influence our models of interaction prediction?
+How does this influence our models of interaction prediction? [@Young2021RecPla]
 How does this effect how we design samples of interactions?
 How can we correct for this bias in existing data? [@Poisot2021ImpMam]
 

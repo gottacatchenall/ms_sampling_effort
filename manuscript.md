@@ -81,9 +81,8 @@ In this section we demonstrate the realized false-negative rate changes
 drastically with sampling effort due to the intrinsic variation of abundances
 within a community. We do this by simulating the process of observation on both
 243 empirical food webs from the Mangal database [@Banville2021ManJl] and random
-food-webs generated using the niche model [@Williams2000SimRul].
-
-A neutral model of observation assumes each observed species is drawn from the
+food-webs generated using the niche model [@Williams2000SimRul]. Our neutral
+model of observation assumes each observed species is drawn from the
 distribution of those species' abundances at that place and time. Across
 communities, the shape of this abundance distribution can be reasonably-well
 described by a log-normal distribution [@Volkov2003NeuThe]. Controversies around
@@ -99,9 +98,10 @@ individual observations of a species, where the species observed at the
 $1,2,\dots,O$-th observation is drawn from the abundance distribution. If in
 those $O$ observations both $i$ and $j$ are present, the observation is computed
 as a true-negative, and if not as a false-negative. @fig:samplingeffort shows
-the results for applying this to both the panel is this model applied to 243
-food-webs from the Mangal database, and on the right side the 500 replicates of
-the niche model [@Williams2000SimRul] per unique number of observations $O$. All
+the results for applying this---applied to 243 food-webs from the Mangal
+database on the left, and on the right side the niche model
+[@Williams2000SimRul] across varying levels of species richness. All simulations
+were done with 500 replicates of per unique number of observations $O$, and
 analyses presented here are done in Julia v1.6 [@cite] using both
 EcologicalNetworks.jl v0.5 and Mangal.jl v0.? [@Banville2021ManJl].
 
@@ -110,31 +110,35 @@ computed using the method described above. Left panel:  in blue. Right empirical
 food webs from Mangal database in teal. The outlier on panel B is a 714 species
 network. ](./figures/samplingdist.png){#fig:samplingeffort}
 
-Caveat: In this model every observation is drawn from the biomass distribution
-at a particular place and time. We assume that this distribution is the same
-everywhere (again unlikely).
-
-
 Empirical data on interactions, limited by the practical realities of funding
 and human-work hours, tends to fall on the order on 100s or 1000s per site
 [@Nielsen2007EcoNet; morecites tk]. We think a meta-analysis is called for here.
 The number of species in the species pool clearly effects this and should be
 taken into account when designing samples.
 
+Caveat: In this model every observation is drawn from the biomass distribution
+at a particular place and time. We assume that this distribution is the same
+everywhere (again unlikely).
+
+Further this empirical data also is very likely to _already_ have many false
+negatives, which is why we are interested in prediction of networks in the first
+place---we'll revisit this in the final section.
+
 
 
 ## Positive associations can increase the probability of false-negatives
 
 This simple model above doesn't consider the possibility that there are positive
-or negative associations between observing two species together based their
-interaction. Here we assume each individual observation of a given single
-species $i$ within a species pool occurs according to the distribution the
-abundances of the species in that species pool However, we can demonstrate that
-the probability of observing a false negative is _higher_ if there is some
-positive association between occurrence of species $A$ and $B$. If we denote the
-probability that we observe an existing interaction between as $P(AB)$, and if
-there is no association between probability of observing $A$ and observing $B$,
-then the probability of observing the interaction $P(AB) = P(A)P(B)$.
+or negative associations which shift the realized probability of observing two
+species together because of their interaction. Here we assume each individual
+observation of a given single species $i$ within a species pool occurs according
+to the distribution the abundances of the species in that species pool However,
+we can demonstrate that the probability of observing a false negative is
+_higher_ if there is some positive association between occurrence of species $A$
+and $B$. If we denote the probability that we observe an existing interaction
+between as $P(AB)$, and if there is no association between probability of
+observing $A$ and observing $B$, then the probability of observing the
+interaction $P(AB) = P(A)P(B)$.
 
 In the other case where there is some positive strength of association between
 observing both $A$ and $B$ because this interaction is "important" for each
@@ -165,16 +169,24 @@ acceptable to infer network properties and predict interactions.
 
 # The impact of false-negatives on network analysis and prediction
 
+In this section we quantify the effects of false-negatives in interaction network
+data on structural network properties, and to determine how they impact the quality
+of our predictive models of network structure [@Strydom2021RoaPre].
+
 ## Effects of false-negatives on network properties
 
 Here we simulate the effects of observation error to generate false negatives in
 the samples of ecological networks and compare the computed network properties
 of the original network to the computed properties on the observed network in
 order to see how false negatives effect our quantification of network structure.
+In @fig:properties we show the effects of niche model [@Williams2000SimRul].
 
 ![fig. 1$\sigma$ in first grad, 2$\sigma$ in second ](./figures/properties_error.png){#fig:properties}
 
 Primary point here is that some properties vary in their response.
+Spectral radius (generally a measure of global structure) and connectance show
+roughly linear responses to false negatives, whereas mean degree centrality and
+entropy .
 
 An appropriate additional comparison for inference of network properties
 [@Connor2017UsiNul].

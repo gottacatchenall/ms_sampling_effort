@@ -79,12 +79,11 @@ say an interaction doesn't exist.
 
 In this section we demonstrate the realized false-negative rate changes
 drastically with sampling effort due to the intrinsic variation of abundances
-within a community. We do this by simulating the process of interaction
-observation on both 243 empirical food webs from the Mangal database
-[@Banville2021ManJl] and random food-webs generated using the niche model
-[@Williams2000SimRul].
+within a community. We do this by simulating the process of observation on both
+243 empirical food webs from the Mangal database [@Banville2021ManJl] and random
+food-webs generated using the niche model [@Williams2000SimRul].
 
-A simple model of observation assumes each observed species is drawn from the
+A neutral model of observation assumes each observed species is drawn from the
 distribution of those species' abundances at that place and time. Across
 communities, the shape of this abundance distribution can be reasonably-well
 described by a log-normal distribution [@Volkov2003NeuThe]. Controversies around

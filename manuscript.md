@@ -241,11 +241,10 @@ a given place and time.
 
 A brief note on false positives. How does this influence our understanding of
 the structure of ecological networks, and how we infer other things based on
-that?
-How does this influence our models of interaction prediction?
-Toward models which explicitly account for uncertainty in detection and
-sampling, [@Young2021RecPla; @Johnson2021BayEst]. Such has been done in
-occupancy modeling, in neural nets [@MaxPaper], could be integrated in the
+that? How does this influence our models of interaction prediction? Toward
+models which explicitly account for uncertainty in detection and sampling,
+[@Young2021RecPla; @Johnson2021BayEst]. Such has been done in occupancy
+modeling, in neural nets [@Joseph2020NeuHie], could be integrated in the
 predictive models of the future. Can we correct for this bias in existing data?
 [@Poisot2021ImpMam]
 

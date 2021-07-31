@@ -6,19 +6,19 @@ bibliography: [references.bib]
 
 Understanding how different species interact is a fundamental question of
 community ecology and an increasing imperative both to mitigate the effects of
-human activity on Earth's biodiversity [@Andys90AuthorPaper; @Jordano2016ChaEco]
-and to predict potential spillover of zoonotic disease [@cite]. Over the past
-decade biodiversity data has become increasingly available due to improved
-sensing technology [@Stephenson2020TecAdv] and increased adoption of open and
-FAIR data sharing practices. Modern remote-sensing has enabled collection of
-data on spatial scales previously unimaginable, and in-situ observations in the
-form of both camera-traps and environmental sensors have greatly improved the
-resolution of in-situ data. Yet widespread data about species interactions has
-remained illusive as detection of an interaction between two species often
-requires human sampling---cooccurrence is not necessarily indicative of
-interaction [@Blanchet2020CooNot]. This limitation induces constraints on
-sampling of interactions based on the spatial and temporal scales feasible to
-human sampling.
+human activity on Earth's biodiversity [@Makiola2020KeyQue; @Jordano2016ChaEco]
+and to predict potential spillover of zoonotic disease [@Becker2020PreWila].
+Over the past decade biodiversity data has become increasingly available due to
+improved sensing technology [@Stephenson2020TecAdv] and increased adoption of
+open and FAIR data sharing practices. Modern remote-sensing has enabled
+collection of data on spatial scales previously unimaginable, and in-situ
+observations in the form of both camera-traps and environmental sensors have
+greatly improved the resolution of in-situ data. Yet widespread data about
+species interactions has remained illusive as detection of an interaction
+between two species often requires human sampling---cooccurrence is not
+necessarily indicative of interaction [@Blanchet2020CooNot]. This limitation
+induces constraints on sampling of interactions based on the spatial and
+temporal scales feasible to human sampling.
 
 These sampling constraints go on to bias species interaction data: we only
 observe a small fraction of the variance in species interactions in space and
@@ -81,7 +81,7 @@ drastically with sampling effort due to the intrinsic variation of abundances
 within a community. We do this by simulating the process of interaction
 observation on both 243 empirical food webs from the Mangal database
 [@Banville2021ManJl] and random food-webs generated using the niche model
-[@cite].
+[@Williams2000SimRul].
 
 A simple model of observation assumes each observed species is drawn from the
 distribution of those species' abundances at that place and time. Across
@@ -100,8 +100,9 @@ $1,2,\dots,O$-th observation is drawn from the abundance distribution. If in
 those $O$ observations both $i$ and $j$ are present, the observation is computed
 as a true-negative, and if not as a false-negative. @fig:samplingeffort shows
 the results for applying this to both the panel is this model applied to 243
-food-webs from the Mangal database [@], and on the right side the 500 replicates
-of the niche model [@Wil2001GenFoo] per unique number of observations $O$.
+food-webs from the Mangal database, and on the right side the 500 replicates
+of the niche model [@Williams2000SimRul] per unique number of observations $O$.
+All analyses presented here are done in Julia v1.6 [@cite] using both EcologicalNetworks.jl v0.5 and Mangal.jl v0.? [@Banville2021ManJl].
 
 ![False negative rate as a function of sampling effort and network size,
 computed using the method described above. Left panel:  in blue. Right empirical
@@ -110,9 +111,9 @@ network. ](./figures/samplingdist.png){#fig:samplingeffort}
 
 Empirical data on interactions, limited by the practical realities of funding
 and human-work hours, tends to fall on the order on 100s or 1000s per site
-[@JordanoTable1]. We think a meta-analysis is called for here. The number of
-species in the species pool clearly effects this and should be taken into
-account when designing samples.
+[@Nielsen2007EcoNet; morecites tk]. We think a meta-analysis is called for here.
+The number of species in the species pool clearly effects this and should be
+taken into account when designing samples.
 
 Caveat: In this model every observation is drawn from the biomass distribution
 at a particular place and time. We assume that this distribution is the same
@@ -174,7 +175,7 @@ order to see how false negatives effect our quantification of network structure.
 Primary point here is that some properties vary in their response.
 
 An appropriate additional comparison for inference of network properties
-[@ConnorClauset]
+[@Connor2017UsiNul].
 
 
 ## Effects of false negatives on ability to make predictions
@@ -227,6 +228,6 @@ How does this influence our understanding of the structure of ecological
 networks, and how we infer other things based on that?
 How does this influence our models of interaction prediction?
 How does this effect how we design samples of interactions?
-How can we correct for this bias in existing data?
+How can we correct for this bias in existing data? [@Poisot2021ImpMam]
 
 # References

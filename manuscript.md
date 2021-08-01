@@ -42,18 +42,18 @@ observation of two species interacting even though they actually interact in
 some capacity [@Young2021RecPla; @Stock2017LinFil].
 
 Here we seek to understand how false negatives in ecological interaction data
-impact the analysis and prediction of ecological networks, and also to determine
-how the relationship between sampling effort and likelihood of a "true negative"
-can guide how we design surveys of ecological interactions [@Jordano2016SamNet].
-In this manuscript the questions we seek to answer are: 1) How many times do you
-have to observe a non-interaction between two species to be confident in saying
-that is a true negative? 2) How "wrong" are the measurements of network
-structure modularity as a function of false-negative probability? and lastly 3)
-How do false-negatives impact our ability to make reliable predictions about
-interactions? We conclude by suggest use of null models similar to those
-presented here as a tool for guiding design of surveys of species interactions,
-and increased adoption of modeling detection error in predictive ecological
-models.
+impact the analysis and prediction of ecological networks, and also to
+understand how a better understanding of the relationship between sampling
+effort and likelihood of a "true negative" can guide how we design surveys of
+ecological interactions [@Jordano2016SamNet]. The questions we pose and attempt
+to answer are: 1) How many times do you have to observe a non-interaction
+between two species to be confident in saying that is a true negative? 2) How
+"wrong" are the measurements of network structure modularity as a function of
+false-negative probability? and lastly 3) How do false-negatives impact our
+ability to make reliable predictions about interactions? We conclude by
+suggesting use of null models like those presented here as a tool for guiding
+design of surveys of species interactions, and increased adoption of modeling
+detection error in predictive ecological models.
 
 
 # How many observations of a non-interaction do we need to classify it as a true negative?

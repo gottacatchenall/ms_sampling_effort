@@ -51,28 +51,14 @@ for i in species(M; dims=1), j in species(M; dims=2)
     end
 end
 kept = findall(cooc)
-x = Float32.(copy(features[:, kept])) # Latent traits
-y = Matrix(hcat(labels[kept])')       # Interaction bit
+feat = Float32.(copy(features[:, kept])) # Latent traits
+labs = Matrix(hcat(labels[kept])')       # Interaction bit
 
 
 # ----------------------------------------------
 # model setup
 
-m = Chain(
-    # The first layer uses relu
-    Dense(2nf, ceil(Int64, 2.4nf), relu),
-    # The first dropout rate is 0.8 as we're using a lot of features
-    Dropout(0.8),
-    # All other layers are sigmoid with 0.6 dropout rate
-    Dense(ceil(Int64, 2.4nf), ceil(Int64, 1.5nf), σ),
-    Dropout(0.6),
-    Dense(ceil(Int64, 1.5nf), ceil(Int64, 0.8nf), σ),
-    Dropout(0.6),
-    # The last layer has a single bit! P(parasite → host)
-    Dense(ceil(Int64, 0.8nf), 1, σ),
-)
-loss(x, y) = Flux.mse(m(x), y)
-ps = Flux.params(m)
+
 opt = ADAM() 
 
 
@@ -80,8 +66,21 @@ opt = ADAM()
 # with 20% of data leftover for validation
 
 function train(x, y, fnp; proportion=0.8,n_batches = 50000, batch_size=64, mat_at = 500    )
-
-    Flux.reset!(m)
+    m = Chain(
+        # The first layer uses relu
+        Dense(2nf, ceil(Int64, 2.4nf), relu),
+        # The first dropout rate is 0.8 as we're using a lot of features
+        Dropout(0.8),
+        # All other layers are sigmoid with 0.6 dropout rate
+        Dense(ceil(Int64, 2.4nf), ceil(Int64, 1.5nf), σ),
+        Dropout(0.6),
+        Dense(ceil(Int64, 1.5nf), ceil(Int64, 0.8nf), σ),
+        Dropout(0.6),
+        # The last layer has a single bit! P(parasite → host)
+        Dense(ceil(Int64, 0.8nf), 1, σ),
+    )
+    loss(x, y) = Flux.mse(m(x), y)
+    ps = Flux.params(m)
 
     epc = mat_at:mat_at:n_batches
     epc = vcat(1, epc...)
@@ -91,19 +90,18 @@ function train(x, y, fnp; proportion=0.8,n_batches = 50000, batch_size=64, mat_a
 
     training_size = convert(Int64, floor(size(x, 2) * proportion))
    
-    train = sort(sample(1:size(x, 2), training_size; replace=false))
-    test = filter(i -> !(i in train), 1:size(x, 2))
+    trainind = sort(sample(1:size(x, 2), training_size; replace=false))
+    testind = filter(i -> !(i in trainind), 1:size(x, 2))
 
-    y[:, train] = add_falsenegatives(y[:, train], fnp)
-    data = (x[:, train], y[:, train])
+    newlabels = add_falsenegatives(y[:, trainind], fnp)
+    data = (x[:, trainind], newlabels)
 
+    data_test = (x[:, testind], y[:,testind])
 
-    data_test = (x[:, test], y[:,test])
-
-    # This is the main training loop
-    @showprogress for i in 1:n_batches
+    # This is the main training loop 
+    for i in 1:n_batches
         # We pick a random batch out of the training set
-        ord = sample(train, batch_size; replace=false)
+        ord = sample(trainind, batch_size; replace=false)
         data_batch = (x[:, ord], y[:,ord])
 
         # This trains the model
@@ -136,42 +134,12 @@ function train(x, y, fnp; proportion=0.8,n_batches = 50000, batch_size=64, mat_a
         fp[i] = sum(pred .& (.!obs))
         fn[i] = sum(.!(pred) .& obs)
     end
-    # Total number of cases
-    n = tp .+ fp .+ tn .+ fn
 
     tpr = tp ./ (tp .+ fn)
     fpr = fp ./ (fp .+ tn)
-    tnr = tn ./ (tn .+ fp)
-    fnr = fn ./ (fn .+ tp)
-    acc = (tp .+ tn) ./ (n)
-    racc = ((tn .+ fp) .* (tn .+ fn) .+ (fn .+ tp) .* (fp .+ tp)) ./ (n .* n)
-    bacc = ((tp ./ (tp .+ fn)) .+ (tn ./ (fp .+ tn))) ./ 2.0
-    J = (tp ./ (tp .+ fn)) + (tn ./ (tn .+ fp)) .- 1.0
     ppv = tp ./ (tp .+ fp)
 
-    thresholds = range(0.0, 1.0; length=500)
-    thr_index = last(findmax(J))
-    thr_final = thresholds[thr_index]
 
-    pr = vec(m(features))    # Raw predictions
-    imp = pr .>= thr_final   # Larger than threshold
-    nwi = imp .& .!labels    # New
-
-    P = copy(M)
-    new_interactions = DataFrame(; parasite=String[], host=String[], cooc=Bool[], p=Float64[])
-    cursor = 0
-    for i in eachindex(species(P; dims=1)), j in eachindex(species(P; dims=2))
-        cursor += 1
-        if imp[cursor]
-            P[i, j] = true
-            if !M[i, j]
-                push!(
-                    new_interactions,
-                    (species(P; dims=1)[i], species(P; dims=2)[j], cooc[cursor], pr[cursor]),
-                )
-            end
-        end
-    end
     return (roc=(fpr, tpr), pr=(tpr,ppv))
 end
 
@@ -181,7 +149,7 @@ end
 
 
 function add_falsenegatives(input, fnr)
-    noisey = similar(input)
+    noisey = zeros(size(input))
     for (i,v) in enumerate(input)
         if v == 1 
             noisey[i] = rand() < fnr ? 0 : 1
@@ -189,33 +157,32 @@ function add_falsenegatives(input, fnr)
             noisey[i] = input[i]
         end
     end
-    return noisey
+    return vec(Bool.(noisey))
 end
 
 
 
-basetruth = y
 
 rocReal, prReal = [],[]
 roc25, pr25 = [],[]
 roc50, pr50 = [],[]
 roc75, pr75 = [],[]
 
-reps = 50
-for r in 1:reps 
-    thisReal_roc, thisReal_pr = train(x,y, 0)
+reps = 30
+@showprogress for r in 1:reps 
+    thisReal_roc, thisReal_pr = train(feat,labs, 0)
     push!(rocReal, thisReal_roc)
     push!(prReal, thisReal_pr)
 
-    this25_roc, this25_pr = train(x,y, 0.25)
+    this25_roc, this25_pr = train(feat,labs, 0.25)
     push!(roc25, this25_roc)
     push!(pr25, this25_pr)
     
-    this50_roc, this50_pr = train(x,y, 0.50)
+    this50_roc, this50_pr = train(feat,labs, 0.50)
     push!(roc50, this50_roc)
     push!(pr50, this50_pr)
 
-    this75_roc, this75_pr = train(x,y, 0.75)
+    this75_roc, this75_pr = train(feat,labs, 0.75)
     push!(roc75, this75_roc)
     push!(pr75, this75_pr)
 end 
@@ -226,23 +193,41 @@ cols = [ColorSchemes.tableau_sunset_sunrise[i] for i in [1,2,3,4]]
 fnt = font(20, "Roboto")
 
 
-function dothing(input, numreps)
-    mn1, mn2, sd1, sd2 = [], []
-    @show input
-    for r in 1:numreps
-        push!(mn1, mean(input[r][1]))
-        push!(sd1, sqrt(var(input[r][1])))
-        push!(mn2, mean(input[r][2]))
-        push!(sd2, sqrt(var(input[r][2])))
-    end
-    # pass total mean and mean sd 
-    return ((mn1,sd1), (mn2,sd2))
+rocplt = plot()
+
+for (thisx, thisy) in rocReal
+    @show thisx, thisy
+    plot!(rocplt, thisx, thisy, label="", lw=5,la=0.5, lc=cols[1])
 end
 
-roc_mn0,roc_sd0 = dothing(rocReal,reps)
-pr_mn0,pr_sd0 = dothing(prReal, reps)
+for (thisx, thisy) in roc25
+    plot!(rocplt, thisx, thisy, label="0.25", la=0.5, lc=cols[2])
+end
+
+for (thisx, thisy) in roc50
+    plot!(rocplt, thisx, thisy, label="0.5",la=0.5, lc=cols[3])
+end
+
+for (thisx, thisy) in roc75
+    plot!(rocplt, thisx, thisy, label="0.75", la=0.5, lc=cols[4])
+end
+rocplt
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+### OLD
 
 
 

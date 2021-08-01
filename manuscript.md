@@ -239,36 +239,34 @@ false-negatives in the original data present in the $FNR=0$ simulation.
 
 # Conclusion
 
-
-***The primary takeaways from this paper***
-
 In this paper we have demonstrated we expect a certain number of false negatives
 in species interaction datasets purely due to the distribution of abundances
 within a community. We have also shown that these false negatives can cause
 varying responses in our measurements of network properties and further could
 impact our ability to reliably predict interactions.
 
-***The primary recommendations for study design that this paper provides***
 
 How can this effect how we design samples of interactions [@Jordano2016SamNet]?
-The primary takeaway is that when planning the sampling effort across sites,
-it is necessary to take both the species richness of the metaweb into account.
+The primary takeaway is that when planning the sampling effort across sites, it
+is necessary to take both the species richness of the metaweb into account.
+Further simulating the process of observation can be a powerful tool for planing
+study design which takes relative abundance into account, and provide a null
+baseline for detection of interaction strength. A model similar to that here can
+and should be used to provide a neutral expectation of true-negative probability
+given a number of observations of individuals at a given place and time.
 
-and relative abundance into account. A model similar
-to that which we show here can be used to provide a neutral expectation of
-true-negative probability given a number of observations of individuals at
-a given place and time.
+What does the future hold for this research?
+A brief note on is here we
+do not consider the rate of false positives---in large part false positives can
+be explained by misidentification of species.
 
-***What does the future hold for this research***
-
-A brief note on false positives. How does this influence our understanding of
-the structure of ecological networks, and how we infer other things based on
-that? How does this influence our models of interaction prediction? Toward
-models which explicitly account for uncertainty in detection and sampling,
-[@Young2021RecPla; @Johnson2021BayEst]. Such has been done in occupancy
-modeling, in neural nets [@Joseph2020NeuHie], could be integrated in the
-predictive models of the future. Can we correct for this bias in existing data?
-[@Poisot2021ImpMam]
+How does this influence our understanding of the structure of ecological
+networks, and how we infer other things based on that? How does this influence
+our models of interaction prediction? Toward models which explicitly account for
+uncertainty in detection and sampling, [@Young2021RecPla; @Johnson2021BayEst].
+Such has been done in occupancy modeling, in neural nets [@Joseph2020NeuHie],
+could be integrated in the predictive models of the future. Can we correct for
+this bias in existing data? [@Poisot2021ImpMam]
 
 
 

@@ -93,8 +93,8 @@ function train(x, y, fnp; proportion=0.8,n_batches = 50000, batch_size=64, mat_a
     trainind = sort(sample(1:size(x, 2), training_size; replace=false))
     testind = filter(i -> !(i in trainind), 1:size(x, 2))
 
-    newlabels = add_falsenegatives(y[:, trainind], fnp)
-    data = (x[:, trainind], newlabels)
+    newlabels = Matrix((add_falsenegatives(y[:, :], fnp))')
+    data = (x[:, trainind], newlabels[:,trainind])
 
     data_test = (x[:, testind], y[:,testind])
 
@@ -102,15 +102,11 @@ function train(x, y, fnp; proportion=0.8,n_batches = 50000, batch_size=64, mat_a
     for i in 1:n_batches
         # We pick a random batch out of the training set
         ord = sample(trainind, batch_size; replace=false)
-        data_batch = (x[:, ord], y[:,ord])
+        data_batch = (x[:, ord], newlabels[:,ord])
 
         # This trains the model
         Flux.train!(loss, ps, [data_batch], opt)
-        # We only save the loss at the correct interval
-        if i in epc
-            trainlossvalue[i] = loss(data...)
-            testlossvalue[i] = loss(data_test...)
-        end
+  
     end
 
     # We get the predictions and observations for the testing dataset
@@ -193,73 +189,66 @@ cols = [ColorSchemes.tableau_sunset_sunrise[i] for i in [1,2,3,4]]
 fnt = font(20, "Roboto")
 
 
-rocplt = plot()
-
+rocplt = plot(aspectratio=1, xlims=(0,1), ylims=(0,1),fontfamily=fnt, legend=:outerright, frame=:box, legendtitle="FNR")
 for (thisx, thisy) in rocReal
     @show thisx, thisy
-    plot!(rocplt, thisx, thisy, label="", lw=5,la=0.5, lc=cols[1])
+    plot!(rocplt, thisx, thisy, label="", lw=1.5,la=0.3, lc=cols[1])
 end
 
 for (thisx, thisy) in roc25
-    plot!(rocplt, thisx, thisy, label="0.25", la=0.5, lc=cols[2])
+    plot!(rocplt, thisx, thisy, label="", lw=1.5, la=0.3, lc=cols[2])
 end
 
 for (thisx, thisy) in roc50
-    plot!(rocplt, thisx, thisy, label="0.5",la=0.5, lc=cols[3])
+    plot!(rocplt, thisx, thisy, label="",la=0.3, lw=1.5,lc=cols[3])
 end
 
 for (thisx, thisy) in roc75
-    plot!(rocplt, thisx, thisy, label="0.75", la=0.5, lc=cols[4])
+    plot!(rocplt, thisx, thisy, label="", lw=1.5,la=0.3, lc=cols[4])
 end
-rocplt
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### OLD
-
-
-
-
-
-
-rocplt = plot(aspectratio=1, fontfamily=fnt, legend=:outerright, frame=:box, legendtitle="FNR")
-plot!(rocplt,rocReal[1], rocReal[2], lw=3, la=0.75, c=cols[1], label="0")
-plot!(rocplt,roc10[1], roc10[2], lw=3, la=0.75,c=cols[2], label="0.1")
-plot!(rocplt,roc25[1], roc25[2], lw=3, la=0.75,c=cols[3], label="0.25")
-plot!(rocplt,roc50[1], roc50[2], lw=3, la=0.75, c=cols[4], label="0.5")
-
+scatter!(rocplt,[1],[1], mc=cols[1], label="0.0")
+scatter!(rocplt,[1],[1], mc=cols[2], label="0.25")
+scatter!(rocplt,[1],[1], mc=cols[3], label="0.5")
+scatter!(rocplt,[1],[1], mc=cols[4], label="0.75")
 
 plot!(rocplt, [0,1], [0,1], c=:grey, ls=:dash, la=0.8, aspectratio=1, label="random")
 xaxis!(rocplt,"False positive rate", (0, 1))
 yaxis!(rocplt,"True positive rate", (0, 1))
-
-savefig(rocplt, "roc.png")
-
-prplt =  plot(aspectratio=1, fontfamily=fnt,legend=:outerright, frame=:box, legend_title="FNR")
-plot!(prplt,prReal[1], prReal[2], lw=3,c=cols[1], la=0.8, label="0")
-plot!(prplt,pr10[1], pr10[2], lw=3,c=cols[2], la=0.8, label="0.1")
-plot!(prplt,pr25[1], pr25[2], lw=3,c=cols[3], la=0.8,label="0.25")
-plot!(prplt,pr50[1], pr50[2], lw=3, c=cols[4], la=0.8, label="0.5")
+rocplt
 
 
+
+prplt = plot(aspectratio=1, fontfamily=fnt, legend=:outerright, frame=:box, legendtitle="FNR")
+for (thisx, thisy) in prReal
+    @show thisx, thisy
+    plot!(prplt, thisx, thisy, label="",lw=1.5, la=0.3, lc=cols[1])
+end
+
+for (thisx, thisy) in pr25
+    plot!(prplt, thisx, thisy, label="", lw=1.5, la=0.3, lc=cols[2])
+end
+
+for (thisx, thisy) in pr50
+    plot!(prplt, thisx, thisy, label="",lw=1.5, la=0.3, lc=cols[3])
+end
+
+for (thisx, thisy) in pr75
+    plot!(prplt, thisx, thisy, label="", lw=1.5, la=0.3, lc=cols[4])
+end
 plot!(prplt, [0,1], [1,0], c=:grey, ls=:dash, la=0.5, aspectratio=1, label="random")
 xaxis!(prplt,"True positive rate", (0, 1))
 yaxis!(prplt,"Postive predictive value", (0, 1))
+scatter!(prplt,[1],[1], mc=cols[1], label="0.0")
+scatter!(prplt,[1],[1], mc=cols[2], label="0.25")
+scatter!(prplt,[1],[1], mc=cols[3], label="0.5")
+scatter!(prplt,[1],[1], mc=cols[4], label="0.75")
 
 prplt
 
+
+
+using Measures
 
 comb = plot(rocplt, prplt, size=(900, 450), dpi=300, margin=3mm)
 

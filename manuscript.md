@@ -234,8 +234,10 @@ precision-recall (PR) curves for the model with varying levels of synthetic
 false-negatives added to the data.
 
 ![Receiver-operating-characteristic (left) and precision-recall (right) curves
-for the model on varying levels of false-negatives in the data (colors). Replica
-of figure 1 in @Strydom2021RoaPre](./figures/rocpr_falsenegatives.png){#fig:rocpr}
+for the model on varying levels of false-negatives in the data (colors). For
+each value of FNR, we run 30 random traing/test splits on 80/20 percent of the
+data. Replica of figure 1 in
+@Strydom2021RoaPre](./figures/rocpr_falsenegatives.png){#fig:rocpr}
 
 The primary takeaway here is false-negatives have more effect on
 precision-recall space (right panel of @fig:rocpr), where the potential

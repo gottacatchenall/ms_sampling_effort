@@ -39,7 +39,7 @@ are reflect the distribution of abundance within communities
 questions about species interactions [@deAguiar2019RevBia]. The data we collect
 is noisy and likely contains many _false-negatives_, where there is not an
 observation of two species interacting even though they actually interact in
-some capacity.
+some capacity [@Young2021RecPla; @Stock2017LinFil].
 
 Here we seek to understand how false negatives in ecological interaction data
 impact the analysis and prediction of ecological networks, and also to determine

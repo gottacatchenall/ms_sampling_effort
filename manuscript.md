@@ -239,15 +239,13 @@ each value of FNR, we run 30 random traing/test splits on 80/20 percent of the
 data. Replica of figure 1 in
 @Strydom2021RoaPre](./figures/rocpr_falsenegatives.png){#fig:rocpr}
 
-The primary takeaway here is false-negatives have more effect on
-precision-recall space (right panel of @fig:rocpr), where the potential
-application of is greatest. Still, the performance  of the model from
-@Strydom2021RoaPre changes little with many added false-negatives, which is good
-evidence in favor neural-networks as a class of model for interaction detection.
-Again, similar to our caveat in the previous section, this data is _already_
-likely to have many false-negatives, so the effects of adding more as we do in
-this illustration, might be mitigated because there are already non-simulated
-false-negatives in the original data.
+Interestingly, the performance  of the model from @Strydom2021RoaPre changes
+little with many added false-negatives, which is good evidence in favor
+neural-networks as a class of model for interaction detection. Again, similar to
+our caveat in the previous section, this data is _already_ likely to have many
+false-negatives, so the effects of adding more as we do in this illustration,
+might be mitigated because there are already non-simulated false-negatives in
+the original data.
 
 # Conclusion
 

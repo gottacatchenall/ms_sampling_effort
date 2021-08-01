@@ -206,11 +206,11 @@ to detect structural properties of networks using generative null models
 
 In this section, we assess the effect of false negatives in data on our ability
 to make predictions about interactions. The prevalence of false-negatives in
-data methods have been proposed to counteract this bias [@Poisot2021ImpMam],
-However, if there are too many false negatives in a dataset, this could induce
-too much noise for a interaction prediction model to detect the signal of
-interaction due to the latent properties of each species derived from the
-empirical network.
+data methods have been proposed to counteract this bias [@Poisot2021ImpMam;
+@Stock2017LinFil]. However, if there are too many false negatives in a dataset,
+this could induce too much noise for a interaction prediction model to detect
+the signal of interaction due to the latent properties of each species derived
+from the empirical network.
 
 To test this, we use the same predictive model and dataset as in
 @Strydom2021RoaPre to predict a metaweb from various empirical slices of the
@@ -239,12 +239,18 @@ false-negatives in the original data present in the $FNR=0$ simulation.
 
 # Conclusion
 
-In this paper we have demonstrated we expect a certain number of false negatives
-in species interaction datasets purely due to the distribution of abundances
-within a community. We have also shown that these false negatives can cause
+In this paper we have demonstrated that expect a certain number of false
+negatives in species interaction datasets purely due to the distribution of
+abundances within a community. Positive associations between species occurence
+due to interactions can increase the false-negative rate if the sample is
+spatially biased. We have also shown that these false negatives can cause
 varying responses in our measurements of network properties and further could
-impact our ability to reliably predict interactions.
-
+impact our ability to reliably predict interactions, which highlights the need
+for further research into methods for correcting this bias in existing data,
+e.g. [@Stock2017LinFil]. A brief caveat here is that we do not consider the rate
+of false positives---in large part false positives can be explained by
+misidentification of species, although this could be a relevant consideration in
+some cases.
 
 How can this effect how we design samples of interactions [@Jordano2016SamNet]?
 The primary takeaway is that when planning the sampling effort across sites, it
@@ -255,19 +261,15 @@ baseline for detection of interaction strength. A model similar to that here can
 and should be used to provide a neutral expectation of true-negative probability
 given a number of observations of individuals at a given place and time.
 
-What does the future hold for this research?
-A brief note on is here we
-do not consider the rate of false positives---in large part false positives can
-be explained by misidentification of species.
-
-How does this influence our understanding of the structure of ecological
-networks, and how we infer other things based on that? How does this influence
-our models of interaction prediction? Toward models which explicitly account for
-uncertainty in detection and sampling, [@Young2021RecPla; @Johnson2021BayEst].
-Such has been done in occupancy modeling, in neural nets [@Joseph2020NeuHie],
-could be integrated in the predictive models of the future. Can we correct for
-this bias in existing data? [@Poisot2021ImpMam]
-
+What does the future hold for this research? A better understanding of how
+false-negatives impact our analyses and prediction of ecological networks is a
+practical necessity.  In general, building models that explicitly account for
+observation error is a necessary step forward for predictive ecological models
+[@Young2021RecPla; @Johnson2021BayEst].
+Neural networks, like the one used to predict interactions in the above section,
+have been used to reflect hidden states which account for detection error in
+occupancy modeling [@Joseph2020NeuHie], and could be integrated in the
+predictive models of the future.
 
 
 # References

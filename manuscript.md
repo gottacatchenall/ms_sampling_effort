@@ -214,8 +214,8 @@ aiming to detect structural properties of networks using generative null models
 
 In this section, we assess the effect of false negatives in data on our ability
 to make predictions about interactions. The prevalence of false-negatives in
-data is the catalyst for interaction in the first place, and as a result methods
-have been proposed to counteract this bias [@Poisot2021ImpMam;
+data is the catalyst for interaction prediction in the first place, and as a
+result methods have been proposed to counteract this bias [@Poisot2021ImpMam;
 @Stock2017LinFil]. However, if the number of false-negatives in a dataset
 becomes too overwhelming, it is feasible this could induce too much noise for a
 interaction prediction model to detect the signal of interaction due to the

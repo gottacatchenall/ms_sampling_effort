@@ -280,7 +280,10 @@ observation error is a necessary step forward for predictive ecological models
 predict interactions in the above section, have been used to reflect hidden
 states which account for detection error in occupancy modeling
 [@Joseph2020NeuHie], and could be integrated in the predictive models of the
-future.
+future. Incorporating a better understanding of sampling effects and bias on
+both the future design of biodiversity monitoring systems, and the predictive
+models we wish to apply to this data, is imperative in making actionable
+predictions about the future of ecological interactions on our planet.
 
 
 # References

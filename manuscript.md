@@ -120,7 +120,7 @@ and a true-negative otherwise. @fig:samplingeffort shows this model applied to
 243 food-webs from the Mangal database on the right, and niche model
 [@Williams2000SimRul] across varying levels of species richness on the left.
 All simulations were done with 500 replicates of per unique number of
-observations $O$, and analyses presented here are done in Julia v1.6
+observations $s$, and analyses presented here are done in Julia v1.6
 [@Bezanson2015JulFre] using both EcologicalNetworks.jl v0.5 and Mangal.jl v0.4
 [@Banville2021ManJl]. Note that the empirical data also is, due to the phenomena
 described here, very likely to _already_ have many false negatives, which is why

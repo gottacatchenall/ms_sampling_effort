@@ -2,6 +2,13 @@
 bibliography: [references.bib]
 ---
 
+> It may, therefore, be a subject worthy of curiosity, to enquire what is the
+> nature of that evidence which assures us of any real existence and matter of
+> fact, beyond the present testimony of our senses, or the records of our
+> memory.
+>
+> David Hume, _An Enquiry Concerning Human Understanding_
+
 # Introduction
 
 Understanding how different species interact is a fundamental question of
@@ -92,13 +99,13 @@ those species' abundances at that place and time. Although there is no shortage
 of debate as to the processes the govern the general shape of this distribution,
 across communities the abundance distribution can be reasonably-well described
 by a log-normal distribution [@Volkov2003NeuThe]. Controversies around theory of
-species abundance distributions and neutral theory aside, the practical
-consequence of skewed distribution of biomass in communities is seeing two low
-biomass species interacting requires two low probability events, which is
-observing two species of low relative biomass.
+species abundance distributions aside, the practical consequence of skewed
+distribution of biomass in communities is seeing two low biomass species
+interacting requires two low probability events, which is observing two species
+of low relative biomass.
 
-For each ecological network $A$ with $N_S$ species, we simulate abundances from
-$N_S$ independent draws from a standard-log-normal distribution. For each true
+For each ecological network $A$ with $S$ species, we simulate abundances from
+$S$ independent draws from a standard-log-normal distribution. For each true
 interaction $A_{ij} = 1$ we estimate the probability of observing both species
 $i$ and $j$ at given place and time by simulating a distribution of $O$
 individual observations, where the species observed at the $o=1,2,\dots,O$-th
@@ -124,8 +131,8 @@ food webs from Mangal database in teal. The outlier on panel B is a 714 species
 network. ](./figures/samplingdist.png){#fig:samplingeffort}
 
 Empirical data on interactions, limited by the practical realities of funding
-and human-work hours, tends to fall on the order on 100s or 1000s of indvidual
-observations per site [@Nielsen2007EcoNet; more cites coming soon], and a
+and human-work hours, tends to fall on the order on 100s or 1000s of individual
+observations per site [@Nielsen2007EcoNet; TK more cites coming soon], and a
 meta-analysis of ecological network data and sampling effort seems both
 pertinent and necessary. From @fig:samplingeffort it is evident that the number
 of species considered in a study is inseparable from the false-negative rate in
@@ -137,18 +144,16 @@ of ecological networks in the future.
 
 This model above doesn't consider the possibility that there are positive or
 negative associations which shift the realized probability of observing two
-species together due to their interaction---we assume each individual
-observation of a given single species $i$ within a species pool occurs according
-to the distribution the abundances of the species in that species pool. However,
-here we demonstrate that the probability of observing a false negative is
-_higher_ if there is some positive association between occurrence of species $A$
-and $B$. If we denote the probability that we observe an existing interaction
-between $A$ and $B$ as $P(AB)$, and if there is no association between the
-separate marginal probabilities of observing $A$ and observing $B$, denoted
-$P(A)$ and $P(B)$ respectfully, then the probability of observing the
-interaction $P(AB) = P(A)P(B)$.
+species together as a consequence of their interaction. However, here we
+demonstrate that the probability of observing a false negative is _higher_ if
+there is some positive association between occurrence of species $A$ and $B$. If
+we denote the probability that we observe an existing interaction between $A$
+and $B$ as $P(AB)$, and if there is no association between the separate marginal
+probabilities of observing $A$ and observing $B$, denoted $P(A)$ and $P(B)$
+respectfully, then the probability of observing the interaction $P(AB) =
+P(A)P(B)$.
 
-In the other case where there is some positive strength of association between
+In the other case where there _is_ some positive strength of association between
 observing both $A$ and $B$ because this interaction is "important" for each
 species, then the probability of observation both $A$ and $B$, $P(AB)$, is
 greater than $P(A)P(B)$ as $P(A)$ and $P(B)$ are not independent and instead are
@@ -187,22 +192,24 @@ $p_{fn}$. Each replicate uses a random food web simulated using the niche model
 
 ![fig. 1$\sigma$ in first grad, 2$\sigma$ in second ](./figures/properties_error.png){#fig:properties}
 
-The primary information to ge grained from @fig:properties is that properties
+The primary information to be gained from @fig:properties is that properties
 vary in their response to number of false negatives in a sample---spectral
 radius (generally a measure of global structure) and connectance show roughly
 linear responses to false negatives, whereas mean degree centrality and entropy
 show decisively non-linear responses. We propose that simulating the effects of
-false negatives in data can serve as an additional tool for detecting structural
-properties of networks using generative null models [@Connor2017UsiNul].   
+false negatives in data can serve as an additional validation tool when aiming
+to detect structural properties of networks using generative null models
+[@Connor2017UsiNul].   
 
 ## Effects of false negatives on ability to make predictions
 
 In this section, we assess the effect of false negatives in data on our ability
-to make predictions about interactions. False negatives are in fact the
-practical reason for interaction prediction in the first place. However, if
-there are too many false negatives in a dataset, this could induce too much
-noise for a interaction prediction model to detect the signal of interaction due
-to the latent properties of each species derived from the empirical network.
+to make predictions about interactions. The prevalence of false-negatives in
+data methods have been proposed to counteract this bias [@Poisot2021ImpMam],
+However, if there are too many false negatives in a dataset, this could induce
+too much noise for a interaction prediction model to detect the signal of
+interaction due to the latent properties of each species derived from the
+empirical network.
 
 To test this, we use the same predictive model and dataset as in
 @Strydom2021RoaPre to predict a metaweb from various empirical slices of the
@@ -240,11 +247,13 @@ within a community. We have also shown that these false negatives can cause
 varying responses in our measurements of network properties and further could
 impact our ability to reliably predict interactions.
 
-
 ***The primary recommendations for study design that this paper provides***
 
-How does this effect how we design samples of interactions?
-Take species richness and relative abundance into account. A model similar
+How can this effect how we design samples of interactions [@Jordano2016SamNet]?
+The primary takeaway is that when planning the sampling effort across sites,
+it is necessary to take both the species richness of the metaweb into account.
+
+and relative abundance into account. A model similar
 to that which we show here can be used to provide a neutral expectation of
 true-negative probability given a number of observations of individuals at
 a given place and time.

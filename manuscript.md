@@ -110,12 +110,12 @@ For each ecological network $A$ with $S$ species, we simulate abundances from
 $S$ independent draws from a standard-log-normal distribution. For each true
 interaction $A_{ij} = 1$ we estimate the probability of observing both species
 $i$ and $j$ at given place and time by simulating a distribution of $O$
-individual observations, where the species observed at the $o=1,2,\dots,O$-th
+individual observations, where the species observed at the $s=1,2,\dots,O$-th
 observation is drawn from the generated log-normal distribution of abundances.
 For each pair of species $(i,j)$, if both $i$ and $j$ are observed within the
-$O$ observations, the interaction is tallyed as a true positive if $A_{ij}=1$
+$s$ observations, the interaction is tallyed as a true positive if $A_{ij}=1$
 and a false positive otherwise. Similarly, if $i$ and $j$ are _not_ observed in
-these $O$ observations, but $A_{ij}=1$, this is counted as a false-negative,
+these $s$ observations, but $A_{ij}=1$, this is counted as a false-negative,
 and a true-negative otherwise. @fig:samplingeffort shows this model applied to
 243 food-webs from the Mangal database on the right, and niche model
 [@Williams2000SimRul] across varying levels of species richness on the left.

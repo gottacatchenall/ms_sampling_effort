@@ -62,12 +62,12 @@ To answer the titular question of this section, we present a naive model of
 interaction detection: we assume that every true interaction between two species
 is incorrectly observed as a non-interaction with an independent and fixed
 probability, which we denote $p_{fn}$ and subsequently refer to as the
-False-Negative Rate (FNR). If we observe the same species not-interacting $O$
+False-Negative Rate (FNR). If we observe the same species not-interacting $N$
 times. the probability of a true negative, denoted $p_{tn}$, is given by $p_{tn}
-= 1 - (p_{fn})^O$. This relation is shown in @fig:negativebinom for varying
+= 1 - (p_{fn})^N$. This relation is shown in @fig:negativebinom for varying
 values of the false negative rate $p_{fn}$. This illustrates a fundamental link
 between our ability to reliably say an interaction doesn't
-exist---$p_{tn}$---and our sampling effort $O$. Further, within this model there
+exist---$p_{tn}$---and our sampling effort $N$. Further, within this model there
 is no non-zero $p_{fn}$ for which we can ever _prove_ that an interaction does
 not exist.
 

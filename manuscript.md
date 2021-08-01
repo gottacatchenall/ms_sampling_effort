@@ -63,7 +63,7 @@ interaction detection: we assume that every true interaction between two species
 is incorrectly observed as a non-interaction with an independent and fixed
 probability, which we denote $p_{fn}$ and subsequently refer to as the
 False-Negative Rate (FNR). If we observe the same species not-interacting $N$
-times. the probability of a true negative, denoted $p_{tn}$, is given by $p_{tn}
+times the probability of a true negative (denoted $p_{tn}$) is given by $p_{tn}
 = 1 - (p_{fn})^N$. This relation is shown in @fig:negativebinom for varying
 values of the false negative rate $p_{fn}$. This illustrates a fundamental link
 between our ability to reliably say an interaction doesn't

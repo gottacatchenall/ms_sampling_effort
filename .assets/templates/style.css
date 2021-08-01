@@ -111,8 +111,10 @@ h1, h2, h3 {
 }
 blockquote {
     font-style: italic;
+    padding-left: 15px;
+    border-left: 3px solid #404040;
     margin: 1rem auto;
-    font-size: 1.2em;
+    font-size: 0.85em;
     max-width: 500px;
 }
 #refs {

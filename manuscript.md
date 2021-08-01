@@ -2,6 +2,8 @@
 bibliography: [references.bib]
 ---
 
+# Introduction
+
 > It may, therefore, be a subject worthy of curiosity, to enquire what is the
 > nature of that evidence which assures us of any real existence and matter of
 > fact, beyond the present testimony of our senses, or the records of our
@@ -9,7 +11,6 @@ bibliography: [references.bib]
 >
 > David Hume, _An Enquiry Concerning Human Understanding_
 
-# Introduction
 
 Understanding how different species interact is a fundamental question of
 community ecology and an increasing imperative both to mitigate the effects of

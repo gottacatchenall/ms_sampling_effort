@@ -243,9 +243,10 @@ Interestingly, the performance  of the model from @Strydom2021RoaPre changes
 little with many added false-negatives, which is good evidence in favor
 neural-networks as a class of model for interaction detection. Again, similar to
 our caveat in the previous section, this data is _already_ likely to have many
-false-negatives, so the effects of adding more as we do in this illustration,
+false-negatives, so the effects of adding more as we do in this illustration
 might be mitigated because there are already non-simulated false-negatives in
-the original data.
+the original data which impact the models performance, even in the $p_{fn} = 0$
+case.
 
 # Conclusion
 

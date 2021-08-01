@@ -119,12 +119,12 @@ and a true-negative otherwise. @fig:samplingeffort shows this model applied to
 243 food-webs from the Mangal database on the left, and niche model
 [@Williams2000SimRul] across varying levels of species richness on the right.
 All simulations were done with 500 replicates of per unique number of
-observations $O$, and analyses presented here are done in Julia v1.6 [@cite]
-using both EcologicalNetworks.jl v0.5 and Mangal.jl v0.? [@Banville2021ManJl].
-Note that the empirical data also is, due to the phenomena described here, very
-likely to _already_ have many false negatives, which is why we are interested in
-prediction of networks in the first place---we'll revisit this in the final
-section.
+observations $O$, and analyses presented here are done in Julia v1.6
+[@Bezanson2015JulFre] using both EcologicalNetworks.jl v0.5 and Mangal.jl v0.4
+[@Banville2021ManJl]. Note that the empirical data also is, due to the phenomena
+described here, very likely to _already_ have many false negatives, which is why
+we are interested in prediction of networks in the first place---we'll revisit
+this in the final section.
 
 ![False negative rate as a function of sampling effort and network size,
 computed using the method described above. Left panel:  in blue. Right empirical
@@ -133,12 +133,13 @@ network. ](./figures/samplingdist.png){#fig:samplingeffort}
 
 Empirical data on interactions, limited by the practical realities of funding
 and human-work hours, tends to fall on the order on 100s or 1000s of individual
-observations per site [@Nielsen2007EcoNet; TK more cites coming soon], and a
-meta-analysis of ecological network data and sampling effort seems both
-pertinent and necessary. From @fig:samplingeffort it is evident that the number
-of species considered in a study is inseparable from the false-negative rate in
-that study, and this effect should be taken into account when designing samples
-of ecological networks in the future.
+observations per site [@Resasco2021PlaPol, @Schwarz2020TemSca;
+@Nielsen2007EcoNet], although clear aggregation of data has proven difficult to
+find and a meta-analysis of ecological network data and sampling effort seems
+both pertinent and necessary. From @fig:samplingeffort it is evident that the
+number of species considered in a study is inseparable from the false-negative
+rate in that study, and this effect should be taken into account when designing
+samples of ecological networks in the future.
 
 
 ## Positive associations can increase the probability of false-negatives
@@ -265,11 +266,11 @@ What does the future hold for this research? A better understanding of how
 false-negatives impact our analyses and prediction of ecological networks is a
 practical necessity.  In general, building models that explicitly account for
 observation error is a necessary step forward for predictive ecological models
-[@Young2021RecPla; @Johnson2021BayEst].
-Neural networks, like the one used to predict interactions in the above section,
-have been used to reflect hidden states which account for detection error in
-occupancy modeling [@Joseph2020NeuHie], and could be integrated in the
-predictive models of the future.
+[@Young2021RecPla; @Johnson2021BayEst]. Neural networks, like the one used to
+predict interactions in the above section, have been used to reflect hidden
+states which account for detection error in occupancy modeling
+[@Joseph2020NeuHie], and could be integrated in the predictive models of the
+future.
 
 
 # References

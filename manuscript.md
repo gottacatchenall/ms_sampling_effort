@@ -170,10 +170,10 @@ positively correlated, _i.e._ $P(AB) > P(A)P(B)$. In this case, the probability
 of observing a false negative in our naive model from before is $p_{fn} = 1 -
 P(AB)$ which due to the above inequality implies $p_{fn} \geq 1 - P(A)P(B)$
 which indicates increasingly greater probability of a false negative as $P(AB)
-\gg P(A)P(B)$. This should be noted with the caveat that this does not consider
-variation in species abundance in space and time. If positive or negative
-associations between species structure variation in the distribution of $P(AB)$
-across space/time, then the spatial and temporal biases induced by data
+\to P(AB) \gg P(A)P(B)$. This should be noted with the caveat that this does not
+consider variation in species abundance in space and time. If positive or
+negative associations between species structure variation in the distribution of
+$P(AB)$ across space/time, then the spatial and temporal biases induced by data
 collection would further impact the realized false negative rate, as in this
 case the probability of false negative would not be constant for each pair of
 species across sites.

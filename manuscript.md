@@ -178,6 +178,20 @@ collection would further impact the realized false negative rate, as in this
 case the probability of false negative would not be constant for each pair of
 species across sites.
 
+![todo caption](./figures/positiveassociations.png)#{fig:associations}
+
+From @fig:associations, we see that divergence from indepedent probability of observing
+to species cooccuring for a set host-parasite metaweb across XX sites [@Hadfield2014TalTwo]. We see the distribution is weighted toward negative
+interactions, where two species have _lower_ probability of being observed
+together than expected based on their relative frequency alone, presumably
+due to mechanism e.g. niche partitioning which decreases their likelihood of
+being observed together. The distribution of positive associations is different
+looking.
+
+
+What is meant be interaction? Niche partitioning is
+a way in which species interact.
+
 
 # The impact of false-negatives on network analysis and prediction
 

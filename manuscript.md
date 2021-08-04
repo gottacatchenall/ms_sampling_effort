@@ -178,7 +178,8 @@ collection would further impact the realized false negative rate, as in this
 case the probability of false negative would not be constant for each pair of
 species across sites.
 
-![todo caption](./figures/positiveassociations.png)#{fig:associations}
+![todo caption](./figures/positiveassociations.png){#fig:associations}
+
 
 From @fig:associations, we see that divergence from indepedent probability of observing
 to species cooccuring for a set host-parasite metaweb across XX sites [@Hadfield2014TalTwo]. We see the distribution is weighted toward negative

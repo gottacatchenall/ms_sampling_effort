@@ -107,25 +107,25 @@ interacting requires two low probability events, which is observing two species
 of low relative biomass.
 
 For each ecological network $A$ with $S$ species, we simulate abundances from
-$S$ independent draws from a standard-log-normal distribution. For each true
+$N$ independent draws from a standard-log-normal distribution. For each true
 interaction $A_{ij} = 1$ we estimate the probability of observing both species
-$i$ and $j$ at given place and time by simulating a distribution of $O$
-individual observations, where the species observed at the $s=1,2,\dots,O$-th
+$i$ and $j$ at given place and time by simulating a distribution of $$
+individual observations, where the species observed at the $n=1,2,\dots,N$-th
 observation is drawn from the generated log-normal distribution of abundances.
 For each pair of species $(i,j)$, if both $i$ and $j$ are observed within the
-$s$ observations, the interaction is tallyed as a true positive if $A_{ij}=1$
+$n$ observations, the interaction is tallyed as a true positive if $A_{ij}=1$
 and a false positive otherwise. Similarly, if $i$ and $j$ are _not_ observed in
-these $s$ observations, but $A_{ij}=1$, this is counted as a false-negative,
-and a true-negative otherwise. @fig:samplingeffort shows this model applied to
-243 food-webs from the Mangal database on the right, and niche model
-[@Williams2000SimRul] across varying levels of species richness on the left.
-All simulations were done with 500 replicates of per unique number of
-observations $s$, and analyses presented here are done in Julia v1.6
-[@Bezanson2015JulFre] using both EcologicalNetworks.jl v0.5 and Mangal.jl v0.4
-[@Banville2021ManJl]. Note that the empirical data also is, due to the phenomena
-described here, very likely to _already_ have many false negatives, which is why
-we are interested in prediction of networks in the first place---we'll revisit
-this in the final section.
+these $n$ observations, but $A_{ij}=1$, this is counted as a false-negative, and
+a true-negative otherwise. @fig:samplingeffort shows this model applied to 243
+food-webs from the Mangal database on the right, and niche model
+[@Williams2000SimRul] across varying levels of species richness on the left. All
+simulations were done with 500 replicates of per unique number of observations
+$s$, and analyses presented here are done in Julia v1.6 [@Bezanson2015JulFre]
+using both EcologicalNetworks.jl v0.5 and Mangal.jl v0.4 [@Banville2021ManJl].
+Note that the empirical data also is, due to the phenomena described here, very
+likely to _already_ have many false negatives, which is why we are interested in
+prediction of networks in the first place---we'll revisit this in the final
+section.
 
 ![False negative rate (y-axis) as a function of sampling effort (x-axis) and
 network size, computed using the method described above. Left panel: this
@@ -182,7 +182,7 @@ species across sites.
 
 
 From @fig:associations, we see that divergence from indepedent probability of observing
-to species cooccuring for a set host-parasite metaweb across XX sites [@Hadfield2014TalTwo]. 
+to species cooccuring for a set host-parasite metaweb across XX sites [@Hadfield2014TalTwo].
 What is meant be interaction? Niche partitioning is
 a way in which species interact.
 

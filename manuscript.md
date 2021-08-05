@@ -181,10 +181,10 @@ species across sites.
 ![Top: Hadfield, Bottom: NZ Stream Foodwebs](./figures/positiveassociations.png){#fig:associations}
 
 
-From @fig:associations, we see that divergence from indepedent probability of observing
+From @fig:associations, we see that divergence from independent probability of observing
 to species cooccuring for a set host-parasite metaweb across XX sites [@Hadfield2014TalTwo].
 
-
+Canard's neutrally forbidden links between species of very low relative biomass
 
 # The impact of false-negatives on network analysis and prediction
 

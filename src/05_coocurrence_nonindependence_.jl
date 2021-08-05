@@ -165,7 +165,13 @@ A  = nz_stream_foodweb()
 nz_diffs, nz_joints, nz_margs = dothing_unipartite(A)
 
 
-nzhist = histogram(nz_diffs,alpha=0.5, c=:crimson, xrotation=90,legend=:none, fontfamily=fnt, frame=:box)
+nzhist = histogram(nz_diffs,
+    alpha=0.5, 
+    c=:crimson, 
+    xrotation=90,
+    legend=:none, 
+    fontfamily=fnt, 
+    frame=:box)
 ylabel!("frequency", tickfontfamily=fnt)
 xlabel!("P(AB) - P(A)P(B)", tickfontfamily=fnt)
 vline!([0], lw=2, c=:grey8, s=:dash)

@@ -114,18 +114,18 @@ individual observations, where the species observed at the $n=1,2,\dots,N$-th
 observation is drawn from the generated log-normal distribution of abundances.
 For each pair of species $(i,j)$, if both $i$ and $j$ are observed within the
 $n$ observations, the interaction is tallyed as a true positive if $A_{ij}=1$
-and a false positive otherwise. Similarly, if $i$ and $j$ are _not_ observed in
-these $n$ observations, but $A_{ij}=1$, this is counted as a false-negative, and
-a true-negative otherwise. @fig:samplingeffort shows this model applied to 243
-food-webs from the Mangal database on the right, and niche model
-[@Williams2000SimRul] across varying levels of species richness on the left. All
-simulations were done with 500 replicates of per unique number of observations
-$s$, and analyses presented here are done in Julia v1.6 [@Bezanson2015JulFre]
-using both EcologicalNetworks.jl v0.5 and Mangal.jl v0.4 [@Banville2021ManJl].
-Note that the empirical data also is, due to the phenomena described here, very
-likely to _already_ have many false negatives, which is why we are interested in
-prediction of networks in the first place---we'll revisit this in the final
-section.
+and a false positive otherwise. Similarly, if only one of $i$ and $j$ are
+observed---_but not both_---in these $n$ observations, but $A_{ij}=1$, this is
+counted as a false-negative, and a true-negative otherwise. @fig:samplingeffort
+shows this model applied to 243 food-webs from the Mangal database on the right,
+and niche model [@Williams2000SimRul] across varying levels of species richness
+on the left. All simulations were done with 500 replicates of per unique number
+of observations $s$, and analyses presented here are done in Julia v1.6
+[@Bezanson2015JulFre] using both EcologicalNetworks.jl v0.5 and Mangal.jl v0.4
+[@Banville2021ManJl]. Note that the empirical data also is, due to the phenomena
+described here, very likely to _already_ have many false negatives, which is why
+we are interested in prediction of networks in the first place---we'll revisit
+this in the final section.
 
 ![False negative rate (y-axis) as a function of sampling effort (x-axis) and
 network size, computed using the method described above. Left panel: this
@@ -178,7 +178,7 @@ collection would further impact the realized false negative rate, as in this
 case the probability of false negative would not be constant for each pair of
 species across sites.
 
-![todo caption](./figures/positiveassociations.png){#fig:associations}
+![Top: Hadfield, Bottom: NZ Stream Foodwebs](./figures/positiveassociations.png){#fig:associations}
 
 
 From @fig:associations, we see that divergence from indepedent probability of observing

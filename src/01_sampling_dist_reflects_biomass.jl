@@ -41,7 +41,7 @@ function samplingeffort_and_fnr(;
 
                     if ict > 0 && jct > 0
                         tp += 1
-                    else 
+                    elseif ict > 0 || jct > 0
                         fn += 1
                     end
                 end
@@ -58,6 +58,7 @@ function samplingeffort_and_fnr(;
 end 
 
 
+### TODO: sclaing for connectance in these draws based on S-L relationship Macdonald et al 2020
 samp, fnr_mean, fnr_sd = samplingeffort_and_fnr(A=(_->nichemodel(100, 0.1)) ,numreplicates = 300)
 
 fnt = font(20, "Roboto")

@@ -30,18 +30,10 @@ function observe(A::T; falsepositive=0.1, falsenegative=0.3) where {T <: Unipart
     return UnipartiteNetwork(mat)
 end
 
-function generate(truenet; richness=30, connectance=0.3, forbidden=nothing, kw...)
+function generate(truenet; kw...)
     O = observe(truenet; kw...)
 
     return truenet,O
-end
-
-function meanindeg(net) 
-    mean(values(degree_in(net)))
-end 
-
-function meanoutdeg(net) 
-    mean(values(degree_out(net)))
 end
 
 function meandegcentrallity(net) 
@@ -53,7 +45,6 @@ function entropy(net)
 end
 
 function samplenetworks(A, fpr, fnr, property; numreplicates = 500)
-
 
     realstat = zeros(numreplicates)
     obstat = zeros(numreplicates)
@@ -69,8 +60,6 @@ function samplenetworks(A, fpr, fnr, property; numreplicates = 500)
     return error
 end
 
-
-real, obs = generate()
 
 function get_error(truenet, fp, property)
 

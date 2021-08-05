@@ -183,8 +183,7 @@ species across sites.
 
 From @fig:associations, we see that divergence from indepedent probability of observing
 to species cooccuring for a set host-parasite metaweb across XX sites [@Hadfield2014TalTwo].
-What is meant be interaction? Niche partitioning is
-a way in which species interact.
+
 
 
 # The impact of false-negatives on network analysis and prediction

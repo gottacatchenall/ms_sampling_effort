@@ -70,16 +70,25 @@ diffs, joints, margs = dothing_bipartite(B, M.B, M.T)
 
 fnt = font(20, "Roboto")
 
-hadfieldhist = histogram(diffs,alpha=0.5, c=:mediumpurple4, xrotation=90,legend=:none, fontfamily=fnt, xlim=(-.00025, 0.0007), xticks=(-.00025:0.00025:0.0007),frame=:box)
+hadfieldhist = histogram(diffs,alpha=0.5,c=:mediumpurple4, xrotation=90,legend=:none, fontfamily=fnt, xlim=(-.00025, 0.0007), xticks=(-.00025:0.00025:0.0007),frame=:box)
 ylabel!("frequency", tickfontfamily=fnt)
 xlabel!("P(AB) - P(A)P(B)", tickfontfamily=fnt)
 vline!([0], lw=2, c=:grey8, s=:dash)
 
 
-hadfieldscat = scatter(margs, joints,fontfmaily=fnt,alpha=0.1, ms=4, msw=2, mc=:mediumpurple4,msc=:mediumpurple4,legend=:none, xlim=(0,0.0015),ylim=(0,0.0015), aspectratio=1.0, frame=:box)
+hadfieldscat = scatter(margs, joints,
+    fontfmaily=fnt,
+    ma=0.1,
+    ms=3, 
+    msw=2, 
+    mc=:white,
+    msc=:mediumpurple4,
+    legend=:none, 
+    xlims = (0,0.002),
+    ylims = (0,0.002),
+    aspectratio=1.0, 
+    frame=:box)
 plot!([0,1], [0,1], ls=:dash, la=9, lw=2, lc=:gray8)
-xaxis!(xlims=(min(margs...), max(margs...)))
-yaxis!(ylims=(min(joints...), max(joints...)))
 ylabel!("P(AB)", tickfontfamily=fnt)
 xlabel!("P(A)P(B)", tickfontfamily=fnt)
 
@@ -153,17 +162,26 @@ end
 
 
 A  = nz_stream_foodweb()
-diffs, joints, margs = dothing_unipartite(A)
+nz_diffs, nz_joints, nz_margs = dothing_unipartite(A)
 
 
-nzhist = histogram(diffs,alpha=0.5, c=:teal, xrotation=90,legend=:none, fontfamily=fnt, frame=:box)
+nzhist = histogram(nz_diffs,alpha=0.5, c=:crimson, xrotation=90,legend=:none, fontfamily=fnt, frame=:box)
 ylabel!("frequency", tickfontfamily=fnt)
 xlabel!("P(AB) - P(A)P(B)", tickfontfamily=fnt)
 vline!([0], lw=2, c=:grey8, s=:dash)
 
-nzscat = scatter(margs, joints,fontfmaily=fnt, size=(400,400),alpha=0.1, ms=4, msw=2, mc=:teal,msc=:teal,legend=:none,frame=:box)
-xaxis!(xlims=(min(margs...), max(margs...)))
-yaxis!(ylims=(min(joints...), max(joints...)))
+nzscat = scatter(nz_margs, nz_joints,
+    fontfmaily=fnt, 
+    size=(400,400),
+    xlims = (0,0.0002),
+    ylims = (0,0.0002),
+    ma=0.1,
+    ms=3.5, 
+    msw=1.25, 
+    mc=:white,
+    msc=:crimson,
+    legend=:none,
+    frame=:box)
 plot!([0,1], [0,1], ls=:dash, la=9, lw=2, lc=:gray8)
 ylabel!("P(AB)", tickfontfamily=fnt)
 xlabel!("P(A)P(B)", tickfontfamily=fnt)

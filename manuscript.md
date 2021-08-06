@@ -136,20 +136,26 @@ which each the mean false negative rate at each observation-step is computed.
 Means denoted with points, with $1\sigma$ in the first shade and $2\sigma$ in
 the second Right panel: empirical food webs from Mangal database in teal,
 applied to the same process as the left The outlier on panel B is a 714 species
-food-web. ](./figures/samplingdist.png){#fig:samplingeffort}
+food-web. ](./figures/samplingdist.png){#fig:totalobs}
 
 Empirical data on interactions, limited by the practical realities of funding
 and human-work hours, tend to fall on the order on 100s or 1000s observations of
 individuals per site [@Resasco2021PlaPol, @Schwarz2020TemSca;
 @Nielsen2007EcoNet], although clear aggregation of this data has proven
 difficult to find and a meta-analysis of network data and sampling effort seems
-both pertinent and necessary. Further, from @fig:samplingeffort it is evident
+both pertinent and necessary. Further, from @fig:totalobs it is evident
 that the number of species considered in a study is inseparable from the
 false-negative rate in that study, and this effect should be taken into account
 when designing samples of ecological networks in the future.
 
+
+![todo](./figures/samplingeffort.png){#fig:samplingeffort}
+
+
+
 Note on due diligence of testing the case where the abundance distribution is
-derived from Yodzis-Innes $Z^(T_i-1)$ where $T_i$ is the trophic level of species $i$. It turns out the same.
+derived from Yodzis-Innes $Z^(T_i-1)$ where $T_i$ is the trophic level of
+species $i$. It turns out the same.
 
 ## Positive associations can increase the probability of false-negatives
 

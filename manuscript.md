@@ -148,6 +148,8 @@ that the number of species considered in a study is inseparable from the
 false-negative rate in that study, and this effect should be taken into account
 when designing samples of ecological networks in the future.
 
+Note on due diligence of testing the case where the abundance distribution is
+derived from Yodzis-Innes $Z^(T_i-1)$ where $T_i$ is the trophic level of species $i$. It turns out the same.
 
 ## Positive associations can increase the probability of false-negatives
 

@@ -8,9 +8,7 @@ using StatsBase
 function samplingeffort_and_fnr(; 
     A = nichemodel(30, 0.1),
     numreplicates = 50,
-    samplingeffort = vcat(1,25, 50:50:1500),
-    λ=nothing
-)
+    samplingeffort = vcat(1,25, 50:50:1500))
 
     sznet = typeof(A) <: Function ? A(1) : A             
     @show sznet
@@ -26,6 +24,9 @@ function samplingeffort_and_fnr(;
 
             metaweb = typeof(A) <: Function ? A(1) : A             
 
+
+            #### TODO: alternatively sraw this from Z^(trophiclevl-1) as in yodzis
+            ####
             abundances = rand(LogNormal(),S)
             abundance_dist = abundances ./ sum(abundances)
 

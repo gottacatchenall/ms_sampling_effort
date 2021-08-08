@@ -141,13 +141,13 @@ cs = ColorScheme(range(colorant"dodgerblue", colorant"cyan4", length=3))
 
 
 function makefocalspeciesfig(;
-    relativeabundance = vcat(0.001:0.0025:0.01, 0:0.01:0.2),
+    relativeabundance = [10^i for i in -7:0.25:-2],
     numobsfocal = [1, 10, 100, 500, 1000]
 )
 
     thiscs = ColorSchemes.tableau_sunset_sunrise
 
-    focalplt = plot(size=(500,500),dpi=300,legend=:outerright, frame=:box, fontfamily=fnt,margin=5mm, legendtitle="Goal # obs. of focal species")
+    focalplt = plot(size=(700,500),dpi=300,legend=:outerright, frame=:box, fontfamily=fnt,margin=5mm, legendtitle="Goal # obs. of focal species")
     yaxis!(focalplt, :log10, ylim=(1, 10^6))
     ptsettings =  (mc=:white, msw=2, ms=5, lw=2.5)
 
@@ -157,7 +157,7 @@ function makefocalspeciesfig(;
 
         scatter!(focalplt, relativeabundance, obs, label=numobs, msc=thiscs[i]; ptsettings...)
     end
-    xaxis!(focalplt,"Relative abundance of focal species", xlim=(0,0.2), xticks=0:0.02:0.2)
+    xaxis!(focalplt, "Relative abundance of focal species")
     yaxis!(focalplt,:log10, "Expected needed observations of all species", yticks=[10^i for i in 0:6])
     title!(focalplt,"c", titleloc=:left)
     focalplt
@@ -169,11 +169,15 @@ genplt = makegeneratedplt(200)
 empplt = makemangalplt(200)
 focalplot = makefocalspeciesfig()
 
+emp = plot(yaxis=:none, ticks=:none, grid=:none, frame=:none)
 
 
-l = @layout [
-   [ b{0.5w} c{0.5w} ] ;  a{0.5h}
-]
-plot(genplt, empplt, focalplot, layout=l, margin=5mm, dpi=300, size=(1000,900))
+
+top = plot(genplt, empplt)
+
+l = @layout [a; b{0.9w} c{0.1w}]
+plot(top, focalplot, emp, layout=l, margin=5mm, dpi=300, size=(900,900))
+
+
 
 savefig("figures/combinedfig2.png")

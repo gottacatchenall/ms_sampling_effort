@@ -81,7 +81,7 @@ how many times it has been sampled as a non-interaction (x-axis). Each color
 reflects a different value of $p_{fn}$, the false-negative rate (FNR). This is
 effectively the cdf of the negative-binomial distribution with $r=1$. It's the
 birthday paradox, but backwards.
-](./figures/negativebinom.png){#fig:negativebinom}
+](./figures/negativebinomial.png){#fig:negativebinom}
 
 From @fig:negativebinom (and general intuition) it is clear that the more times
 we see two species _occurring_, but ***not*** interacting, the more likely the

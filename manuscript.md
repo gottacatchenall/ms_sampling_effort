@@ -135,16 +135,18 @@ described here, very likely to _already_ have many false negatives, which is why
 we are interested in prediction of networks in the first place---we'll revisit
 this in the final section.
 
-![False negative rate (y-axis) as a function of sampling effort (x-axis) and
-network size, computed using the method described above. Left panel: this
-relation for 500 independent draws from the niche model [@Williams2000SimRul] at
+![A and B: False negative rate (y-axis) as a function of sampling effort (x-axis) and
+network size, computed using the method described above. For a this relation for 500 independent draws from the niche model [@Williams2000SimRul] at
 varying levels of species richness (colors) with connectance $C=0.1$. For each
 draw from the niche model, 200 sets of 1500 observations are simulated, for
 which each the mean false negative rate at each observation-step is computed.
 Means denoted with points, with $1\sigma$ in the first shade and $2\sigma$ in
-the second Right panel: empirical food webs from Mangal database in teal,
-applied to the same process as the left The outlier on panel B is a 714 species
-food-web. ](./figures/samplingdist.png){#fig:totalobs}
+the second. B: empirical food webs from Mangal database in teal,
+applied to the same process as the A. The outlier on panel B is a 714 species
+food-web. C) The expected needed observations of all individuals of all species (y-axis)
+required to obtain a goal number of observations (colors) of a particular
+species, and a function of the relative abundance of that focal species
+(x-axis) ](./figures/combinedfig2.png){#fig:totalobs}
 
 Empirical data on interactions, limited by the practical realities of funding
 and human-work hours, tend to fall on the order on 100s or 1000s observations of
@@ -160,13 +162,6 @@ future.
 
 What is the context of this sampling effort? Are you trying to find a particular
 species $A$? @fig:samplingeffort
-
-![The expected needed observations of all individuals of all species (y-axis)
-required to obtain a goal number of observations (colors) of a particular
-species, and a function of the relative abundance of that focal species
-(x-axis)](./figures/samplingeffort.png){#fig:samplingeffort}
-
-
 
 Note on due diligence of testing the case where the abundance distribution is
 derived from Yodzis-Innes $Z^(T_i-1)$ where $T_i$ is the trophic level of

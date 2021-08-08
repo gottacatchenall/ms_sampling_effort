@@ -86,24 +86,6 @@ include("get_mangal_data.jl")
 fw, para, mutu, misc = mangaldata()
 
 
-samp, generated250_fnr_mean, generated250_fnr_sd = samplingeffort_and_fnr(A=(_->nichemodel(250, 0.1)),numreplicates = 500)
-samp, generated100_fnr_mean, generated100_fnr_sd = samplingeffort_and_fnr(A=(_->nichemodel(100, 0.1)),numreplicates = 500)
-samp, generated50_fnr_mean, generated50_fnr_sd = samplingeffort_and_fnr(A=(_->nichemodel(50, 0.1)), numreplicates = 500)
-samp, generated25_fnr_mean, generated25_fnr_sd = samplingeffort_and_fnr(A=(_->nichemodel(25, 0.1)),numreplicates = 500)
-
-
-plot(dpi=300, fontfamily=fnt, frame=:box, legendtitle="species")
-plot!(samp, generated25_fnr_mean, ribbon=generated25_fnr_sd, label="25", fa=0.3)
-plot!(samp, generated50_fnr_mean, ribbon=generated50_fnr_sd, label="50", fa=0.3)
-plot!(samp, generated100_fnr_mean, ribbon=generated100_fnr_sd, label="100", fa=0.3)
-plot!(samp, generated250_fnr_mean, ribbon=generated250_fnr_sd, label="250", fa=0.3)
-yaxis!("false negative rate")
-xaxis!("number of individual observations", xticks=0:200:1500, xlim=(0,1500))
-
-
-
-
-
 samps_per_fw = []
 means_per_fw = []
 
@@ -112,6 +94,16 @@ means_per_fw = []
     push!(samps_per_fw, samp)
     push!(means_per_fw, fnr_mean)
 end
+
+
+samp, generated250_fnr_mean, generated250_fnr_sd = samplingeffort_and_fnr(A=(_->nichemodel(250, 0.1)),numreplicates = 500)
+samp, generated100_fnr_mean, generated100_fnr_sd = samplingeffort_and_fnr(A=(_->nichemodel(100, 0.1)),numreplicates = 500)
+samp, generated50_fnr_mean, generated50_fnr_sd = samplingeffort_and_fnr(A=(_->nichemodel(50, 0.1)), numreplicates = 500)
+samp, generated25_fnr_mean, generated25_fnr_sd = samplingeffort_and_fnr(A=(_->nichemodel(25, 0.1)),numreplicates = 500)
+
+
+
+
 
 
 
@@ -123,7 +115,6 @@ cs1 = ColorScheme(range(colorant"dodgerblue", colorant"cyan4", length=length(ric
 empplt=plot(samps_per_fw,means,dpi=300, fontfamily=fnt, la=0.3,frame=:box, palette=cs1, legend=:none, colorbar=:right, size=(500,500))
 yaxis!(empplt, "false negative rate", ylim=(0,1))
 xaxis!(empplt, "number of individual observations", xticks=0:200:1500, xlim=(0,1500))
-
 
 
 fnt = font(20, "Roboto")

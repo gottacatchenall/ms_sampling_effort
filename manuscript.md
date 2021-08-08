@@ -78,7 +78,8 @@ not exist.
 
 ![The probability an observed interaction is a "true negative" (y-axis) given
 how many times it has been sampled as a non-interaction (x-axis). Each color
-reflects a different value of $p_{fn}$, the false-negative rate (FNR). It's the
+reflects a different value of $p_{fn}$, the false-negative rate (FNR). This is
+effectively the cdf of the negative-binomial distribution with $r=1$. It's the
 birthday paradox, but backwards.
 ](./figures/negativebinom.png){#fig:negativebinom}
 

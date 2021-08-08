@@ -58,13 +58,13 @@ end
 
 
 connectance_err = errormatrix(connectance)
-heatmap(connectance_err)
+contourf(connectance_err)
 xaxis!("FNR")
 yaxis!("richness")
 
 
 centr_err = errormatrix(x-> mean(values(centrality_degree(x))))
-heatmap(centr_err)
+contourf(centr_err)
 
 spectr_err = errormatrix(ρ)
 heatmap(centr_err)

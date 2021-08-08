@@ -21,7 +21,7 @@ relabd, req1000 = fig(1000)
 cs = ColorSchemes.tableau_sunset_sunrise
 
 using Measures
-ptsettings =  (mc=:white, msw=2.5, ms=5, lw=2.5)
+ptsettings =  (mc=:white, msw=2, ms=5, lw=2.5)
 fnt = font(20, "Roboto")
 plot(frame=:box, fontfamily=fnt, legendtitlefontsize=9,size=(500,500), dpi=300,legend=:topright, margin=5mm, legendtitle="Goal # obs. of focal species")
 

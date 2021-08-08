@@ -15,7 +15,7 @@ bibliography: [references.bib]
 Understanding how different species interact is a fundamental question of
 community ecology and an increasing imperative both to mitigate the effects of
 human activity on Earth's biodiversity [@Makiola2020KeyQue; @Jordano2016ChaEco]
-and to predict potential spillover of zoonotic disease [@Becker2020PreWil]. Over
+and to predict potential spillover of zoonotic disease [@Becker2021OptPre]. Over
 the past decade biodiversity data has become increasingly available due to
 improved sensing technology [@Stephenson2020TecAdv] and increased adoption of
 open data sharing practices [@Kenall2014OpeFut]. Modern remote-sensing has
@@ -41,6 +41,11 @@ is noisy and likely contains many _false-negatives_, where there is not an
 observation of two species interacting even though they actually interact in
 some capacity [@Young2021RecPla; @Stock2017LinFil].
 
+
+More on history here...
+
+Understanding how the process of sampling induces biases in data can and should
+be used to aid in the design of surveys of species diversity [@Carlson2020WhaWou].
 Here we seek to understand how false negatives in ecological interaction data
 impact the analysis and prediction of ecological networks, and also to
 understand how a better understanding of the relationship between sampling
@@ -48,7 +53,7 @@ effort and likelihood of a "true negative" can guide how we design surveys of
 ecological interactions [@Jordano2016SamNet]. The questions we pose and attempt
 to answer are: 1) How many times do you have to observe a non-interaction
 between two species to be confident in saying that is a true negative? 2) How
-"wrong" are the measurements of network structure modularity as a function of
+"wrong" are the measurements of network structure as a function of
 false-negative probability? and lastly 3) How do false-negatives impact our
 ability to make reliable predictions about interactions? We conclude by
 suggesting use of null models like those presented here as a tool for guiding
@@ -92,19 +97,21 @@ number of observations sufficient to say an interaction doesn't exist.
 
 In this section we demonstrate the realized false-negative rate (FNR) changes
 drastically with sampling effort, largely due to the intrinsic variation of
-abundances within a community. We do this by simulating the process of
-observation of species interactions, applied both to 243 empirical food webs
-from the Mangal database [@Banville2021ManJl] as well as random food-webs
-generated using the niche model [@Williams2000SimRul]. Our neutral model of
-observation assumes each observed species is drawn from the distribution of
-those species' abundances at that place and time. Although there is no shortage
-of debate as to the processes the govern the general shape of this distribution,
-across communities the abundance distribution can be reasonably-well described
-by a log-normal distribution [@Volkov2003NeuThe]. Controversies around theory of
-species abundance distributions aside, the practical consequence of skewed
-distribution of biomass in communities is seeing two low biomass species
-interacting requires two low probability events, which is observing two species
-of low relative biomass.
+abundances within a community.
+
+We do this by simulating the process of observation of species interactions,
+applied both to 243 empirical food webs from the Mangal database
+[@Banville2021ManJl] as well as random food-webs generated using the niche model
+[@Williams2000SimRul]. Our neutral model of observation assumes each observed
+species is drawn from the distribution of those species' abundances at that
+place and time. Although there is no shortage of debate as to the processes the
+govern the general shape of this distribution, across communities the abundance
+distribution can be reasonably-well described by a log-normal distribution
+[@Volkov2003NeuThe]. Controversies around theory of species abundance
+distributions aside, the practical consequence of skewed distribution of biomass
+in communities is seeing two low biomass species interacting requires two low
+probability events, which is observing two species of low relative biomass. This
+"neutrally forbidden link" [@Canard2012EmeStr]
 
 For each ecological network $A$ with $S$ species, we simulate abundances from
 $N$ independent draws from a standard-log-normal distribution. For each true
@@ -143,13 +150,20 @@ and human-work hours, tend to fall on the order on 100s or 1000s observations of
 individuals per site [@Resasco2021PlaPol, @Schwarz2020TemSca;
 @Nielsen2007EcoNet], although clear aggregation of this data has proven
 difficult to find and a meta-analysis of network data and sampling effort seems
-both pertinent and necessary. Further, from @fig:totalobs it is evident
-that the number of species considered in a study is inseparable from the
-false-negative rate in that study, and this effect should be taken into account
-when designing samples of ecological networks in the future.
+both pertinent and necessary, in addition to the effects of aggregation of
+interactions across taxonomic scales [@Giacomuzzo2021FooWeb]. Further, from
+@fig:totalobs it is evident that the number of species considered in a study is
+inseparable from the false-negative rate in that study, and this effect should
+be taken into account when designing samples of ecological networks in the
+future.
 
+What is the context of this sampling effort? Are you trying to find a particular
+species $A$? @fig:samplingeffort
 
-![todo](./figures/samplingeffort.png){#fig:samplingeffort}
+![The expected needed observations of all individuals of all species (y-axis)
+required to obtain a goal number of observations (colors) of a particular
+species, and a function of the relative abundance of that focal species
+(x-axis)](./figures/samplingeffort.png){#fig:samplingeffort}
 
 
 
@@ -161,14 +175,14 @@ species $i$. It turns out the same.
 
 This model above doesn't consider the possibility that there are positive or
 negative associations which shift the realized probability of observing two
-species together as a consequence of their interaction. However, here we
-demonstrate that the probability of observing a false negative can be _higher_
-if there is some positive association between occurrence of species $A$ and $B$.
-If we denote the probability that we observe an existing interaction between $A$
-and $B$ as $P(AB)$, and if there is _no_ association between the marginal
-probabilities of observing $A$ and observing $B$, denoted $P(A)$ and $P(B)$
-respectfully, then the probability of observing the interaction $P(AB) =
-P(A)P(B)$.
+species together as a consequence of their interaction [@Cazelles2016TheSpe].
+However, here we demonstrate that the probability of observing a false negative
+can be _higher_ if there is some positive association between occurrence of
+species $A$ and $B$. If we denote the probability that we observe an existing
+interaction between $A$ and $B$ as $P(AB)$, and if there is _no_ association
+between the marginal probabilities of observing $A$ and observing $B$, denoted
+$P(A)$ and $P(B)$ respectivelly, then the probability of observing the
+interaction $P(AB) = P(A)P(B)$.
 
 In the other case where there _is_ some positive strength of association between
 observing both $A$ and $B$ because this interaction is "important" for each
@@ -186,7 +200,15 @@ collection would further impact the realized false negative rate, as in this
 case the probability of false negative would not be constant for each pair of
 species across sites.
 
-![Top: Hadfield, Bottom: NZ Stream Foodwebs](./figures/positiveassociations.png){#fig:associations}
+To test this in empirical data, we use two datasets: a set of host-parasite
+interactions sampled across 51 sites [@Hadfield2014TalTwo] and a set of
+food-webs collected from New Zealand freshwater streams over many years
+[@thomspon]. We simply compute the empirical marginal distribution and compare
+the product of the marginals to the true joint value, @fig:associations
+
+
+![Top: Hadfield, Bottom: NZ Stream Foodwebs. Effectively a version of @Cazelles2016TheSpe
+figure 1 panel A.](./figures/positiveassociations.png){#fig:associations}
 
 
 From @fig:associations, we see that divergence from independent probability of observing

@@ -148,7 +148,7 @@ function makefocalspeciesfig(;
     thiscs = ColorSchemes.tableau_sunset_sunrise
 
     focalplt = plot(size=(700,500),dpi=300,legend=:outerright, frame=:box, fontfamily=fnt,margin=5mm, legendtitle="Goal # obs. of focal species")
-    yaxis!(focalplt, :log10, ylim=(1, 10^6))
+    yaxis!(focalplt, :log10, ylim=(10, 10^6))
     ptsettings =  (mc=:white, msw=2, ms=5, lw=2.5)
 
     for (i,numobs) in enumerate(numobsfocal)

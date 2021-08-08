@@ -203,12 +203,13 @@ food-webs collected from New Zealand freshwater streams over many years
 the product of the marginals to the true joint value, @fig:associations
 
 
-![Top: Hadfield, Bottom: NZ Stream Foodwebs. Effectively a version of @Cazelles2016TheSpe
-figure 1 panel A.](./figures/positiveassociations.png){#fig:associations}
+![Top: Hadfield, Bottom: NZ Stream Foodwebs. Effectively a version of
+@Cazelles2016TheSpe figure 1 panel
+A.](./figures/positiveassociations.png){#fig:associations}
 
-
-From @fig:associations, we see that divergence from independent probability of observing
-to species cooccuring for a set host-parasite metaweb across XX sites [@Hadfield2014TalTwo].
+From @fig:associations, we see that divergence from independent probability of
+observing to species cooccuring for a set host-parasite metaweb across XX sites
+[@Hadfield2014TalTwo].
 
 Canard's neutrally forbidden links between species of very low relative biomass
 

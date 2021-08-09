@@ -228,7 +228,7 @@ $p_{fn}$. Each replicate uses a random food-web simulated using the niche model
 ![The mean-squared error (y-axis) of various network properties (different
 panels) across various simulated false-negative rates (x-axis). Means denoted
 with points, with $1\sigma$ in the first shade and $2\sigma$ in the
-second.](./figures/properties_error.png){#fig:properties}
+second.](./figures/props.png){#fig:properties}
 
 The primary information to be gained from @fig:properties is that properties
 vary in their response to number of false negatives in a sample---spectral

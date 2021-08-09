@@ -4,27 +4,18 @@ bibliography: [references.bib]
 
 # Introduction
 
-> It may, therefore, be a subject worthy of curiosity, to enquire what is the
-> nature of that evidence which assures us of any real existence and matter of
-> fact, beyond the present testimony of our senses, or the records of our
-> memory.
->
-> David Hume, _An Enquiry Concerning Human Understanding_
-
-
-Understanding how different species interact is a fundamental question of
-community ecology and an increasing imperative both to mitigate the effects of
-human activity on Earth's biodiversity [@Makiola2020KeyQue; @Jordano2016ChaEco]
-and to predict potential spillover of zoonotic disease [@Becker2021OptPre]. Over
-the past decade biodiversity data has become increasingly available due to
-improved sensing technology [@Stephenson2020TecAdv] and increased adoption of
-open data sharing practices [@Kenall2014OpeFut]. Modern remote-sensing has
-enabled collection of data on spatial scales and resolutions previously
-unimaginable, and in-situ sensors in the form of both camera-traps and
-environmental sensors have substantially increased the amount of in-situ data
-available to ecologists. Yet widespread data about species interactions has
-remained illusive as detection of an interaction between two species often
-requires human sampling, as although remote methods can be used to detect
+Understanding how different species interact is both a fundamental question of
+community ecology and an increasing imperative to mitigate the effects of human
+activity on Earth's biodiversity [@Makiola2020KeyQue; @Jordano2016ChaEco] and to
+predict potential spillover of zoonotic disease [@Becker2021OptPre]. Over the
+past decade biodiversity data has become increasingly available due to improved
+sensing technology [@Stephenson2020TecAdv] and increased adoption of open data
+sharing practices [@Kenall2014OpeFut]. Modern remote-sensing has enabled
+collection of data on spatial scales previously unimaginable, and both
+camera-traps and in-situ sensors substantially increased the temporal resolution
+amount of data available to ecologists. Yet widespread data about species
+interactions has remained illusive as detection of an interaction between two
+species often requires human sampling, as though remote methods can detect
 cooccurrence, this itself is not necessarily indicative of interaction
 [@Blanchet2020CooNot]. This limitation induces constraints on sampling of
 interactions based on the spatial and temporal scales feasible to human
@@ -32,17 +23,20 @@ sampling.
 
 These sampling constraints go on to bias species interaction data in several
 ways: we only observe a small fraction of the variation of species interactions
-in space and time, sampling of species interactions is geographically biased
-toward the usual suspects [@Poisot2021GloKno], and these observations themselves
-are reflect the distribution of abundance within communities
-[@Poisot2015SpeWhy]. These biases have practical consequences for answering
-questions about species interactions [@deAguiar2019RevBia]. The data we collect
-is noisy and likely contains many _false-negatives_, where there is not an
-observation of two species interacting even though they actually interact in
-some capacity [@Young2021RecPla; @Stock2017LinFil].
-
+in space and time, this sampling is geographically biased toward the usual
+suspects [@Poisot2021GloKno], and these observation reflect the distribution
+of abundance within communities [@Poisot2015SpeWhy]. These biases have practical
+consequences for answering questions about species interactions
+[@deAguiar2019RevBia]. The data we collect is noisy and likely contains many
+_false-negatives_, where there is not an observation of two species interacting
+even though they actually interact in some capacity
 
 More on history here...
+
+As a result development of models to deal with the reality of interaction
+data [@Young2021RecPla; @Stock2017LinFil].
+
+
 
 Understanding how the process of sampling induces biases in data can and should
 be used to aid in the design of surveys of species diversity [@Carlson2020WhaWou].
@@ -92,7 +86,7 @@ consider that species are not observed independent of their relative abundance.
 In the next section we demonstrate the distribution of biomass in ecosystems can
 lead to high realized values of $p_{fn}$ for species with low relative
 abundance. We suggest using neutral models of species abundances to design the
-number of observations sufficient to say an interaction doesn't exist.
+number of observations sufficient to say an interaction doesn't exist [@Canard2012EmeStr].
 
 ## False-negatives as a product of relative abundance
 
@@ -135,18 +129,19 @@ described here, very likely to _already_ have many false negatives, which is why
 we are interested in prediction of networks in the first place---we'll revisit
 this in the final section.
 
-![A and B: False negative rate (y-axis) as a function of sampling effort (x-axis) and
-network size, computed using the method described above. For a this relation for 500 independent draws from the niche model [@Williams2000SimRul] at
+![A and B: False negative rate (y-axis) as a function of sampling effort
+(x-axis) and network size, computed using the method described above. For a this
+relation for 500 independent draws from the niche model [@Williams2000SimRul] at
 varying levels of species richness (colors) with connectance $C=0.1$. For each
 draw from the niche model, 200 sets of 1500 observations are simulated, for
 which each the mean false negative rate at each observation-step is computed.
 Means denoted with points, with $1\sigma$ in the first shade and $2\sigma$ in
-the second. B: empirical food webs from Mangal database in teal,
-applied to the same process as the A. The outlier on panel B is a 714 species
-food-web. C) The expected needed observations of all individuals of all species (y-axis)
-required to obtain a goal number of observations (colors) of a particular
-species, and a function of the relative abundance of that focal species
-(x-axis) ](./figures/combinedfig2.png){#fig:totalobs}
+the second. B: empirical food webs from Mangal database in teal, applied to the
+same process as the A. The outlier on panel B is a 714 species food-web. C) The
+expected needed observations of all individuals of all species (y-axis) required
+to obtain a goal number of observations (colors) of a particular species, and a
+function of the relative abundance of that focal species (x-axis)
+](./figures/combinedfig2.png){#fig:totalobs}
 
 Empirical data on interactions, limited by the practical realities of funding
 and human-work hours, tend to fall on the order on 100s or 1000s observations of

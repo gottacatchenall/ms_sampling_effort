@@ -176,7 +176,7 @@ emp = plot(yaxis=:none, ticks=:none, grid=:none, frame=:none)
 top = plot(genplt, empplt)
 
 l = @layout [a; b]
-plot(top, focalplot, emp, layout=l, margin=5mm, dpi=300, size=(900,900))
+plot(top, focalplot, layout=l, margin=5mm, dpi=300, size=(900,900))
 
 
 

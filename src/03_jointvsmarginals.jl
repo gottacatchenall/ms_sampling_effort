@@ -120,13 +120,26 @@ ids = map(i -> i.ID, filter(i -> contains(i.Reference, "Hadfield"), web_of_life(
 Bs = convert.(BipartiteNetwork, web_of_life.(ids))
 hadfield_diffs, hadfield_joints, hadfield_margs = makejointmargplots(Bs)
 
+using GLM
+
+had_y = Float64.(hadfield_joints)
+had_x = Float64.(hadfield_margs)
+hadregression = lm(@formula(y~1+x), DataFrame(y=had_y, x = had_x))
+had_α, had_β = coef(hadregression)
+
+nz_y, nz_x = Float64.(nz_joints), Float64.(nz_margs)
+nzregression = lm(@formula(y~1+x), DataFrame(y=nz_y, x = nz_x))
+nz_α, nz_β, nz_σ = coef(nzregression)..., stderror(nzregression)[2]
+
+
 
 fnt = font(20 , "Roboto")
-
 hadfieldhist = histogram(hadfield_diffs,alpha=0.5,c=:dodgerblue4, xrotation=90,legend=:none, fontfamily=fnt, xlim=(-.00025, 0.0007), xticks=(-.00025:0.00025:0.0007),frame=:box)
 ylabel!("frequency", tickfontfamily=fnt)
 xlabel!("P(AB) - P(A)P(B)", tickfontfamily=fnt)
 vline!([0], lw=2, c=:grey8, s=:dash)
+
+
 hadfieldscat = scatter(hadfield_margs, hadfield_joints,
     fontfmaily=fnt,
     ma=0.05,
@@ -138,7 +151,12 @@ hadfieldscat = scatter(hadfield_margs, hadfield_joints,
     ylims = (0.0,0.0015),
     aspectratio=1.0, 
     frame=:box)
-plot!([0,1], [0,1], ls=:dash, la=9, lw=2, lc=:gray8)
+
+had_line_x, had_line_y = [i for i in 0:0.01:0.02], [had_α + i*had_β for i in 0:0.01:0.02]
+
+plot!(had_line_x, had_line_y, lc=:dodgerblue4, lw=2, la=0.2)
+
+plot!([0,1], [0,1], ls=:dash, la=9, lw=4, lc=:gray8)
 ylabel!("P(AB)", tickfontfamily=fnt)
 xlabel!("P(A)P(B)", tickfontfamily=fnt)
 
@@ -160,17 +178,27 @@ nzscat = scatter(nz_margs, nz_joints,
     size=(400,400),
     xlims = (0,0.0002),
     ylims = (0,0.0002),
-    ma=0.05,
+    ma=0.02,
     ms=5, 
-    msw=0, 
+    msw=1,
     mc=:mediumpurple4,
-    msc=:mediumpurple4,
+    msc=:gray40,
     legend=:none,
     frame=:box)
-plot!([0,1], [0,1], ls=:dash, la=9, lw=2, lc=:gray8)
+
+
+nz_line_x, nz_line_y = [i for i in  0:0.00001:0.0001], [nz_α + i*nz_β for i in  0:0.00001:0.0001]
+nz_line_σ = nz_line_y .- [nz_α + i*(nz_β-nz_σ) for i in 0:0.00001:0.0001]
+
+
+plot!(nz_line_x, nz_line_y, ribbon=nz_line_σ, lw=3, lc=:mediumpurple4, la=0.4)
+
+plot!([0,1], [0,1], ls=:dash, la=9, lw=3, lc=:gray8)
 ylabel!("P(AB)", tickfontfamily=fnt)
 xlabel!("P(A)P(B)", tickfontfamily=fnt)
 
 
 plot(hadfieldscat, hadfieldhist, nzscat, nzhist, layout = grid(2,2), margin=10mm, size=(800,800), dpi=300)
 
+
+savefig("positiveassociations.png")

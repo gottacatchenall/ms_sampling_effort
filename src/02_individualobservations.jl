@@ -89,6 +89,7 @@ function makegeneratedplt(numreplicates)
         dpi=300, 
         frame=:box, 
         fontfamily=fnt,
+        legend=:topright,
         ylims=(0,1), xlims=(0,1500))
     plot!(generatedplt, samp, mean50, label="", c=cs[1], ribbon=sd50, fa=0.3)
     plot!(generatedplt, samp, mean50, label="",  c=cs[1], ribbon=2sd50, fa=0.1)
@@ -99,9 +100,9 @@ function makegeneratedplt(numreplicates)
     plot!(generatedplt, samp, mean250, label="", c=cs[3], ribbon=sd250, fa=0.3)
     plot!(generatedplt, samp, mean250, label="",  c=cs[3], ribbon=2sd250, fa=0.1)
 
-    scatter!(generatedplt, samp, mean50, ms=5, msw=1.75, label="50", msc=cs[1], mc=:white)
-    scatter!(generatedplt, samp, mean100, ms=5, msw=1.75, label="100", msc=cs[2], mc=:white)
-    scatter!(generatedplt, samp, mean250, ms=5, msw=1.75, label="250", msc=cs[3], mc=:white)
+    scatter!(generatedplt, samp, mean50, ms=4, msw=1, label="50", msc=cs[1], mc=:white)
+    scatter!(generatedplt, samp, mean100, ms=4, msw=1, label="100", msc=cs[2], mc=:white)
+    scatter!(generatedplt, samp, mean250, ms=4, msw=1, label="250", msc=cs[3], mc=:white)
     title!(generatedplt,"a", titleloc=:left)
     yaxis!(generatedplt, "false negative rate", ylim=(0,1))
     xaxis!(generatedplt, "number of individual observations", xticks=0:200:1500, xlim=(0,1500))
@@ -149,7 +150,7 @@ function makefocalspeciesfig(;
 
     focalplt = plot(size=(700,500),dpi=300,legend=:outerright, frame=:box, fontfamily=fnt,margin=5mm, legendtitle="Goal number observations of focal species")
     yaxis!(focalplt, :log10, ylim=(10, 10^6))
-    ptsettings =  (mc=:white, msw=2, ms=5, lw=2.5)
+    ptsettings =  (mc=:white, msw=1, ms=4, lw=2.5)
 
     for (i,numobs) in enumerate(numobsfocal)
         obs = numobs./relativeabundance
@@ -177,7 +178,6 @@ top = plot(genplt, empplt)
 
 l = @layout [a; b]
 plot(top, focalplot, layout=l, margin=5mm, dpi=300, size=(900,900))
-
 
 
 savefig("figures/combinedfig2.png")

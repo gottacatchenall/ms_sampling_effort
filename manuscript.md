@@ -149,7 +149,7 @@ from the flexible-links model fit to Mangal data [@MacDonald2020RevLin],
 effectively drawing the number of interactions $L$ for a random niche model
 food-web with $S$ species as $L \sim \text{BetaBinomial}(S^2-S+1, \mu \phi,
 (1-\mu)\phi)$, where the MAP estimate of ($\mu$, $\phi$) applied to Mangal data
-from @MacDonald2020RevLin is $(\mu = 0.086, \phi =24.3). All simulations were
+from @MacDonald2020RevLin is $(\mu = 0.086, \phi =24.3)$. All simulations were
 done with 500 independent replicates per unique number of observations $n$. All
 analyses presented here are done in Julia v1.6 [@Bezanson2015JulFre] using both
 EcologicalNetworks.jl v0.5 and Mangal.jl v0.4 [@Banville2021ManJl; ZENODO LINK

@@ -216,22 +216,23 @@ would further impact the realized false negative rate, as in this case the
 probability of false negative would not be constant for each pair of species
 across sites. To test for this association empirical data, we use two datasets:
 a set of host-parasite interactions sampled across 51 sites
-[@Hadfield2014TalTwo] and a set of food-webs collected from New Zealand
-freshwater streams over many years [@Thompson2000ResSol]. We simply compute the
-empirical marginal distribution and compare the product of the marginals to the
-true joint value, @fig:associations.
+[@Hadfield2014TalTwo] and a set of XX New Zealand freshwater stream food webs
+[@Thompson2000ResSol]. We simply compute the empirical marginal distribution of
+species occurrence, and compare the product of the marginals, $P(A)P(B)$, to the
+empirical joint distribution $P(AB)$
 
 ![Top: Hadfield, Bottom: NZ Stream Foodwebs. Effectively a version of
 @Cazelles2016TheSpe figure 1 panel
 A.](./figures/positiveassociations.png){#fig:associations}
 
-Canard's "neutrally forbidden links" between species of very low relative
-biomass assumes this lack of association. The strength of this association may
-be different in different systems.
-Note here that these datasets were usable because they already have shared
-taxonomic backbone. Applying this in bulk to Mangal food-webs presents the
-difficulty of resolving spatial samples of species with to different taxonomic
-indicators, this is why we can't simple apply this to the whole mangal dataset.
+In @fig:associations, both host-parasite system (top) and food-web (bottom)
+exhibit these positive associations.  Canard's "neutrally forbidden links"
+between species of very low relative biomass assumes this lack of association.
+The strength of this association may be different in different systems. Note
+here that these datasets were usable because they already have shared taxonomic
+backbone. Applying this in bulk to Mangal food-webs presents the difficulty of
+resolving spatial samples of species with to different taxonomic indicators,
+this is why we can't simple apply this to the whole mangal dataset.
 
 We suggest using neutral models similar to what we present above to consider the
 probability of false-negatives in a data set of a given size. This can be useful

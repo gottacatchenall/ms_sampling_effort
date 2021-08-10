@@ -31,16 +31,14 @@ consequences for answering questions about species interactions
 _false-negatives_, where there is not an observation of two species interacting
 even though they actually interact in some capacity.
 
+
 This goes on to effect the inferences we make about network structure and the
-relations among species within them
-[@Martinez1999EffSam].
-
-More on history here...
-
-As a result development of models to deal with the reality of interaction
-data [@Young2021RecPla; @Stock2017LinFil].
-
-
+relations among species within them [@Martinez1999EffSam]. This has been
+suggested as a limitation, compounded by amalgamation across study sites
+[@Paine1988RoaMap], and across taxonomic resolutions [@Giacomuzzo2021FooWeb;
+@Paine1988RoaMap]. As a result there have been movement toward explicitly
+accounting for  false-negatives [@Young2021RecPla; @Stock2017LinFil], and toward
+a predictive approach [@Strydom2021RoaPre].
 
 Understanding how sampling induces biases in data can and should be used to aid
 in the design of surveys of species diversity [@Carlson2020WhaWou]. Here we seek

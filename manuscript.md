@@ -5,47 +5,51 @@ bibliography: [references.bib]
 # Introduction
 
 Understanding how different species interact is both a fundamental question of
-community ecology and an increasing imperative to mitigate the effects of human
-activity on Earth's biodiversity [@Makiola2020KeyQue; @Jordano2016ChaEco] and to
-predict potential spillover of zoonotic disease [@Becker2021OptPre]. Over the
-past decade biodiversity data has become increasingly available due to improved
-sensing technology [@Stephenson2020TecAdv] and increased adoption of open data
-sharing practices [@Kenall2014OpeFut]. Modern remote-sensing has enabled
-collection of data on spatial scales previously unimaginable, and both
-camera-traps and in-situ sensors substantially increased the temporal resolution
-amount of data available to ecologists. Yet widespread data about species
-interactions has remained illusive as detection of an interaction between two
-species often requires human sampling, as though remote methods can detect
-cooccurrence, this itself is not necessarily indicative of interaction
-[@Blanchet2020CooNot]. This limitation induces constraints on sampling of
-interactions based on the spatial and temporal scales feasible to human
-sampling.
+community ecology, and also an increasing imperative to mitigate the
+consequences of human activity on biodiversity [@Makiola2020KeyQue;
+@Jordano2016ChaEco] and to predict potential spillover of zoonotic disease
+[@Becker2021OptPre]. Over the past decade biodiversity data has become
+increasingly available due to developments in-situ sensing technology
+[@Stephenson2020TecAdv] and increased adoption of open data sharing practices
+[@Kenall2014OpeFut]. Modern remote-sensing has enabled collection of data on
+spatial scales previously unimaginable, and novel forms of sensing technology
+have substantially increased the temporal resolution amount of data available to
+ecologists. Yet widespread data about species interactions remains illusive as
+observing interaction between two species often requires human sampling,
+as though remote methods can detect cooccurrence, this itself is not necessarily
+indicative of interaction [@Blanchet2020CooNot]. This limitation induces
+constraints on sampling of interactions based on the spatial and temporal scales
+feasible to human sampling.
 
 These sampling constraints go on to bias species interaction data in several
-ways: we only observe a small fraction of the variation of species interactions
-in space and time, this sampling is geographically biased toward the usual
-suspects [@Poisot2021GloKno], and these observation reflect the distribution
-of abundance within communities [@Poisot2015SpeWhy]. These biases have practical
-consequences for answering questions about species interactions
-[@deAguiar2019RevBia]. The data we collect is noisy and likely contains many
+ways: we can only observe a small fraction of the variation of species
+interactions in space and time, this sampling is geographically biased toward
+the usual suspects [@Poisot2021GloKno], and these observation reflect the
+distribution of abundance within communities [@Poisot2015SpeWhy]. These biases
+have practical consequences for answering questions about species interactions
+[@deAguiar2019RevBia]---the data we collect is noisy and likely contains many
 _false-negatives_, where there is not an observation of two species interacting
-even though they actually interact in some capacity.
+even though they actually interact in some capacity. These false-negatives could
+go on to effect the inferences we make about network properties and relations
+among species.
 
-These false-negatives could go on to effect the inferences we make about network
-properties and relations among species. There is a long history of discourse
-surrounding this limitation: the compounding effects of sampling effort, and the
-amalgamation of data across study sites and across taxonomic scales could
-feasibly lead to insurmountable biases in existing data [@Paine1988RoaMap].
-@Martinez1999EffSam showed that some network properties, namely connectance, is
-robust to sampling effort in a plant-endophyte trophic network, but this system
-includes 62k observations of interactions, and 164k stems, and the connectance
-estimate becomes approximately correct beyond roughly 10k stem observations. In
-some systems, e.g. megafauna food-webs, collect this many observations proves
-difficult to say the least due to  the absolute abundance of species. As a
-result there have been movement toward explicitly accounting for false-negatives
-as a product of relative abundance [@Young2021RecPla; @Stock2017LinFil], and
-toward a predictive approach for imputing the true metaweb of interactions given
-a finite set of samples [@Strydom2021RoaPre].
+There is a long history of discourse surrounding this limitation: the
+compounding effects of sampling effort, and the amalgamation of data across
+study sites and across taxonomic scales could feasibly lead to insurmountable
+biases in data [@Paine1988RoaMap]. @Martinez1999EffSam showed that some network
+properties, namely connectance, is robust to sampling effort in a
+plant-endophyte trophic network, but this was also done in the context of system
+for which observation of 62,000 total interactions and 164,000 plant-stems was
+feasible. @Martinez1999EffSam show the connectance estimate becomes
+approximately correct beyond roughly 10k plant-stem (that is, resource species)
+observations. However, in some systems, e.g. megafauna food-webs, this many
+observations is impractical due to the absolute abundance of species.
+In recent years, there has been interest in toward explicitly accounting for
+false-negatives in models [@Young2021RecPla; @Stock2017LinFil], and toward a
+predictive approach---rather than expect that our samples can fully capture all
+interactions, we know that some interactions between species will not be
+observed due to finite sampling capacity, and instead we must impute  the true
+metaweb of interactions given a set of samples [@Strydom2021RoaPre].
 
 In this manuscript we seek to explore the relationship between total sampling
 effort (the total count of all individuals of all species seen) and
@@ -105,17 +109,16 @@ effort.
 
 In this section we demonstrate the realized false-negative rate (FNR) changes
 drastically with sampling effort, largely due to the intrinsic variation of
-abundances within a community---termed "neutrally forbidden links"
-[@Canard2012EmeStr]. We do this by simulating the process of observation of
-species interactions, applied both to 243 empirical food webs from the Mangal
-database [@Banville2021ManJl] as well as random food-webs generated using the
-niche model [@Williams2000SimRul]. Our neutral model of observation assumes each
-observed species is drawn from the distribution of those species' abundances at
-that place and time. Although there is no shortage of debate as to the processes
-the govern the general shape of this distribution, across communities the
-abundance distribution can be reasonably-well described by a log-normal
-distribution [@Volkov2003NeuThe]. The practical consequence of skewed
-distribution of biomass in communities is seeing two low biomass species
+abundances within a community. We do this by simulating the process of
+observation of species interactions, applied both to 243 empirical food webs
+from the Mangal database [@Banville2021ManJl] as well as random food-webs
+generated using the niche model [@Williams2000SimRul]. Our neutral model of
+observation assumes each observed species is drawn from the distribution of
+those species' abundances at that place and time. Although there is no shortage
+of debate as to the processes the govern the general shape of this distribution,
+across communities the abundance distribution can be reasonably-well described
+by a log-normal distribution [@Volkov2003NeuThe]. The practical consequence of
+skewed distribution of biomass in communities is seeing two low biomass species
 interacting requires two low probability events, which is observing two species
 of low relative biomass. However, this "neutrally forbidden link"
 [@Canard2012EmeStr] does not consider that there may be a positive association

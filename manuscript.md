@@ -31,21 +31,32 @@ consequences for answering questions about species interactions
 _false-negatives_, where there is not an observation of two species interacting
 even though they actually interact in some capacity.
 
+These false-negatives could go on to effect the inferences we make about network
+structure and subsequently the relations among species. There is a long history
+of discourse surrounding this limitation: the compounding effects of sampling
+effort, the amalgamation of data across study sites and across taxonomic scales
+[@Giacomuzzo2021FooWeb; @Paine1988RoaMap]. As a result there have been movement
+toward explicitly accounting for false-negatives as a product of relative
+abundance [@Young2021RecPla; @Stock2017LinFil], and toward a predictive approach
+for imputing the true metaweb of interactions given a finite set of samples
+[@Strydom2021RoaPre]. @Martinez1999EffSam showed that some network properties,
+namely connectance, is robust to sampling effort in a plant-endophyte trophic
+network, yet this system includes 62,781 observations of interactions, and 164k
+stems, and the connectance estimate becomes approximately correct around 10,000
+stem observations. However in some systems, e.g. megafauna food-webs, this
+number of interactions proves difficult to say the least, as a function of the
+absolute abundance of species.
 
-This goes on to effect the inferences we make about network structure and the
-relations among species within them [@Martinez1999EffSam]. This has been
-suggested as a limitation, compounded by amalgamation across study sites
-[@Paine1988RoaMap], and across taxonomic resolutions [@Giacomuzzo2021FooWeb;
-@Paine1988RoaMap]. As a result there have been movement toward explicitly
-accounting for  false-negatives [@Young2021RecPla; @Stock2017LinFil], and toward
-a predictive approach [@Strydom2021RoaPre].
-
-Understanding how sampling induces biases in data can and should be used to aid
-in the design of surveys of species diversity [@Carlson2020WhaWou]. Here we seek
-to understand how false negatives in ecological interaction data impact the
-analysis and prediction of ecological networks, and also to understand how a
-better understanding of the relationship between sampling effort and likelihood
-of a "true negative" can guide how we design surveys of ecological interactions
+In this manuscript we seek to explore the relationship between total sampling
+effort (the total count of all individuals of all species sene) and
+false-negative rate. In so-doing, we demonstrate that realized false-negative
+rate varies based on species relative abundance, and suggest that  Understanding
+how sampling induces biases in data can and should be used to aid in the design
+of surveys of species diversity [@Carlson2020WhaWou]. Here we seek to understand
+how false negatives in ecological interaction data impact the analysis and
+prediction of ecological networks, and also to understand how a better
+understanding of the relationship between sampling effort and likelihood of a
+"true negative" can guide how we design surveys of ecological interactions
 [@Jordano2016SamNet]. The questions we pose and attempt to answer are: 1) How
 many times do you have to observe a non-interaction between two species to be
 confident in saying that is a true negative? 2) How "wrong" are the measurements
@@ -155,10 +166,8 @@ function of the relative abundance of that focal species (x-axis)
 ](./figures/combinedfig2.png){#fig:totalobs}
 
 
-Paragraph on total number individuals vs focal species, panel c of @fig:totalobs.
-
-
-Note that the empirical data also is, due to the phenomena
+Paragraph on total number individuals vs focal species, panel c of
+@fig:totalobs. Note that the empirical data also is, due to the phenomena
 described here, very likely to _already_ have many false negatives, which is why
 we are interested in prediction of networks in the first place---we'll revisit
 this in the final section.
@@ -226,11 +235,9 @@ biomass assumes this lack of association. The strength of this association may
 be different in different systems.
 
 Note here that these datasets were usable because they already have shared
-taxonomic backbone.
-
-Applying this in bulk to Mangal food-webs presents the difficulty of resolving spatial
-samples of species with to different taxonomic indicators, this is why we can't
-simple apply this to the whole mangal dataset.
+taxonomic backbone. Applying this in bulk to Mangal food-webs presents the
+difficulty of resolving spatial samples of species with to different taxonomic
+indicators, this is why we can't simple apply this to the whole mangal dataset.
 
 
 # The impact of false-negatives on network analysis and prediction

@@ -105,7 +105,7 @@ place and time. Although there is no shortage of debate as to the processes the
 govern the general shape of this distribution, across communities the abundance
 distribution can be reasonably-well described by a log-normal distribution
 [@Volkov2003NeuThe]. Note on due diligence of testing the case where the
-abundance distribution is derived from Yodzis-Innes $Z^(T_i-1)$ where $T_i$ is
+abundance distribution is derived from Yodzis-Innes $Z^{(T_i-1)}$ where $T_i$ is
 the trophic level of species $i$. It turns out the same. Controversies around
 theory of species abundance distributions aside, the practical consequence of
 skewed distribution of biomass in communities is seeing two low biomass species

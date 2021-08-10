@@ -105,7 +105,7 @@ function makegeneratedplt(numreplicates)
     scatter!(generatedplt, samp, mean250, ms=4, msw=1, label="250", msc=cs[3], mc=:white)
     title!(generatedplt,"a", titleloc=:left)
     yaxis!(generatedplt, "false negative rate", ylim=(0,1))
-    xaxis!(generatedplt, "number of individual observations", xticks=0:200:1500, xlim=(0,1500))
+    xaxis!(generatedplt, "total number of individual observations", xticks=0:200:1500, xlim=(0,1500))
 
     return generatedplt
 end
@@ -127,7 +127,7 @@ function makemangalplt(numreplicates)
     empplt=plot(
         dpi=300, fontfamily=fnt, frame=:box, palette=cs1, legend=:none, colorbar=:right, size=(500,500))
     yaxis!(empplt, "false negative rate", ylim=(0,1))
-    xaxis!(empplt, "number of individual observations", xticks=0:200:1500, xlim=(0,1500))
+    xaxis!(empplt, "total number of individual observations", xticks=0:200:1500, xlim=(0,1500))
     title!(empplt,"b", titleloc=:left)
 
     for mn in means
@@ -149,7 +149,7 @@ function makefocalspeciesfig(;
     thiscs = ColorSchemes.tableau_sunset_sunrise
 
     focalplt = plot(size=(700,500),dpi=300,legend=:outerright, frame=:box, fontfamily=fnt,margin=5mm, legendtitle="Goal number observations of focal species")
-    yaxis!(focalplt, :log10, ylim=(10, 10^6))
+    yaxis!(focalplt, :log10, xlim=(0,0.01),ylim=(10, 10^6))
     ptsettings =  (mc=:white, msw=1, ms=4, lw=2.5)
 
     for (i,numobs) in enumerate(numobsfocal)

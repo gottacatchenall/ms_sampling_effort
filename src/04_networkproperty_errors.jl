@@ -49,6 +49,8 @@ meanclosenessctr(x) = mean(collect(values(centrality_closeness(x))))
 fnr, connect_err, connect_sd = errors(connectance, nreps=2000)
 fnr, degcent_err, degcent_sd = errors(meandegcent, nreps=2000)
 
+fnr, specrad_err, specrad_sd = errors(ρ, nreps=2000)
+
 
 fnt = font(20, "Roboto")
 

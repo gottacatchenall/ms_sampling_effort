@@ -257,29 +257,31 @@ their effect on models for predicting interactions in the future.
 Here we simulate the effects of observation error to generate synthetic data
 with a known proportion of false negatives to compare the computed network
 properties of the original "true" network to the computed properties of the
-"observed" network with added false-negatives. In @fig:properties we show four
-properties (connectance, spectral radius, mean degree-centrality, and entropy)
-computed across 2000 replicates at each value of the false negative rate
-$p_{fn}$. Each replicate uses a random food-web simulated using the niche model
+"observed" network with added false-negatives. In @fig:properties we the
+mean-squared error of both connectance and mean degree-centrality. computed
+across 2000 replicates at each value of the false negative rate $p_{fn}$. Each
+replicate uses a random food-web simulated using the niche model
 [@Williams2000SimRul] with $100$ species and connectance derived from
-@MacDonald2020RevLin as ealier.
+@MacDonald2020RevLin as earlier.
 
 ![The mean-squared error (y-axis) of various network properties (different
 panels) across various simulated false-negative rates (x-axis). Means denoted
 with points, with $1\sigma$ in the first shade and $2\sigma$ in the
 second.](./figures/props.png){#fig:properties}
 
-The primary information to be gained from @fig:properties is that properties
-vary in their response to number of false negatives in a sample---spectral
-radius (generally a measure of global structure) and connectance show roughly
-linear responses to false negatives, whereas mean degree centrality and entropy
-are decisively non-linear. We propose that simulating the effects of false
-negatives in data in this way can serve as an additional validation tool when
-aiming to detect structural properties of networks using generative null models
-[@Connor2017UsiNul].   
+The primary information to be gained from @fig:properties is network properties
+may vary in their response to number of false negatives in a
+sample---connectance show roughly linear responses to false negatives, whereas
+mean degree centrality doesn't.
+
 
 Nonlinearity of network level properties, mean deg centrality and effects
 on indirect interations, [@Williams2002TwoDeg]
+
+We propose that simulating the effects of false
+negatives in data in this way can serve as an additional validation tool when
+aiming to detect structural properties of networks using generative null models
+[@Connor2017UsiNul].   
 
 ## Effects of false negatives on ability to make predictions
 
@@ -300,9 +302,11 @@ partition the data into 80-20 training-test split, and then seed the training
 data with false negatives varying rates, but crucially do nothing to the test
 data. We use the same model, a neural-network with 3 layers to predict outputs
 based on features extracted from cooccurence, see @Strydom2021RoaPre for more
-details. In @fig:rocpr, we show receiving-operating-characteristic (ROC) and
-precision-recall (PR) curves for the model with varying levels of synthetic
-false-negatives added to the data.
+details. The single modification we make to the model is not enforcing a number
+of positives in the training data as this is eventually impossible for
+increasing FNR. In @fig:rocpr, we show receiving-operating-characteristic
+(ROC) and precision-recall (PR) curves for the model with varying levels of
+synthetic false-negatives added to the data.
 
 ![Receiver-operating-characteristic (left) and precision-recall (right) curves
 for the model on varying levels of false-negatives in the data (colors). For

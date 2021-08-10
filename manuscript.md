@@ -193,8 +193,6 @@ species $A$? @fig:totalobs panel C. This argument is well-considered when
 sampling species [@Willott2001SpeAcc], but has not yet been internalized for
 designing samples of communities.
 
-
-
 ## Positive associations can increase the probability of false-negatives
 
 This model above doesn't consider the possibility that there are positive or

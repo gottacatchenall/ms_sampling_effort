@@ -61,7 +61,7 @@ scatter!(fnr, connect_err, mc=:white, msc=:dodgerblue4, msw=1.5, ms=4,label="con
 
 plot!(fnr, specrad_err, label="", ribbon=specrad_sd, c=:gray50, fa=0.2)
 plot!(fnr, specrad_err, label="", ribbon=2specrad_sd, c=:gray50, fa=0.1)
-scatter!(fnr, specrad_err, mc=:white, msw=1.5, ms=4, msc=:teal,label="spectral radius")
+scatter!(fnr, specrad_err, mc=:white, msw=1.5, ms=4, msc=:gray50,label="spectral radius")
 
 
 plot!(fnr, degcent_err, label="", ribbon=degcent_sd, c=:teal, fa=0.2)

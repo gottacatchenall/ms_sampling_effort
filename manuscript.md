@@ -246,9 +246,10 @@ with a known proportion of false negatives to compare the computed network
 properties of the original "true" network to the computed properties of the
 "observed" network with added false-negatives. In @fig:properties we show four
 properties (connectance, spectral radius, mean degree-centrality, and entropy)
-computed across 200 replicates at each value of the false negative rate
+computed across 2000 replicates at each value of the false negative rate
 $p_{fn}$. Each replicate uses a random food-web simulated using the niche model
-[@Williams2000SimRul] with $100$ species and true connectance $C=0.1$.
+[@Williams2000SimRul] with $100$ species and connectance derived from
+@MacDonald2020RevLin as ealier.
 
 ![The mean-squared error (y-axis) of various network properties (different
 panels) across various simulated false-negative rates (x-axis). Means denoted

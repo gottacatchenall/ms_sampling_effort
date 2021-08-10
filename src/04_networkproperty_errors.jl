@@ -46,9 +46,8 @@ meandegcent(x) = mean(collect(values(centrality_degree(x))))
 meankatzcent(x) = mean(collect(values(centrality_katz(x))))
 meanclosenessctr(x) = mean(collect(values(centrality_closeness(x))))
 
-fnr, connect_err, connect_sd = errors(connectance, nreps=500)
-fnr, ent_err, ent_sd = errors(EcologicalNetworks.entropy, nreps=500)
-fnr, degcent_err, degcent_sd = errors(meandegcent, nreps=500)
+fnr, connect_err, connect_sd = errors(connectance, nreps=2000)
+fnr, degcent_err, degcent_sd = errors(meandegcent, nreps=2000)
 
 
 fnt = font(20, "Roboto")

@@ -209,11 +209,11 @@ association between observing both $A$ and $B$ because this interaction is
 $B$, $P(AB)$, is greater than $P(A)P(B)$ as $P(A)$ and $P(B)$ are not
 independent and instead are positively correlated, _i.e._ $P(AB) > P(A)P(B)$. In
 this case, the probability of observing a false negative in our naive model from
-@fig:negativebinom is $p_{fn} = 1 - P(AB)$ which due to the above inequality implies $p_{fn}
-\geq 1 - P(A)P(B)$ which indicates increasingly greater probability of a false
-negative as $P(AB) \to P(AB) \gg P(A)P(B)$.
+@fig:negativebinom is $p_{fn} = 1 - P(AB)$ which due to the above inequality
+implies $p_{fn} \geq 1 - P(A)P(B)$ which indicates increasingly greater
+probability of a false negative as $P(AB) \to P(AB) \gg P(A)P(B)$.
 
-This should be noted with the caveat that this does not consider variation in
+This should be consider with the caveat that this does not consider variation in
 species abundance in space and time. If positive or negative associations
 between species structure variation in the distribution of $P(AB)$ across
 space/time, then the spatial/temporal biases induced by data collection would
@@ -267,30 +267,31 @@ their effect on models for predicting interactions in the future.
 ## Effects of false-negatives on network properties
 
 Here we simulate the process of observation with observation error to generate
-synthetic data with a known proportion of false negatives to compare the
+synthetic data with a known proportion of false negatives, and compare the
 computed network properties of the original "true" network to the computed
-properties of the "observed" network with added false-negatives. In
-@fig:properties we the mean-squared error of both connectance and mean
-degree-centrality, both computed across 2000 replicates at each value of the false
-negative rate $p_{fn}$. Each replicate uses a random food-web simulated using
-the niche model [@Williams2000SimRul] with $100$ species and connectance derived
-from @MacDonald2020RevLin as earlier.
+properties of the "observed" network with added false-negatives. @fig:properties
+shows the mean-squared error of both connectance and mean degree-centrality,
+each computed across 2000 replicates at each value of the false negative rate
+$p_{fn}$. All replicates use random food-webs simulated using the niche model
+[@Williams2000SimRul] with $100$ species and connectance drawn from the
+flexible-links model [@MacDonald2020RevLin] as before.
 
 ![The mean-squared error (y-axis) of various network properties (different
 panels) across various simulated false-negative rates (x-axis). Means denoted
 with points, with $1\sigma$ in the first shade and $2\sigma$ in the
 second.](./figures/props.png){#fig:properties}
 
-The primary information to be gained from @fig:properties is network properties
-may vary in their response to number of false negatives in a
-sample---connectance show roughly linear responses to false negatives, whereas
-mean degree centrality doesn't. Degree centrality can indicate network level
-structure, like indirect interactions, so the effects of false negatives in
-infereence may be exacerbated for the effects of indirect interactions
-[@Williams2002TwoDeg]. We propose that simulating the effects of false negatives
-in data in this way can serve as an additional validation tool when aiming to
-detect structural properties of networks using generative null models
-[@Connor2017UsiNul].   
+Practically, @fig:properties shows us that network structure varies in response
+to false negatives---connectance responds roughly linearly to false negatives,
+whereas mean-degree-centrality decisively does not. Degree-centrality captures a
+different aspect of network structure than connectance---it indicates 'meso'
+level properties of how local 'regions' of nodes interact, rather than the
+'global' (in that it is computed as a mean across all nodes) property of
+connectance. The effects of false negatives may be exacerbated for indirect
+interactions [@Williams2002TwoDeg]. We propose that simulating the effects of
+false negatives in data in this way can serve as an additional validation tool
+when aiming to detect structural properties of networks using generative null
+models [@Connor2017UsiNul].   
 
 ## Effects of false negatives on ability to make predictions
 
@@ -334,7 +335,7 @@ case.
 
 # Conclusion
 
-In this paper we have demonstrated that expect a certain number of false
+We have demonstrated that expect a certain number of false
 negatives in species interaction datasets purely due to the distribution of
 abundances within a community. Positive associations between species occurence
 due to interactions can increase the false-negative rate if the sample is

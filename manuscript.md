@@ -283,15 +283,16 @@ second.](./figures/props.png){#fig:properties}
 
 Practically, @fig:properties shows us that network structure varies in response
 to false negatives---connectance responds roughly linearly to false negatives,
-whereas mean-degree-centrality decisively does not. Degree-centrality captures a
-different aspect of network structure than connectance---it indicates 'meso'
-level properties of how local 'regions' of nodes interact, rather than the
-'global' (in that it is computed as a mean across all nodes) property of
-connectance. The effects of false negatives may be exacerbated for indirect
-interactions [@Williams2002TwoDeg]. We propose that simulating the effects of
-false negatives in data in this way can serve as an additional validation tool
-when aiming to detect structural properties of networks using generative null
-models [@Connor2017UsiNul].   
+whereas mean-degree-centrality decisively does not. This indicates what we
+already know about  degree-centrality---it captures a different aspect of
+network structure than connectance, more indicitive of 'meso' level properties
+that describe local 'regions' of nodes interact than the 'global' measurements
+like connectance (in that it is computed as a mean across all nodes). The
+effects of false negatives may be exacerbated for indirect interactions
+[@Williams2002TwoDeg]. We propose that simulating the effects of false negatives
+in data in this way can serve as an additional validation tool when aiming to
+detect structural properties of networks using generative null models
+[@Connor2017UsiNul].   
 
 ## Effects of false negatives on ability to make predictions
 

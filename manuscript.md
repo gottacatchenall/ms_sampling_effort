@@ -50,7 +50,7 @@ interactions, we know that some interactions between species will not be
 observed due to finite sampling capacity, and instead we must impute  the true
 metaweb of interactions given a set of samples [@Strydom2021RoaPre].
 
-In this manuscript we seek to explore the relationship between total sampling
+In this we explore the relationship between total sampling
 effort (the total count of all individuals of all species seen) and
 false-negative rate. In so doing, we demonstrate that realized false-negative
 rate is directly related to species relative abundance. Further we suggest that

@@ -129,48 +129,52 @@ explore in the next subsection.
 For each ecological network $A$ with $S$ species, we simulate abundances from
 $N$ independent draws from a standard-log-normal distribution. For each true
 interaction $A_{ij} = 1$ we estimate the probability of observing both species
-$i$ and $j$ at given place and time by simulating a distribution of $$
-individual observations, where the species observed at the $n=1,2,\dots,N$-th
-observation is drawn from the generated log-normal distribution of abundances.
+$i$ and $j$ at given place and time by simulating a distribution of $n$
+individual observations, where the species observed at the $n$-th observation is
+drawn from the generated log-normal distribution of abundances.
 
 For each pair of species $(i,j)$, if both $i$ and $j$ are observed within the
 $n$ observations, the interaction is tallied as a true positive if $A_{ij}=1$
 and a false positive otherwise. Similarly, if only one of $i$ and $j$ are
 observed---_but not both_---in these $n$ observations, but $A_{ij}=1$, this is
-counted as a false-negative, and a true-negative otherwise. @fig:samplingeffort
+counted as a false-negative, and a true-negative otherwise. @fig:totalobs
 shows this model applied to 243 food-webs from the Mangal database on the right,
 and niche model [@Williams2000SimRul] across varying levels of species richness
 on the left. For all niche model simulations in this manuscript, the number of
 interactions is drawn from the fleixble-links model fit to Mangal data,
 [@MacDonald2020RevLin] equivalent to drawing the number of interactions $L \sim
-\text{BetaBinomial}(S^2-S+1, \mu \phi, (1-\mu)\phi)$, where the
-@MacDonald2020RevLin MAP estimate of $\mu = 0.086$ and $\phi =24.3$.
+\text{BetaBinomial}(S^2-S+1, \mu \phi, (1-\mu)\phi)$, [where the MAP estimate of
+$\mu = 0.086$ and $\phi =24.3$; @MacDonald2020RevLin]
 
-All simulations were done with 500 replicates of per unique number
-of observations $s$, and analyses presented here are done in Julia v1.6
+All simulations were done with 500 replicates of per unique number of
+observations $s$, and analyses presented here are done in Julia v1.6
 [@Bezanson2015JulFre] using both EcologicalNetworks.jl v0.5 and Mangal.jl v0.4
-[@Banville2021ManJl].
+[@Banville2021ManJl; ZENODO LINK TK]. Note that the empirical data also is, due
+to the phenomena described here, very likely to _already_ have many false
+negatives, which is why we are interested in prediction of networks in the first
+place---we'll revisit this in the final section.
 
-![A and B: False negative rate (y-axis) as a function of sampling effort
+![A and B: False negative rate (y-axis) as a function of total sampling effort
 (x-axis) and network size, computed using the method described above. For a this
 relation for 500 independent draws from the niche model [@Williams2000SimRul] at
-varying levels of species richness (colors) with connectance $C=0.1$. For each
-draw from the niche model, 200 sets of 1500 observations are simulated, for
-which each the mean false negative rate at each observation-step is computed.
-Means denoted with points, with $1\sigma$ in the first shade and $2\sigma$ in
-the second. B: empirical food webs from Mangal database in teal, applied to the
-same process as the A. The outlier on panel B is a 714 species food-web. C) The
-expected needed observations of all individuals of all species (y-axis) required
-to obtain a goal number of observations (colors) of a particular species, and a
-function of the relative abundance of that focal species (x-axis)
-](./figures/combinedfig2.png){#fig:totalobs}
+varying levels of species richness (colors) with connectance drawn according to
+the flexible-links model [@MacDonald2020RevLin] as described in the main text.
+For each draw from the niche model, 200 sets of 1500 observations are simulated,
+for which each the mean false negative rate at each observation-step is
+computed. Means denoted with points, with $1\sigma$ in the first shade and
+$2\sigma$ in the second. B: empirical food webs from Mangal database in teal,
+applied to the same process as the A. The outlier on panel B is a 714 species
+food-web. C) The expected needed observations of all individuals of all species
+(y-axis) required to obtain a goal number of observations (colors) of a
+particular species, and a function of the relative abundance of that focal
+species (x-axis) ](./figures/combinedfig2.png){#fig:totalobs}
 
-
-Paragraph on total number individuals vs focal species, panel c of
-@fig:totalobs. Note that the empirical data also is, due to the phenomena
-described here, very likely to _already_ have many false negatives, which is why
-we are interested in prediction of networks in the first place---we'll revisit
-this in the final section.
+In panel (c) of @fig:totalobs, we show the expected number of total observations
+needed to obtain some "goal" number of observations of a given species. As an
+example, if we hypothesize that $A$ and $B$ do not interact, and we want to see
+species $A$ 10 times to be confident this is a negative (a la
+@fig:negativebinom), then we need an expected 10,000 observations of all species
+if the relative abundance of $A$ is 0.00125.
 
 Empirical data on interactions, limited by the practical realities of funding
 and human-work hours, tend to fall on the order on 100s or 1000s observations of

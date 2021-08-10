@@ -35,17 +35,17 @@ These false-negatives could go on to effect the inferences we make about network
 structure and subsequently the relations among species. There is a long history
 of discourse surrounding this limitation: the compounding effects of sampling
 effort, the amalgamation of data across study sites and across taxonomic scales
-[@Giacomuzzo2021FooWeb; @Paine1988RoaMap]. As a result there have been movement
+[@Giacomuzzo2021FooWeb; @Paine1988RoaMap].  @Martinez1999EffSam showed that some
+network properties, namely connectance, is robust to sampling effort in a
+plant-endophyte trophic network, but this system includes 62k observations of
+interactions, and 164k stems, and the connectance estimate becomes approximately
+correct around 10k stem observations. However in some systems, e.g. megafauna
+food-webs, collect this many observations proves difficult to say the least due
+to  the absolute abundance of species. As a result there have been movement
 toward explicitly accounting for false-negatives as a product of relative
 abundance [@Young2021RecPla; @Stock2017LinFil], and toward a predictive approach
 for imputing the true metaweb of interactions given a finite set of samples
-[@Strydom2021RoaPre]. @Martinez1999EffSam showed that some network properties,
-namely connectance, is robust to sampling effort in a plant-endophyte trophic
-network, but this system includes 62k observations of interactions, and 164k
-stems, and the connectance estimate becomes approximately correct around 10,000
-stem observations. However in some systems, e.g. megafauna food-webs, this
-number of interactions proves difficult to say the least, as a function of the
-absolute abundance of species.
+[@Strydom2021RoaPre].
 
 In this manuscript we seek to explore the relationship between total sampling
 effort (the total count of all individuals of all species seen) and

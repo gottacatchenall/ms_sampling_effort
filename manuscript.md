@@ -145,11 +145,12 @@ true-negative otherwise.
 using the niche model [@Williams2000SimRul] across varying levels of species
 richness, and in (b) applied to 243 food-webs from the Mangal database. For all
 niche model simulations in this manuscript, the number of interactions is drawn
-from the fleixble-links model fit to Mangal data, [@MacDonald2020RevLin]
-equivalent to drawing the number of interactions $L \sim
-\text{BetaBinomial}(S^2-S+1, \mu \phi, (1-\mu)\phi)$, where the MAP estimate of
-$\mu = 0.086$ and $\phi =24.3$ [@MacDonald2020RevLin]. All simulations were done
-with 500 independent replicates per unique number of observations $n$. All
+from the flexible-links model fit to Mangal data [@MacDonald2020RevLin],
+effectively drawing the number of interactions $L$ for a random niche model
+food-web with $S$ species as $L \sim \text{BetaBinomial}(S^2-S+1, \mu \phi,
+(1-\mu)\phi)$, where the MAP estimate of ($\mu$, $\phi$) applied to Mangal data
+from @MacDonald2020RevLin is $(\mu = 0.086, \phi =24.3). All simulations were
+done with 500 independent replicates per unique number of observations $n$. All
 analyses presented here are done in Julia v1.6 [@Bezanson2015JulFre] using both
 EcologicalNetworks.jl v0.5 and Mangal.jl v0.4 [@Banville2021ManJl; ZENODO LINK
 TK]. Note that the empirical data also is, due to the phenomena described here,
@@ -173,30 +174,30 @@ particular species, and a function of the relative abundance of that focal
 species (x-axis) ](./figures/combinedfig2.png){#fig:totalobs}
 
 In panel (c) of @fig:totalobs, we show the expected number of total observations
-needed to obtain some "goal" number of observations of a particular "focal"
-species. As an example, if we hypothesize that $A$ and $B$ do not interact, and
-we want to see species $A$ 10 times to be confident this is a negative (a la
-@fig:negativebinom), then we need an expected 10,000 observations of all species
-if the relative abundance of $A$ is 0.00125. Empirical data on interactions,
-limited by the practical realities of funding and human-work hours, tend to fall
-on the order on 100s or 1000s observations of individuals per site
-[@Resasco2021PlaPol; @Schwarz2020TemSca; @Nielsen2007EcoNet]. Clear aggregation
-of this data has proven difficult to find and a meta-analysis of network data
-and sampling effort seems both pertinent and necessary, in addition to the
-effects of aggregation of interactions across taxonomic scales
-[@Giacomuzzo2021FooWeb]. Further, from @fig:totalobs it is evident that the
-number of species considered in a study is inseparable from the false-negative
-rate in that study, and this effect should be taken into account when designing
-samples of ecological networks in the future.
+needed to obtain a "goal" number of observations (colors) of a particular
+"focal" species. As an example, if we hypothesize that $A$ and $B$ do not
+interact, and we want to see species $A$ 10 times to be confident this is a
+negative (a la @fig:negativebinom), then we need an expected 10,000 observations
+of all species if the relative abundance of $A$ is 0.00125.
+
+Empirical data on interactions, limited by the practical realities of funding
+and human-work hours, tend to fall on the order on 100s or 1000s observations of
+individuals per site [@Resasco2021PlaPol; @Schwarz2020TemSca;
+@Nielsen2007EcoNet]. Clear aggregation of this data has proven difficult to find
+and a meta-analysis of network data and sampling effort seems both pertinent and
+necessary, in addition to the effects of aggregation of interactions across
+taxonomic scales [@Giacomuzzo2021FooWeb]. Further, from @fig:totalobs it is
+evident that the number of species considered in a study is inseparable from the
+false-negative rate in that study, and this effect should be taken into account
+when designing samples of ecological networks in the future.
 
 ## Positive associations can increase the probability of false-negatives
 
 This model above doesn't consider the possibility that there are positive or
-negative associations which shift the realized probability of observing two
-species together as a consequence of their interaction [@Cazelles2016TheSpe].
-However, here we demonstrate that the probability of observing a false negative
-can be _higher_ if there is some positive association between occurrence of
-species $A$ and $B$.
+negative associations which shift the probability of observing two species
+together due to  their interaction [@Cazelles2016TheSpe]. However, here we
+demonstrate that the probability of observing a false negative can be _higher_
+if there is some positive association between occurrence of species $A$ and $B$.
 
 If we denote the probability that we observe an existing interaction between $A$
 and $B$ as $P(AB)$, and if there is _no_ association between the marginal
@@ -208,45 +209,53 @@ association between observing both $A$ and $B$ because this interaction is
 $B$, $P(AB)$, is greater than $P(A)P(B)$ as $P(A)$ and $P(B)$ are not
 independent and instead are positively correlated, _i.e._ $P(AB) > P(A)P(B)$. In
 this case, the probability of observing a false negative in our naive model from
-before is $p_{fn} = 1 - P(AB)$ which due to the above inequality implies $p_{fn}
+@fig:negativebinom is $p_{fn} = 1 - P(AB)$ which due to the above inequality implies $p_{fn}
 \geq 1 - P(A)P(B)$ which indicates increasingly greater probability of a false
 negative as $P(AB) \to P(AB) \gg P(A)P(B)$.
 
 This should be noted with the caveat that this does not consider variation in
 species abundance in space and time. If positive or negative associations
 between species structure variation in the distribution of $P(AB)$ across
-space/time, then the spatial and temporal biases induced by data collection
-would further impact the realized false negative rate, as in this case the
-probability of false negative would not be constant for each pair of species
-across sites. To test for this association empirical data, we use two datasets:
-a set of host-parasite interactions sampled across 51 sites
-[@Hadfield2014TalTwo] and a set of XX New Zealand freshwater stream food webs
-[@Thompson2000ResSol]. We simply compute the empirical marginal distribution of
-species occurrence, and compare the product of the marginals, $P(A)P(B)$, to the
-empirical joint distribution $P(AB)$.
+space/time, then the spatial/temporal biases induced by data collection would
+further impact the realized false negative rate, as the probability of false
+negative would not be constant for each pair of species across sites. To test
+for this association empirical data, we use two datasets: a set of host-parasite
+interactions sampled across 51 sites [@Hadfield2014TalTwo] and a set of XX New
+Zealand freshwater stream food webs [@Thompson2000ResSol]. We simply compute the
+empirical marginal distribution of species occurrence, and compare the product
+of the marginals, $P(A)P(B)$, to the empirical joint distribution $P(AB)$.
 
 ![Top: Hadfield, Bottom: NZ Stream Foodwebs. Effectively a version of
 @Cazelles2016TheSpe figure 1 panel
 A.](./figures/positiveassociations.png){#fig:associations}
 
 In @fig:associations, both host-parasite system (top) and food-web (bottom)
-exhibit these positive associations. The strength of this association may be
-different in different systems. Note here that these datasets were usable
-because they already have shared taxonomic backbone. Applying this in bulk to
-Mangal food-webs presents the difficulty of resolving spatial samples of species
-with to different taxonomic indicators, this is why we can't simple apply this
-to the whole mangal dataset.
+exhibit these positive associations. (report p-values and means here...sigh...).
+There is no reason to expect the strength of this association to be the same in
+different systems. At the moment, computing this metric for all of the networks
+in the Mangal database proves challenging as most data sets use different taxonmic
+identifiers, often at different resolutions.
 
-We conclude this section by advocating for the use neutral models similar to
+
+These particular datasets [@Hadfield2014TalTwo; @Thompson2000ResSol] were usable
+because they already have been sorted to have a fixed taxonomic backbone (as
+part of EcologicalNetworks.jl [@Banville2021ManJl]). Applying this in bulk to
+Mangal food-webs presents the difficulty of resolving different taxon
+identifiers across spatial samples of species with to different resolutions,
+this is why we can't simple apply this to the whole mangal dataset. Sure would
+be interesting if someone took an in-review software package to do this and
+wrote a paper about it.
+
+We conclude this section by advocating for the use of neutral models similar to
 above to generate expectations about the number of false-negatives in a data set
-of a given size. This can be useful for predictive models, where we might want
-to incorporate a model of observation error, and also for designing studies
-number of observations sufficient to say an interaction doesn't exist
-[@Canard2012EmeStr]. Further, one must consider the context for sampling---is
-the goal to detect a particular species $A$ (as in @fig:totalobs (c)), or to get
-a representative sample of interactions across the species pool? This argument
-is well-considered when sampling species [@Willott2001SpeAcc], but has not yet
-been internalized for designing samples of communities.
+of a given size. This could prove fruitful both for designing surveys of
+interactions [@Canard2012EmeStr],  but also because we may want to incorporate
+models of  observation error into predictive models [@Joseph2020NeuHie].
+Additionaly, one must consider the context for sampling---is the goal to detect
+a particular species $A$ (as in @fig:totalobs (c)), or to get a representative
+sample of interactions across the species pool? This argument is well-considered
+when sampling species [@Willott2001SpeAcc], but has not yet been internalized
+for designing samples of communities.
 
 
 # The impact of false-negatives on network analysis and prediction
@@ -257,15 +266,15 @@ their effect on models for predicting interactions in the future.
 
 ## Effects of false-negatives on network properties
 
-Here we simulate the effects of observation error to generate synthetic data
-with a known proportion of false negatives to compare the computed network
-properties of the original "true" network to the computed properties of the
-"observed" network with added false-negatives. In @fig:properties we the
-mean-squared error of both connectance and mean degree-centrality. computed
-across 2000 replicates at each value of the false negative rate $p_{fn}$. Each
-replicate uses a random food-web simulated using the niche model
-[@Williams2000SimRul] with $100$ species and connectance derived from
-@MacDonald2020RevLin as earlier.
+Here we simulate the process of observation with observation error to generate
+synthetic data with a known proportion of false negatives to compare the
+computed network properties of the original "true" network to the computed
+properties of the "observed" network with added false-negatives. In
+@fig:properties we the mean-squared error of both connectance and mean
+degree-centrality, both computed across 2000 replicates at each value of the false
+negative rate $p_{fn}$. Each replicate uses a random food-web simulated using
+the niche model [@Williams2000SimRul] with $100$ species and connectance derived
+from @MacDonald2020RevLin as earlier.
 
 ![The mean-squared error (y-axis) of various network properties (different
 panels) across various simulated false-negative rates (x-axis). Means denoted
@@ -275,27 +284,24 @@ second.](./figures/props.png){#fig:properties}
 The primary information to be gained from @fig:properties is network properties
 may vary in their response to number of false negatives in a
 sample---connectance show roughly linear responses to false negatives, whereas
-mean degree centrality doesn't.
-
-
-Nonlinearity of network level properties, mean deg centrality and effects
-on indirect interations, [@Williams2002TwoDeg]
-
-We propose that simulating the effects of false
-negatives in data in this way can serve as an additional validation tool when
-aiming to detect structural properties of networks using generative null models
+mean degree centrality doesn't. Degree centrality can indicate network level
+structure, like indirect interactions, so the effects of false negatives in
+infereence may be exacerbated for the effects of indirect interactions
+[@Williams2002TwoDeg]. We propose that simulating the effects of false negatives
+in data in this way can serve as an additional validation tool when aiming to
+detect structural properties of networks using generative null models
 [@Connor2017UsiNul].   
 
 ## Effects of false negatives on ability to make predictions
 
-In this section, we assess the effect of false negatives in data on our ability
-to make predictions about interactions. The prevalence of false-negatives in
-data is the catalyst for interaction prediction in the first place, and as a
-result methods have been proposed to counteract this bias [@Poisot2021ImpMam;
-@Stock2017LinFil]. However, if the number of false-negatives in a dataset
-becomes too overwhelming, it is feasible this could induce too much noise for a
-interaction prediction model to detect the signal of interaction due to the
-latent properties of each species derived from the empirical network.
+Here, we assess the effect of false negatives in data on our ability to make
+predictions about interactions. The prevalence of false-negatives in data is the
+catalyst for interaction prediction in the first place, and as a result methods
+have been proposed to counteract this bias [@Poisot2021ImpMam;
+@Stock2017LinFil]. However, it is feasible this could induce too much noise for
+a interaction prediction model to detect the signal of interaction chance from
+to the latent properties of each species derived from the empirical network if
+the number of false-negatives in a dataset becomes too overwhelming,
 
 To test this, we use the same predictive model and dataset as in
 @Strydom2021RoaPre to predict a metaweb from various empirical slices of the

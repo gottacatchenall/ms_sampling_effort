@@ -214,8 +214,8 @@ species across sites.
 To test if this association empirical data, we use two datasets: a set of
 host-parasite interactions sampled across 51 sites [@Hadfield2014TalTwo] and a
 set of food-webs collected from New Zealand freshwater streams over many years
-[@thompson]. We simply compute the empirical marginal distribution and compare
-the product of the marginals to the true joint value, @fig:associations.
+[@Thompson2000ResSol]. We simply compute the empirical marginal distribution and
+compare the product of the marginals to the true joint value, @fig:associations.
 
 ![Top: Hadfield, Bottom: NZ Stream Foodwebs. Effectively a version of
 @Cazelles2016TheSpe figure 1 panel

@@ -29,7 +29,11 @@ of abundance within communities [@Poisot2015SpeWhy]. These biases have practical
 consequences for answering questions about species interactions
 [@deAguiar2019RevBia]. The data we collect is noisy and likely contains many
 _false-negatives_, where there is not an observation of two species interacting
-even though they actually interact in some capacity
+even though they actually interact in some capacity.
+
+This goes on to effect the inferences we make about network structure and the
+relations among species within them
+[@Martinez1999EffSam].
 
 More on history here...
 
@@ -38,21 +42,20 @@ data [@Young2021RecPla; @Stock2017LinFil].
 
 
 
-Understanding how the process of sampling induces biases in data can and should
-be used to aid in the design of surveys of species diversity [@Carlson2020WhaWou].
-Here we seek to understand how false negatives in ecological interaction data
-impact the analysis and prediction of ecological networks, and also to
-understand how a better understanding of the relationship between sampling
-effort and likelihood of a "true negative" can guide how we design surveys of
-ecological interactions [@Jordano2016SamNet]. The questions we pose and attempt
-to answer are: 1) How many times do you have to observe a non-interaction
-between two species to be confident in saying that is a true negative? 2) How
-"wrong" are the measurements of network structure as a function of
-false-negative probability? and lastly 3) How do false-negatives impact our
-ability to make reliable predictions about interactions? We conclude by
-suggesting use of null models like those presented here as a tool for guiding
-design of surveys of species interactions, and increased adoption of modeling
-detection error in predictive ecological models.
+Understanding how sampling induces biases in data can and should be used to aid
+in the design of surveys of species diversity [@Carlson2020WhaWou]. Here we seek
+to understand how false negatives in ecological interaction data impact the
+analysis and prediction of ecological networks, and also to understand how a
+better understanding of the relationship between sampling effort and likelihood
+of a "true negative" can guide how we design surveys of ecological interactions
+[@Jordano2016SamNet]. The questions we pose and attempt to answer are: 1) How
+many times do you have to observe a non-interaction between two species to be
+confident in saying that is a true negative? 2) How "wrong" are the measurements
+of network structure as a function of false-negative probability? and lastly 3)
+How do false-negatives impact our ability to make reliable predictions about
+interactions? We conclude by suggesting use of null models like those presented
+here as a tool for guiding design of surveys of species interactions, and
+increased adoption of modeling detection error in predictive ecological models.
 
 
 # How many observations of a non-interaction do we need to classify it as a true negative?
@@ -102,11 +105,13 @@ species is drawn from the distribution of those species' abundances at that
 place and time. Although there is no shortage of debate as to the processes the
 govern the general shape of this distribution, across communities the abundance
 distribution can be reasonably-well described by a log-normal distribution
-[@Volkov2003NeuThe]. Controversies around theory of species abundance
-distributions aside, the practical consequence of skewed distribution of biomass
-in communities is seeing two low biomass species interacting requires two low
-probability events, which is observing two species of low relative biomass. This
-"neutrally forbidden link" [@Canard2012EmeStr]
+[@Volkov2003NeuThe]. Note on due diligence of testing the case where the
+abundance distribution is derived from Yodzis-Innes $Z^(T_i-1)$ where $T_i$ is
+the trophic level of species $i$. It turns out the same. Controversies around
+theory of species abundance distributions aside, the practical consequence of
+skewed distribution of biomass in communities is seeing two low biomass species
+interacting requires two low probability events, which is observing two species
+of low relative biomass. This "neutrally forbidden link" [@Canard2012EmeStr]
 
 For each ecological network $A$ with $S$ species, we simulate abundances from
 $N$ independent draws from a standard-log-normal distribution. For each true
@@ -114,6 +119,7 @@ interaction $A_{ij} = 1$ we estimate the probability of observing both species
 $i$ and $j$ at given place and time by simulating a distribution of $$
 individual observations, where the species observed at the $n=1,2,\dots,N$-th
 observation is drawn from the generated log-normal distribution of abundances.
+
 For each pair of species $(i,j)$, if both $i$ and $j$ are observed within the
 $n$ observations, the interaction is tallyed as a true positive if $A_{ij}=1$
 and a false positive otherwise. Similarly, if only one of $i$ and $j$ are
@@ -143,10 +149,11 @@ to obtain a goal number of observations (colors) of a particular species, and a
 function of the relative abundance of that focal species (x-axis)
 ](./figures/combinedfig2.png){#fig:totalobs}
 
+
 Empirical data on interactions, limited by the practical realities of funding
 and human-work hours, tend to fall on the order on 100s or 1000s observations of
-individuals per site [@Resasco2021PlaPol, @Schwarz2020TemSca;
-@Nielsen2007EcoNet], although clear aggregation of this data has proven
+individuals per site [@Resasco2021PlaPol; @Schwarz2020TemSca;
+@Nielsen2007EcoNet]. Clear aggregation of this data has proven
 difficult to find and a meta-analysis of network data and sampling effort seems
 both pertinent and necessary, in addition to the effects of aggregation of
 interactions across taxonomic scales [@Giacomuzzo2021FooWeb]. Further, from
@@ -156,11 +163,12 @@ be taken into account when designing samples of ecological networks in the
 future.
 
 What is the context of this sampling effort? Are you trying to find a particular
-species $A$? @fig:samplingeffort
+species $A$? @fig:totalobs panel C. This argument is well-considered when
+sampling species [@Willott2001SpeAcc], but has not yet been internalized for
+designing samples of communities.
 
-Note on due diligence of testing the case where the abundance distribution is
-derived from Yodzis-Innes $Z^(T_i-1)$ where $T_i$ is the trophic level of
-species $i$. It turns out the same.
+
+
 
 ## Positive associations can increase the probability of false-negatives
 
@@ -172,7 +180,7 @@ can be _higher_ if there is some positive association between occurrence of
 species $A$ and $B$. If we denote the probability that we observe an existing
 interaction between $A$ and $B$ as $P(AB)$, and if there is _no_ association
 between the marginal probabilities of observing $A$ and observing $B$, denoted
-$P(A)$ and $P(B)$ respectivelly, then the probability of observing the
+$P(A)$ and $P(B)$ respectively, then the probability of observing the
 interaction $P(AB) = P(A)P(B)$.
 
 In the other case where there _is_ some positive strength of association between
@@ -194,24 +202,24 @@ species across sites.
 To test this in empirical data, we use two datasets: a set of host-parasite
 interactions sampled across 51 sites [@Hadfield2014TalTwo] and a set of
 food-webs collected from New Zealand freshwater streams over many years
-[@thomspon]. We simply compute the empirical marginal distribution and compare
-the product of the marginals to the true joint value, @fig:associations
-
+[@thompson]. We simply compute the empirical marginal distribution and compare
+the product of the marginals to the true joint value, @fig:associations.
 
 ![Top: Hadfield, Bottom: NZ Stream Foodwebs. Effectively a version of
 @Cazelles2016TheSpe figure 1 panel
 A.](./figures/positiveassociations.png){#fig:associations}
 
-From @fig:associations, we see that divergence from independent probability of
-observing to species cooccuring for a set host-parasite metaweb across XX sites
-[@Hadfield2014TalTwo].
-
 Canard's neutrally forbidden links between species of very low relative biomass
+assumes this lack of association. The strength of this association may be
+different in different systems. Note here on difficulty of resolving spatial
+samples of species due to different taxonomic indicators, this is why we can't
+simple apply this to the whole mangal dataset.
+
 
 # The impact of false-negatives on network analysis and prediction
 
-We now transition toward assessing the effects of false negatives in data on the
-properties of ecological networks which we derive from interaction data, and
+We now transition toward assessing the effects of false negatives in data on
+the properties of the networks which we derive from this interaction data, and
 their effect on models for predicting interactions in the future.
 
 ## Effects of false-negatives on network properties
@@ -238,6 +246,9 @@ are decisively non-linear. We propose that simulating the effects of false
 negatives in data in this way can serve as an additional validation tool when
 aiming to detect structural properties of networks using generative null models
 [@Connor2017UsiNul].   
+
+Nonlinearity of network level properties, mean deg centrality and effects
+on indirect interations, [@Williams2002TwoDeg]
 
 ## Effects of false negatives on ability to make predictions
 

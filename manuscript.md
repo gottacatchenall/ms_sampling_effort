@@ -32,20 +32,20 @@ _false-negatives_, where there is not an observation of two species interacting
 even though they actually interact in some capacity.
 
 These false-negatives could go on to effect the inferences we make about network
-structure and subsequently the relations among species. There is a long history
-of discourse surrounding this limitation: the compounding effects of sampling
-effort, the amalgamation of data across study sites and across taxonomic scales
-[@Giacomuzzo2021FooWeb; @Paine1988RoaMap].  @Martinez1999EffSam showed that some
-network properties, namely connectance, is robust to sampling effort in a
-plant-endophyte trophic network, but this system includes 62k observations of
-interactions, and 164k stems, and the connectance estimate becomes approximately
-correct around 10k stem observations. However in some systems, e.g. megafauna
-food-webs, collect this many observations proves difficult to say the least due
-to  the absolute abundance of species. As a result there have been movement
-toward explicitly accounting for false-negatives as a product of relative
-abundance [@Young2021RecPla; @Stock2017LinFil], and toward a predictive approach
-for imputing the true metaweb of interactions given a finite set of samples
-[@Strydom2021RoaPre].
+properties and relations among species. There is a long history of discourse
+surrounding this limitation: the compounding effects of sampling effort, and the
+amalgamation of data across study sites and across taxonomic scales could
+feasibly lead to insurmountable biases in existing data [@Paine1988RoaMap].
+@Martinez1999EffSam showed that some network properties, namely connectance, is
+robust to sampling effort in a plant-endophyte trophic network, but this system
+includes 62k observations of interactions, and 164k stems, and the connectance
+estimate becomes approximately correct beyond roughly 10k stem observations. In
+some systems, e.g. megafauna food-webs, collect this many observations proves
+difficult to say the least due to  the absolute abundance of species. As a
+result there have been movement toward explicitly accounting for false-negatives
+as a product of relative abundance [@Young2021RecPla; @Stock2017LinFil], and
+toward a predictive approach for imputing the true metaweb of interactions given
+a finite set of samples [@Strydom2021RoaPre].
 
 In this manuscript we seek to explore the relationship between total sampling
 effort (the total count of all individuals of all species seen) and
@@ -75,12 +75,13 @@ is incorrectly observed as a non-interaction with an independent and fixed
 probability, which we denote $p_{fn}$ and subsequently refer to as the
 False-Negative Rate (FNR). If we observe the same species not-interacting $N$
 times the probability of a true negative (denoted $p_{tn}$) is given by $p_{tn}
-= 1 - (p_{fn})^N$. This relation is shown in @fig:negativebinom for varying
-values of the false negative rate $p_{fn}$. This illustrates a fundamental link
-between our ability to reliably say an interaction doesn't
-exist---$p_{tn}$---and our sampling effort $N$. Further, within this model there
-is no non-zero $p_{fn}$ for which we can ever _prove_ that an interaction does
-not exist.
+= 1 - (p_{fn})^N$. This relation (a special case of the negative-binomial
+distribution) is shown in @fig:negativebinom for varying values of the false
+negative rate $p_{fn}$. This illustrates a fundamental link between our ability
+to reliably say an interaction doesn't exist---$p_{tn}$---and the number of
+times we have seen a given species. Further, within this model there is no
+non-zero $p_{fn}$ for which we can ever _prove_ that an interaction does not
+exist.
 
 ![The probability an observed interaction is a "true negative" (y-axis) given
 how many times it has been sampled as a non-interaction (x-axis). Each color
@@ -95,47 +96,47 @@ interaction is a true negative. But how does one decide what this threshold of
 number of observations should be when planning to sample a given system? If
 false-negative rates presented in @fig:negativebinom seem unrealistically high,
 consider that species are not observed independent of their relative abundance.
-In the next section we demonstrate the distribution of biomass in ecosystems can
-lead to high realized values of $p_{fn}$ for species with low relative
-abundance.
+In the next section we demonstrate that distribution of abundance in ecosystems
+can lead to realized values of $p_{fn}$ similar to those in @fig:negativebinom
+for species with low relative abundance, purely as a function of sampling
+effort.
 
 ## False-negatives as a product of relative abundance
 
 In this section we demonstrate the realized false-negative rate (FNR) changes
 drastically with sampling effort, largely due to the intrinsic variation of
-abundances within a community.
-
-We do this by simulating the process of observation of species interactions,
-applied both to 243 empirical food webs from the Mangal database
-[@Banville2021ManJl] as well as random food-webs generated using the niche model
-[@Williams2000SimRul]. Our neutral model of observation assumes each observed
-species is drawn from the distribution of those species' abundances at that
-place and time. Although there is no shortage of debate as to the processes the
-govern the general shape of this distribution, across communities the abundance
-distribution can be reasonably-well described by a log-normal distribution
-[@Volkov2003NeuThe]. Note that in addition to the log-normal distribution, we
-also tested the case where the abundance distribution is derived from
-Yodzis-Innes $Z^{(T_i-1)}$ where $T_i$ is the trophic level of species $i$,
-which yields the same qualitative behavior. Controversies around the theory of
-species abundance distributions aside, the practical consequence of skewed
+abundances within a community---termed "neutrally forbidden links"
+[@Canard2012EmeStr]. We do this by simulating the process of observation of
+species interactions, applied both to 243 empirical food webs from the Mangal
+database [@Banville2021ManJl] as well as random food-webs generated using the
+niche model [@Williams2000SimRul]. Our neutral model of observation assumes each
+observed species is drawn from the distribution of those species' abundances at
+that place and time. Although there is no shortage of debate as to the processes
+the govern the general shape of this distribution, across communities the
+abundance distribution can be reasonably-well described by a log-normal
+distribution [@Volkov2003NeuThe]. The practical consequence of skewed
 distribution of biomass in communities is seeing two low biomass species
 interacting requires two low probability events, which is observing two species
 of low relative biomass. However, this "neutrally forbidden link"
 [@Canard2012EmeStr] does not consider that there may be a positive association
 between observing species together because of their interaction
-[@Cazelles2016TheSpe], which we'll explore in the next subsection.
+[@Cazelles2016TheSpe], which we'll explore in the next subsection. Note that in
+addition to the log-normal distribution, we also tested the case where the
+abundance distribution is derived from $Z^{(T_i-1)}$ where $T_i$ is the trophic
+level of species $i$ [@YodzisInnes], which yields the same qualitative behavior.
 
-For each ecological network $A$ with $S$ species, we simulate abundances from
-$N$ independent draws from a standard-log-normal distribution. For each true
-interaction $A_{ij} = 1$ we estimate the probability of observing both species
-$i$ and $j$ at given place and time by simulating a distribution of $n$
-individual observations, where the species observed at the $n$-th observation is
-drawn from the generated log-normal distribution of abundances. For each pair of
-species $(i,j)$, if both $i$ and $j$ are observed within the $n$ observations,
-the interaction is tallied as a true positive if $A_{ij}=1$ and a false positive
-otherwise. Similarly, if only one of $i$ and $j$ are observed---_but not
-both_---in these $n$ observations, but $A_{ij}=1$, this is counted as a
-false-negative, and a true-negative otherwise.
+To simulate the process of observation, for an ecological network $A$ with $S$
+species, we sample abundances from $N$ independent draws from a
+standard-log-normal distribution. For each true interaction in $A$ (i.e. $A_{ij}
+= 1$) we estimate the probability of observing both species $i$ and $j$ at given
+place and time by simulating $n$ individual observations, where the species
+observed at the $1,2,\dots,n$-th observation is drawn from the generated
+log-normal distribution of abundances. For each pair of species $(i,j)$, if both
+$i$ and $j$ are observed within the $n$ observations, the interaction is tallied
+as a true positive if $A_{ij}=1$ and a false positive otherwise. Similarly, if
+only one of $i$ and $j$ are observed---_but not both_---in these $n$
+observations, but $A_{ij}=1$, this is counted as a false-negative, and a
+true-negative otherwise.
 
 @fig:totalobs (a) shows this model of observation applied to networks generated
 using the niche model [@Williams2000SimRul] across varying levels of species
@@ -143,10 +144,10 @@ richness, and in (b) applied to 243 food-webs from the Mangal database. For all
 niche model simulations in this manuscript, the number of interactions is drawn
 from the fleixble-links model fit to Mangal data, [@MacDonald2020RevLin]
 equivalent to drawing the number of interactions $L \sim
-\text{BetaBinomial}(S^2-S+1, \mu \phi, (1-\mu)\phi)$, [where the MAP estimate of
-$\mu = 0.086$ and $\phi =24.3$; @MacDonald2020RevLin] All simulations were done
-with 500 replicates of per unique number of observations $s$, and analyses
-presented here are done in Julia v1.6 [@Bezanson2015JulFre] using both
+\text{BetaBinomial}(S^2-S+1, \mu \phi, (1-\mu)\phi)$, where the MAP estimate of
+$\mu = 0.086$ and $\phi =24.3$ [@MacDonald2020RevLin]. All simulations were done
+with 500 independent replicates per unique number of observations $n$. All
+analyses presented here are done in Julia v1.6 [@Bezanson2015JulFre] using both
 EcologicalNetworks.jl v0.5 and Mangal.jl v0.4 [@Banville2021ManJl; ZENODO LINK
 TK]. Note that the empirical data also is, due to the phenomena described here,
 very likely to _already_ have many false negatives, which is why we are
@@ -219,31 +220,30 @@ a set of host-parasite interactions sampled across 51 sites
 [@Hadfield2014TalTwo] and a set of XX New Zealand freshwater stream food webs
 [@Thompson2000ResSol]. We simply compute the empirical marginal distribution of
 species occurrence, and compare the product of the marginals, $P(A)P(B)$, to the
-empirical joint distribution $P(AB)$
+empirical joint distribution $P(AB)$.
 
 ![Top: Hadfield, Bottom: NZ Stream Foodwebs. Effectively a version of
 @Cazelles2016TheSpe figure 1 panel
 A.](./figures/positiveassociations.png){#fig:associations}
 
 In @fig:associations, both host-parasite system (top) and food-web (bottom)
-exhibit these positive associations.  Canard's "neutrally forbidden links"
-between species of very low relative biomass assumes this lack of association.
-The strength of this association may be different in different systems. Note
-here that these datasets were usable because they already have shared taxonomic
-backbone. Applying this in bulk to Mangal food-webs presents the difficulty of
-resolving spatial samples of species with to different taxonomic indicators,
-this is why we can't simple apply this to the whole mangal dataset.
+exhibit these positive associations. The strength of this association may be
+different in different systems. Note here that these datasets were usable
+because they already have shared taxonomic backbone. Applying this in bulk to
+Mangal food-webs presents the difficulty of resolving spatial samples of species
+with to different taxonomic indicators, this is why we can't simple apply this
+to the whole mangal dataset.
 
-We suggest using neutral models similar to what we present above to consider the
-probability of false-negatives in a data set of a given size. This can be useful
-for predictive models, where we might want to incorporate a model of observation
-error, and also for designing studies number of observations sufficient to say
-an interaction doesn't exist [@Canard2012EmeStr]. Similar, one must consider the
-context for sampling---is the goal to detect a particular species $A$ (as in
-@fig:totalobs (c)), or to get a representative sample of interactions across the
-species pool? This argument is well-considered when sampling species
-[@Willott2001SpeAcc], but has not yet been internalized for designing samples of
-communities.
+We conclude this section by advocating for the use neutral models similar to
+above to generate expectations about the number of false-negatives in a data set
+of a given size. This can be useful for predictive models, where we might want
+to incorporate a model of observation error, and also for designing studies
+number of observations sufficient to say an interaction doesn't exist
+[@Canard2012EmeStr]. Further, one must consider the context for sampling---is
+the goal to detect a particular species $A$ (as in @fig:totalobs (c)), or to get
+a representative sample of interactions across the species pool? This argument
+is well-considered when sampling species [@Willott2001SpeAcc], but has not yet
+been internalized for designing samples of communities.
 
 
 # The impact of false-negatives on network analysis and prediction

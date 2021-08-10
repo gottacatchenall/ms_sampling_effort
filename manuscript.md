@@ -117,7 +117,7 @@ observation assumes each observed species is drawn from the distribution of
 those species' abundances at that place and time. Although there is no shortage
 of debate as to the processes the govern this distribution, across communities
 the abundance distribution can be reasonably-well described by a log-normal
-distribution [@Volkov2003NeuThe].  (Note that in addition to the log-normal
+distribution [@Volkov2003NeuThe]  (Note that in addition to the log-normal
 distribution, we also tested the case where the abundance distribution is
 derived from $Z^{(T_i-1)}$ where $T_i$ is the trophic level of species $i$
 [@YodzisInnes], which yields the same qualitative behavior). The practical
@@ -126,18 +126,20 @@ low biomass species interacting requires two low probability events: observing
 two species of low relative biomass together. However, this "neutrally forbidden
 link" [@Canard2012EmeStr] does not consider that there may be a positive
 association between observing species together because of their interaction
-[@Cazelles2016TheSpe], which we'll explore in the next subsection. To simulate
-the process of observation, for an ecological network $A$ with $S$ species, we
-sample abundances from $N$ independent draws from a standard-log-normal
-distribution. For each true interaction in $A$ (i.e. $A_{ij} = 1$) we estimate
-the probability of observing both species $i$ and $j$ at given place and time by
-simulating $n$ individual observations, where the species observed at the
-$1,2,\dots,n$-th observation is drawn from the generated log-normal distribution
-of abundances. For each pair of species $(i,j)$, if both $i$ and $j$ are
-observed within the $n$ observations, the interaction is tallied as a true
-positive if $A_{ij}=1$ and a false positive otherwise. Similarly, if only one of
-$i$ and $j$ are observed---_but not both_---in these $n$ observations, but
-$A_{ij}=1$, this is counted as a false-negative, and a true-negative otherwise.
+[@Cazelles2016TheSpe], which we'll explore in the next subsection.
+
+To simulate the process of observation, for an ecological network $A$ with $S$
+species, we sample abundances from $N$ independent draws from a
+standard-log-normal distribution. For each true interaction in $A$ (i.e. $A_{ij}
+= 1$) we estimate the probability of observing both species $i$ and $j$ at given
+place and time by simulating $n$ individual observations, where the species
+observed at the $1,2,\dots,n$-th observation is drawn from the generated
+log-normal distribution of abundances. For each pair of species $(i,j)$, if both
+$i$ and $j$ are observed within the $n$ observations, the interaction is tallied
+as a true positive if $A_{ij}=1$ and a false positive otherwise. Similarly, if
+only one of $i$ and $j$ are observed---_but not both_---in these $n$
+observations, but $A_{ij}=1$, this is counted as a false-negative, and a
+true-negative otherwise.
 
 @fig:totalobs (a) shows this model of observation applied to networks generated
 using the niche model [@Williams2000SimRul] across varying levels of species

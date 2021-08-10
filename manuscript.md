@@ -279,7 +279,7 @@ flexible-links model [@MacDonald2020RevLin] as before.
 ![The mean-squared error (y-axis) of various network properties (different
 panels) across various simulated false-negative rates (x-axis). Means denoted
 with points, with $1\sigma$ in the first shade and $2\sigma$ in the
-second.](./figures/props.png){#fig:properties}
+second.](./figures/props_specrad_longhaul.png){#fig:properties}
 
 Practically, @fig:properties shows us that network structure varies in response
 to false negatives---connectance responds roughly linearly to false negatives,

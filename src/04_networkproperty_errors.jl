@@ -59,6 +59,10 @@ plot!(fnr, connect_err, label="", ribbon=connect_sd, c=:dodgerblue4, fa=0.2, )
 plot!(fnr, connect_err, label="", ribbon=2connect_sd, c=:dodgerblue4, fa=0.1)
 scatter!(fnr, connect_err, mc=:white, msc=:dodgerblue4, msw=1.5, ms=4,label="connectance")
 
+plot!(fnr, specrad_err, label="", ribbon=specrad_sd, c=:gray50, fa=0.2)
+plot!(fnr, specrad_err, label="", ribbon=2specrad_sd, c=:gray50, fa=0.1)
+scatter!(fnr, specrad_err, mc=:white, msw=1.5, ms=4, msc=:teal,label="spectral radius")
+
 
 plot!(fnr, degcent_err, label="", ribbon=degcent_sd, c=:teal, fa=0.2)
 plot!(fnr, degcent_err, label="", ribbon=2degcent_sd, c=:teal, fa=0.1)
@@ -68,4 +72,4 @@ yaxis!("error in property estimate")
 
 
 
-savefig("props.png")
+savefig("props_specrad_longhaul.png")

@@ -243,22 +243,22 @@ empirical joint distribution $P(AB)$.
 A. Both distributions have $mu \neq 0$ with $p < 10^{-50}$](./figures/positiveassociations.png){#fig:associations}
 
 In @fig:associations, both host-parasite system (top) and food-web (bottom)
-exhibit these positive associations.
-There is no reason to expect the strength of this association to be the same in
-different systems. At the moment, computing this metric for all of the networks
-in the Mangal database proves challenging as most data sets use different taxonmic
-identifiers, often at different resolutions.
-
-These particular datasets [@Hadfield2014TalTwo; @Thompson2000ResSol] were usable
-because they already have been sorted to have a fixed taxonomic backbone (as
-part of EcologicalNetworks.jl [@Banville2021ManJl]). Applying this in bulk to
-Mangal food-webs presents the difficulty of resolving different taxon
-identifiers across spatial samples of species with to different resolutions,
-which is why we can't simply apply this to the whole Mangal database---this
-highlights a general problem of resolving taxonomic indentifiers in separate
-ecological datasets, which is a problem that needs to be addressed for
+exhibit these positive associations. There is no reason to expect the strength
+of this association to be the same in different systems. At the moment,
+computing this metric for all of the networks in the Mangal database proves
+challenging as most data sets use different taxonmic identifiers, often at
+different resolutions. These particular datasets [@Hadfield2014TalTwo;
+@Thompson2000ResSol] were usable because they already have been sorted to have a
+fixed taxonomic backbone (as part of EcologicalNetworks.jl
+[@Banville2021ManJl]). Applying this in bulk to Mangal food-webs presents the
+difficulty of resolving different taxon identifiers across spatial samples of
+species with to different resolutions, which is why we can't simply apply this
+to the whole Mangal database---this highlights a general problem of resolving
+taxonomic indentifiers which use different names and different resolutions in
+different ecological datasets, which is a problem that needs to be addressed for
 computational approaches to scale up to the world of big-ecological-data we hope
-to build.
+to build---although this is a task that may be aided via
+natural-language-processing methods.
 
 
 # The impact of false-negatives on network analysis and prediction
@@ -269,15 +269,15 @@ their effect on models for predicting interactions in the future.
 
 ## Effects of false-negatives on network properties
 
-Here we simulate the process of observation with observation error to generate
-synthetic data with a known proportion of false negatives, and compare the
-computed network properties of the original "true" network to the computed
-properties of the "observed" network with added false-negatives. @fig:properties
-shows the mean-squared error of both connectance and mean degree-centrality,
-each computed across 2000 replicates at each value of the false negative rate
-$p_{fn}$. All replicates use random food-webs simulated using the niche model
-[@Williams2000SimRul] with $100$ species and connectance drawn from the
-flexible-links model [@MacDonald2020RevLin] as before.
+Here we simulate the process of observation with error to generate synthetic
+data with a known proportion of false negatives, and compare the computed
+network properties of the original "true" network to the computed properties of
+the "observed" network with added false-negatives. In @fig:properties we see the
+mean-squared error of connectance, mean degree-centrality, and spectral radius,
+computed across 2000, 2000, and 300 replicates respectively at each value of the
+false negative rate $p_{fn}$. All replicates use random food-webs simulated
+using the niche model [@Williams2000SimRul] with $100$ species and connectance
+drawn from the flexible-links model [@MacDonald2020RevLin] as before.
 
 ![The mean-squared error (y-axis) of various network properties (different
 colors) across various simulated false-negative rates (x-axis). Means denoted
@@ -285,20 +285,20 @@ with points, with $1\sigma$ in the first shade and $2\sigma$ in the
 second.](./figures/props_specrad.png){#fig:properties}
 
 We consider three properties: connectance, mean-degree-centrality, and spectral
-radius, indicative of local, meso, and global structure. Connectance is really a
-node-level property, a proxy for the degree distribution of each node.
+radius, indicative of local, meso, and global structure. Connectance is
+effectively a node-level property, a proxy for the degree distribution.
 Degree-centrality captures a different aspect of network structure than
 connectance, more indicative of meso-level properties that describe local
 'regions' of nodes interact. Spectral radius (equivalent to the magnitude of the
-largest eigenvalue of $A$) Is  a measure of global structure, and demonstrates
+largest eigenvalue of $A$) is a measure of global structure, and demonstrates
 much more variability in response to false-negatives. For example, if a
 false-negative splits a metaweb into two components, becomes the largest
 eigenvalue of those two components. Practically, @fig:properties shows us that
-network structure varies in response to false negatives---connectance responds
-roughly linearly to false negatives, whereas mean-degree-centrality decisively
-does not. This highlights the practical effect that false negatives may
-exacerbate the difficulty of detecting or predicting indirect interactions
-[@Williams2002TwoDeg].
+different scales of measuring network structure vary in their response to false
+negatives---connectance responds roughly linearly to false negatives, whereas
+mean-degree-centrality decisively does not. This highlights the practical effect
+that false negatives may exacerbate the difficulty of detecting or predicting
+indirect interactions [@Williams2002TwoDeg].
 
 ## Effects of false negatives on ability to make predictions
 

@@ -35,7 +35,7 @@ properties and relations among species.
 
 This issue has encouraged a long history of discourse. Initially the concern was
 that the compounding effects of limited sampling effort and the amalgamation of
-data, both across study sites and across taxonomic scales, could lead to any
+data, both across study sites and across taxonomic scales, could lead any
 empirical set of observations to inadequately reflect how species interact
 [@Paine1988RoaMap]. @Martinez1999EffSam showed that network connectance is
 robust to sampling effort in a plant-endophyte trophic network,  but this done
@@ -123,7 +123,7 @@ species $i$  and $Z$ is a scaling coefficient. [@Savage2004EffBod], which yields
 the same qualitative behavior). The practical consequence of this skewed
 distribution of biomass in communities is seeing two low biomass species
 interacting requires two low probability events: observing two species of low
-relative biomass together. However, this "neutrally forbidden link"
+relative biomass _at the same time_. However, this "neutrally forbidden link"
 [@Canard2012EmeStr] does not consider that there may be a positive association
 between observing species together because of their interaction
 [@Cazelles2016TheSpe], which we'll explore in the next subsection.
@@ -141,22 +141,22 @@ only one of $i$ and $j$ are observed---_but not both_---in these $n$
 observations, but $A_{ij}=1$, this is counted as a false-negative, and a
 true-negative otherwise.
 
-@fig:totalobs (a) shows this model of observation applied to networks generated
-using the niche model [@Williams2000SimRul] across varying levels of species
-richness, and in (b) applied to 243 food-webs from the Mangal database. For all
-niche model simulations in this manuscript, the number of interactions is drawn
-from the flexible-links model fit to Mangal data [@MacDonald2020RevLin],
-effectively drawing the number of interactions $L$ for a random niche model
-food-web with $S$ species as $L \sim \text{BetaBinomial}(S^2-S+1, \mu \phi,
-(1-\mu)\phi)$, where the MAP estimate of ($\mu$, $\phi$) applied to Mangal data
-from @MacDonald2020RevLin is $(\mu = 0.086, \phi =24.3)$. All simulations were
-done with 500 independent replicates per unique number of observations $n$. All
-analyses presented here are done in Julia v1.6 [@Bezanson2015JulFre] using both
-EcologicalNetworks.jl v0.5 and Mangal.jl v0.4 [@Banville2021ManJl; ZENODO LINK
-TK]. Note that the empirical data also is, due to the phenomena described here,
-very likely to _already_ have many false negatives, which is why we are
-interested in prediction of networks in the first place---we'll revisit this in
-the final section.
+In @fig:totalobs (a) we see this model of observation applied to networks
+generated using the niche model [@Williams2000SimRul] across varying levels of
+species richness, and in (b) applied to 243 food-webs from the Mangal database.
+For all niche model simulations in this manuscript, the number of interactions
+is drawn from the flexible-links model fit to Mangal data
+[@MacDonald2020RevLin], effectively drawing the number of interactions $L$ for a
+random niche model food-web with $S$ species as $L \sim
+\text{BetaBinomial}(S^2-S+1, \mu \phi, (1-\mu)\phi)$, where the MAP estimate of
+($\mu$, $\phi$) applied to Mangal data from @MacDonald2020RevLin is $(\mu =
+0.086, \phi =24.3)$. All simulations were done with 500 independent replicates
+per unique number of observations $n$. All analyses presented here are done in
+Julia v1.6 [@Bezanson2015JulFre] using both EcologicalNetworks.jl v0.5 and
+Mangal.jl v0.4 [@Banville2021ManJl; ZENODO link TODO]. Note that the empirical
+data also is, due to the phenomena described here, very likely to _already_ have
+many false negatives, which is why we are interested in prediction of networks
+in the first place---we'll revisit this in the final section.
 
 ![A and B: False negative rate (y-axis) as a function of total sampling effort
 (x-axis) and network size, computed using the method described above. For a this
@@ -240,10 +240,10 @@ empirical joint distribution $P(AB)$.
 
 ![Top: Hadfield, Bottom: NZ Stream Foodwebs. Effectively a version of
 @Cazelles2016TheSpe figure 1 panel
-A.](./figures/positiveassociations.png){#fig:associations}
+A. Both distributions have $mu \neq 0$ with $p < 10^{-50}$](./figures/positiveassociations.png){#fig:associations}
 
 In @fig:associations, both host-parasite system (top) and food-web (bottom)
-exhibit these positive associations. (report p-values and means here...sigh...).
+exhibit these positive associations.
 There is no reason to expect the strength of this association to be the same in
 different systems. At the moment, computing this metric for all of the networks
 in the Mangal database proves challenging as most data sets use different taxonmic

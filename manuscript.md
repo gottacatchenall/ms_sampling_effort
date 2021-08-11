@@ -186,11 +186,11 @@ order on 100s or 1000s observations of individuals per site [@Resasco2021PlaPol;
 @Schwarz2020TemSca; @Nielsen2007EcoNet]. Clear aggregation of this data has
 proven difficult to find and a meta-analysis of network data and sampling effort
 seems both pertinent and necessary, in addition to the effects of aggregation of
-interactions across taxonomic scales [@Giacomuzzo2021FooWeb]. Further, from
-@fig:totalobs it is evident that the number of species considered in a study is
-inseparable from the false-negative rate in that study, and this effect should
-be taken into account when designing samples of ecological networks in the
-future.
+interactions across taxonomic scales [@Giacomuzzo2021FooWeb;@Gauzens2013FooAgg].
+Further, from @fig:totalobs it is evident that the number of species considered
+in a study is inseparable from the false-negative rate in that study, and this
+effect should be taken into account when designing samples of ecological
+networks in the future.
 
 We conclude this section by advocating for the use of neutral models similar to
 above to generate expectations about the number of false-negatives in a data set
@@ -225,17 +225,18 @@ this case, the probability of observing a false negative in our naive model from
 implies $p_{fn} \geq 1 - P(A)P(B)$ which indicates increasingly greater
 probability of a false negative as $P(AB) \to P(AB) \gg P(A)P(B)$.
 
-This should be consider with the caveat that this does not consider variation in
+This should be considered with the caveat that this does not consider variation in
 species abundance in space and time. If positive or negative associations
 between species structure variation in the distribution of $P(AB)$ across
 space/time, then the spatial/temporal biases induced by data collection would
 further impact the realized false negative rate, as the probability of false
 negative would not be constant for each pair of species across sites. To test
 for this association empirical data, we use two datasets: a set of host-parasite
-interactions sampled across 51 sites [@Hadfield2014TalTwo] and a set of XX New
-Zealand freshwater stream food webs [@Thompson2000ResSol]. We simply compute the
-empirical marginal distribution of species occurrence, and compare the product
-of the marginals, $P(A)P(B)$, to the empirical joint distribution $P(AB)$.
+interactions sampled across 51 sites with 327 total taxa  [@Hadfield2014TalTwo]
+and a set of 18 New Zealand freshwater stream food webs with 566 total taxa
+[@Thompson2000ResSol]. We simply compute the empirical marginal distribution of
+species occurrence, and compare the product of the marginals, $P(A)P(B)$, to the
+empirical joint distribution $P(AB)$.
 
 ![Top: Hadfield, Bottom: NZ Stream Foodwebs. Effectively a version of
 @Cazelles2016TheSpe figure 1 panel
@@ -253,9 +254,11 @@ because they already have been sorted to have a fixed taxonomic backbone (as
 part of EcologicalNetworks.jl [@Banville2021ManJl]). Applying this in bulk to
 Mangal food-webs presents the difficulty of resolving different taxon
 identifiers across spatial samples of species with to different resolutions,
-this is why we can't simple apply this to the whole mangal dataset. Sure would
-be interesting if someone took an in-review software package to do this and
-wrote a paper about it.
+which is why we can't simply apply this to the whole Mangal database---this
+highlights a general problem of resolving taxonomic indentifiers in separate
+ecological datasets, which is a problem that needs to be addressed for
+computational approaches to scale up to the world of big-ecological-data we hope
+to build.
 
 
 # The impact of false-negatives on network analysis and prediction
@@ -342,43 +345,62 @@ way can serve as an additional validation tool when aiming to detect structural
 properties of networks using generative null models [@Connor2017UsiNul], or when
 evaluating the robustness of a predictive model.   
 
-# Conclusion
+# Discussion
 
-We have demonstrated that expect a certain number of false
-negatives in species interaction datasets purely due to the distribution of
-abundances within a community. Positive associations between species occurence
-due to interactions can increase the false-negative rate if the sample is
-spatially biased. We have also shown that these false negatives can cause
-varying responses in our measurements of network properties and further could
-impact our ability to reliably predict interactions, which highlights the need
-for further research into methods for correcting this bias in existing data,
-e.g. [@Stock2017LinFil]. A brief caveat here is that we do not consider the rate
-of false positives---in large part false positives can be explained by
-misidentification of species, although this could be a relevant consideration in
-some cases.
-
-What then does the elucidate about how to design samples of interactions
-[@Jordano2016SamNet]? The primary takeaway is that when planning the sampling
-effort across sites, it is necessary to take both the species richness of the
-metaweb into account. Further simulating the process of observation can be a
-powerful tool for planing study design which takes relative abundance into
-account, and provide a null baseline for detection of interaction strength. A
-model similar to that here can and should be used to provide a neutral
-expectation of true-negative probability given a number of observations of
-individuals at a given place and time.
+Here, we have demonstrated that we expect false-negatives in species interaction
+datasets purely due to the distribution of abundances within a community.
+Positive associations between species occurrence [@Cazelles2016TheSpe] can
+increase the realized false-negative rate if the sampling effort is limited, and
+we have presented evidence of this non-random structure of cooccurrence in two
+sets of spatially-replicated ecological network samples. We have also shown that
+false-negatives can cause varying responses in our measurements of network
+properties and further could impact our ability to reliably predict
+interactions, which highlights the need for further research into methods for
+correcting this bias in existing data [@Stock2017LinFil]. A brief caveat here is
+that we do not consider the rate of false-positives---in large part
+false-positives can be explained by misidentification of species, although this
+could be a relevant consideration in some cases.
 
 What does the future hold for this research? A better understanding of how
 false-negatives impact our analyses and prediction of ecological networks is a
-practical necessity.  In general, building models that explicitly account for
-observation error is a necessary step forward for predictive ecological models
-[@Young2021RecPla; @Johnson2021BayEst]. Neural networks, like the one used to
-predict interactions in the above section, have been used to reflect hidden
-states which account for detection error in occupancy modeling
-[@Joseph2020NeuHie], and could be integrated in the predictive models of the
-future. Incorporating a better understanding of sampling effects and bias on
-both the future design of biodiversity monitoring systems, and the predictive
-models we wish to apply to this data, is imperative in making actionable
-predictions about the future of ecological interactions on our planet.
+practical necessity. False-negatives could pose a problem for many forms of
+inference in network ecology. For example, if we aim to measure structural or
+dynamic stability of a network, or to infer indirect interactions
+[@Williams2002TwoDeg], these estimates could be prone to error if the observed
+network is  not sampled "enough". What exactly "enough" means is then specific
+to the application. Further, predictions about network rewiring
+[@Thompson2017DisGov] due to a changing climate could be error-prone without
+accounting interactions not-observed in the data but that still may become
+climatically infeasible.  
+
+What then does this elucidate about how to design samples of interactions
+[@Jordano2016SamNet]? The primary takeaway is that when planning the sampling
+effort across sites, it is necessary to take both the size of the species pool
+into account. Further, simulating the process of observation could be a powerful
+tool for planing study design which takes relative abundance into account, and
+provide a null baseline for detection of interaction strength. A model similar
+to that here can and should be used to provide a neutral expectation of
+true-negative probability given a number of observations of individuals at a
+given place and time.
+
+As we derive from @fig:negativebinom, we can never guarantee there are no
+false-negatives in data. As a result, better predictive approaches are needed
+for interaction networks [@Strydom2021RoaPre], and building models that
+explicitly account for observation error is a necessary step forward for
+predictive ecological models [@Young2021RecPla; @Johnson2021BayEst]. Neural
+networks, like the one used to predict interactions in the above section, have
+been used to reflect hidden states which account for detection error in
+occupancy modeling [@Joseph2020NeuHie], and could be integrated in the
+predictive models of the future.
+
+A better conceptual framework for designing surveys and monitoring networks, and
+incorporating sequential observations over time is clearly needed
+[@Carlson2020WhaWou], combined with a meta-analysis of sampling effort and
+taxonomic resolution in existing data. Incorporating a better understanding of
+sampling effects and bias on both the future design of biodiversity monitoring
+systems, and the predictive models we wish to apply to this data, is imperative
+in making actionable predictions about the future of ecological interactions on
+our planet.
 
 
 # References

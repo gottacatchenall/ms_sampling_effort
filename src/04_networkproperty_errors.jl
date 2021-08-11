@@ -49,7 +49,7 @@ meanclosenessctr(x) = mean(collect(values(centrality_closeness(x))))
 fnr, connect_err, connect_sd = errors(connectance, nreps=2000)
 fnr, degcent_err, degcent_sd = errors(meandegcent, nreps=2000)
 
-fnr, specrad_err, specrad_sd = errors(ρ, nreps=2000)
+fnr, specrad_err, specrad_sd = errors(ρ, nreps=300) 
 
 
 fnt = font(20, "Roboto")
@@ -68,8 +68,8 @@ plot!(fnr, degcent_err, label="", ribbon=degcent_sd, c=:teal, fa=0.2)
 plot!(fnr, degcent_err, label="", ribbon=2degcent_sd, c=:teal, fa=0.1)
 scatter!(fnr, degcent_err, mc=:white, msw=1.5, ms=4, msc=:teal,label="degree centrality")
 xaxis!("false negative rate")
-yaxis!("error in property estimate")
+yaxis!("mean-squared-error in property estimate")
 
 
 
-savefig("props_specrad_longhaul.png")
+savefig("props_specrad.png")

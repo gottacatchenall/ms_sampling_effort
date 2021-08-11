@@ -118,13 +118,14 @@ of debate as to the processes the govern this distribution, across communities
 the abundance distribution can be reasonably-well described by a log-normal
 distribution [@Volkov2003NeuThe]  (Note that in addition to the log-normal
 distribution, we also tested the case where the abundance distribution is
-derived from $Z^{(T_i-1)}$ where $T_i$ is the trophic level of species $i$
-[@YodzisInnes], which yields the same qualitative behavior). The practical
-consequence of this skewed distribution of biomass in communities is seeing two
-low biomass species interacting requires two low probability events: observing
-two species of low relative biomass together. However, this "neutrally forbidden
-link" [@Canard2012EmeStr] does not consider that there may be a positive
-association between observing species together because of their interaction
+derived from power-law scaling $Z^{(T_i-1)}$ where $T_i$ is the trophic level of
+species $i$  and $Z$ is a scaling coefficient. [@Savage2004EffBod], which yields
+the same qualitative behavior). The practical consequence of this skewed
+distribution of biomass in communities is seeing two low biomass species
+interacting requires two low probability events: observing two species of low
+relative biomass together. However, this "neutrally forbidden link"
+[@Canard2012EmeStr] does not consider that there may be a positive association
+between observing species together because of their interaction
 [@Cazelles2016TheSpe], which we'll explore in the next subsection.
 
 To simulate the process of observation, for an ecological network $A$ with $S$
@@ -179,16 +180,28 @@ interact, and we want to see species $A$ 10 times to be confident this is a
 negative (a la @fig:negativebinom), then we need an expected 10,000 observations
 of all species if the relative abundance of $A$ is 0.00125.
 
-Empirical data on interactions, limited by the practical realities of funding
-and human-work hours, tend to fall on the order on 100s or 1000s observations of
-individuals per site [@Resasco2021PlaPol; @Schwarz2020TemSca;
-@Nielsen2007EcoNet]. Clear aggregation of this data has proven difficult to find
-and a meta-analysis of network data and sampling effort seems both pertinent and
-necessary, in addition to the effects of aggregation of interactions across
-taxonomic scales [@Giacomuzzo2021FooWeb]. Further, from @fig:totalobs it is
-evident that the number of species considered in a study is inseparable from the
-false-negative rate in that study, and this effect should be taken into account
-when designing samples of ecological networks in the future.
+Empirical data on interactions are sadly subject to the practical limitations of
+funding and human-work hours, and therefore existing data tend to fall on the
+order on 100s or 1000s observations of individuals per site [@Resasco2021PlaPol;
+@Schwarz2020TemSca; @Nielsen2007EcoNet]. Clear aggregation of this data has
+proven difficult to find and a meta-analysis of network data and sampling effort
+seems both pertinent and necessary, in addition to the effects of aggregation of
+interactions across taxonomic scales [@Giacomuzzo2021FooWeb]. Further, from
+@fig:totalobs it is evident that the number of species considered in a study is
+inseparable from the false-negative rate in that study, and this effect should
+be taken into account when designing samples of ecological networks in the
+future.
+
+We conclude this section by advocating for the use of neutral models similar to
+above to generate expectations about the number of false-negatives in a data set
+of a given size. This could prove fruitful both for designing surveys of
+interactions [@Canard2012EmeStr],  but also because we may want to incorporate
+models of  observation error into predictive models [@Joseph2020NeuHie].
+Additionaly, one must consider the context for sampling---is the goal to detect
+a particular species $A$ (as in @fig:totalobs (c)), or to get a representative
+sample of interactions across the species pool? This argument is well-considered
+when sampling species [@Willott2001SpeAcc], but has not yet been internalized
+for designing samples of communities.
 
 ## Positive associations can increase the probability of false-negatives
 
@@ -235,7 +248,6 @@ different systems. At the moment, computing this metric for all of the networks
 in the Mangal database proves challenging as most data sets use different taxonmic
 identifiers, often at different resolutions.
 
-
 These particular datasets [@Hadfield2014TalTwo; @Thompson2000ResSol] were usable
 because they already have been sorted to have a fixed taxonomic backbone (as
 part of EcologicalNetworks.jl [@Banville2021ManJl]). Applying this in bulk to
@@ -244,17 +256,6 @@ identifiers across spatial samples of species with to different resolutions,
 this is why we can't simple apply this to the whole mangal dataset. Sure would
 be interesting if someone took an in-review software package to do this and
 wrote a paper about it.
-
-We conclude this section by advocating for the use of neutral models similar to
-above to generate expectations about the number of false-negatives in a data set
-of a given size. This could prove fruitful both for designing surveys of
-interactions [@Canard2012EmeStr],  but also because we may want to incorporate
-models of  observation error into predictive models [@Joseph2020NeuHie].
-Additionaly, one must consider the context for sampling---is the goal to detect
-a particular species $A$ (as in @fig:totalobs (c)), or to get a representative
-sample of interactions across the species pool? This argument is well-considered
-when sampling species [@Willott2001SpeAcc], but has not yet been internalized
-for designing samples of communities.
 
 
 # The impact of false-negatives on network analysis and prediction
@@ -276,22 +277,25 @@ $p_{fn}$. All replicates use random food-webs simulated using the niche model
 flexible-links model [@MacDonald2020RevLin] as before.
 
 ![The mean-squared error (y-axis) of various network properties (different
-panels) across various simulated false-negative rates (x-axis). Means denoted
+colors) across various simulated false-negative rates (x-axis). Means denoted
 with points, with $1\sigma$ in the first shade and $2\sigma$ in the
-second.](./figures/props_specrad_longhaul.png){#fig:properties}
+second.](./figures/props_specrad.png){#fig:properties}
 
-Practically, @fig:properties shows us that network structure varies in response
-to false negatives---connectance responds roughly linearly to false negatives,
-whereas mean-degree-centrality decisively does not. This indicates what we
-already know about  degree-centrality---it captures a different aspect of
-network structure than connectance, more indicitive of 'meso' level properties
-that describe local 'regions' of nodes interact than the 'global' measurements
-like connectance (in that it is computed as a mean across all nodes). The
-effects of false negatives may be exacerbated for indirect interactions
-[@Williams2002TwoDeg]. We propose that simulating the effects of false negatives
-in data in this way can serve as an additional validation tool when aiming to
-detect structural properties of networks using generative null models
-[@Connor2017UsiNul].   
+We consider three properties: connectance, mean-degree-centrality, and spectral
+radius, indicative of local, meso, and global structure. Connectance is really a
+node-level property, a proxy for the degree distribution of each node.
+Degree-centrality captures a different aspect of network structure than
+connectance, more indicative of meso-level properties that describe local
+'regions' of nodes interact. Spectral radius (equivalent to the magnitude of the
+largest eigenvalue of $A$) Is  a measure of global structure, and demonstrates
+much more variability in response to false-negatives. For example, if a
+false-negative splits a metaweb into two components, becomes the largest
+eigenvalue of those two components. Practically, @fig:properties shows us that
+network structure varies in response to false negatives---connectance responds
+roughly linearly to false negatives, whereas mean-degree-centrality decisively
+does not. This highlights the practical effect that false negatives may
+exacerbate the difficulty of detecting or predicting indirect interactions
+[@Williams2002TwoDeg].
 
 ## Effects of false negatives on ability to make predictions
 
@@ -320,7 +324,7 @@ synthetic false-negatives added to the data.
 
 ![Receiver-operating-characteristic (left) and precision-recall (right) curves
 for the model on varying levels of false-negatives in the data (colors). For
-each value of FNR, we run 30 random traing/test splits on 80/20 percent of the
+each value of FNR, we run 30 random training/test splits on 80/20 percent of the
 data. Replica of figure 1 in
 @Strydom2021RoaPre](./figures/rocpr_falsenegatives.png){#fig:rocpr}
 
@@ -332,6 +336,11 @@ false-negatives, so the effects of adding more as we do in this illustration
 might be mitigated because there are already non-simulated false-negatives in
 the original data which impact the models performance, even in the $p_{fn} = 0$
 case.
+
+We conclude be proposing that simulating the effects of false negatives in this
+way can serve as an additional validation tool when aiming to detect structural
+properties of networks using generative null models [@Connor2017UsiNul], or when
+evaluating the robustness of a predictive model.   
 
 # Conclusion
 

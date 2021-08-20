@@ -5,18 +5,18 @@ bibliography: [references.bib]
 # Introduction
 
 Understanding how different species interact is both a fundamental question of
-community ecology but also an increasing imperative to mitigate the
-consequences of human activity on biodiversity [@Makiola2020KeyQue;
-@Jordano2016ChaEco] and to predict potential spillover of zoonotic disease
-[@Becker2021OptPre]. Over the past decade biodiversity data has become
-increasingly available due to developments in-situ sensing technology
-[@Stephenson2020TecAdv] and increased adoption of open data sharing practices
-[@Kenall2014OpeFut]. Modern remote-sensing has enabled collection of data on
-spatial scales previously unimaginable, and novel forms of sensing technology
-have substantially increased the temporal resolution amount of data available to
-ecologists. Yet widespread data about species interactions remains illusive as
-observing interaction between two species often requires human sampling,
-as though remote methods can detect cooccurrence, this itself is not necessarily
+community ecology but also an increasing imperative to mitigate the consequences
+of human activity on biodiversity [@Makiola2020KeyQue; @Jordano2016ChaEco] and
+to predict potential spillover of zoonotic disease [@Becker2021OptPre]. Over the
+past decade biodiversity data has become increasingly available due to
+developments in-situ sensing technology [@Stephenson2020TecAdv] and increased
+adoption of open data sharing practices [@Kenall2014OpeFut]. Modern
+remote-sensing has enabled collection of data on spatial scales previously
+unimaginable, and novel forms of in-situ sensing technology have substantially
+increased the temporal resolution amount of data available to ecologists. Yet
+widespread data about species interactions remains illusive, partially because
+observing interaction between two species often requires human sampling, as
+though remote methods can detect cooccurrence, this itself is not necessarily
 indicative of interaction [@Blanchet2020CooNot]. This limitation induces
 constraints on sampling of interactions based on the spatial and temporal scales
 feasible to human sampling.
@@ -52,7 +52,7 @@ metaweb of interactions given a set of samples [@Strydom2021RoaPre].
 
 In this we explore the relationship between total sampling
 effort (the total count of all individuals of all species seen) and
-false-negative rate. In so doing, we demonstrate that realized false-negative
+false-negative rate. In so doing, we demonstrate that the realized false-negative
 rate is directly related to species relative abundance. Further we suggest that
 simulation of sampling effort and species occurrence can and should be used to
 help design surveys of species diversity [@Carlson2020WhaWou]. Here we seek to
@@ -69,6 +69,7 @@ interactions? We conclude by suggesting use of null models like those presented
 here as a tool for guiding design of surveys of species interactions, and
 increased adoption of modeling detection error in predictive ecological models.
 
+![Taxonomy of false-negatives in data](./figures/concept.png)#{fig:taxonomy}
 
 # How many observations of a non-interaction do we need to classify it as a true negative?
 

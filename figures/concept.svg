@@ -28,8 +28,8 @@
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="1.2615752"
-     inkscape:cx="889.36435"
-     inkscape:cy="435.17026"
+     inkscape:cx="833.87817"
+     inkscape:cy="493.82709"
      inkscape:window-width="3112"
      inkscape:window-height="1433"
      inkscape:window-x="2275"
@@ -776,7 +776,7 @@
        style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;line-height:1.25;font-family:Roboto;-inkscape-font-specification:'Roboto Italic';letter-spacing:-0.83px;white-space:pre;shape-inside:url(#rect7842)"><tspan
          x="161.91211"
          y="244.42075"
-         id="tspan311726">Species A Occurs?</tspan></text>
+         id="tspan312213">Species A Occurs?</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0,-0.26458333,0.26458333,0,712.44111,316.95341)"
@@ -784,7 +784,7 @@
        style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;line-height:1.25;font-family:Roboto;-inkscape-font-specification:'Roboto Italic';letter-spacing:-0.83000001px;white-space:pre;shape-inside:url(#rect9576)"><tspan
          x="161.91211"
          y="244.42075"
-         id="tspan311728">Species B Occurs?</tspan></text>
+         id="tspan312215">Species B Occurs?</tspan></text>
     <rect
        style="fill:#565656;fill-opacity:1;fill-rule:evenodd;stroke:#c6d0df;stroke-width:2.486;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
        id="rect11091"
@@ -813,7 +813,7 @@
        style="font-size:21.3333px;line-height:1.25;font-family:Roboto;-inkscape-font-specification:Roboto;letter-spacing:0px;white-space:pre;shape-inside:url(#rect26070);fill:#ffffff"><tspan
          x="161.91211"
          y="234.6125"
-         id="tspan311730">co-occurance true negative  </tspan></text>
+         id="tspan312217">co-occurance true negative  </tspan></text>
     <rect
        style="fill:#326662;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.150187;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
        id="rect114510"
@@ -844,21 +844,21 @@
        style="font-size:18.6667px;line-height:0.85;font-family:Roboto;-inkscape-font-specification:Roboto;letter-spacing:0px;white-space:pre;shape-inside:url(#rect30295);fill:#ffffff"><tspan
          x="161.91211"
          y="228.42717"
-         id="tspan311732">occurance
+         id="tspan312219">occurance
 </tspan><tspan
          x="161.91211"
          y="244.29387"
-         id="tspan311734">true-negative
+         id="tspan312221">true-negative
 </tspan><tspan
          x="161.91211"
          y="260.16057"
-         id="tspan311736">
+         id="tspan312223">
 </tspan><tspan
          x="161.91211"
          y="276.02727"
-         id="tspan311740"><tspan
+         id="tspan312227"><tspan
            style="font-style:italic;font-size:16px;-inkscape-font-specification:'Roboto Italic'"
-           id="tspan311738">(for both A and B) 
+           id="tspan312225">(for both A and B) 
 </tspan></tspan></text>
     <text
        xml:space="preserve"
@@ -867,7 +867,7 @@
        style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:21.3333px;line-height:1.25;font-family:Roboto;-inkscape-font-specification:'Roboto Italic';letter-spacing:0px;white-space:pre;shape-inside:url(#rect43974);fill:#ffffff"><tspan
          x="161.91211"
          y="234.6125"
-         id="tspan311742">Species A observed?</tspan></text>
+         id="tspan312229">Species A observed?</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0,-0.26458333,0.26458333,0,761.79873,303.47272)"
@@ -875,7 +875,7 @@
        style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:21.3333px;line-height:1.25;font-family:Roboto;-inkscape-font-specification:'Roboto Italic';letter-spacing:0px;white-space:pre;shape-inside:url(#rect57594);fill:#ffffff"><tspan
          x="161.91211"
          y="234.6125"
-         id="tspan311744">Species B observed?</tspan></text>
+         id="tspan312231">Species B observed?</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,823.02588,118.44223)"
@@ -883,7 +883,7 @@
        style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:21.3333px;line-height:1.25;font-family:'Iosevka Term';-inkscape-font-specification:'Iosevka Term Medium';letter-spacing:0px;white-space:pre;shape-inside:url(#rect66726);fill:#3e3e3e;fill-opacity:1"><tspan
          x="161.91211"
          y="234.35021"
-         id="tspan311746">true </tspan></text>
+         id="tspan312233">true </tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,878.05924,118.44223)"
@@ -891,7 +891,7 @@
        style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:21.3333px;line-height:1.25;font-family:'Iosevka Term';-inkscape-font-specification:'Iosevka Term Medium';letter-spacing:0px;white-space:pre;shape-inside:url(#rect67284);fill:#3e3e3e;fill-opacity:1"><tspan
          x="161.91211"
          y="234.35021"
-         id="tspan311748">false</tspan></text>
+         id="tspan312235">false</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0,-0.26458333,0.26458333,0,773.42686,261.78123)"
@@ -899,7 +899,7 @@
        style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:21.3333px;line-height:1.25;font-family:'Iosevka Term';-inkscape-font-specification:'Iosevka Term Medium';letter-spacing:0px;white-space:pre;shape-inside:url(#rect68050);fill:#3e3e3e;fill-opacity:1"><tspan
          x="161.91211"
          y="234.35021"
-         id="tspan311750">true </tspan></text>
+         id="tspan312237">true </tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0,-0.26458333,0.26458333,0,773.42686,312.05213)"
@@ -907,7 +907,7 @@
        style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:21.3333px;line-height:1.25;font-family:'Iosevka Term';-inkscape-font-specification:'Iosevka Term Medium';letter-spacing:0px;white-space:pre;shape-inside:url(#rect68052);fill:#3e3e3e;fill-opacity:1"><tspan
          x="161.91211"
          y="234.35021"
-         id="tspan311752">false</tspan></text>
+         id="tspan312239">false</tspan></text>
     <rect
        style="fill:#508d78;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1.165;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:2.33, 1.165;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
        id="rect91136"
@@ -950,7 +950,7 @@
        style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:1.25;font-family:Roboto;-inkscape-font-specification:'Roboto Italic';letter-spacing:0px;white-space:pre;shape-inside:url(#rect91222);fill:#ffffff"><tspan
          x="161.91211"
          y="233.3865"
-         id="tspan311754">interaction observed?</tspan></text>
+         id="tspan312241">interaction observed?</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,877.33458,142.19872)"
@@ -958,15 +958,15 @@
        style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:16px;line-height:1.05;font-family:Roboto;-inkscape-font-specification:'Roboto Medium';letter-spacing:0px;white-space:pre;shape-inside:url(#rect93300);fill:#ffffff"><tspan
          x="161.91211"
          y="228.10842"
-         id="tspan311758"><tspan
+         id="tspan312245"><tspan
            style="font-style:italic;-inkscape-font-specification:'Roboto Medium Italic'"
-           id="tspan311756">co-occurence
+           id="tspan312243">co-occurence
 </tspan></tspan><tspan
          x="161.91211"
          y="244.90843"
-         id="tspan311762"><tspan
+         id="tspan312249"><tspan
            style="font-style:italic;-inkscape-font-specification:'Roboto Medium Italic'"
-           id="tspan311760">false-negative</tspan></tspan></text>
+           id="tspan312247">false-negative</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,806.35937,250.66145)"
@@ -974,7 +974,7 @@
        style="font-size:21.3333px;line-height:1.25;font-family:Roboto;-inkscape-font-specification:Roboto;letter-spacing:0px;white-space:pre;shape-inside:url(#rect99764);fill:#ffffff"><tspan
          x="161.91211"
          y="234.6125"
-         id="tspan311764">co-occurance true-negative</tspan></text>
+         id="tspan312251">co-occurance true-negative</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,803.47766,207.2325)"
@@ -982,15 +982,15 @@
        style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:16px;line-height:1.05;font-family:Roboto;-inkscape-font-specification:'Roboto Medium';letter-spacing:0px;white-space:pre;shape-inside:url(#rect114506);fill:#ffffff"><tspan
          x="161.91211"
          y="228.10842"
-         id="tspan311768"><tspan
+         id="tspan312255"><tspan
            style="font-style:italic;-inkscape-font-specification:'Roboto Medium Italic'"
-           id="tspan311766">co-occurence
+           id="tspan312253">co-occurence
 </tspan></tspan><tspan
          x="161.91211"
          y="244.90843"
-         id="tspan311772"><tspan
+         id="tspan312259"><tspan
            style="font-style:italic;-inkscape-font-specification:'Roboto Medium Italic'"
-           id="tspan311770">false negative</tspan></tspan></text>
+           id="tspan312257">false negative</tspan></tspan></text>
     <rect
        style="fill:#24355d;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.0198294;stroke-linecap:round;stroke-dasharray:0.0396591, 0.0198294;paint-order:stroke fill markers"
        id="rect121544"
@@ -1005,15 +1005,15 @@
        style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:16px;line-height:1.25;font-family:Roboto;-inkscape-font-specification:'Roboto Medium';letter-spacing:0px;white-space:pre;shape-inside:url(#rect114912);fill:#ffffff"><tspan
          x="161.91211"
          y="229.70842"
-         id="tspan311776"><tspan
+         id="tspan312263"><tspan
            style="font-style:italic;-inkscape-font-specification:'Roboto Medium Italic'"
-           id="tspan311774">occurence
+           id="tspan312261">occurence
 </tspan></tspan><tspan
          x="161.91211"
          y="249.70842"
-         id="tspan311780"><tspan
+         id="tspan312267"><tspan
            style="font-style:italic;-inkscape-font-specification:'Roboto Medium Italic'"
-           id="tspan311778">false negative</tspan></tspan></text>
+           id="tspan312265">false negative</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,809.78966,154.43918)"
@@ -1021,7 +1021,7 @@
        style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:16px;line-height:1.25;font-family:'Iosevka Term';-inkscape-font-specification:'Iosevka Term Medium';letter-spacing:0px;white-space:pre;shape-inside:url(#rect126270);fill:#ffffff"><tspan
          x="161.91211"
          y="229.51171"
-         id="tspan311782">true </tspan></text>
+         id="tspan312269">true </tspan></text>
     <rect
        style="fill:#857db7;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.0138105;stroke-linecap:round;stroke-dasharray:0.0276212, 0.0138105;paint-order:stroke fill markers"
        id="rect200337"
@@ -1036,7 +1036,7 @@
        style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:16px;line-height:1.25;font-family:'Iosevka Term';-inkscape-font-specification:'Iosevka Term Medium';letter-spacing:0px;white-space:pre;shape-inside:url(#rect126272);fill:#ffffff"><tspan
          x="161.91211"
          y="229.51171"
-         id="tspan311784">false</tspan></text>
+         id="tspan312271">false</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,878.27968,161.35728)"
@@ -1044,23 +1044,23 @@
        style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:16px;line-height:1.05;font-family:Roboto;-inkscape-font-specification:'Roboto Medium';letter-spacing:0px;white-space:pre;shape-inside:url(#rect145435);fill:#ffffff"><tspan
          x="161.91211"
          y="228.10842"
-         id="tspan311790"><tspan
+         id="tspan312277"><tspan
            style="font-style:italic;font-weight:bold;-inkscape-font-specification:'Roboto Bold Italic'"
-           id="tspan311786">possible</tspan><tspan
+           id="tspan312273">possible</tspan><tspan
            style="font-style:italic;-inkscape-font-specification:'Roboto Medium Italic'"
-           id="tspan311788">
+           id="tspan312275">
 </tspan></tspan><tspan
          x="161.91211"
          y="244.90843"
-         id="tspan311794"><tspan
+         id="tspan312281"><tspan
            style="font-style:italic;-inkscape-font-specification:'Roboto Medium Italic'"
-           id="tspan311792">interaction 
+           id="tspan312279">interaction 
 </tspan></tspan><tspan
          x="161.91211"
          y="261.70843"
-         id="tspan311798"><tspan
+         id="tspan312285"><tspan
            style="font-style:italic;-inkscape-font-specification:'Roboto Medium Italic'"
-           id="tspan311796">false-negative</tspan></tspan></text>
+           id="tspan312283">false-negative</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,807.10505,166.36618)"
@@ -1068,15 +1068,15 @@
        style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:16px;line-height:1.05;font-family:Roboto;-inkscape-font-specification:'Roboto Medium';letter-spacing:0px;white-space:pre;shape-inside:url(#rect145441);fill:#ffffff"><tspan
          x="161.91211"
          y="228.10842"
-         id="tspan311802"><tspan
+         id="tspan312289"><tspan
            style="font-style:italic;-inkscape-font-specification:'Roboto Medium Italic'"
-           id="tspan311800">interaction
+           id="tspan312287">interaction
 </tspan></tspan><tspan
          x="161.91211"
          y="244.90843"
-         id="tspan311806"><tspan
+         id="tspan312293"><tspan
            style="font-style:italic;-inkscape-font-specification:'Roboto Medium Italic'"
-           id="tspan311804">true-positive
+           id="tspan312291">true-positive
 </tspan></tspan></text>
     <text
        xml:space="preserve"
@@ -1085,21 +1085,21 @@
        style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:16px;line-height:1.05;font-family:Roboto;-inkscape-font-specification:'Roboto Medium';letter-spacing:0px;white-space:pre;shape-inside:url(#rect147948);fill:#ffffff"><tspan
          x="161.91211"
          y="228.10842"
-         id="tspan311810"><tspan
+         id="tspan312297"><tspan
            style="font-style:italic;-inkscape-font-specification:'Roboto Medium Italic'"
-           id="tspan311808">interaction
+           id="tspan312295">interaction
 </tspan></tspan><tspan
          x="161.91211"
          y="244.90843"
-         id="tspan311814"><tspan
+         id="tspan312301"><tspan
            style="font-style:italic;-inkscape-font-specification:'Roboto Medium Italic'"
-           id="tspan311812">false-positive
+           id="tspan312299">false-positive
 </tspan></tspan><tspan
          x="161.91211"
          y="261.70843"
-         id="tspan311818"><tspan
+         id="tspan312305"><tspan
            style="font-style:italic;-inkscape-font-specification:'Roboto Medium Italic'"
-           id="tspan311816">
+           id="tspan312303">
 </tspan></tspan></text>
     <text
        xml:space="preserve"
@@ -1108,23 +1108,23 @@
        style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:16px;line-height:1.05;font-family:Roboto;-inkscape-font-specification:'Roboto Medium';letter-spacing:0px;white-space:pre;shape-inside:url(#rect177929);fill:#ffffff"><tspan
          x="161.91211"
          y="228.10842"
-         id="tspan311824"><tspan
+         id="tspan312311"><tspan
            style="font-style:italic;font-weight:bold;-inkscape-font-specification:'Roboto Bold Italic'"
-           id="tspan311820">possible</tspan><tspan
+           id="tspan312307">possible</tspan><tspan
            style="font-style:italic;-inkscape-font-specification:'Roboto Medium Italic'"
-           id="tspan311822">
+           id="tspan312309">
 </tspan></tspan><tspan
          x="161.91211"
          y="244.90843"
-         id="tspan311828"><tspan
+         id="tspan312315"><tspan
            style="font-style:italic;-inkscape-font-specification:'Roboto Medium Italic'"
-           id="tspan311826">interaction 
+           id="tspan312313">interaction 
 </tspan></tspan><tspan
          x="161.91211"
          y="261.70843"
-         id="tspan311832"><tspan
+         id="tspan312319"><tspan
            style="font-style:italic;-inkscape-font-specification:'Roboto Medium Italic'"
-           id="tspan311830">false-negative</tspan></tspan></text>
+           id="tspan312317">false-negative</tspan></tspan></text>
     <path
        style="fill:url(#linearGradient215746);fill-opacity:1;stroke:#ffffff;stroke-width:0.265;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 914.80126,289.83036 0.31155,-105.29633"
@@ -1167,7 +1167,7 @@
        style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;line-height:1.25;font-family:roboto;-inkscape-font-specification:'roboto Italic';letter-spacing:0px;white-space:pre;shape-inside:url(#rect215664)"><tspan
          x="161.91211"
          y="244.42075"
-         id="tspan311834">true</tspan></text>
+         id="tspan312321">true</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0,-0.26458333,0.26458333,0,741.28556,364.19557)"
@@ -1175,7 +1175,7 @@
        style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;line-height:1.25;font-family:roboto;-inkscape-font-specification:'roboto Italic';letter-spacing:0px;white-space:pre;shape-inside:url(#rect215666)"><tspan
          x="161.91211"
          y="244.42075"
-         id="tspan311836">false</tspan></text>
+         id="tspan312323">false</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,829.73703,90.761057)"
@@ -1183,7 +1183,7 @@
        style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;line-height:1.25;font-family:roboto;-inkscape-font-specification:'roboto Italic';letter-spacing:0px;white-space:pre;shape-inside:url(#rect215668)"><tspan
          x="161.91211"
          y="244.42075"
-         id="tspan311838">true</tspan></text>
+         id="tspan312325">true</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,922.39086,91.058814)"
@@ -1191,7 +1191,7 @@
        style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;line-height:1.25;font-family:roboto;-inkscape-font-specification:'roboto Italic';letter-spacing:0px;white-space:pre;shape-inside:url(#rect215670)"><tspan
          x="161.91211"
          y="244.42075"
-         id="tspan311840">false</tspan></text>
+         id="tspan312327">false</tspan></text>
     <rect
        style="fill:#408183;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.324639;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
        id="rect215548"
@@ -1206,9 +1206,9 @@
        style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:21.3333px;line-height:1.25;font-family:Roboto;-inkscape-font-specification:'Roboto Italic';letter-spacing:0px;white-space:pre;shape-inside:url(#rect215672);fill:#ffffff"><tspan
          x="161.91211"
          y="234.6125"
-         id="tspan311844">co-occurance <tspan
+         id="tspan312331">co-occurance <tspan
    style="font-weight:500;-inkscape-font-specification:'Roboto Medium Italic'"
-   id="tspan311842">true-negative</tspan>  </tspan></text>
+   id="tspan312329">true-negative</tspan>  </tspan></text>
     <rect
        style="fill:#3bbeb2;fill-opacity:0.67457992;fill-rule:evenodd;stroke:none;stroke-width:0.150187;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
        id="rect215554"
@@ -1239,23 +1239,23 @@
        style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.6667px;line-height:0.85;font-family:Roboto;-inkscape-font-specification:'Roboto Italic';letter-spacing:0px;white-space:pre;shape-inside:url(#rect215674);fill:#ffffff"><tspan
          x="161.91211"
          y="228.42717"
-         id="tspan311846">occurance
+         id="tspan312333">occurance
 </tspan><tspan
          x="161.91211"
          y="244.29387"
-         id="tspan311850"><tspan
+         id="tspan312337"><tspan
    style="font-weight:500;-inkscape-font-specification:'Roboto Medium Italic'"
-   id="tspan311848">true-negative</tspan>
+   id="tspan312335">true-negative</tspan>
 </tspan><tspan
          x="161.91211"
          y="260.16057"
-         id="tspan311852">
+         id="tspan312339">
 </tspan><tspan
          x="161.91211"
          y="276.02727"
-         id="tspan311856"><tspan
+         id="tspan312343"><tspan
            style="font-size:16px"
-           id="tspan311854">(for both A and B) 
+           id="tspan312341">(for both A and B) 
 </tspan></tspan></text>
     <text
        xml:space="preserve"
@@ -1264,7 +1264,7 @@
        style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:21.3333px;line-height:1.25;font-family:Roboto;-inkscape-font-specification:'Roboto Italic';letter-spacing:0px;white-space:pre;shape-inside:url(#rect215676);fill:#fcfcfc;fill-opacity:1"><tspan
          x="161.91211"
          y="234.6125"
-         id="tspan311858">Species A observed?</tspan></text>
+         id="tspan312345">Species A observed?</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0,-0.26458333,0.26458333,0,761.79873,301.88522)"
@@ -1272,7 +1272,7 @@
        style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:21.3333px;line-height:1.25;font-family:Roboto;-inkscape-font-specification:'Roboto Italic';letter-spacing:0px;white-space:pre;shape-inside:url(#rect215678);fill:#ffffff;fill-opacity:1"><tspan
          x="161.91211"
          y="234.6125"
-         id="tspan311860">Species B observed?</tspan></text>
+         id="tspan312347">Species B observed?</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,823.02588,118.44223)"
@@ -1280,7 +1280,7 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:21.3333px;line-height:1.25;font-family:roboto;-inkscape-font-specification:roboto;letter-spacing:0px;white-space:pre;shape-inside:url(#rect215680);fill:#ffffff;fill-opacity:1"><tspan
          x="161.91211"
          y="234.6125"
-         id="tspan311862">true </tspan></text>
+         id="tspan312349">true </tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,881.76343,118.44223)"
@@ -1288,7 +1288,7 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:21.3333px;line-height:1.25;font-family:roboto;-inkscape-font-specification:roboto;letter-spacing:0px;white-space:pre;shape-inside:url(#rect215682);fill:#ffffff;fill-opacity:1"><tspan
          x="161.91211"
          y="234.6125"
-         id="tspan311864">false</tspan></text>
+         id="tspan312351">false</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0,-0.26458333,0.26458333,0,773.42686,261.78123)"
@@ -1296,7 +1296,7 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:21.3333px;line-height:1.25;font-family:roboto;-inkscape-font-specification:roboto;letter-spacing:0px;white-space:pre;shape-inside:url(#rect215684);fill:#ffffff;fill-opacity:1"><tspan
          x="161.91211"
          y="234.6125"
-         id="tspan311866">true </tspan></text>
+         id="tspan312353">true </tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0,-0.26458333,0.26458333,0,773.42686,312.05213)"
@@ -1304,7 +1304,7 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:21.3333px;line-height:1.25;font-family:roboto;-inkscape-font-specification:roboto;letter-spacing:0px;white-space:pre;shape-inside:url(#rect215686);fill:#ffffff;fill-opacity:1"><tspan
          x="161.91211"
          y="234.6125"
-         id="tspan311868">false</tspan></text>
+         id="tspan312355">false</tspan></text>
     <rect
        style="fill:#415481;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.0239582;stroke-linecap:round;stroke-dasharray:0.0479168, 0.0239582;paint-order:stroke fill markers"
        id="rect215598"
@@ -1347,9 +1347,9 @@
        style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.6667px;line-height:1.25;font-family:Roboto;-inkscape-font-specification:'Roboto Italic';letter-spacing:0px;word-spacing:-0.21px;white-space:pre;shape-inside:url(#rect215688);fill:#ffffff;fill-opacity:1"><tspan
          x="161.91211"
          y="232.16051"
-         id="tspan311872"><tspan
+         id="tspan312359"><tspan
            dx="0 0 0 0 0 0 0 0 0 0 0 0.2100019 -0.21000242"
-           id="tspan311870">interaction observed?</tspan></tspan></text>
+           id="tspan312357">interaction observed?</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,876.27624,142.19872)"
@@ -1357,13 +1357,13 @@
        style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:1.05;font-family:Roboto;-inkscape-font-specification:'Roboto Italic';letter-spacing:0px;white-space:pre;shape-inside:url(#rect215690);fill:#ffffff"><tspan
          x="161.91211"
          y="228.10842"
-         id="tspan311874">co-occurence
+         id="tspan312361">co-occurence
 </tspan><tspan
          x="161.91211"
          y="244.90843"
-         id="tspan311878"><tspan
+         id="tspan312365"><tspan
            style="font-weight:500;-inkscape-font-specification:'Roboto Medium Italic'"
-           id="tspan311876">false-negative</tspan></tspan></text>
+           id="tspan312363">false-negative</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,806.35937,250.66145)"
@@ -1371,9 +1371,9 @@
        style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:21.3333px;line-height:1.25;font-family:Roboto;-inkscape-font-specification:'Roboto Italic';letter-spacing:0px;white-space:pre;shape-inside:url(#rect215692);fill:#ffffff"><tspan
          x="161.91211"
          y="234.6125"
-         id="tspan311882">co-occurance <tspan
+         id="tspan312369">co-occurance <tspan
    style="font-weight:500;-inkscape-font-specification:'Roboto Medium Italic'"
-   id="tspan311880">true-negative</tspan></tspan></text>
+   id="tspan312367">true-negative</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,803.62411,207.77514)"
@@ -1381,13 +1381,13 @@
        style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:1.05;font-family:Roboto;-inkscape-font-specification:'Roboto Italic';letter-spacing:0px;white-space:pre;shape-inside:url(#rect215694);fill:#ffffff"><tspan
          x="161.91211"
          y="228.10842"
-         id="tspan311884">co-occurence
+         id="tspan312371">co-occurence
 </tspan><tspan
          x="161.91211"
          y="244.90843"
-         id="tspan311888"><tspan
+         id="tspan312375"><tspan
            style="font-weight:500;-inkscape-font-specification:'Roboto Medium Italic'"
-           id="tspan311886">false-negative</tspan></tspan></text>
+           id="tspan312373">false-negative</tspan></tspan></text>
     <rect
        style="fill:#24355d;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.0198294;stroke-linecap:round;stroke-dasharray:0.0396591, 0.0198294;paint-order:stroke fill markers"
        id="rect215616"
@@ -1402,25 +1402,25 @@
        style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:1.05;font-family:Roboto;-inkscape-font-specification:'Roboto Italic';letter-spacing:0px;white-space:pre;shape-inside:url(#rect215696);fill:#ffffff"><tspan
          x="161.91211"
          y="228.10842"
-         id="tspan311890">occurence
+         id="tspan312377">occurence
 </tspan><tspan
          x="161.91211"
          y="244.90843"
-         id="tspan311894"><tspan
+         id="tspan312381"><tspan
            style="font-weight:500;-inkscape-font-specification:'Roboto Medium Italic'"
-           id="tspan311892">false-negative
+           id="tspan312379">false-negative
 </tspan></tspan><tspan
          x="161.91211"
          y="261.70843"
-         id="tspan311898"><tspan
+         id="tspan312385"><tspan
            style="font-weight:500;-inkscape-font-specification:'Roboto Medium Italic'"
-           id="tspan311896">
+           id="tspan312383">
 </tspan></tspan><tspan
          x="161.91211"
          y="278.50842"
-         id="tspan311902"><tspan
+         id="tspan312389"><tspan
            style="font-size:14.6667px"
-           id="tspan311900">(for both A and B) 
+           id="tspan312387">(for both A and B) 
 </tspan></tspan></text>
     <text
        xml:space="preserve"
@@ -1429,7 +1429,7 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:1.25;font-family:roboto;-inkscape-font-specification:roboto;letter-spacing:0px;white-space:pre;shape-inside:url(#rect215698);fill:#ffffff;fill-opacity:1"><tspan
          x="161.91211"
          y="229.70842"
-         id="tspan311904">true </tspan></text>
+         id="tspan312391">true </tspan></text>
     <rect
        style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:1.89159;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
        id="rect215592"
@@ -1451,7 +1451,7 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:1.25;font-family:roboto;-inkscape-font-specification:roboto;letter-spacing:0px;white-space:pre;shape-inside:url(#rect215700);fill:#ffffff;fill-opacity:1"><tspan
          x="161.91211"
          y="229.70842"
-         id="tspan311906">false</tspan></text>
+         id="tspan312393">false</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,877.22134,161.35728)"
@@ -1459,17 +1459,17 @@
        style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:1.05;font-family:Roboto;-inkscape-font-specification:'Roboto Italic';letter-spacing:0px;white-space:pre;shape-inside:url(#rect215702);fill:#ffffff"><tspan
          x="161.91211"
          y="228.10842"
-         id="tspan311908">possible
+         id="tspan312395">possible
 </tspan><tspan
          x="161.91211"
          y="244.90843"
-         id="tspan311910">interaction 
+         id="tspan312397">interaction 
 </tspan><tspan
          x="161.91211"
          y="261.70843"
-         id="tspan311914"><tspan
+         id="tspan312401"><tspan
            style="font-weight:500;-inkscape-font-specification:'Roboto Medium Italic'"
-           id="tspan311912">false-negative</tspan></tspan></text>
+           id="tspan312399">false-negative</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,807.10505,166.36618)"
@@ -1477,13 +1477,13 @@
        style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:1.05;font-family:Roboto;-inkscape-font-specification:'Roboto Italic';letter-spacing:0px;white-space:pre;shape-inside:url(#rect215704);fill:#ffffff"><tspan
          x="161.91211"
          y="228.10842"
-         id="tspan311916">interaction
+         id="tspan312403">interaction
 </tspan><tspan
          x="161.91211"
          y="244.90843"
-         id="tspan311920"><tspan
+         id="tspan312407"><tspan
            style="font-weight:500;-inkscape-font-specification:'Roboto Medium Italic'"
-           id="tspan311918">true-positive
+           id="tspan312405">true-positive
 </tspan></tspan></text>
     <text
        xml:space="preserve"
@@ -1492,17 +1492,17 @@
        style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:1.05;font-family:Roboto;-inkscape-font-specification:'Roboto Italic';letter-spacing:0px;white-space:pre;shape-inside:url(#rect215706);fill:#ffffff"><tspan
          x="161.91211"
          y="228.10842"
-         id="tspan311922">interaction
+         id="tspan312409">interaction
 </tspan><tspan
          x="161.91211"
          y="244.90843"
-         id="tspan311926"><tspan
+         id="tspan312413"><tspan
    style="font-weight:500;-inkscape-font-specification:'Roboto Medium Italic'"
-   id="tspan311924">false-negative</tspan>
+   id="tspan312411">false-negative</tspan>
 </tspan><tspan
          x="161.91211"
          y="261.70843"
-         id="tspan311928">
+         id="tspan312415">
 </tspan></text>
     <text
        xml:space="preserve"
@@ -1511,17 +1511,17 @@
        style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:1.05;font-family:Roboto;-inkscape-font-specification:'Roboto Italic';letter-spacing:0px;white-space:pre;shape-inside:url(#rect215708);fill:#ffffff"><tspan
          x="161.91211"
          y="228.10842"
-         id="tspan311930">possible
+         id="tspan312417">possible
 </tspan><tspan
          x="161.91211"
          y="244.90843"
-         id="tspan311932">interaction 
+         id="tspan312419">interaction 
 </tspan><tspan
          x="161.91211"
          y="261.70843"
-         id="tspan311936"><tspan
+         id="tspan312423"><tspan
            style="font-weight:500;-inkscape-font-specification:'Roboto Medium Italic'"
-           id="tspan311934">false-negative</tspan></tspan></text>
+           id="tspan312421">false-negative</tspan></tspan></text>
     <path
        style="fill:url(#linearGradient193975);fill-opacity:1;stroke:#ffffff;stroke-width:0.965;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 914.80126,289.83036 0.31155,-105.29633"
@@ -1550,8 +1550,8 @@
        style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:1.05;font-family:Roboto;-inkscape-font-specification:'Roboto Italic';letter-spacing:0px;white-space:pre;shape-inside:url(#rect258167);fill:#ffffff"><tspan
          x="161.91211"
          y="228.10842"
-         id="tspan311940">co-occurence <tspan
+         id="tspan312427">co-occurence <tspan
    style="font-weight:500;-inkscape-font-specification:'Roboto Medium Italic'"
-   id="tspan311938">true-positive</tspan></tspan></text>
+   id="tspan312425">true-positive</tspan></tspan></text>
   </g>
 </svg>

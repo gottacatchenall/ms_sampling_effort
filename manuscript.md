@@ -69,7 +69,7 @@ interactions? We conclude by suggesting use of null models like those presented
 here as a tool for guiding design of surveys of species interactions, and
 increased adoption of modeling detection error in predictive ecological models.
 
-![Taxonomy of false-negatives in data](./figures/concept.png)#{fig:taxonomy}
+![Taxonomy of false-negatives in data.](./figures/concept.png){#fig:taxonomy}
 
 # How many observations of a non-interaction do we need to classify it as a true negative?
 

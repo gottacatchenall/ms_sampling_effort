@@ -33,7 +33,11 @@ species interacting even though they actually interact in some capacity. These
 false-negatives could go on to effect the inferences we make about network
 properties and relations among species.
 
-This issue has encouraged a long history of discourse. Initially the concern was
+This issue has encouraged a long history of discourse.
+
+occurrence false negatives, decalring extinction, etc.
+
+In the context of interactions, the initial concern was
 that the compounding effects of limited sampling effort and the amalgamation of
 data, both across study sites and across taxonomic scales, could lead any
 empirical set of observations to inadequately reflect how species interact
@@ -50,17 +54,22 @@ interactions, we know that some interactions between species will not be
 observed due to finite sampling capacity, and instead we must impute  the true
 metaweb of interactions given a set of samples [@Strydom2021RoaPre].
 
-In this we explore the relationship between total sampling
-effort (the total count of all individuals of all species seen) and
-false-negative rate. In so doing, we demonstrate that the realized false-negative
-rate is directly related to species relative abundance. Further we suggest that
-simulation of sampling effort and species occurrence can and should be used to
-help design surveys of species diversity [@Carlson2020WhaWou]. Here we seek to
-understand how false negatives in ecological interaction data impact the
-analysis and prediction of ecological networks, and also to understand how a
-better understanding of the relationship between sampling effort and likelihood
-of a "true negative" can guide how we design surveys of ecological interactions
-[@Jordano2016SamNet]. The questions we pose and attempt to answer are: 1) How
+Here we seek to understand how false negatives in ecological interaction data
+impact the analysis and prediction of ecological networks, and also to
+understand how a better understanding of the relationship between sampling
+effort and likelihood of a "true negative" can guide how we design surveys of
+ecological interactions [@Jordano2016SamNet].
+
+In this we explore the relationship between total sampling effort (the total
+count of all individuals of all species seen) and false-negative rate. In so
+doing, we demonstrate that the realized false-negative rate is directly related
+to species relative abundance. Further we suggest that simulation of sampling
+effort and species occurrence can and should be used to help design surveys of
+species diversity [@Carlson2020WhaWou].  
+
+// what about the other stuff you show 
+
+The questions we pose and attempt to answer are: 1) How
 many times do you have to observe a non-interaction between two species to be
 confident in saying that is a true negative? 2) How "wrong" are the measurements
 of network structure as a function of false-negative probability? and lastly 3)

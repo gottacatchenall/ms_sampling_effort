@@ -51,9 +51,10 @@ compounded by semantic confusion and ambiguity in what is meant by "interaction"
 [@Strydom2021RoaPre]. Here distinguish between a species occurring, a species
 being observed occurring, two species being observed co-occurring,and two
 species being observed interacting. In @fig:taxonomy we show that seeing two
-species co-occuring is a prerequisite for determining whether an interaction
+species co-occurring is a prerequisite for determining whether an interaction
 occurs between two species exists. Bears and salmon _interact_---a bear and the
-microbes in the soil of a den interact, but less so.
+microbes in the soil of a den interact, but less so. Distinguishing the magnitude
+of effect which constitutes an interaction is a system specific thing.
 
 ![Taxonomy of false-negatives in data for two hypothetical species A and B,
 where in reality A and B do interact in some capacity.](./figures/concept_v3.png){#fig:taxonomy}

@@ -64,23 +64,22 @@ impact the analysis and prediction of ecological networks, and also to
 understand how a better understanding of the relationship between sampling
 effort and likelihood of a "true negative" can guide how we design surveys of
 ecological interactions [@Jordano2016SamNet].
-In this we explore the relationship between total sampling effort (the total
-count of all individuals of all species seen) and false-negative rate. In so
-doing, we demonstrate that the realized false-negative rate is directly related
-to species relative abundance. Further we suggest that simulation of sampling
-effort and species occurrence can and should be used to help design surveys of
-species diversity [@Carlson2020WhaWou; @Moore2016OptEco].  
-
-// what about the other stuff you show
-
-The questions we pose and attempt to answer are: 1) How
-many times do you have to observe a non-interaction between two species to be
+We explore the relationship between total sampling effort (the total count of
+all individuals of all species seen) and false-negative rate. In so doing, we
+demonstrate that the realized false-negative rate is directly related to species
+relative abundance. The questions we pose and attempt to answer are: 1) How many
+times do you have to observe a non-interaction between two species to be
 confident in saying that is a true negative? 2) How "wrong" are the measurements
 of network structure as a function of false-negative probability? and lastly 3)
 How do false-negatives impact our ability to make reliable predictions about
 interactions? We conclude by suggesting use of null models like those presented
 here as a tool for guiding design of surveys of species interactions, and
 increased adoption of modeling detection error in predictive ecological models.
+We show that positive associations in co-occurence data can increase realized
+probability of false negatives, and demonstrate these positive associations are
+present in two spatially-replicated systems. We conclude by suggesting that
+simulation of sampling effort and species occurrence can and should be used to
+help design surveys of species diversity [@Carlson2020WhaWou; @Moore2016OptEco].   
 
 
 # How many observations of a non-interaction do we need to classify it as a true negative?

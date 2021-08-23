@@ -14,23 +14,30 @@ adoption of open data sharing practices [@Kenall2014OpeFut]. Modern
 remote-sensing has enabled collection of data on spatial scales previously
 unimaginable, and novel forms of in-situ sensing technology have substantially
 increased the temporal resolution amount of data available to ecologists. Yet
-widespread data about species interactions remains illusive, partially because
+widespread data about species interactions remains elusive, partially because
 observing interaction between two species often requires human sampling, as
 though remote methods can detect cooccurrence, this itself is not necessarily
 indicative of interaction [@Blanchet2020CooNot].
 
 This limitation induces constraints on sampling of interactions based on the
-spatial and temporal scales feasible to human sampling. These sampling
-constraints go on to bias species interaction data in several ways: we can only
-observe a small fraction of species interactions in space and time, this
-sampling is geographically biased toward the usual suspects [@Poisot2021GloKno],
-and these observations reflect the distribution of species abundances within
-communities [@Poisot2015SpeWhy]. These biases have practical consequences for
-answering questions about species interactions [@deAguiar2019RevBia]---the data
-we collect is noisy and likely contains many _false-negatives_, where there is
-not an observation of two species interacting even though they actually interact
-in some capacity. These false-negatives could go on to effect the inferences we
-make about network properties and relations among species.
+spatial and temporal scales feasible to human sampling. Because we cannot
+feasibly observe all or even most interactions that occur in nature, we end up
+sampling a very small fraction of those interactions. This means we can be
+reasonably confident two species actually interact if we have a record of it,
+but not at all confident that two species don't interact if we haven't recorded
+it. In other words, we can't distinguish true-negatives (they really never
+interact) from false-negatives (they do interact, but we didn't observe it).
+These sampling constraints go on to bias species interaction data in several
+ways: we can only observe a small fraction of species interactions in space and
+time, this sampling is geographically biased toward the usual suspects
+[@Poisot2021GloKno], and these observations reflect the distribution of species
+abundances within communities [@Poisot2015SpeWhy]. These biases have practical
+consequences for answering questions about species interactions
+[@deAguiar2019RevBia]---the data we collect is noisy and likely contains many
+_false-negatives_, where there is not an observation of two species interacting
+even though they actually interact in some capacity. These false-negatives could
+go on to effect the inferences we make about network properties and relations
+among species.
 
 The issue of _sampling effort_ and how it impacts data about ecosystems has
 encouraged a long history of discourse. Observed species richness is a function
@@ -63,23 +70,23 @@ Here we seek to understand how false negatives in ecological interaction data
 impact the analysis and prediction of ecological networks, and also to
 understand how a better understanding of the relationship between sampling
 effort and likelihood of a "true negative" can guide how we design surveys of
-ecological interactions [@Jordano2016SamNet].
-We explore the relationship between total sampling effort (the total count of
-all individuals of all species seen) and false-negative rate. In so doing, we
-demonstrate that the realized false-negative rate is directly related to species
-relative abundance. The questions we pose and attempt to answer are: 1) How many
-times do you have to observe a non-interaction between two species to be
-confident in saying that is a true negative? 2) How "wrong" are the measurements
-of network structure as a function of false-negative probability? and lastly 3)
-How do false-negatives impact our ability to make reliable predictions about
-interactions? We conclude by suggesting use of null models like those presented
-here as a tool for guiding design of surveys of species interactions, and
-increased adoption of modeling detection error in predictive ecological models.
-We show that positive associations in co-occurence data can increase realized
-probability of false negatives, and demonstrate these positive associations are
-present in two spatially-replicated systems. We conclude by suggesting that
-simulation of sampling effort and species occurrence can and should be used to
-help design surveys of species diversity [@Carlson2020WhaWou; @Moore2016OptEco].   
+ecological interactions [@Jordano2016SamNet]. We explore the relationship
+between total sampling effort (the total count of all individuals of all species
+seen) and false-negative rate. In so doing, we demonstrate that the realized
+false-negative rate is directly related to species relative abundance. The
+questions we pose and attempt to answer are: 1) How many times do you have to
+observe a non-interaction between two species to be confident in saying that is
+a true negative? 2) How "wrong" are the measurements of network structure as a
+function of false-negative probability? and lastly 3) How do false-negatives
+impact our ability to make reliable predictions about interactions? We conclude
+by suggesting use of null models like those presented here as a tool for guiding
+design of surveys of species interactions, and increased adoption of modeling
+detection error in predictive ecological models. We show that positive
+associations in co-occurence data can increase realized probability of false
+negatives, and demonstrate these positive associations are present in two
+spatially-replicated systems. We conclude by suggesting that simulation of
+sampling effort and species occurrence can and should be used to help design
+surveys of species diversity [@Carlson2020WhaWou; @Moore2016OptEco].   
 
 
 # How many observations of a non-interaction do we need to classify it as a true negative?

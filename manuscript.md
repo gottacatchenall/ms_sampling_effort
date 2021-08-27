@@ -17,14 +17,13 @@ have substantially amount of data available to ecologists. Still widespread data
 about species _interactions_ remains elusive, as observing an interaction
 between two species often requires human sampling, because although remote
 methods can detect co-occurrence, this itself is not necessarily indicative of
-interaction [@Blanchet2020CooNot]. This induces constraints sampling of
-interactions based on the spatial and temporal scales feasible to human
-sampling.
+interaction [@Blanchet2020CooNot]. This constraint induces biases on species
+interaction data subject to the spatial and temporal scales humans can sample.
 
-The impact _sampling effort_ on ecological data has encouraged a long history of
-discourse. Empirically the recorded number of species in a sample is a function
-of number of observations [@Willott2001SpeAcc; @Walther1995SamEff], as is
-population abundance [@Griffiths1998SamEff]. For interactions, the initial
+_Sampling effort_ and its impact on ecological data has encouraged a long
+history of discourse. The recorded number of species in a sample is a function
+of the total number of observations [@Willott2001SpeAcc; @Walther1995SamEff], as
+is population abundance [@Griffiths1998SamEff]. For interactions, the initial
 concern that the compounding effects of limited sampling effort and the
 amalgamation of data (across both study sites and across taxonomic scales) could
 lead any empirical set of observations to inadequately reflect the reality of
@@ -35,7 +34,7 @@ interactions derived from 164,000 plant-stems was feasible. In some systems
 (e.g. megafauna food-webs) this many observations is either impractical or
 infeasible due to the absolute abundance of the species in question. This has
 motivated more quantitatively robust approaches to account for error in sampling
-data across many contexts: to determine if a species is extinct
+data across many contexts: to determine if a given species is extinct
 [@Boakes2015InfSpe], to measuring global species richness [@Carlson2020WhaWou],
 and to determine sampling design [@Moore2016OptEco].
 

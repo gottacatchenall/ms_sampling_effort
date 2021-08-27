@@ -12,59 +12,60 @@ past decade biodiversity data has become increasingly available due improved
 in-situ sensing technology [@Stephenson2020TecAdv] and increased adoption of
 open data sharing practices [@Kenall2014OpeFut]. Modern remote-sensing has
 enabled collection of data on spatial scales and resolutions previously
-unimaginable, which combined with novel forms of in-situ sensing technology have
-substantially amount of data available to ecologists. Still widespread data
-about species interactions remains elusive, as observing an interaction between
-two species often requires human sampling, as although remote methods can detect
-co-occurrence, this itself is not necessarily indicative of interaction
-[@Blanchet2020CooNot]. This induces constraints sampling of interactions based
-on the spatial and temporal scales feasible to human sampling.
-
-
-The issue of _sampling effort_ and how it impacts ecological data has encouraged
-a long history of discourse---it is clear the observed number of species is a
-function of number of observations [@Willott2001SpeAcc; @Walther1995SamEff], as
-is population abundance [@Griffiths1998SamEff]. This has motivated development
-of quantitatively robust approaches to detection is needed in many contexts: to
-determine if a species is extinct [@Boakes2015InfSpe], to measuring global
-species richness [@Carlson2020WhaWou], and to determine sampling design
-[@Moore2016OptEco]. In the context of interactions, the initial concern that the
+unimaginable, and this combined with novel forms of in-situ sensing technology
+have substantially amount of data available to ecologists. Still widespread data
+about species _interactions_ remains elusive, as observing an interaction
+between two species often requires human sampling, because although remote
+methods can detect co-occurrence, this itself is not necessarily indicative of
+interaction [@Blanchet2020CooNot]. This induces constraints sampling of
+interactions based on the spatial and temporal scales feasible to human
+sampling. The issue of the limits of sampling, and the impact of _sampling
+effort_ on ecological data has encouraged a long history of discourse.
+Empirically the recorded number of species in a sample is a function of number
+of observations [@Willott2001SpeAcc; @Walther1995SamEff], as is population
+abundance [@Griffiths1998SamEff]. For interactions, the initial concern that the
 compounding effects of limited sampling effort and the amalgamation of data
 (across both study sites and across taxonomic scales) could lead any empirical
 set of observations to inadequately reflect the reality of how species interact
-[@Paine1988RoaMap] Because we cannot feasibly observe all or even most
-interactions that occur in nature, we end up sampling a very small fraction of
-those interactions. This means we can be reasonably confident two species
-actually interact if we have a record of it, but not at all confident that two
-species don't interact if we haven't recorded it. In other words, we can't
-distinguish true-negatives (they really never interact) from _false-negatives_
-(they do interact, but we didn't observe it). Further this sampling is
-geographically biased toward the usual suspects [@Poisot2021GloKno], and these
-observations reflect the distribution of species abundances within communities
-[@Poisot2015SpeWhy]. This noise in data have practical consequences for
-answering questions about species interactions [@deAguiar2019RevBia]---these
-false-negatives could go on to effect the inferences we make about network
-properties and relations among species. @Martinez1999EffSam showed that network
-connectance is robust to sampling effort in a plant-endophyte trophic network,
-but this done in the context of a system for which observation of 62,000 total
-interactions derived from 164,000 plant-stems was feasible. In some systems,
-e.g. megafauna food-webs, this many observations is either impractical or
-infeasible due to the absolute abundance of the species in question.
+[@Paine1988RoaMap]. This has motivated more quantitatively robust approaches to
+account for error in sampling data across many contexts: to determine if a
+species is extinct [@Boakes2015InfSpe], to measuring global species richness
+[@Carlson2020WhaWou], and to determine sampling design [@Moore2016OptEco].
 
-This is compounded by semantic confusion and ambiguity in what is meant by
-"interaction", which is often system specific [@Strydom2021RoaPre]. Here
-distinguish between a species _occurring_, a species being _observed_ occurring,
-two species being observed _co-occurring_, and two species being observed
-_interacting_. In @fig:taxonomy we show that seeing two species co-occurring is
-a prerequisite for determining whether an interaction occurs between two species
-exists. Co-occurrence is often assumed to mean meaningful interaction strength,
-but this is not necessarily the case [@Blanchet2020CooNot]. What "interaction"
-means, and the practical meaning of results derived from observed "interaction"s
-is context dependent. Bears and salmon _interact_---a bear and the microbes in
-the soil of a dens interact, but less so. Here, we refer to species either as
-"interacting" (meaning that if two species co-occur, they will interact, at
-least sometimes) or "not-interacting" (two species that may co-occur but neither
-exhibits any meaningful effect on the biomass of the other).
+Because we cannot feasibly observe all (or even most) interactions that occur in
+nature, our samples end up capturing a small fraction of those interactions.
+This means we can be reasonably confident two species actually interact if we
+have a record of it, but not at all confident that two species _don't_ interact
+if we have no record of those species observed together. In other words, we
+can't distinguish true-negatives (two species _never_ interact) from
+_false-negatives_ (two species interact in some capacity, but we have not
+observed it). Further, sampling is geographically biased toward the usual
+suspects [@Poisot2021GloKno], and these observations reflect the distribution of
+species abundances within communities [@Poisot2015SpeWhy]. This noise in data
+have practical consequences for answering questions about species interactions
+[@deAguiar2019RevBia]---these false-negatives could go on to effect the
+inferences we make about network properties and relations among species.
+@Martinez1999EffSam showed that network connectance is robust to sampling effort
+in a plant-endophyte trophic network, but this done in the context of a system
+for which observation of 62,000 total interactions derived from 164,000
+plant-stems was feasible. In some systems (e.g. megafauna food-webs) this many
+observations is either impractical or infeasible due to the absolute abundance
+of the species in question.
+
+This is compounded by semantic confusion about what is meant by "interaction".
+Here distinguish between: a species _occurring_, a species being _observed_
+occurring, two species being observed _co-occurring_, and two species being
+observed _interacting_. In @fig:taxonomy we show that seeing two species
+co-occurring is a prerequisite for determining whether an interaction occurs
+between two species exists. Co-occurrence is often assumed to mean meaningful
+interaction strength, but this is not necessarily the case
+[@Blanchet2020CooNot]. What "interaction" means, and the practical meaning of
+results derived from observed "interaction"s is context dependent. Bears and
+salmon _interact_---a bear and the microbes in the soil of a dens interact, but
+less so. Here, we refer to species either as "interacting" (meaning that if two
+species co-occur, they will interact, at least sometimes) or "not-interacting"
+(two species that may co-occur but neither exhibits any meaningful effect on the
+biomass of the other).
 
 ![Taxonomy of false-negatives in data for two hypothetical species A and B,
 where in reality A and B do interact in some capacity.](./figures/concept_v3.png){#fig:taxonomy}

@@ -41,31 +41,34 @@ distinguish true-negatives (they really never interact) from _false-negatives_
 (they do interact, but we didn't observe it). Further this sampling is
 geographically biased toward the usual suspects [@Poisot2021GloKno], and these
 observations reflect the distribution of species abundances within communities
-[@Poisot2015SpeWhy].
+[@Poisot2015SpeWhy]. This noise in data have practical consequences for
+answering questions about species interactions [@deAguiar2019RevBia]---these
+false-negatives could go on to effect the inferences we make about network
+properties and relations among species. @Martinez1999EffSam showed that network
+connectance is robust to sampling effort in a plant-endophyte trophic network,
+but this done in the context of a system for which observation of 62,000 total
+interactions derived from 164,000 plant-stems was feasible. In some systems,
+e.g. megafauna food-webs, this many observations is either impractical or
+infeasible due to the absolute abundance of the species in question.
 
 This is compounded by semantic confusion and ambiguity in what is meant by
 "interaction", which is often system specific [@Strydom2021RoaPre]. Here
-distinguish between a species occurring, a species being observed occurring, two
-species being observed co-occurring, and two species being observed interacting.
-In @fig:taxonomy we show that seeing two species co-occurring is a prerequisite
-for determining whether an interaction occurs between two species exists. Bears
-and salmon _interact_---a bear and the microbes in the soil of a dens interact,
-but less so. Sometimes interactions are directly observable, however in some
-contexts sampling is done for the explicit purpose of measing potential for
-interaction (eg disease).
+distinguish between a species _occurring_, a species being _observed_ occurring,
+two species being observed _co-occurring_, and two species being observed
+_interacting_. In @fig:taxonomy we show that seeing two species co-occurring is
+a prerequisite for determining whether an interaction occurs between two species
+exists. Co-occurrence is often assumed to mean meaningful interaction strength,
+but this is not necessarily the case [@Blanchet2020CooNot]. What "interaction"
+means, and the practical meaning of results derived from observed "interaction"s
+is context dependent. Bears and salmon _interact_---a bear and the microbes in
+the soil of a dens interact, but less so. Here, we refer to species either as
+"interacting" (meaning that if two species co-occur, they will interact, at
+least sometimes) or "not-interacting" (two species that may co-occur but neither
+exhibits any meaningful effect on the biomass of the other).
 
 ![Taxonomy of false-negatives in data for two hypothetical species A and B,
 where in reality A and B do interact in some capacity.](./figures/concept_v3.png){#fig:taxonomy}
 
-This noise in data have practical consequences for answering questions about species
-interactions [@deAguiar2019RevBia]---these false-negatives could go on to effect
-the inferences we make about network properties and relations among species.
-@Martinez1999EffSam showed that network connectance is robust to sampling effort
-in a plant-endophyte trophic network, but this done in the context of a system
-for which observation of 62,000 total interactions derived from 164,000
-plant-stems was feasible. In some systems, e.g. megafauna food-webs, this many
-observations is either impractical or infeasible due to the absolute abundance
-of the species in question.
 
 Here we seek to understand how false negatives in ecological interaction data
 impact the analysis and prediction of ecological networks, and also to

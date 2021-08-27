@@ -8,63 +8,64 @@ Understanding how different species interact is both a fundamental question of
 community ecology but also an increasing imperative to mitigate the consequences
 of human activity on biodiversity [@Makiola2020KeyQue; @Jordano2016ChaEco] and
 to predict potential spillover of zoonotic disease [@Becker2021OptPre]. Over the
-past decade biodiversity data has become increasingly available due to
-developments in-situ sensing technology [@Stephenson2020TecAdv] and increased
-adoption of open data sharing practices [@Kenall2014OpeFut]. Modern
-remote-sensing has enabled collection of data on spatial scales previously
-unimaginable, and novel forms of in-situ sensing technology have substantially
-increased the temporal resolution amount of data available to ecologists. Yet
-widespread data about species interactions remains elusive, partially because
-observing interaction between two species often requires human sampling, as
-though remote methods can detect cooccurrence, this itself is not necessarily
-indicative of interaction [@Blanchet2020CooNot].
+past decade biodiversity data has become increasingly available due improved
+in-situ sensing technology [@Stephenson2020TecAdv] and increased adoption of
+open data sharing practices [@Kenall2014OpeFut]. Modern remote-sensing has
+enabled collection of data on spatial scales and resolutions previously
+unimaginable, which combined with novel forms of in-situ sensing technology have
+substantially amount of data available to ecologists. Still widespread data
+about species interactions remains elusive, as observing an interaction between
+two species often requires human sampling, as although remote methods can detect
+co-occurrence, this itself is not necessarily indicative of interaction
+[@Blanchet2020CooNot]. This induces constraints sampling of interactions based
+on the spatial and temporal scales feasible to human sampling.
 
-This limitation induces constraints on sampling of interactions based on the
-spatial and temporal scales feasible to human sampling. Because we cannot
-feasibly observe all or even most interactions that occur in nature, we end up
-sampling a very small fraction of those interactions. This means we can be
-reasonably confident two species actually interact if we have a record of it,
-but not at all confident that two species don't interact if we haven't recorded
-it. In other words, we can't distinguish true-negatives (they really never
-interact) from false-negatives (they do interact, but we didn't observe it).
-These sampling constraints go on to bias species interaction data in several
-ways: we can only observe a small fraction of species interactions in space and
-time, this sampling is geographically biased toward the usual suspects
-[@Poisot2021GloKno], and these observations reflect the distribution of species
-abundances within communities [@Poisot2015SpeWhy]. These biases have practical
-consequences for answering questions about species interactions
-[@deAguiar2019RevBia]---the data we collect is noisy and likely contains many
-_false-negatives_, where there is not an observation of two species interacting
-even though they actually interact in some capacity. These false-negatives could
-go on to effect the inferences we make about network properties and relations
-among species.
 
-The issue of _sampling effort_ and how it impacts data about ecosystems has
-encouraged a long history of discourse. Observed species richness is a function
-of number of observations [@Willott2001SpeAcc; @Walther1995SamEff], as is
-abundance [@Griffiths1998SamEff]. Further, a quantitatively robust approach to
-interaction detection is needed to determine if a species is extinct
-[@Boakes2015InfSpe]. In the context of interactions, the initial concern was
-that the compounding effects of limited sampling effort and the amalgamation of
-data, both across study sites and across taxonomic scales, could lead any
-empirical set of observations to inadequately reflect the reality of how species
-interact [@Paine1988RoaMap]. @Martinez1999EffSam showed that network properties
-(namely connectance) is robust to sampling effort in a plant-endophyte trophic
-network, but this done in the context of a system for which observation of
-62,000 total interactions derived from 164,000 plant-stems was feasible. In some
-systems, e.g. megafauna food-webs, this many observations is either impractical
-or infeasible due to the absolute abundance of the species in question. This is
-compounded by semantic confusion and ambiguity in what is meant by "interaction"
-[@Strydom2021RoaPre]. Here distinguish between a species occurring, a species
-being observed occurring, two species being observed co-occurring,and two
-species being observed interacting. In @fig:taxonomy we show that seeing two
-species co-occurring is a prerequisite for determining whether an interaction
-occurs between two species exists. Bears and salmon _interact_---a bear and the
-microbes in the soil of a den interact, but less so. Distinguishing the magnitude
-of effect which constitutes an interaction is a system specific thing.
+The issue of _sampling effort_ and how it impacts ecological data has encouraged
+a long history of discourse---it is clear the observed number of species is a
+function of number of observations [@Willott2001SpeAcc; @Walther1995SamEff], as
+is population abundance [@Griffiths1998SamEff]. This has motivated development
+of quantitatively robust approaches to detection is needed in many contexts: to
+determine if a species is extinct [@Boakes2015InfSpe], to measuring global
+species richness [@Carlson2020WhaWou], and to determine sampling design
+[@Moore2016OptEco]. In the context of interactions, the initial concern that the
+compounding effects of limited sampling effort and the amalgamation of data
+(across both study sites and across taxonomic scales) could lead any empirical
+set of observations to inadequately reflect the reality of how species interact
+[@Paine1988RoaMap] Because we cannot feasibly observe all or even most
+interactions that occur in nature, we end up sampling a very small fraction of
+those interactions. This means we can be reasonably confident two species
+actually interact if we have a record of it, but not at all confident that two
+species don't interact if we haven't recorded it. In other words, we can't
+distinguish true-negatives (they really never interact) from _false-negatives_
+(they do interact, but we didn't observe it). Further this sampling is
+geographically biased toward the usual suspects [@Poisot2021GloKno], and these
+observations reflect the distribution of species abundances within communities
+[@Poisot2015SpeWhy].
+
+This is compounded by semantic confusion and ambiguity in what is meant by
+"interaction", which is often system specific [@Strydom2021RoaPre]. Here
+distinguish between a species occurring, a species being observed occurring, two
+species being observed co-occurring, and two species being observed interacting.
+In @fig:taxonomy we show that seeing two species co-occurring is a prerequisite
+for determining whether an interaction occurs between two species exists. Bears
+and salmon _interact_---a bear and the microbes in the soil of a dens interact,
+but less so. Sometimes interactions are directly observable, however in some
+contexts sampling is done for the explicit purpose of measing potential for
+interaction (eg disease).
 
 ![Taxonomy of false-negatives in data for two hypothetical species A and B,
 where in reality A and B do interact in some capacity.](./figures/concept_v3.png){#fig:taxonomy}
+
+This noise in data have practical consequences for answering questions about species
+interactions [@deAguiar2019RevBia]---these false-negatives could go on to effect
+the inferences we make about network properties and relations among species.
+@Martinez1999EffSam showed that network connectance is robust to sampling effort
+in a plant-endophyte trophic network, but this done in the context of a system
+for which observation of 62,000 total interactions derived from 164,000
+plant-stems was feasible. In some systems, e.g. megafauna food-webs, this many
+observations is either impractical or infeasible due to the absolute abundance
+of the species in question.
 
 Here we seek to understand how false negatives in ecological interaction data
 impact the analysis and prediction of ecological networks, and also to
@@ -86,7 +87,7 @@ associations in co-occurence data can increase realized probability of false
 negatives, and demonstrate these positive associations are present in two
 spatially-replicated systems. We conclude by suggesting that simulation of
 sampling effort and species occurrence can and should be used to help design
-surveys of species diversity [@Carlson2020WhaWou; @Moore2016OptEco].   
+surveys of species diversity [@Moore2016OptEco].   
 
 
 # How many observations of a non-interaction do we need to classify it as a true negative?
@@ -405,22 +406,20 @@ given place and time.
 
 
 As we derive from @fig:negativebinom, we can never guarantee there are no
-false-negatives in data.
-In recent years, there has been
-interest toward explicitly accounting for false-negatives in models
-[@Young2021RecPla; @Stock2017LinFil], and toward a predictive approach toward
-interactions ---rather than expect that our samples can fully capture all
-interactions, we know that some interactions between species will not be
-observed due to finite sampling capacity, and instead we must impute  the true
-metaweb of interactions given a set of samples [@Strydom2021RoaPre].
- As a result, better predictive approaches are needed
-for interaction networks [@Strydom2021RoaPre], and building models that
-explicitly account for observation error is a necessary step forward for
-predictive ecological models [@Young2021RecPla; @Johnson2021BayEst]. Neural
-networks, like the one used to predict interactions in the above section, have
-been used to reflect hidden states which account for detection error in
-occupancy modeling [@Joseph2020NeuHie], and could be integrated in the
-predictive models of the future.
+false-negatives in data. In recent years, there has been interest toward
+explicitly accounting for false-negatives in models [@Young2021RecPla;
+@Stock2017LinFil], and toward a predictive approach toward interactions
+---rather than expect that our samples can fully capture all interactions, we
+know that some interactions between species will not be observed due to finite
+sampling capacity, and instead we must impute  the true metaweb of interactions
+given a set of samples [@Strydom2021RoaPre]. As a result, better predictive
+approaches are needed for interaction networks [@Strydom2021RoaPre], and
+building models that explicitly account for observation error is a necessary
+step forward for predictive ecological models [@Young2021RecPla;
+@Johnson2021BayEst]. Neural networks, like the one used to predict interactions
+in the above section, have been used to reflect hidden states which account for
+detection error in occupancy modeling [@Joseph2020NeuHie], and could be
+integrated in the predictive models of the future.
 
 A better conceptual framework for designing surveys and monitoring networks, and
 incorporating sequential observations over time is clearly needed

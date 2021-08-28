@@ -53,22 +53,20 @@ species interactions [@deAguiar2019RevBia]---these false-negatives could go on
 to effect the inferences we make about network properties and relations among
 species, and our predictions about how species will interact in the future.
 
-This is compounded by semantic confusion about what is meant by "interaction".
-Here distinguish between: a species _occurring_, a species being _observed_
-occurring, two species being observed _co-occurring_, and two species being
+This is compounded by semantic confusion about the definition of "interaction".
+Here distinguish between: a species _occurring_, a species being _observed
+occurring_, two species being observed _co-occurring_, and two species being
 observed _interacting_ (@fig:taxonomy). In this manuscript, we refer to species
 either as "interacting" (two species co-occur and possibly interact) or
-"not-interacting" (two species that may co-occur but neither exhibits any
-meaningful effect on the biomass of the other).
-
-In @fig:taxonomy we see that observing two species
+"not-interacting" (two species that, regardless of whether they co-occur,
+neither exhibits any meaningful effect on the biomass of the other). In
+@fig:taxonomy we see that, under our definition, observing two species
 co-occurring is a prerequisite for observing an interaction between two species.
 But species are not observed with equal probability---they are observed in
-proportion to their relative biomass. Co-occurrence is often assumed to mean
+proportion to their relative biomass. Often co-occurrence is assumed to mean
 meaningful interaction strength, but this is not necessarily the case
-[@Blanchet2020CooNot].
-Bears and salmon _interact_---a bear and the microbes in the soil of a dens
-interact, but less so.
+[@Blanchet2020CooNot]. Bears and salmon _interact_---a bear and the microbes in
+the soil of a dens interact, but less so.
 
 Positive or negative associations in co-occurrence [@Cazelles2016TheSpe]
 

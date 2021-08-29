@@ -54,8 +54,6 @@ false-negatives could go on to effect the inferences we make about network
 properties and relations among species, and our predictions about how species
 will interact in the future.
 
-
-
 This is compounded by semantic confusion about the definition of "interaction".
 Here distinguish between: a species _occurring_, a species being _observed
 occurring_, two species being observed _co-occurring_, and two species being
@@ -81,7 +79,6 @@ probability of false-negatives in interaction data.
 ![Taxonomy of false-negatives in data for two hypothetical species A and B,
 where in reality A and B do interact in some capacity.](./figures/concept_v3.png){#fig:taxonomy}
 
-
 Here, we show that the probability of a "non-interaction" between species
 depends on sampling effort, and suggest that surveys of species interactions can
 benefit from simulation modeling of detection probability  [@Jordano2016SamNet].
@@ -106,8 +103,8 @@ help design surveys of species diversity [@Moore2016OptEco].
 # How many observations of a non-interaction do we need to classify it as a true negative?
 
 To answer the titular question of this section, we present a naive model of
-interaction detection: we assume that every true interaction between two species
-is incorrectly observed as a non-interaction with an independent and fixed
+interaction detection: we assume that every interacting pair of species is
+incorrectly observed as a not-interacting with an independent and fixed
 probability, which we denote $p_{fn}$ and subsequently refer to as the
 False-Negative Rate (FNR). If we observe the same species not-interacting $N$
 times, then the probability of a true negative (denoted $p_{tn}$) is given by
@@ -115,9 +112,10 @@ $p_{tn} = 1 - (p_{fn})^N$. This relation (a special case of the
 negative-binomial distribution) is shown in @fig:negativebinom for varying
 values of the false negative rate $p_{fn}$. This illustrates a fundamental link
 between our ability to reliably say an interaction doesn't
-exist---$p_{tn}$---and the number of times we have observed a given species.
-Further, within this model there is no non-zero $p_{fn}$ for which we can ever
-_prove_ that an interaction does not exist.
+exist---$p_{tn}$---and the number of times we have observed a given species. In
+addition, note that within this model there is no non-zero $p_{fn}$ for which we
+can ever _prove_ that an interaction does not exist---no matter how many
+observations of non-interaction $N$ we have, $p_{tn} < 1$.
 
 ![The probability an observed interaction is a "true negative" (y-axis) given
 how many times it has been sampled as a non-interaction (x-axis). Each color
@@ -139,27 +137,28 @@ effort.
 
 ## False-negatives as a product of relative abundance
 
-Here we show the realized false-negative rate (FNR) of species interactions
-changes drastically with sampling effort, largely due to the intrinsic variation
-of abundances within a community. We do this by simulating the process of
+Here we show the realized false-negative rate of species interactions changes
+drastically with sampling effort, largely due to the intrinsic variation of
+abundances within a community. We do this by simulating the process of
 observation of species interactions, applied both to 243 empirical food webs
 from the Mangal database [@Banville2021ManJl] as well as random food-webs
 generated using the niche model [@Williams2000SimRul]. Our neutral model of
 observation assumes each observed species is drawn from the distribution of
 those species' abundances at that place and time. Although there is no shortage
-of debate as to the processes the govern this distribution, across communities
-the abundance distribution can be reasonably-well described by a log-normal
-distribution [@Volkov2003NeuThe]  (Note that in addition to the log-normal
-distribution, we also tested the case where the abundance distribution is
-derived from power-law scaling $Z^{(T_i-1)}$ where $T_i$ is the trophic level of
-species $i$  and $Z$ is a scaling coefficient. [@Savage2004EffBod], which yields
-the same qualitative behavior). The practical consequence of this skewed
-distribution of biomass in communities is seeing two low biomass species
-interacting requires two low probability events: observing two species of low
-relative biomass _at the same time_. However, this "neutrally forbidden link"
-[@Canard2012EmeStr] does not consider that there may be a positive association
-between observing species together because of their interaction
-[@Cazelles2016TheSpe], which we'll explore in the next subsection.
+of debate as to the processes the govern this distribution of abundances within
+a community, this abundance distribution can be reasonably-well described by a
+log-normal distribution [@Volkov2003NeuThe]  (Note that in addition to the
+log-normal distribution, we also tested the case where the abundance
+distribution is derived from power-law scaling $Z^{(T_i-1)}$ where $T_i$ is the
+trophic level of species $i$  and $Z$ is a scaling coefficient.
+[@Savage2004EffBod], which yields the same qualitative behavior, _todo supp fig
+1 here_). The practical consequence of this skewed distribution of biomass in
+communities is seeing two low biomass species interacting requires two low
+probability events: observing two species of low relative biomass _at the same
+time_. However, this "neutrally forbidden link" [@Canard2012EmeStr] does not
+consider that there may be a positive association between observing species
+together because of their interaction [@Cazelles2016TheSpe], which we'll explore
+in the next subsection.
 
 To simulate the process of observation, for an ecological network $A$ with $S$
 species, we sample abundances from $N$ independent draws from a
@@ -177,10 +176,10 @@ true-negative otherwise.
 In @fig:totalobs (a) we see this model of observation applied to networks
 generated using the niche model [@Williams2000SimRul] across varying levels of
 species richness, and in (b) applied to 243 food-webs from the Mangal database.
-For all niche model simulations in this manuscript, the number of interactions
-is drawn from the flexible-links model fit to Mangal data
-[@MacDonald2020RevLin], effectively drawing the number of interactions $L$ for a
-random niche model food-web with $S$ species as $L \sim
+For all niche model simulations in this manuscript, for a given number of
+species $S$ the number of interactions is drawn from the flexible-links model
+fit to Mangal data [@MacDonald2020RevLin], effectively drawing the number of
+interactions $L$ for a random niche model food-web as $L \sim
 \text{BetaBinomial}(S^2-S+1, \mu \phi, (1-\mu)\phi)$, where the MAP estimate of
 ($\mu$, $\phi$) applied to Mangal data from @MacDonald2020RevLin is $(\mu =
 0.086, \phi =24.3)$. All simulations were done with 500 independent replicates
@@ -192,19 +191,19 @@ many false negatives, which is why we are interested in prediction of networks
 in the first place---we'll revisit this in the final section.
 
 ![A and B: False negative rate (y-axis) as a function of total sampling effort
-(x-axis) and network size, computed using the method described above. For a this
-relation for 500 independent draws from the niche model [@Williams2000SimRul] at
-varying levels of species richness (colors) with connectance drawn according to
-the flexible-links model [@MacDonald2020RevLin] as described in the main text.
-For each draw from the niche model, 200 sets of 1500 observations are simulated,
-for which each the mean false negative rate at each observation-step is
-computed. Means denoted with points, with $1\sigma$ in the first shade and
-$2\sigma$ in the second. B: empirical food webs from Mangal database in teal,
-applied to the same process as the A. The outlier on panel B is a 714 species
-food-web. C) The expected needed observations of all individuals of all species
-(y-axis) required to obtain a goal number of observations (colors) of a
-particular species, and a function of the relative abundance of that focal
-species (x-axis) ](./figures/combinedfig2.png){#fig:totalobs}
+(x-axis) and network size, computed using the method described above. For 500
+independent draws from the niche model [@Williams2000SimRul] at varying levels
+of species richness (colors) with connectance drawn according to the
+flexible-links model [@MacDonald2020RevLin] as described in the main text. For
+each draw from the niche model, 200 sets of 1500 observations are simulated, for
+which each the mean false negative rate at each observation-step is computed.
+Means denoted with points, with $1\sigma$ in the first shade and $2\sigma$ in
+the second. B: empirical food webs from Mangal database in teal, applied to the
+same process as the A. The outlier on panel B is a 714 species food-web. C) The
+expected needed observations of all individuals of all species (y-axis) required
+to obtain a goal number of observations (colors) of a particular species, and a
+function of the relative abundance of that focal species (x-axis)
+](./figures/combinedfig2.png){#fig:totalobs}
 
 In panel (c) of @fig:totalobs, we show the expected number of total observations
 needed to obtain a "goal" number of observations (colors) of a particular

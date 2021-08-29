@@ -10,8 +10,8 @@ consequences of human activity on biodiversity [@Makiola2020KeyQue;
 @Jordano2016ChaEco] and to predict potential spillover of zoonotic disease
 [@Becker2021OptPre]. Over the past decade biodiversity data has become
 increasingly available. Modern remote-sensing has enabled collection of data on
-spatial scales and resolutions previously unimaginable, improved in-situ sensing
-[@Stephenson2020TecAdv] and increased adoption of open data practices
+spatial scales and resolutions previously unimaginable, and improved in-situ
+sensing [@Stephenson2020TecAdv] and adoption of open data practices
 [@Kenall2014OpeFut] have substantially amount of data available to ecologists.
 Still widespread data about species _interactions_ remains elusive. Often
 observing an interaction between two species often requires human sampling,
@@ -20,23 +20,24 @@ necessarily indicative of interaction [@Blanchet2020CooNot]. This constraint
 induces biases on species interaction data subject to the spatial and temporal
 scales that humans can feasibly sample.
 
-_Sampling effort_ and its impact on ecological data has encouraged a long
-history of discourse. The recorded number of species in a sample is a function
-of the total number of observations [@Willott2001SpeAcc; @Walther1995SamEff], as
-is population abundance [@Griffiths1998SamEff]. This has motivated more
-quantitatively robust approaches to account for error in sampling data across
-many contexts: to determine if a given species is extinct [@Boakes2015InfSpe],
-to measuring global species richness [@Carlson2020WhaWou], and to determine
-sampling design [@Moore2016OptEco]. In the context of interactions, the initial
-concern was the compounding effects of limited sampling effort combined with the
-amalgamation of data (across both study sites and across taxonomic scales) could
-lead any empirical set of observations to inadequately reflect the reality of
-how species interact [@Paine1988RoaMap]. @Martinez1999EffSam showed that network
-connectance is robust to sampling effort in a plant-endophyte trophic network,
-but this done in the context of a system for which observation of 62,000 total
-interactions derived from 164,000 plant-stems was feasible. In some systems
-(e.g. megafauna food-webs) this many observations is either impractical or
-infeasible due to the absolute abundance of the species in question.
+_Sampling effort_ and its impact on the resulting data collected from ecosystems
+has encouraged a long history of discourse. The recorded number of species in a
+sample depends on the total number of observations [@Willott2001SpeAcc;
+@Walther1995SamEff], as do estimates of population abundance
+[@Griffiths1998SamEff]. This has motivated more quantitatively robust approaches
+to account for error in sampling data in many contexts: to determine if a given
+species is extinct [@Boakes2015InfSpe], to determine sampling design
+[@Moore2016OptEco], and to measure global species richness [@Carlson2020WhaWou].
+In the context of interactions, the initial concern was the compounding effects
+of limited sampling effort combined with the amalgamation of data (across both
+study sites and across taxonomic scales) could lead any empirical set of
+observations to inadequately reflect the reality of how species interact
+[@Paine1988RoaMap]. @Martinez1999EffSam showed that in a plant-endophyte trophic
+network, network connectance is robust to sampling effort, but this done in the
+context of a system for which observation of 62,000 total interactions derived
+from 164,000 plant-stems was feasible. In some systems (e.g. megafauna
+food-webs) this many observations is either impractical or infeasible due to the
+absolute abundance of the species in question.
 
 Because we cannot feasibly observe all (or even most) interactions that occur in
 nature, our samples end up capturing only a small fraction of those
@@ -45,13 +46,15 @@ interact if we have a record of it, but not at all confident that two species
 _do not_ interact if we have no record of those species observed together. In
 other words, we can't distinguish true-negatives (two species _never_ interact)
 from _false-negatives_ (two species interact in some capacity, but we have not
-observed it). Additionaly our data on interactions is biased: geographically
-toward the usual suspects [@Poisot2021GloKno], and further observations reflect
-the distribution of species abundances within communities [@Poisot2015SpeWhy].
-This noise in data have practical consequences for answering questions about
-species interactions [@deAguiar2019RevBia]---these false-negatives could go on
-to effect the inferences we make about network properties and relations among
-species, and our predictions about how species will interact in the future.
+observed it). This is compounded as the interaction data we have is
+geographically toward the usual suspects [@Poisot2021GloKno],
+This noise in data have practical consequences for
+answering questions about species interactions [@deAguiar2019RevBia]---these
+false-negatives could go on to effect the inferences we make about network
+properties and relations among species, and our predictions about how species
+will interact in the future.
+
+
 
 This is compounded by semantic confusion about the definition of "interaction".
 Here distinguish between: a species _occurring_, a species being _observed
@@ -62,13 +65,18 @@ either as "interacting" (two species co-occur and possibly interact) or
 neither exhibits any meaningful effect on the biomass of the other). In
 @fig:taxonomy we see that, under our definition, observing two species
 co-occurring is a prerequisite for observing an interaction between two species.
-But species are not observed with equal probability---they are observed in
-proportion to their relative biomass. Often co-occurrence is assumed to mean
-meaningful interaction strength, but this is not necessarily the case
-[@Blanchet2020CooNot]. Bears and salmon _interact_---a bear and the microbes in
-the soil of a dens interact, but less so.
-
-Positive or negative associations in co-occurrence [@Cazelles2016TheSpe]
+But species are not observed with equal probability but instead in proportion to
+their relative biomass---you are much more likely to observe a species of high
+relative abundance than one of very low relative abundance [@Poisot2015SpeWhy].
+Further observed co-occurrence is often assumed to mean meaningful interaction
+strength, but this is not necessarily the case [@Blanchet2020CooNot]. Bears and
+salmon _interact_---a bear and the microbes in the soil of a dens interact, but
+less so. This assumes positive or negative associations in co-occurrence
+[@Cazelles2016TheSpe] do not cause the joint probability of observing two
+species together to diverge from the marginal probability of seeing either
+species (perhaps  because this interaction is "important" for both species), but
+later we show increasing strength of associations leads to increasing
+probability of false-negatives in interaction data.
 
 ![Taxonomy of false-negatives in data for two hypothetical species A and B,
 where in reality A and B do interact in some capacity.](./figures/concept_v3.png){#fig:taxonomy}

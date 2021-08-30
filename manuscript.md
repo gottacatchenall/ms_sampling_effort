@@ -150,8 +150,8 @@ log-normal distribution [@Volkov2003NeuThe]  (Note that in addition to the
 log-normal distribution, we also tested the case where the abundance
 distribution is derived from power-law scaling $Z^{(T_i-1)}$ where $T_i$ is the
 trophic level of species $i$  and $Z$ is a scaling coefficient.
-[@Savage2004EffBod], which yields the same qualitative behavior, _maybe supp. fig
-1 here_). The practical consequence of this skewed distribution of biomass in
+[@Savage2004EffBod], which yields the same qualitative behavior, _supplement figure
+1_). The practical consequence of this skewed distribution of biomass in
 communities is seeing two low biomass species interacting requires two low
 probability events: observing two species of low relative biomass _at the same
 time_.
@@ -323,7 +323,7 @@ largest eigenvalue of $A$) is a measure of global structure, and demonstrates
 much more variability in response to false-negatives. For example, if a
 false-negative splits a metaweb into two components, becomes the largest
 eigenvalue of those two components. Also note that the form of this error
-function varies little as species richness changes (_potential suppl. fig 2_).
+function varies little as species richness changes (_supplemental figure 2_).
 Practically, @fig:properties shows us that different scales of measuring network
 structure vary in their response to false negatives---connectance responds
 roughly linearly to false negatives, whereas mean-degree-centrality decisively

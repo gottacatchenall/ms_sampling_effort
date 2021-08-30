@@ -14,7 +14,7 @@ spatial scales and resolutions previously unimaginable, and improved in-situ
 sensing [@Stephenson2020TecAdv] and adoption of open data practices
 [@Kenall2014OpeFut] have substantially amount of data available to ecologists.
 Still widespread data about species _interactions_ remains elusive. Often
-observing an interaction between two species often requires human sampling,
+observing an interaction between two species requires human sampling,
 because although remote methods can detect co-occurrence, this itself is not
 necessarily indicative of interaction [@Blanchet2020CooNot]. This constraint
 induces biases on species interaction data subject to the spatial and temporal
@@ -47,12 +47,11 @@ _do not_ interact if we have no record of those species observed together. In
 other words, we can't distinguish true-negatives (two species _never_ interact)
 from _false-negatives_ (two species interact in some capacity, but we have not
 observed it). This is compounded as the interaction data we have is
-geographically toward the usual suspects [@Poisot2021GloKno],
-This noise in data have practical consequences for
-answering questions about species interactions [@deAguiar2019RevBia]---these
-false-negatives could go on to effect the inferences we make about network
-properties and relations among species, and our predictions about how species
-will interact in the future.
+geographically toward the usual suspects [@Poisot2021GloKno], This noise in data
+has practical consequences for answering questions about species interactions
+[@deAguiar2019RevBia]---these false-negatives could go on to effect the
+inferences we make about network properties and relations among species, and our
+predictions about how species will interact in the future.
 
 This is compounded by semantic confusion about the definition of "interaction".
 Here distinguish between: a species _occurring_, a species being _observed
@@ -66,39 +65,39 @@ co-occurring is a prerequisite for observing an interaction between two species.
 But species are not observed with equal probability but instead in proportion to
 their relative biomass---you are much more likely to observe a species of high
 relative abundance than one of very low relative abundance [@Poisot2015SpeWhy].
-Further observed co-occurrence is often assumed to mean meaningful interaction
-strength, but this is not necessarily the case [@Blanchet2020CooNot]. Bears and
-salmon _interact_---a bear and the microbes in the soil of a dens interact, but
-less so. This assumes positive or negative associations in co-occurrence
+This assumes positive or negative associations in co-occurrence
 [@Cazelles2016TheSpe] do not cause the joint probability of observing two
 species together to diverge from the marginal probability of seeing either
 species (perhaps  because this interaction is "important" for both species), but
 later we show increasing strength of associations leads to increasing
-probability of false-negatives in interaction data.
+probability of false-negatives in interaction data. Further observed
+co-occurrence is often equated with meaningful interaction strength, but this is
+not necessarily the case [@Blanchet2020CooNot; @Strydom2021RoaPre]. Bears and
+salmon _interact_---a bear and the microbes in the soil of a dens interact, but
+less so.
 
 ![Taxonomy of false-negatives in data for two hypothetical species A and B,
 where in reality A and B do interact in some capacity.](./figures/concept_v3.png){#fig:taxonomy}
 
-Here, we show that the probability of a "non-interaction" between species
-depends on sampling effort, and suggest that surveys of species interactions can
-benefit from simulation modeling of detection probability  [@Jordano2016SamNet].
-We demonstrate that the realized false-negative rate of interactions is directly
-related the relative abundance of a particular species, relationship between
-total sampling effort (the total count of all individuals of all species seen)
-and false-negative rate. questions we pose and attempt to answer are: 1) How
-many times do you have to observe a non-interaction between two species to be
-confident in saying that is a true negative? 2) How "wrong" are the measurements
-of network structure as a function of false-negative probability? and lastly 3)
-How do false-negatives impact our ability to make reliable predictions about
-interactions? We conclude by suggesting use of null models like those presented
-here as a tool for guiding design of surveys of species interactions, and
-increased adoption of modeling detection error in predictive ecological models.
-We show that positive associations in co-occurrence data can increase realized
-probability of false negatives, and demonstrate these positive associations are
-present in two spatially-replicated systems. We conclude by suggesting that
-simulation of sampling effort and species occurrence can and should be used to
-help design surveys of species diversity [@Moore2016OptEco].   
-
+Here, we show that the probability of observing a true "not-interaction" between
+species depends on sampling effort, and suggest that surveys of species
+interactions can benefit from simulation modeling of detection probability
+[@Jordano2016SamNet]. We demonstrate that the realized false-negative rate of
+interactions is directly related the relative abundance of a particular species,
+relationship between total sampling effort (the total count of all individuals
+of all species seen) and false-negative rate. questions we pose and attempt to
+answer are: 1) How many times do you have to observe a non-interaction between
+two species to be confident in saying that is a true negative? 2) How "wrong"
+are the measurements of network structure as a function of false-negative
+probability? and lastly 3) How do false-negatives impact our ability to make
+reliable predictions about interactions? We show that positive associations in
+co-occurrence data can increase realized probability of false negatives, and
+demonstrate these positive associations are present in two spatially-replicated
+systems. We conclude by suggesting that simulation of sampling effort and
+species occurrence can and should be used to help design surveys of species
+diversity [@Moore2016OptEco], and by advocating use of null models like those
+presented here as a tool for guiding design of surveys of species interactions,
+and for modeling detection error in predictive ecological models.
 
 # How many observations of a non-interaction do we need to classify it as a true negative?
 
@@ -107,13 +106,13 @@ interaction detection: we assume that every interacting pair of species is
 incorrectly observed as a not-interacting with an independent and fixed
 probability, which we denote $p_{fn}$ and subsequently refer to as the
 False-Negative Rate (FNR). If we observe the same species not-interacting $N$
-times, then the probability of a true negative (denoted $p_{tn}$) is given by
+times, then the probability of a true-negative (denoted $p_{tn}$) is given by
 $p_{tn} = 1 - (p_{fn})^N$. This relation (a special case of the
 negative-binomial distribution) is shown in @fig:negativebinom for varying
 values of the false negative rate $p_{fn}$. This illustrates a fundamental link
 between our ability to reliably say an interaction doesn't
 exist---$p_{tn}$---and the number of times we have observed a given species. In
-addition, note that within this model there is no non-zero $p_{fn}$ for which we
+addition, note that there also is no non-zero $p_{fn}$ for which we
 can ever _prove_ that an interaction does not exist---no matter how many
 observations of non-interaction $N$ we have, $p_{tn} < 1$.
 
@@ -132,7 +131,7 @@ false-negative rates presented in @fig:negativebinom seem unrealistically high,
 consider that species are not observed independent of their relative abundance.
 In the next section we demonstrate that distribution of abundance in ecosystems
 can lead to realized values of $p_{fn}$ similar to those in @fig:negativebinom
-for species with low relative abundance, purely as a function of sampling
+for species with low relative abundance, simply as a artifact of sampling
 effort.
 
 ## False-negatives as a product of relative abundance
@@ -151,20 +150,17 @@ log-normal distribution [@Volkov2003NeuThe]  (Note that in addition to the
 log-normal distribution, we also tested the case where the abundance
 distribution is derived from power-law scaling $Z^{(T_i-1)}$ where $T_i$ is the
 trophic level of species $i$  and $Z$ is a scaling coefficient.
-[@Savage2004EffBod], which yields the same qualitative behavior, _todo supp fig
+[@Savage2004EffBod], which yields the same qualitative behavior, _maybe supp. fig
 1 here_). The practical consequence of this skewed distribution of biomass in
 communities is seeing two low biomass species interacting requires two low
 probability events: observing two species of low relative biomass _at the same
-time_. However, this "neutrally forbidden link" [@Canard2012EmeStr] does not
-consider that there may be a positive association between observing species
-together because of their interaction [@Cazelles2016TheSpe], which we'll explore
-in the next subsection.
+time_.
 
 To simulate the process of observation, for an ecological network $A$ with $S$
-species, we sample abundances from $N$ independent draws from a
-standard-log-normal distribution. For each true interaction in $A$ (i.e. $A_{ij}
-= 1$) we estimate the probability of observing both species $i$ and $j$ at given
-place and time by simulating $n$ individual observations, where the species
+species, we sample abundances for each species from a standard-log-normal
+distribution. For each true interaction in $A$ (i.e. $A_{ij} = 1$) we estimate
+the probability of observing both species $i$ and $j$ at given place and time by
+simulating $n$ observations of individuals, where the species of the individual
 observed at the $1,2,\dots,n$-th observation is drawn from the generated
 log-normal distribution of abundances. For each pair of species $(i,j)$, if both
 $i$ and $j$ are observed within the $n$ observations, the interaction is tallied
@@ -208,28 +204,29 @@ function of the relative abundance of that focal species (x-axis)
 In panel (c) of @fig:totalobs, we show the expected number of total observations
 needed to obtain a "goal" number of observations (colors) of a particular
 "focal" species. As an example, if we hypothesize that $A$ and $B$ do not
-interact, and we want to see species $A$ 10 times to be confident this is a
-negative (a la @fig:negativebinom), then we need an expected 10,000 observations
-of all species if the relative abundance of $A$ is 0.00125.
+interact, and we want to see species $A$ and $B$ both co-occurring and
+not-interacting 10 times to be confident this is a negative (a la
+@fig:negativebinom), then we need an expected 10,000 observations of all species
+if the relative abundance of $A$ is 0.00125.
 
-Empirical data on interactions are sadly subject to the practical limitations of
+Empirical data on interactions are subject to the practical limitations of
 funding and human-work hours, and therefore existing data tend to fall on the
 order on 100s or 1000s observations of individuals per site [@Resasco2021PlaPol;
 @Schwarz2020TemSca; @Nielsen2007EcoNet]. Clear aggregation of this data has
 proven difficult to find and a meta-analysis of network data and sampling effort
 seems both pertinent and necessary, in addition to the effects of aggregation of
-interactions across taxonomic scales [@Giacomuzzo2021FooWeb;@Gauzens2013FooAgg].
-Further, from @fig:totalobs it is evident that the number of species considered
-in a study is inseparable from the false-negative rate in that study, and this
-effect should be taken into account when designing samples of ecological
-networks in the future.
+interactions across taxonomic scales [@Giacomuzzo2021FooWeb;
+@Gauzens2013FooAgg]. Further, from @fig:totalobs it is evident that the number
+of species considered in a study is inseparable from the false-negative rate in
+that study, and this effect should be taken into account when designing samples
+of ecological networks in the future.
 
 We conclude this section by advocating for the use of neutral models similar to
 above to generate expectations about the number of false-negatives in a data set
 of a given size. This could prove fruitful both for designing surveys of
 interactions [@Canard2012EmeStr],  but also because we may want to incorporate
 models of  observation error into predictive models [@Joseph2020NeuHie].
-Additionaly, one must consider the context for sampling---is the goal to detect
+Additionally, one must consider the context for sampling---is the goal to detect
 a particular species $A$ (as in @fig:totalobs (c)), or to get a representative
 sample of interactions across the species pool? This argument is well-considered
 when sampling species [@Willott2001SpeAcc], but has not yet been internalized
@@ -243,10 +240,10 @@ together due to their interaction [@Cazelles2016TheSpe]. However, here we
 demonstrate that the probability of observing a false negative can be _higher_
 if there is some positive association between occurrence of species $A$ and $B$.
 
-If we denote the probability that we observe an existing interaction between $A$
-and $B$ as $P(AB)$, and if there is _no_ association between the marginal
-probabilities of observing $A$ and observing $B$, denoted $P(A)$ and $P(B)$
-respectively, then the probability of observing the interaction $P(AB) =
+If we denote the probability that we observe an interaction we know exists
+between $A$ and $B$ as $P(AB)$, and if there is _no_ association between the
+marginal probabilities of observing $A$ and observing $B$, denoted $P(A)$ and
+$P(B)$ respectively, then the probability of observing the interaction $P(AB) =
 P(A)P(B)$. In the other case where there _is_ some positive strength of
 association between observing both $A$ and $B$ because this interaction is
 "important" for each species, then the probability of observation both $A$ and
@@ -257,22 +254,22 @@ this case, the probability of observing a false negative in our naive model from
 implies $p_{fn} \geq 1 - P(A)P(B)$ which indicates increasingly greater
 probability of a false negative as $P(AB) \to P(AB) \gg P(A)P(B)$.
 
-This should be considered with the caveat that this does not consider variation in
-species abundance in space and time. If positive or negative associations
-between species structure variation in the distribution of $P(AB)$ across
-space/time, then the spatial/temporal biases induced by data collection would
-further impact the realized false negative rate, as the probability of false
-negative would not be constant for each pair of species across sites. To test
-for this association empirical data, we use two datasets: a set of host-parasite
-interactions sampled across 51 sites with 327 total taxa  [@Hadfield2014TalTwo]
-and a set of 18 New Zealand freshwater stream food webs with 566 total taxa
-[@Thompson2000ResSol]. We simply compute the empirical marginal distribution of
-species occurrence, and compare the product of the marginals, $P(A)P(B)$, to the
-empirical joint distribution $P(AB)$.
+However this does not consider variation in species abundance in space and time,
+[@Poisot2015SpeWhy]. If positive or negative associations between species
+structure variation in the distribution of $P(AB)$ across space/time, then the
+spatial/temporal biases induced by data collection would further impact the
+realized false negative rate, as the probability of false negative would not be
+constant for each pair of species across sites. To test for this association
+empirical data, we use two datasets: a set of host-parasite interactions sampled
+across 51 sites with 327 total taxa  [@Hadfield2014TalTwo] and a set of 18 New
+Zealand freshwater stream food webs with 566 total taxa [@Thompson2000ResSol].
+We simply compute the empirical marginal distribution of species occurrence, and
+compare the product of the marginals, $P(A)P(B)$, to the empirical joint
+distribution $P(AB)$.
 
 ![Top: Hadfield, Bottom: NZ Stream Foodwebs. Effectively a version of
 @Cazelles2016TheSpe figure 1 panel
-A. Both distributions have $mu \neq 0$ with $p < 10^{-50}$](./figures/positiveassociations.png){#fig:associations}
+A. Both distributions have $\mu \neq 0$ with $p < 10^{-50}$](./figures/positiveassociations.png){#fig:associations}
 
 In @fig:associations, both host-parasite system (top) and food-web (bottom)
 exhibit these positive associations. There is no reason to expect the strength
@@ -289,7 +286,7 @@ to the whole Mangal database---this highlights a general problem of resolving
 taxonomic indentifiers which use different names and different resolutions in
 different ecological datasets, which is a problem that needs to be addressed for
 computational approaches to scale up to the world of big-ecological-data we hope
-to build---although this is a task that may be aided via
+to build, although this is a task that may be aided via
 natural-language-processing methods.
 
 
@@ -325,12 +322,14 @@ connectance, more indicative of meso-level properties that describe local
 largest eigenvalue of $A$) is a measure of global structure, and demonstrates
 much more variability in response to false-negatives. For example, if a
 false-negative splits a metaweb into two components, becomes the largest
-eigenvalue of those two components. Practically, @fig:properties shows us that
-different scales of measuring network structure vary in their response to false
-negatives---connectance responds roughly linearly to false negatives, whereas
-mean-degree-centrality decisively does not. This highlights the practical effect
-that false negatives may exacerbate the difficulty of detecting or predicting
-indirect interactions [@Williams2002TwoDeg].
+eigenvalue of those two components. Also note that the form of this error
+function varies little as species richness changes (_potential suppl. fig 2_).
+Practically, @fig:properties shows us that different scales of measuring network
+structure vary in their response to false negatives---connectance responds
+roughly linearly to false negatives, whereas mean-degree-centrality decisively
+does not. This highlights the practical effect that false negatives may
+exacerbate the difficulty of detecting or predicting indirect interactions
+[@Williams2002TwoDeg].
 
 ## Effects of false negatives on ability to make predictions
 
@@ -341,7 +340,7 @@ have been proposed to counteract this bias [@Poisot2021ImpMam;
 @Stock2017LinFil]. However, it is feasible this could induce too much noise for
 a interaction prediction model to detect the signal of interaction chance from
 to the latent properties of each species derived from the empirical network if
-the number of false-negatives in a dataset becomes too overwhelming,
+the number of false-negatives in a dataset becomes too overwhelming.
 
 To test this, we use the same predictive model and dataset as in
 @Strydom2021RoaPre to predict a metaweb from various empirical slices of the
@@ -349,13 +348,13 @@ species pool observed across space. This dataset from @Hadfield2014TalTwo
 describes host-parasite interaction networks sampled across 51 sites. We
 partition the data into 80-20 training-test split, and then seed the training
 data with false negatives varying rates, but crucially do nothing to the test
-data. We use the same model, a neural-network with 3 layers to predict outputs
-based on features extracted from cooccurence, see @Strydom2021RoaPre for more
-details. The single modification we make to the model is not enforcing a number
-of positives in the training data as this is eventually impossible for
-increasing FNR. In @fig:rocpr, we show receiving-operating-characteristic
-(ROC) and precision-recall (PR) curves for the model with varying levels of
-synthetic false-negatives added to the data.
+data. We use the same model, a neural-network with 3 feed-forward layers to
+predict outputs based on features extracted from co-occurence (see
+@Strydom2021RoaPre for more details). The single modification we make to the
+model is not enforcing a number of positives in the training data as this
+constraint is  eventually impossible for increasing FNR. In @fig:rocpr, we show
+receiving-operating-characteristic (ROC) and precision-recall (PR) curves for
+the model with varying levels of synthetic false-negatives added to the data.
 
 ![Receiver-operating-characteristic (left) and precision-recall (right) curves
 for the model on varying levels of false-negatives in the data (colors). For
@@ -363,7 +362,7 @@ each value of FNR, we run 30 random training/test splits on 80/20 percent of the
 data. Replica of figure 1 in
 @Strydom2021RoaPre](./figures/rocpr_falsenegatives.png){#fig:rocpr}
 
-Interestingly, the performance  of the model from @Strydom2021RoaPre changes
+Interestingly, the performance of the model from @Strydom2021RoaPre changes
 little with many added false-negatives, which is good evidence in favor
 neural-networks as a class of model for interaction detection. Again, similar to
 our caveat in the previous section, this data is _already_ likely to have many
@@ -383,7 +382,7 @@ Here, we have demonstrated that we expect false-negatives in species interaction
 datasets purely due to the distribution of abundances within a community.
 Positive associations between species occurrence [@Cazelles2016TheSpe] can
 increase the realized false-negative rate if the sampling effort is limited, and
-we have presented evidence of this non-random structure of cooccurrence in two
+we have presented evidence of this non-random structure of co-occurrence in two
 sets of spatially-replicated ecological network samples. We have also shown that
 false-negatives can cause varying responses in our measurements of network
 properties and further could impact our ability to reliably predict
@@ -399,21 +398,22 @@ practical necessity. False-negatives could pose a problem for many forms of
 inference in network ecology. For example, if we aim to measure structural or
 dynamic stability of a network, or to infer indirect interactions
 [@Williams2002TwoDeg], these estimates could be prone to error if the observed
-network is  not sampled "enough". What exactly "enough" means is then specific
-to the application. Further, predictions about network rewiring
+network is not sampled "enough". What exactly "enough" means is then specific to
+the application, and should be assessed via methods like those here when
+designing samples. Further, predictions about network rewiring
 [@Thompson2017DisGov] due to a changing climate could be error-prone without
-accounting interactions not-observed in the data but that still may become
-climatically infeasible.  
+accounting for interactions that have not been observed but that still may
+become climatically infeasible.  
 
-What then does this elucidate about how to design samples of interactions
-[@Jordano2016SamNet]? The primary takeaway is that when planning the sampling
-effort across sites, it is necessary to take both the size of the species pool
-into account. Further, simulating the process of observation could be a powerful
-tool for planing study design which takes relative abundance into account, and
-provide a null baseline for detection of interaction strength. A model similar
-to that here can and should be used to provide a neutral expectation of
-true-negative probability given a number of observations of individuals at a
-given place and time.
+This highlights the need for a quantitatively robust approach samples design:
+for interactions [@Jordano2016SamNet] and otherwise [@Carlson2020WhaWou]. The
+primary takeaway is that when planning the sampling effort across sites, it is
+necessary to take both the size of the species pool into account. Further,
+simulating the process of observation could be a powerful tool for planing study
+design which takes relative abundance into account, and provide a null baseline
+for detection of interaction strength. A model similar to that here can and
+should be used to provide a neutral expectation of true-negative probability
+given a number of observations of individuals at a given place and time.
 
 
 

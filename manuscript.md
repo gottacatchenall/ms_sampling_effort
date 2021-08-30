@@ -46,7 +46,7 @@ interact if we have a record of it, but not at all confident that two species
 _do not_ interact if we have no record of those species observed together. In
 other words, we can't distinguish true-negatives (two species _never_ interact)
 from _false-negatives_ (two species interact in some capacity, but we have not
-observed it). This is compounded as the interaction data we have is
+observed it). This is then amplified as the interaction data we have is
 geographically toward the usual suspects [@Poisot2021GloKno], This noise in data
 has practical consequences for answering questions about species interactions
 [@deAguiar2019RevBia]---these false-negatives could go on to effect the

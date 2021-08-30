@@ -13,6 +13,8 @@ function add!(plt, fnr, col; maxtimesobserved=15)
     scatter!(plt, x, y, label=fnr, msc=col; styl...)    
 end
 
+numtimesobserved = 1:15
+
 fnt = font(20, "Roboto")
 cs = ColorSchemes.Paired_5
 

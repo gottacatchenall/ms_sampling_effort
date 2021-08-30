@@ -207,10 +207,10 @@ for (thisx, thisy) in roc75
     plot!(rocplt, thisx, thisy, label="", lw=1.5,la=0.3, lc=cols[4])
 end
 
-scatter!(rocplt,[1],[1], mc=cols[1], label="0.0")
-scatter!(rocplt,[1],[1], mc=cols[2], label="0.25")
-scatter!(rocplt,[1],[1], mc=cols[3], label="0.5")
-scatter!(rocplt,[1],[1], mc=cols[4], label="0.75")
+scatter!(rocplt,[2],[1], mc=cols[1], label="0.0")
+scatter!(rocplt,[2],[1], mc=cols[2], label="0.25")
+scatter!(rocplt,[2],[1], mc=cols[3], label="0.5")
+scatter!(rocplt,[2],[1], mc=cols[4], label="0.75")
 
 plot!(rocplt, [0,1], [0,1], c=:grey, ls=:dash, la=0.8, aspectratio=1, label="random")
 xaxis!(rocplt,"False positive rate", (0, 1))
@@ -236,13 +236,13 @@ end
 for (thisx, thisy) in pr75
     plot!(prplt, thisx, thisy, label="", lw=1.5, la=0.3, lc=cols[4])
 end
-plot!(prplt, [0,1], [1,0], c=:grey, ls=:dash, la=0.5, aspectratio=1, label="random")
 xaxis!(prplt,"True positive rate", (0, 1))
 yaxis!(prplt,"Postive predictive value", (0, 1))
-scatter!(prplt,[1],[1], mc=cols[1], label="0.0")
-scatter!(prplt,[1],[1], mc=cols[2], label="0.25")
-scatter!(prplt,[1],[1], mc=cols[3], label="0.5")
-scatter!(prplt,[1],[1], mc=cols[4], label="0.75")
+scatter!(prplt,[2],[1], mc=cols[1], label="0.0")
+scatter!(prplt,[2],[1], mc=cols[2], label="0.25")
+scatter!(prplt,[2],[1], mc=cols[3], label="0.5")
+scatter!(prplt,[2],[1], mc=cols[4], label="0.75")
+plot!(prplt, [0,1], [1,0], c=:grey, ls=:dash, la=0.5, aspectratio=1, label="random")
 
 prplt
 

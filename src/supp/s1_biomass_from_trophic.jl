@@ -35,13 +35,8 @@ end
 
 function getabundances(A)
     S = richness(A)
-    # By trophic levels: 
-    # Z = 2
-    # abundances = Z.^[trophdict["s$i"]-1 for i in 1:S]
-    # abundance_dist = abundances ./ sum(abundances)
-
-    # By lognormal dist:
-    abundances = rand(LogNormal(),S)
+    Z = 2
+    abundances = Z.^[trophdict["s$i"]-1 for i in 1:S]
     return  abundances ./ sum(abundances)
 end
 
@@ -139,52 +134,17 @@ end
 fnt = font(20, "Roboto")
 cs = ColorScheme(range(colorant"dodgerblue", colorant"cyan4", length=3))
 
-
-function makefocalspeciesfig(;
-    relativeabundance = [10^i for i in -7:0.25:-2],
-    numobsfocal = [1, 10, 100, 500, 1000]
-)
-
-    thiscs = ColorSchemes.tableau_sunset_sunrise
-
-    focalplt = plot(size=(700,500),dpi=300,legend=:outerright, frame=:box, fontfamily=fnt,margin=5mm, legendtitle="Goal number observations of focal species")
-    yaxis!(focalplt, :log10, xlim=(0,0.01),ylim=(10, 10^6))
-    ptsettings =  (mc=:white, msw=1, ms=4, lw=2.5)
-
-    for (i,numobs) in enumerate(numobsfocal)
-        obs = numobs./relativeabundance
-        plot!(focalplt, relativeabundance, obs, label="",lc=thiscs[i]; ptsettings...)
-
-        scatter!(focalplt, relativeabundance, obs, label=numobs, msc=thiscs[i]; ptsettings...)
-    end
-    xaxis!(focalplt, "Relative abundance of focal species")
-    yaxis!(focalplt,:log10, "Expected needed observations of all species", yticks=[10^i for i in 0:6])
-    title!(focalplt,"c", titleloc=:left)
-    focalplt
-end
-
-
-
 genplt = makegeneratedplt(200)
 scatter!(genplt, [500], [500], ms=4, msw=1, label="50", msc=cs[1], mc=:white) # hack to get legend to work
 scatter!(genplt, [500], [500], ms=4, msw=1, label="100", msc=cs[2], mc=:white) # hack to get legend to work
 scatter!(genplt, [500], [500], ms=4, msw=1, label="250", msc=cs[3], mc=:white) # hack to get legend to work
 
-
 empplt = makemangalplt(200)
-focalplot = makefocalspeciesfig()
-
 
 
 
 emp = plot(yaxis=:none, ticks=:none, grid=:none, frame=:none)
+plot(genplt, empplt, margin=5mm, dpi=300, size=(900,900))
 
 
-
-top = plot(genplt, empplt)
-
-l = @layout [a; b]
-plot(top, focalplot, layout=l, margin=5mm, dpi=300, size=(900,900))
-
-
-savefig("figures/combinedfig2.png")
+savefig("figures/s1.png")

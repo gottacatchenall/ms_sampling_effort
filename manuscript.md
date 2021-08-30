@@ -415,8 +415,6 @@ for detection of interaction strength. A model similar to that here can and
 should be used to provide a neutral expectation of true-negative probability
 given a number of observations of individuals at a given place and time.
 
-
-
 As we derive from @fig:negativebinom, we can never guarantee there are no
 false-negatives in data. In recent years, there has been interest toward
 explicitly accounting for false-negatives in models [@Young2021RecPla;

@@ -16,3 +16,5 @@ function flexiblelinksmodel(S)
     end
     return nichemodel(S, L)
 end
+
+

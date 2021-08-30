@@ -34,6 +34,7 @@ function countfp(A, observations)
 end
 
 function getabundances(A)
+    trophdict= trophic_level(A)
     S = richness(A)
     Z = 2
     abundances = Z.^[trophdict["s$i"]-1 for i in 1:S]
@@ -134,17 +135,17 @@ end
 fnt = font(20, "Roboto")
 cs = ColorScheme(range(colorant"dodgerblue", colorant"cyan4", length=3))
 
-genplt = makegeneratedplt(200)
+genplt = makegeneratedplt(50)
 scatter!(genplt, [500], [500], ms=4, msw=1, label="50", msc=cs[1], mc=:white) # hack to get legend to work
 scatter!(genplt, [500], [500], ms=4, msw=1, label="100", msc=cs[2], mc=:white) # hack to get legend to work
 scatter!(genplt, [500], [500], ms=4, msw=1, label="250", msc=cs[3], mc=:white) # hack to get legend to work
 
-empplt = makemangalplt(200)
+empplt = makemangalplt(50)
 
 
 
 emp = plot(yaxis=:none, ticks=:none, grid=:none, frame=:none)
-plot(genplt, empplt, margin=5mm, dpi=300, size=(900,900))
+plot(genplt, empplt, margin=5mm, dpi=300, size=(900,500))
 
 
-savefig("figures/s1.png")
+savefig("s1.png")

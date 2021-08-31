@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>The missing link: discerning true from false negatives when sampling species interaction networks</title>
+    <script src="https://hypothes.is/embed.js" async></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,500;1,400;1,500&display=swap');
+
+        :root {
+            --citation: #4F7294;
+            --structure: #31679c;
+
+            --light: #474747;
+            --pale: #a5a5a5;
+            --grey: #e0e0e0;
+            --nav: #fdfdfd;
+
+            --width: 650px;
+            --inner-space: 1.2em;
+        }
+
+        body {
+            font-family: "Roboto", sans-serif;
+            margin: 0 0;
+            padding: 0 0;
+        }
+
+        article > p {
+            line-height: 1.5em;
+            padding: 10px 0px;
+            font-size: 1.1em;
+            margin: 0px auto;
+        }
+        article > h1 {
+            padding-top: 2.5em;
+        }
+        a {
+            text-decoration: none;
+            color: #000;
+            border-bottom: 1px solid var(--structure);
+        }
+        a:hover {
+            font-weight: 500;
+        }
+        .citation {
+            color: var(--citation);
+        }
+        .container {
+            margin: 0em auto;
+            padding: var(--inner-space);
+        }
+        header > .container {
+            margin-top: 4em;
+        }
+        code, pre {
+            font-family: "Roboto Mono", monospace;
+        }
+        pre {
+            white-space: pre-wrap;
+        }
+
+        .header--title {
+            font-weight: 600;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+        .header--authors > span {
+            color: var(--light);
+            font-weight: 400;
+        }
+        main {
+            padding-bottom: 8em !important;
+        }
+        footer {
+            background-color: var(--grey);
+            font-weight: 300;
+        }
+
+
+
+        /* max width stuff here */
+        .abstract {
+            color: var(--light);
+            margin: 0em auto;
+            font-size: 0.8em;
+            max-width: 700px;
+        }
+        .abstract p{
+            max-width: 500px;
+        }
+        figure {
+            max-width: 1200px;
+            border: 1px solid var(--pale);
+            border-radius: 2px;
+            margin: 30px auto;
+        }
+        header {
+            font-family: "Roboto", sans-serif;
+            z-index: 5;
+            color: black;
+            margin: 4rem auto 0rem auto;
+            max-width: 700px;
+        }
+        article p{
+            max-width: 700px;
+        }
+        h1, h2, h3 {
+            margin: 10px auto;
+            color: var(--structure);
+            font-family: "Roboto", sans-serif;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            max-width: 700px;
+        }
+        blockquote {
+            font-style: italic;
+            padding: 3px 0px 3px 30px;
+            border-left: 3px solid #404040;
+            margin: 25px auto;
+            font-size: 0.85em;
+            max-width: 500px;
+        }
+        #refs {
+            font-size: 90%;
+            column-count: 2;
+            max-width: 700px;
+            margin: 0px auto;
+        }
+        #refs > .csl-entry {
+            padding-bottom: 0.2em;
+            padding-top: 0.4em;
+            max-width: 500px;
+        }
+
+
+        img {
+            max-width: 100%;
+            display: block;
+            margin: 0em auto;
+        }
+        figure > figcaption {
+            padding: var(--inner-space);
+        }
+        table {
+            width: 100%;
+            min-width: 100%;
+            border-collapse: collapse;
+        }
+        table > caption {
+            padding: var(--inner-space);
+        }
+        figcaption, caption {
+            color: var(--light);
+            font-weight: 300;
+        }
+        thead {
+            color: var(--structure);
+        }
+        td, th {
+            padding: 3px;
+        }
+        tr {
+            border-top: 1px solid var(--structure);
+            border-bottom: 1px solid var(--structure);
+        }
+        tbody > tr:nth-child(even) {background: var(--grey)};
+        tbody {
+            border-bottom: 1px solid var(--structure);
+        }
+
+
+        .hanging-indent > .csl-entry {
+            padding-left: 50px ;
+            text-indent: -45px ;
+        }
+
+
+        h1 {
+            font-size: 2.3em;
+            font-weight: 500;
+        }
+
+        h2 {
+            font-size: 1.7em;
+            font-weight: 400;
+        }
+        h3 {
+            font-size: 1.8em;
+        }
+        h4 {
+            font-size: 1.5em;
+        }    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.css"
+    integrity="sha384-D+9gmBxUQogRLqvARvNLmA9hS2x//eK1FhVb9PiU86gmcrBrJAQT8okdJ4LMp2uv" crossorigin="anonymous" />
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.js"
+    integrity="sha384-483A6DwYfKeDa0Q52fJmxFXkcPCFfnXMoXblOkJ4JcA8zATN6Tm78UNL72AKk+0O"
+    crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-yACMu8JWxKzSp/C1YV86pzGiQ/l1YUfE8oPuahJQxzehAjEt2GiQuy/BIvl9KyeF"
+    crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            renderMathInElement(document.body, {
+                delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false }
+                ]
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <header>
+            <div class="header--title">The missing link: discerning true from false negatives when sampling species interaction networks</div>
+            <div class="header--authors">
+                                <span class="header--author">
+                                        <a href="https://orcid.org/0000-0002-6506-6487" target="_blank">
+                        Michael D. Catchen
+                    </a>
+                                                                <sup class="affilcode">1</sup>
+                                            <sup class="affilcode">2</sup>
+                                    </span>
+                                <span class="header--author">
+                                        <a href="https://orcid.org/0000-0002-0735-5184" target="_blank">
+                        Timothée Poisot
+                    </a>
+                                                                <sup class="affilcode">3</sup>
+                                            <sup class="affilcode">2</sup>
+                                    </span>
+                                <span class="header--author">
+                                        <a href="https://orcid.org/0000-0002-6004-4027" target="_blank">
+                        Laura Pollock
+                    </a>
+                                                                <sup class="affilcode">1</sup>
+                                            <sup class="affilcode">2</sup>
+                                    </span>
+                                <span class="header--author">
+                                        <a href="https://orcid.org/0000-0001-6075-8081" target="_blank">
+                        Andrew Gonzalez
+                    </a>
+                                                                <sup class="affilcode">1</sup>
+                                            <sup class="affilcode">2</sup>
+                                    </span>
+                        </div>
+    </header>
+
+    <main class="container">
+        <section class="abstract">
+            <b>Abstract:</b> <p>Species interactions and the networks that emerge from them structure ecosystem processes and enable biodiversity to persist through time. Still a robust understanding of interactions between species, how human activity is effecting these intearctions, and how these change will effect Earth’s ecosystems in the future remains elusive. This knowledge-gap is largely driven by a shortfall of data—although species occurence data has rapidly increased in the last decade, species interaction data has lagged behind, largely due to the intrinsic difficulty of sampling interations. These sampling challenges bias data. Here, we demonstrate that the realized false-negative rate can be quite highly biased toward species with high relative abundance. We then simulate observation on both 243 empirical food webs and generated models to estimate the sampling effort required to reduce the false-negative rate to less than 10%. We then assess how false negatives effect measurements of network properties and models of network prediction. We conclude by discussing how understanding of false-negatives can inform how we design sampling of species interactions and the networks they form.</p><br />
+            <div class="artifacts">
+                <a href="draft.pdf" title="Draft PDF" target="_blank">draft</a>
+                <a href="preprint.pdf" title="Preprint PDF" target="_blank">preprint</a>
+            </div>
+        </section>
+
+        <article>
+            <h1 id="introduction">Introduction</h1>
+            <p>Understanding which and how species interact is both a fundamental question of community ecology, but also an increasing imperative to mitigate the consequences of human activity on biodiversity <span class="citation" data-cites="Makiola2020KeyQue Jordano2016ChaEco">(Makiola et al. 2020; Jordano 2016a)</span> and to predict potential spillover of zoonotic disease <span class="citation" data-cites="Becker2021OptPre">(Becker et al. 2021)</span>. Over the past decade biodiversity data has become increasingly available. Modern remote-sensing has enabled collection of data on spatial scales and resolutions previously unimaginable, and improved in-situ sensing <span class="citation" data-cites="Stephenson2020TecAdv">(Stephenson 2020)</span> and adoption of open data practices <span class="citation" data-cites="Kenall2014OpeFut">(Kenall, Harold, and Foote 2014)</span> have substantially amount of data available to ecologists. Still widespread data about species <em>interactions</em> remains elusive. Often observing an interaction between two species requires human sampling, because although remote methods can detect co-occurrence, this itself is not necessarily indicative of interaction <span class="citation" data-cites="Blanchet2020CooNot">(Blanchet, Cazelles, and Gravel 2020)</span>. This constraint induces biases on species interaction data subject to the spatial and temporal scales that humans can feasibly sample.</p>
+            <p><em>Sampling effort</em> and its impact on the resulting data collected from ecosystems has encouraged a long history of discourse. The recorded number of species in a sample depends on the total number of observations <span class="citation" data-cites="Willott2001SpeAcc Walther1995SamEff">(Willott 2001; Walther et al. 1995)</span>, as do estimates of population abundance <span class="citation" data-cites="Griffiths1998SamEff">(Griffiths 1998)</span>. This has motivated more quantitatively robust approaches to account for error in sampling data in many contexts: to determine if a given species is extinct <span class="citation" data-cites="Boakes2015InfSpe">(Boakes, Rout, and Collen 2015)</span>, to determine sampling design <span class="citation" data-cites="Moore2016OptEco">(Moore and McCarthy 2016)</span>, and to measure global species richness <span class="citation" data-cites="Carlson2020WhaWou">(Carlson et al. 2020)</span>. In the context of interactions, the initial concern was the compounding effects of limited sampling effort combined with the amalgamation of data (across both study sites and across taxonomic scales) could lead any empirical set of observations to inadequately reflect the reality of how species interact <span class="citation" data-cites="Paine1988RoaMap">(Paine 1988)</span>. <span class="citation" data-cites="Martinez1999EffSam">Martinez et al. (1999)</span> showed that in a plant-endophyte trophic network, network connectance is robust to sampling effort, but this done in the context of a system for which observation of 62,000 total interactions derived from 164,000 plant-stems was feasible. In some systems (e.g. megafauna food-webs) this many observations is either impractical or infeasible due to the absolute abundance of the species in question.</p>
+            <p>Because we cannot feasibly observe all (or even most) interactions that occur in nature, our samples end up capturing only a small fraction of those interactions. This means we can be reasonably confident two species actually interact if we have a record of it, but not at all confident that two species <em>do not</em> interact if we have no record of those species observed together. In other words, we can’t distinguish true-negatives (two species <em>never</em> interact) from <em>false-negatives</em> (two species interact in some capacity, but we have not observed it). This is then amplified as the interaction data we have is geographically toward the usual suspects <span class="citation" data-cites="Poisot2021GloKno">(Poisot, Bergeron, et al. 2021)</span>, This noise in data has practical consequences for answering questions about species interactions <span class="citation" data-cites="deAguiar2019RevBia">(de Aguiar et al. 2019)</span>—these false-negatives could go on to effect the inferences we make about network properties and relations among species, and our predictions about how species will interact in the future.</p>
+            <p>This is compounded by semantic confusion about the definition of “interaction.” Here distinguish between: a species <em>occurring</em>, a species being <em>observed occurring</em>, two species being observed <em>co-occurring</em>, and two species being observed <em>interacting</em> (fig. 1). In this manuscript, we refer to species either as “interacting”—two species co-occur (and, at least sometimes, interact)—or “not-interacting” (two species that, regardless of whether they co-occur, neither exhibits any meaningful effect on the biomass of the other). In fig. 1 we see that, under our definition, observing two species co-occurring is a prerequisite for observing an interaction between two species. But species are not observed with equal probability but instead in proportion to their relative biomass—you are much more likely to observe a species of high relative abundance than one of very low relative abundance <span class="citation" data-cites="Poisot2015SpeWhy">(Poisot, Stouffer, and Gravel 2015)</span>. This assumes that there are no associations in species co-occurrence due to an interaction (perhaps because this interaction is “important” for both species) <span class="citation" data-cites="Cazelles2016TheSpe">(Cazelles et al. 2016)</span>, but here we show increasing strength of associations leads to increasing probability of false-negatives in interaction data. Further observed co-occurrence is often equated with meaningful interaction strength, but this is not necessarily the case <span class="citation" data-cites="Blanchet2020CooNot Strydom2021RoaPre">(Blanchet, Cazelles, and Gravel 2020; Strydom et al. 2021)</span>. Bears and salmon <em>interact</em>—a bear and the microbes in the soil of a dens interact, but less so.</p>
+            <figure>
+            <img src="./figures/concept_v3.png" id="fig:taxonomy" alt="Figure 1: Taxonomy of false-negatives in data for two hypothetical species A and B, where in reality A and B do interact in some capacity." /><figcaption aria-hidden="true">Figure 1: Taxonomy of false-negatives in data for two hypothetical species A and B, where in reality A and B do interact in some capacity.</figcaption>
+            </figure>
+            <p>Here, we show that the probability of observing a actual “non-interaction” between species depends on sampling effort, and suggest that surveys of species interactions can benefit from simulation modeling of detection probability <span class="citation" data-cites="Jordano2016SamNet">(Jordano 2016b)</span>. We demonstrate that the realized false-negative rate of interactions is directly related the relative abundance of a particular species, relationship between total sampling effort (the total count of all individuals of all species seen) and false-negative rate. questions we pose and attempt to answer are: 1) How many times do you have to observe a non-interaction between two species to be confident in saying that is a true negative? 2) How “wrong” are the measurements of network structure as a function of false-negative probability? and lastly 3) How do false-negatives impact our ability to make reliable predictions about interactions? We show that positive associations in co-occurrence data can increase realized probability of false negatives, and demonstrate these positive associations are present in two spatially-replicated systems. We conclude by suggesting that simulation of sampling effort and species occurrence can and should be used to help design surveys of species diversity <span class="citation" data-cites="Moore2016OptEco">(Moore and McCarthy 2016)</span>, and by advocating use of null models like those presented here as a tool for guiding design of surveys of species interactions, and for modeling detection error in predictive ecological models.</p>
+            <h1 id="how-many-observations-of-a-non-interaction-do-we-need-to-classify-it-as-a-true-negative">How many observations of a non-interaction do we need to classify it as a true negative?</h1>
+            <p>To answer the titular question of this section, we present a naive model of interaction detection: we assume that every interacting pair of species is incorrectly observed as a not-interacting with an independent and fixed probability, which we denote <span class="math inline"><em>p</em><sub><em>f</em><em>n</em></sub></span> and subsequently refer to as the False-Negative Rate (FNR). If we observe the same species not-interacting <span class="math inline"><em>N</em></span> times, then the probability of a true-negative (denoted <span class="math inline"><em>p</em><sub><em>t</em><em>n</em></sub></span>) is given by <span class="math inline"><em>p</em><sub><em>t</em><em>n</em></sub> = 1 − (<em>p</em><sub><em>f</em><em>n</em></sub>)<sup><em>N</em></sup></span>. This relation (a special case of the negative-binomial distribution) is shown in fig. 2 for varying values of the false negative rate <span class="math inline"><em>p</em><sub><em>f</em><em>n</em></sub></span>. This illustrates a fundamental link between our ability to reliably say an interaction doesn’t exist—<span class="math inline"><em>p</em><sub><em>t</em><em>n</em></sub></span>—and the number of times we have observed a given species. In addition, note that there also is no non-zero <span class="math inline"><em>p</em><sub><em>f</em><em>n</em></sub></span> for which we can ever <em>prove</em> that an interaction does not exist—no matter how many observations of non-interaction <span class="math inline"><em>N</em></span> we have, <span class="math inline"><em>p</em><sub><em>t</em><em>n</em></sub> &lt; 1</span>.</p>
+            <figure>
+            <img src="./figures/negativebinomial.png" id="fig:negativebinom" alt="Figure 2: The probability an observed interaction is a “true negative” (y-axis) given how many times it has been sampled as a non-interaction (x-axis). Each color reflects a different value of p_{fn}, the false-negative rate (FNR). This is effectively the cdf of the negative-binomial distribution with r=1. It’s the birthday paradox, but backwards." /><figcaption aria-hidden="true">Figure 2: The probability an observed interaction is a “true negative” (y-axis) given how many times it has been sampled as a non-interaction (x-axis). Each color reflects a different value of <span class="math inline"><em>p</em><sub><em>f</em><em>n</em></sub></span>, the false-negative rate (FNR). This is effectively the cdf of the negative-binomial distribution with <span class="math inline"><em>r</em> = 1</span>. It’s the birthday paradox, but backwards.</figcaption>
+            </figure>
+            <p>From fig. 2 (and general intuition) it is clear that the more times we see two species <em>occurring</em>, but <em>not</em> interacting, the more likely the interaction is a true negative. But how does one decide what this threshold of number of observations should be when planning to sample a given system? If false-negative rates presented in fig. 2 seem unrealistically high, consider that species are not observed independent of their relative abundance. In the next section we demonstrate that distribution of abundance in ecosystems can lead to realized values of <span class="math inline"><em>p</em><sub><em>f</em><em>n</em></sub></span> similar to those in fig. 2 for species with low relative abundance, simply as a artifact of sampling effort.</p>
+            <h2 id="false-negatives-as-a-product-of-relative-abundance">False-negatives as a product of relative abundance</h2>
+            <p>Here we show the realized false-negative rate of species interactions changes drastically with sampling effort, largely due to the intrinsic variation of abundances within a community. We do this by simulating the process of observation of species interactions, applied both to 243 empirical food webs from the Mangal database <span class="citation" data-cites="Banville2021ManJl">(Banville, Vissault, and Poisot 2021)</span> as well as random food-webs generated using the niche model <span class="citation" data-cites="Williams2000SimRul">(Richard J. Williams and Martinez 2000)</span>. Our neutral model of observation assumes each observed species is drawn from the distribution of those species’ abundances at that place and time. Although there is no shortage of debate as to the processes the govern this distribution of abundances within a community, this abundance distribution can be reasonably-well described by a log-normal distribution <span class="citation" data-cites="Volkov2003NeuThe">(Volkov et al. 2003)</span> (Note that in addition to the log-normal distribution, we also tested the case where the abundance distribution is derived from power-law scaling <span class="math inline"><em>Z</em><sup>(<em>T</em><sub><em>i</em></sub> − 1)</sup></span> where <span class="math inline"><em>T</em><sub><em>i</em></sub></span> is the trophic level of species <span class="math inline"><em>i</em></span> and <span class="math inline"><em>Z</em></span> is a scaling coefficient. <span class="citation" data-cites="Savage2004EffBod">(Savage et al. 2004)</span>, which yields the same qualitative behavior, <em>supplement figure 1</em>). The practical consequence of this skewed distribution of biomass in communities is seeing two low biomass species interacting requires two low probability events: observing two species of low relative biomass <em>at the same time</em>.</p>
+            <p>To simulate the process of observation, for an ecological network <span class="math inline"><em>A</em></span> with <span class="math inline"><em>S</em></span> species, we sample abundances for each species from a standard-log-normal distribution. For each true interaction in <span class="math inline"><em>A</em></span> (i.e. <span class="math inline"><em>A</em><sub><em>i</em><em>j</em></sub> = 1</span>) we estimate the probability of observing both species <span class="math inline"><em>i</em></span> and <span class="math inline"><em>j</em></span> at given place and time by simulating <span class="math inline"><em>n</em></span> observations of individuals, where the species of the individual observed at the <span class="math inline">1, 2, …, <em>n</em></span>-th observation is drawn from the generated log-normal distribution of abundances. For each pair of species <span class="math inline">(<em>i</em>, <em>j</em>)</span>, if both <span class="math inline"><em>i</em></span> and <span class="math inline"><em>j</em></span> are observed within the <span class="math inline"><em>n</em></span> observations, the interaction is tallied as a true positive if <span class="math inline"><em>A</em><sub><em>i</em><em>j</em></sub> = 1</span> and a false positive otherwise. Similarly, if only one of <span class="math inline"><em>i</em></span> and <span class="math inline"><em>j</em></span> are observed—<em>but not both</em>—in these <span class="math inline"><em>n</em></span> observations, but <span class="math inline"><em>A</em><sub><em>i</em><em>j</em></sub> = 1</span>, this is counted as a false-negative, and a true-negative otherwise.</p>
+            <p>In fig. 3 (a) we see this model of observation applied to networks generated using the niche model <span class="citation" data-cites="Williams2000SimRul">(Richard J. Williams and Martinez 2000)</span> across varying levels of species richness, and in (b) applied to 243 food-webs from the Mangal database. For all niche model simulations in this manuscript, for a given number of species <span class="math inline"><em>S</em></span> the number of interactions is drawn from the flexible-links model fit to Mangal data <span class="citation" data-cites="MacDonald2020RevLin">(MacDonald, Banville, and Poisot 2020)</span>, effectively drawing the number of interactions <span class="math inline"><em>L</em></span> for a random niche model food-web as <span class="math inline"><em>L</em> ∼ BetaBinomial(<em>S</em><sup>2</sup> − <em>S</em> + 1, <em>μ</em><em>ϕ</em>, (1 − <em>μ</em>)<em>ϕ</em>)</span>, where the MAP estimate of (<span class="math inline"><em>μ</em></span>, <span class="math inline"><em>ϕ</em></span>) applied to Mangal data from <span class="citation" data-cites="MacDonald2020RevLin">MacDonald, Banville, and Poisot (2020)</span> is <span class="math inline">(<em>μ</em> = 0.086, <em>ϕ</em> = 24.3)</span>. All simulations were done with 500 independent replicates per unique number of observations <span class="math inline"><em>n</em></span>. All analyses presented here are done in Julia v1.6 <span class="citation" data-cites="Bezanson2015JulFre">(Bezanson et al. 2015)</span> using both EcologicalNetworks.jl v0.5 and Mangal.jl v0.4 [<span class="citation" data-cites="Banville2021ManJl">Banville, Vissault, and Poisot (2021)</span>; ZENODO link TODO]. Note that the empirical data also is, due to the phenomena described here, very likely to <em>already</em> have many false negatives, which is why we are interested in prediction of networks in the first place—we’ll revisit this in the final section.</p>
+            <figure>
+            <img src="./figures/combinedfig2.png" id="fig:totalobs" alt="Figure 3: A and B: False negative rate (y-axis) as a function of total sampling effort (x-axis) and network size, computed using the method described above. For 500 independent draws from the niche model (Richard J. Williams and Martinez 2000) at varying levels of species richness (colors) with connectance drawn according to the flexible-links model (MacDonald, Banville, and Poisot 2020) as described in the main text. For each draw from the niche model, 200 sets of 1500 observations are simulated, for which each the mean false negative rate at each observation-step is computed. Means denoted with points, with 1\sigma in the first shade and 2\sigma in the second. B: empirical food webs from Mangal database in teal, applied to the same process as the A. The outlier on panel B is a 714 species food-web. C) The expected needed observations of all individuals of all species (y-axis) required to obtain a goal number of observations (colors) of a particular species, and a function of the relative abundance of that focal species (x-axis)" /><figcaption aria-hidden="true">Figure 3: A and B: False negative rate (y-axis) as a function of total sampling effort (x-axis) and network size, computed using the method described above. For 500 independent draws from the niche model <span class="citation" data-cites="Williams2000SimRul">(Richard J. Williams and Martinez 2000)</span> at varying levels of species richness (colors) with connectance drawn according to the flexible-links model <span class="citation" data-cites="MacDonald2020RevLin">(MacDonald, Banville, and Poisot 2020)</span> as described in the main text. For each draw from the niche model, 200 sets of 1500 observations are simulated, for which each the mean false negative rate at each observation-step is computed. Means denoted with points, with <span class="math inline">1<em>σ</em></span> in the first shade and <span class="math inline">2<em>σ</em></span> in the second. B: empirical food webs from Mangal database in teal, applied to the same process as the A. The outlier on panel B is a 714 species food-web. C) The expected needed observations of all individuals of all species (y-axis) required to obtain a goal number of observations (colors) of a particular species, and a function of the relative abundance of that focal species (x-axis)</figcaption>
+            </figure>
+            <p>In panel (c) of fig. 3, we show the expected number of total observations needed to obtain a “goal” number of observations (colors) of a particular “focal” species. As an example, if we hypothesize that <span class="math inline"><em>A</em></span> and <span class="math inline"><em>B</em></span> do not interact, and we want to see species <span class="math inline"><em>A</em></span> and <span class="math inline"><em>B</em></span> both co-occurring and not-interacting 10 times to be confident this is a negative (a la fig. 2), then we need an expected 10,000 observations of all species if the relative abundance of <span class="math inline"><em>A</em></span> is 0.00125.</p>
+            <p>Empirical data on interactions are subject to the practical limitations of funding and human-work hours, and therefore existing data tend to fall on the order on 100s or 1000s observations of individuals per site <span class="citation" data-cites="Resasco2021PlaPol Schwarz2020TemSca Nielsen2007EcoNet">(Resasco, Chacoff, and Vázquez 2021; Schwarz et al. 2020; Nielsen and Bascompte 2007)</span>. Clear aggregation of this data has proven difficult to find and a meta-analysis of network data and sampling effort seems both pertinent and necessary, in addition to the effects of aggregation of interactions across taxonomic scales <span class="citation" data-cites="Giacomuzzo2021FooWeb Gauzens2013FooAgg">(Giacomuzzo and Jordán 2021; Gauzens et al. 2013)</span>. Further, from fig. 3 it is evident that the number of species considered in a study is inseparable from the false-negative rate in that study, and this effect should be taken into account when designing samples of ecological networks in the future.</p>
+            <p>We conclude this section by advocating for the use of neutral models similar to above to generate expectations about the number of false-negatives in a data set of a given size. This could prove fruitful both for designing surveys of interactions <span class="citation" data-cites="Canard2012EmeStr">(Canard et al. 2012)</span>, but also because we may want to incorporate models of observation error into predictive models <span class="citation" data-cites="Joseph2020NeuHie">(Joseph 2020)</span>. Additionally, one must consider the context for sampling—is the goal to detect a particular species <span class="math inline"><em>A</em></span> (as in fig. 3 (c)), or to get a representative sample of interactions across the species pool? This argument is well-considered when sampling species <span class="citation" data-cites="Willott2001SpeAcc">(Willott 2001)</span>, but has not yet been internalized for designing samples of communities.</p>
+            <h2 id="positive-associations-can-increase-the-probability-of-false-negatives">Positive associations can increase the probability of false-negatives</h2>
+            <p>This model above doesn’t consider the possibility that there are positive or negative associations which shift the probability of observing two species together due to their interaction <span class="citation" data-cites="Cazelles2016TheSpe">(Cazelles et al. 2016)</span>. However, here we demonstrate that the probability of observing a false negative can be <em>higher</em> if there is some positive association between occurrence of species <span class="math inline"><em>A</em></span> and <span class="math inline"><em>B</em></span>.</p>
+            <p>If we denote the probability that we observe an interaction we know exists between <span class="math inline"><em>A</em></span> and <span class="math inline"><em>B</em></span> as <span class="math inline"><em>P</em>(<em>A</em><em>B</em>)</span>, and if there is <em>no</em> association between the marginal probabilities of observing <span class="math inline"><em>A</em></span> and observing <span class="math inline"><em>B</em></span>, denoted <span class="math inline"><em>P</em>(<em>A</em>)</span> and <span class="math inline"><em>P</em>(<em>B</em>)</span> respectively, then the probability of observing the interaction <span class="math inline"><em>P</em>(<em>A</em><em>B</em>) = <em>P</em>(<em>A</em>)<em>P</em>(<em>B</em>)</span>. In the other case where there <em>is</em> some positive strength of association between observing both <span class="math inline"><em>A</em></span> and <span class="math inline"><em>B</em></span> because this interaction is “important” for each species, then the probability of observation both <span class="math inline"><em>A</em></span> and <span class="math inline"><em>B</em></span>, <span class="math inline"><em>P</em>(<em>A</em><em>B</em>)</span>, is greater than <span class="math inline"><em>P</em>(<em>A</em>)<em>P</em>(<em>B</em>)</span> as <span class="math inline"><em>P</em>(<em>A</em>)</span> and <span class="math inline"><em>P</em>(<em>B</em>)</span> are not independent and instead are positively correlated, <em>i.e.</em> <span class="math inline"><em>P</em>(<em>A</em><em>B</em>) &gt; <em>P</em>(<em>A</em>)<em>P</em>(<em>B</em>)</span>. In this case, the probability of observing a false negative in our naive model from fig. 2 is <span class="math inline"><em>p</em><sub><em>f</em><em>n</em></sub> = 1 − <em>P</em>(<em>A</em><em>B</em>)</span> which due to the above inequality implies <span class="math inline"><em>p</em><sub><em>f</em><em>n</em></sub> ≥ 1 − <em>P</em>(<em>A</em>)<em>P</em>(<em>B</em>)</span> which indicates increasingly greater probability of a false negative as <span class="math inline"><em>P</em>(<em>A</em><em>B</em>) → <em>P</em>(<em>A</em><em>B</em>) ≫ <em>P</em>(<em>A</em>)<em>P</em>(<em>B</em>)</span>.</p>
+            <p>However this does not consider variation in species abundance in space and time, <span class="citation" data-cites="Poisot2015SpeWhy">(Poisot, Stouffer, and Gravel 2015)</span>. If positive or negative associations between species structure variation in the distribution of <span class="math inline"><em>P</em>(<em>A</em><em>B</em>)</span> across space/time, then the spatial/temporal biases induced by data collection would further impact the realized false negative rate, as the probability of false negative would not be constant for each pair of species across sites. To test for this association empirical data, we use two datasets: a set of host-parasite interactions sampled across 51 sites with 327 total taxa <span class="citation" data-cites="Hadfield2014TalTwo">(Hadfield et al. 2014)</span> and a set of 18 New Zealand freshwater stream food webs with 566 total taxa <span class="citation" data-cites="Thompson2000ResSol">(R. M. Thompson and Townsend 2000)</span>. We simply compute the empirical marginal distribution of species occurrence, and compare the product of the marginals, <span class="math inline"><em>P</em>(<em>A</em>)<em>P</em>(<em>B</em>)</span>, to the empirical joint distribution <span class="math inline"><em>P</em>(<em>A</em><em>B</em>)</span>.</p>
+            <figure>
+            <img src="./figures/positiveassociations.png" id="fig:associations" alt="Figure 4: Top: Hadfield, Bottom: NZ Stream Foodwebs. Effectively a version of Cazelles et al. (2016) figure 1 panel A. Both distributions have \mu \neq 0 with p &lt; 10^{-50}" /><figcaption aria-hidden="true">Figure 4: Top: Hadfield, Bottom: NZ Stream Foodwebs. Effectively a version of <span class="citation" data-cites="Cazelles2016TheSpe">Cazelles et al. (2016)</span> figure 1 panel A. Both distributions have <span class="math inline"><em>μ</em> ≠ 0</span> with <span class="math inline"><em>p</em> &lt; 10<sup> − 50</sup></span></figcaption>
+            </figure>
+            <p>In fig. 4, both host-parasite system (top) and food-web (bottom) exhibit these positive associations. There is no reason to expect the strength of this association to be the same in different systems. At the moment, computing this metric for all of the networks in the Mangal database proves challenging as most data sets use different taxonmic identifiers, often at different resolutions. These particular datasets <span class="citation" data-cites="Hadfield2014TalTwo Thompson2000ResSol">(Hadfield et al. 2014; R. M. Thompson and Townsend 2000)</span> were usable because they already have been sorted to have a fixed taxonomic backbone (as part of EcologicalNetworks.jl <span class="citation" data-cites="Banville2021ManJl">(Banville, Vissault, and Poisot 2021)</span>). Applying this in bulk to Mangal food-webs presents the difficulty of resolving different taxon identifiers across spatial samples of species with to different resolutions, which is why we can’t simply apply this to the whole Mangal database—this highlights a general problem of resolving taxonomic indentifiers which use different names and different resolutions in different ecological datasets, which is a problem that needs to be addressed for computational approaches to scale up to the world of big-ecological-data we hope to build, although this is a task that may be aided via natural-language-processing methods.</p>
+            <h1 id="the-impact-of-false-negatives-on-network-analysis-and-prediction">The impact of false-negatives on network analysis and prediction</h1>
+            <p>We now transition toward assessing the effects of false negatives in data on the properties of the networks which we derive from this interaction data, and their effect on models for predicting interactions in the future.</p>
+            <h2 id="effects-of-false-negatives-on-network-properties">Effects of false-negatives on network properties</h2>
+            <p>Here we simulate the process of observation with error to generate synthetic data with a known proportion of false negatives, and compare the computed network properties of the original “true” network to the computed properties of the “observed” network with added false-negatives. In fig. 5 we see the mean-squared error of connectance, mean degree-centrality, and spectral radius, computed across 2000, 2000, and 300 replicates respectively at each value of the false negative rate <span class="math inline"><em>p</em><sub><em>f</em><em>n</em></sub></span>. All replicates use random food-webs simulated using the niche model <span class="citation" data-cites="Williams2000SimRul">(Richard J. Williams and Martinez 2000)</span> with <span class="math inline">100</span> species and connectance drawn from the flexible-links model <span class="citation" data-cites="MacDonald2020RevLin">(MacDonald, Banville, and Poisot 2020)</span> as before.</p>
+            <figure>
+            <img src="./figures/props_specrad.png" id="fig:properties" alt="Figure 5: The mean-squared error (y-axis) of various network properties (different colors) across various simulated false-negative rates (x-axis). Means denoted with points, with 1\sigma in the first shade and 2\sigma in the second." /><figcaption aria-hidden="true">Figure 5: The mean-squared error (y-axis) of various network properties (different colors) across various simulated false-negative rates (x-axis). Means denoted with points, with <span class="math inline">1<em>σ</em></span> in the first shade and <span class="math inline">2<em>σ</em></span> in the second.</figcaption>
+            </figure>
+            <p>We consider three properties: connectance, mean-degree-centrality, and spectral radius, indicative of local, meso, and global structure. Connectance is effectively a node-level property, a proxy for the degree distribution. Degree-centrality captures a different aspect of network structure than connectance, more indicative of meso-level properties that describe local ‘regions’ of nodes interact. Spectral radius (equivalent to the magnitude of the largest eigenvalue of <span class="math inline"><em>A</em></span>) is a measure of global structure, and demonstrates the most variability in response to false-negatives. For example, if a false-negative splits a metaweb into two components, spectral-radius becomes the largest eigenvalue of each of those two components. Also note that the form of this error function varies little as species richness changes (<em>supplemental figure 2</em>). Practically, fig. 5 shows us that different scales of measuring network structure vary in their response to false negatives—connectance responds roughly linearly to false negatives, whereas mean-degree-centrality decisively does not. This implies that false-negatives adversely could effect indirect interactions <span class="citation" data-cites="Williams2002TwoDeg">(R. J. Williams et al. 2002)</span>.</p>
+            <h2 id="effects-of-false-negatives-on-ability-to-make-predictions">Effects of false negatives on ability to make predictions</h2>
+            <p>Here, we assess the effect of false negatives in data on our ability to make predictions about interactions. The prevalence of false-negatives in data is the catalyst for interaction prediction in the first place, and as a result methods have been proposed to counteract this bias <span class="citation" data-cites="Poisot2021ImpMam Stock2017LinFil">(Poisot, Ouellet, et al. 2021; Stock et al. 2017)</span>. However, it is feasible this could induce too much noise for a interaction prediction model to detect the signal of interaction chance from to the latent properties of each species derived from the empirical network if the number of false-negatives in a dataset becomes too overwhelming.</p>
+            <p>To test this, we use the same predictive model and dataset as in <span class="citation" data-cites="Strydom2021RoaPre">Strydom et al. (2021)</span> to predict a metaweb from various empirical slices of the species pool observed across space. This dataset from <span class="citation" data-cites="Hadfield2014TalTwo">Hadfield et al. (2014)</span> describes host-parasite interaction networks sampled across 51 sites. We partition the data into 80-20 training-test split, and then seed the training data with false negatives varying rates, but crucially do nothing to the test data. We use the same model, a neural-network with 3 feed-forward layers to predict outputs based on features extracted from co-occurence (see <span class="citation" data-cites="Strydom2021RoaPre">Strydom et al. (2021)</span> for more details). The single modification we make to the model is not enforcing a number of positives in the training data as this constraint is eventually impossible for increasing FNR. In fig. 6, we show receiving-operating-characteristic (ROC) and precision-recall (PR) curves for the model with varying levels of synthetic false-negatives added to the data.</p>
+            <figure>
+            <img src="./figures/rocpr_falsenegatives.png" id="fig:rocpr" alt="Figure 6: Receiver-operating-characteristic (left) and precision-recall (right) curves for the model on varying levels of false-negatives in the data (colors). For each value of FNR, we run 30 random training/test splits on 80/20 percent of the data. Replica of figure 1 in Strydom et al. (2021)" /><figcaption aria-hidden="true">Figure 6: Receiver-operating-characteristic (left) and precision-recall (right) curves for the model on varying levels of false-negatives in the data (colors). For each value of FNR, we run 30 random training/test splits on 80/20 percent of the data. Replica of figure 1 in <span class="citation" data-cites="Strydom2021RoaPre">Strydom et al. (2021)</span></figcaption>
+            </figure>
+            <p>Interestingly, the performance of the model from <span class="citation" data-cites="Strydom2021RoaPre">Strydom et al. (2021)</span> changes little with many added false-negatives, which is good evidence in favor neural-networks as a class of model for interaction detection. Again, similar to our caveat in the previous section, this dazta is <em>already</em> likely to have many false-negatives, so the effects of adding more as we do in this illustration might be mitigated because there are already non-simulated false-negatives in the original data which impact the models performance, even in the <span class="math inline"><em>p</em><sub><em>f</em><em>n</em></sub> = 0</span> case.</p>
+            <p>We conclude be proposing that simulating the effects of false negatives in this way can serve as an additional validation tool when aiming to detect structural properties of networks using generative null models <span class="citation" data-cites="Connor2017UsiNul">(Connor, Barberán, and Clauset 2017)</span>, or when evaluating the robustness of a predictive model.</p>
+            <h1 id="discussion">Discussion</h1>
+            <p>Here, we have demonstrated that we expect false-negatives in species interaction datasets purely due to the distribution of abundances within a community. Positive associations between species occurrence <span class="citation" data-cites="Cazelles2016TheSpe">(Cazelles et al. 2016)</span> can increase the realized false-negative rate if the sampling effort is limited, and we have presented evidence of this non-random structure of co-occurrence in two sets of spatially-replicated ecological network samples. We have also shown that false-negatives can cause varying responses in our measurements of network properties and further could impact our ability to reliably predict interactions, which highlights the need for further research into methods for correcting this bias in existing data <span class="citation" data-cites="Stock2017LinFil">(Stock et al. 2017)</span>. A brief caveat here is that we do not consider the rate of false-positives—in large part false-positives can be explained by misidentification of species, although this could be a relevant consideration in some cases.</p>
+            <p>What does the future hold for this research? A better understanding of how false-negatives impact our analyses and prediction of ecological networks is a practical necessity. False-negatives could pose a problem for many forms of inference in network ecology. For example, if we aim to measure structural or dynamic stability of a network, or to infer indirect interactions <span class="citation" data-cites="Williams2002TwoDeg">(R. J. Williams et al. 2002)</span>, these estimates could be prone to error if the observed network is not sampled “enough.” What exactly “enough” means is then specific to the application, and should be assessed via methods like those here when designing samples. Further, predictions about network rewiring <span class="citation" data-cites="Thompson2017DisGov">(P. L. Thompson and Gonzalez 2017)</span> due to a changing climate could be error-prone without accounting for interactions that have not been observed but that still may become climatically infeasible.</p>
+            <p>This highlights the need for a quantitatively robust approach samples design: for interactions <span class="citation" data-cites="Jordano2016SamNet">(Jordano 2016b)</span> and otherwise <span class="citation" data-cites="Carlson2020WhaWou">(Carlson et al. 2020)</span>. The primary takeaway is that when planning the sampling effort across sites, it is necessary to take both the size of the species pool into account. Further, simulating the process of observation could be a powerful tool for planing study design which takes relative abundance into account, and provide a null baseline for detection of interaction strength. A model similar to that here can and should be used to provide a neutral expectation of true-negative probability given a number of observations of individuals at a given place and time.</p>
+            <p>As we derive from fig. 2, we can never guarantee there are no false-negatives in data. In recent years, there has been interest toward explicitly accounting for false-negatives in models <span class="citation" data-cites="Young2021RecPla Stock2017LinFil">(Young, Valdovinos, and Newman 2021; Stock et al. 2017)</span>, and toward a predictive approach toward interactions —rather than expect that our samples can fully capture all interactions, we know that some interactions between species will not be observed due to finite sampling capacity, and instead we must impute the true metaweb of interactions given a set of samples <span class="citation" data-cites="Strydom2021RoaPre">(Strydom et al. 2021)</span>. As a result, better predictive approaches are needed for interaction networks <span class="citation" data-cites="Strydom2021RoaPre">(Strydom et al. 2021)</span>, and building models that explicitly account for observation error is a necessary step forward for predictive ecological models <span class="citation" data-cites="Young2021RecPla Johnson2021BayEst">(Young, Valdovinos, and Newman 2021; Johnson and Larremore 2021)</span>. Neural networks, like the one used to predict interactions in the above section, have been used to reflect hidden states which account for detection error in occupancy modeling <span class="citation" data-cites="Joseph2020NeuHie">(Joseph 2020)</span>, and could be integrated in the predictive models of the future.</p>
+            <p>A better conceptual framework for designing surveys and monitoring networks, and incorporating sequential observations over time is clearly needed <span class="citation" data-cites="Carlson2020WhaWou">(Carlson et al. 2020)</span>, combined with a meta-analysis of sampling effort and taxonomic resolution in existing data. Incorporating a better understanding of sampling effects and bias on both the future design of biodiversity monitoring systems, and the predictive models we wish to apply to this data, is imperative in making actionable predictions about the future of ecological interactions on our planet.</p>
+            <h1 class="unnumbered" id="references">References</h1>
+            <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+            <div id="ref-deAguiar2019RevBia" class="csl-entry" role="doc-biblioentry">
+            Aguiar, Marcus A. M. de, Erica A. Newman, Mathias M. Pires, Justin D. Yeakel, Carl Boettiger, Laura A. Burkle, Dominique Gravel, et al. 2019. <span>“Revealing Biases in the Sampling of Ecological Interaction Networks.”</span> <em>PeerJ</em> 7 (September): e7566. <a href="https://doi.org/10.7717/peerj.7566">https://doi.org/10.7717/peerj.7566</a>.
+            </div>
+            <div id="ref-Banville2021ManJl" class="csl-entry" role="doc-biblioentry">
+            Banville, Francis, Steve Vissault, and Timothée Poisot. 2021. <span>“Mangal.jl and EcologicalNetworks.jl: Two Complementary Packages for Analyzing Ecological Networks in Julia.”</span> <em>Journal of Open Source Software</em> 6 (61): 2721. <a href="https://doi.org/10.21105/joss.02721">https://doi.org/10.21105/joss.02721</a>.
+            </div>
+            <div id="ref-Becker2021OptPre" class="csl-entry" role="doc-biblioentry">
+            Becker, Daniel J., Gregory F. Albery, Anna R. Sjodin, Timothée Poisot, Laura M. Bergner, Tad A. Dallas, Evan A. Eskew, et al. 2021. <span>“Optimizing Predictive Models to Prioritize Viral Discovery in Zoonotic Reservoirs.”</span> <em>bioRxiv</em>, August, 2020.05.22.111344. <a href="https://doi.org/10.1101/2020.05.22.111344">https://doi.org/10.1101/2020.05.22.111344</a>.
+            </div>
+            <div id="ref-Bezanson2015JulFre" class="csl-entry" role="doc-biblioentry">
+            Bezanson, Jeff, Alan Edelman, Stefan Karpinski, and Viral B. Shah. 2015. <span>“Julia: A Fresh Approach to Numerical Computing.”</span> <em>arXiv:1411.1607 [cs]</em>, July. <a href="http://arxiv.org/abs/1411.1607">http://arxiv.org/abs/1411.1607</a>.
+            </div>
+            <div id="ref-Blanchet2020CooNot" class="csl-entry" role="doc-biblioentry">
+            Blanchet, F. Guillaume, Kevin Cazelles, and Dominique Gravel. 2020. <span>“Co-Occurrence Is Not Evidence of Ecological Interactions.”</span> <em>Ecology Letters</em> 23 (7): 1050–63. <a href="https://doi.org/10.1111/ele.13525">https://doi.org/10.1111/ele.13525</a>.
+            </div>
+            <div id="ref-Boakes2015InfSpe" class="csl-entry" role="doc-biblioentry">
+            Boakes, Elizabeth H., Tracy M. Rout, and Ben Collen. 2015. <span>“Inferring Species Extinction: The Use of Sighting Records.”</span> <em>Methods in Ecology and Evolution</em> 6 (6): 678–87. <a href="https://doi.org/10.1111/2041-210X.12365">https://doi.org/10.1111/2041-210X.12365</a>.
+            </div>
+            <div id="ref-Canard2012EmeStr" class="csl-entry" role="doc-biblioentry">
+            Canard, Elsa, Nicolas Mouquet, Lucile Marescot, Kevin J. Gaston, Dominique Gravel, and David Mouillot. 2012. <span>“Emergence of Structural Patterns in Neutral Trophic Networks.”</span> <em>PLOS ONE</em> 7 (8): e38295. <a href="https://doi.org/10.1371/journal.pone.0038295">https://doi.org/10.1371/journal.pone.0038295</a>.
+            </div>
+            <div id="ref-Carlson2020WhaWou" class="csl-entry" role="doc-biblioentry">
+            Carlson, Colin J., Tad A. Dallas, Laura W. Alexander, Alexandra L. Phelan, and Anna J. Phillips. 2020. <span>“What Would It Take to Describe the Global Diversity of Parasites?”</span> <em>Proceedings of the Royal Society B: Biological Sciences</em> 287 (1939): 20201841. <a href="https://doi.org/10.1098/rspb.2020.1841">https://doi.org/10.1098/rspb.2020.1841</a>.
+            </div>
+            <div id="ref-Cazelles2016TheSpe" class="csl-entry" role="doc-biblioentry">
+            Cazelles, Kévin, Miguel B. Araújo, Nicolas Mouquet, and Dominique Gravel. 2016. <span>“A Theory for Species Co-Occurrence in Interaction Networks.”</span> <em>Theoretical Ecology</em> 9 (1): 39–48. <a href="https://doi.org/10.1007/s12080-015-0281-9">https://doi.org/10.1007/s12080-015-0281-9</a>.
+            </div>
+            <div id="ref-Connor2017UsiNul" class="csl-entry" role="doc-biblioentry">
+            Connor, Nora, Albert Barberán, and Aaron Clauset. 2017. <span>“Using Null Models to Infer Microbial Co-Occurrence Networks.”</span> <em>PLOS ONE</em> 12 (5): e0176751. <a href="https://doi.org/10.1371/journal.pone.0176751">https://doi.org/10.1371/journal.pone.0176751</a>.
+            </div>
+            <div id="ref-Gauzens2013FooAgg" class="csl-entry" role="doc-biblioentry">
+            Gauzens, Benoît, Stéphane Legendre, Xavier Lazzaro, and Gérard Lacroix. 2013. <span>“Food-Web Aggregation, Methodological and Functional Issues.”</span> <em>Oikos</em> 122 (11): 1606–15.
+            </div>
+            <div id="ref-Giacomuzzo2021FooWeb" class="csl-entry" role="doc-biblioentry">
+            Giacomuzzo, Emanuele, and Ferenc Jordán. 2021. <span>“Food Web Aggregation: Effects on Key Positions.”</span> Preprint. Ecology. <a href="https://doi.org/10.1101/2021.04.18.440319">https://doi.org/10.1101/2021.04.18.440319</a>.
+            </div>
+            <div id="ref-Griffiths1998SamEff" class="csl-entry" role="doc-biblioentry">
+            Griffiths, David. 1998. <span>“Sampling Effort, Regression Method, and the Shape and Slope of Sizeabundance Relations.”</span> <em>Journal of Animal Ecology</em> 67 (5): 795–804. <a href="https://doi.org/10.1046/j.1365-2656.1998.00244.x">https://doi.org/10.1046/j.1365-2656.1998.00244.x</a>.
+            </div>
+            <div id="ref-Hadfield2014TalTwo" class="csl-entry" role="doc-biblioentry">
+            Hadfield, Jarrod D., Boris R. Krasnov, Robert Poulin, and Shinichi Nakagawa. 2014. <span>“A Tale of Two Phylogenies: Comparative Analyses of Ecological Interactions.”</span> <em>The American Naturalist</em> 183 (2): 174–87. <a href="https://doi.org/10.1086/674445">https://doi.org/10.1086/674445</a>.
+            </div>
+            <div id="ref-Johnson2021BayEst" class="csl-entry" role="doc-biblioentry">
+            Johnson, Erik K., and Daniel B. Larremore. 2021. <span>“Bayesian Estimation of Population Size and Overlap from Random Subsamples.”</span> <em>bioRxiv</em>, July, 2021.07.06.451319. <a href="https://doi.org/10.1101/2021.07.06.451319">https://doi.org/10.1101/2021.07.06.451319</a>.
+            </div>
+            <div id="ref-Jordano2016ChaEco" class="csl-entry" role="doc-biblioentry">
+            Jordano, Pedro. 2016a. <span>“Chasing Ecological Interactions.”</span> <em>PLOS Biology</em> 14 (9): e1002559. <a href="https://doi.org/10.1371/journal.pbio.1002559">https://doi.org/10.1371/journal.pbio.1002559</a>.
+            </div>
+            <div id="ref-Jordano2016SamNet" class="csl-entry" role="doc-biblioentry">
+            ———. 2016b. <span>“Sampling Networks of Ecological Interactions.”</span> <em>Functional Ecology</em>, September. <a href="https://doi.org/10.1111/1365-2435.12763">https://doi.org/10.1111/1365-2435.12763</a>.
+            </div>
+            <div id="ref-Joseph2020NeuHie" class="csl-entry" role="doc-biblioentry">
+            Joseph, Maxwell B. 2020. <span>“Neural Hierarchical Models of Ecological Populations.”</span> <em>Ecology Letters</em> 23 (4): 734–47. <a href="https://doi.org/10.1111/ele.13462">https://doi.org/10.1111/ele.13462</a>.
+            </div>
+            <div id="ref-Kenall2014OpeFut" class="csl-entry" role="doc-biblioentry">
+            Kenall, Amye, Simon Harold, and Christopher Foote. 2014. <span>“An Open Future for Ecological and Evolutionary Data?”</span> <em>BMC Evolutionary Biology</em> 14 (1): 66. <a href="https://doi.org/10.1186/1471-2148-14-66">https://doi.org/10.1186/1471-2148-14-66</a>.
+            </div>
+            <div id="ref-MacDonald2020RevLin" class="csl-entry" role="doc-biblioentry">
+            MacDonald, Arthur Andrew Meahan, Francis Banville, and Timothée Poisot. 2020. <span>“Revisiting the Links-Species Scaling Relationship in Food Webs.”</span> <em>Patterns</em> 1 (7). <a href="https://doi.org/10.1016/j.patter.2020.100079">https://doi.org/10.1016/j.patter.2020.100079</a>.
+            </div>
+            <div id="ref-Makiola2020KeyQue" class="csl-entry" role="doc-biblioentry">
+            Makiola, Andreas, Zacchaeus G. Compson, Donald J. Baird, Matthew A. Barnes, Sam P. Boerlijst, Agnès Bouchez, Georgina Brennan, et al. 2020. <span>“Key Questions for Next-Generation Biomonitoring.”</span> <em>Frontiers in Environmental Science</em> 7. <a href="https://doi.org/10.3389/fenvs.2019.00197">https://doi.org/10.3389/fenvs.2019.00197</a>.
+            </div>
+            <div id="ref-Martinez1999EffSam" class="csl-entry" role="doc-biblioentry">
+            Martinez, Neo D., Bradford A. Hawkins, Hassan Ali Dawah, and Brian P. Feifarek. 1999. <span>“Effects of Sampling Effort on Characterization of Food-Web Structure.”</span> <em>Ecology</em> 80 (3): 1044–55. <a href="https://doi.org/10.1890/0012-9658(1999)080[1044:EOSEOC]2.0.CO;2">https://doi.org/10.1890/0012-9658(1999)080[1044:EOSEOC]2.0.CO;2</a>.
+            </div>
+            <div id="ref-Moore2016OptEco" class="csl-entry" role="doc-biblioentry">
+            Moore, Alana L., and Michael A. McCarthy. 2016. <span>“Optimizing Ecological Survey Effort over Space and Time.”</span> <em>Methods in Ecology and Evolution</em> 7 (8): 891–99. <a href="https://doi.org/10.1111/2041-210X.12564">https://doi.org/10.1111/2041-210X.12564</a>.
+            </div>
+            <div id="ref-Nielsen2007EcoNet" class="csl-entry" role="doc-biblioentry">
+            Nielsen, Anders, and Jordi Bascompte. 2007. <span>“Ecological Networks, Nestedness and Sampling Effort.”</span> <em>Journal of Ecology</em> 95 (5): 1134–41. <a href="https://doi.org/10.1111/j.1365-2745.2007.01271.x">https://doi.org/10.1111/j.1365-2745.2007.01271.x</a>.
+            </div>
+            <div id="ref-Paine1988RoaMap" class="csl-entry" role="doc-biblioentry">
+            Paine, R. T. 1988. <span>“Road Maps of Interactions or Grist for Theoretical Development?”</span> <em>Ecology</em> 69 (6): 1648–54. <a href="https://doi.org/10.2307/1941141">https://doi.org/10.2307/1941141</a>.
+            </div>
+            <div id="ref-Poisot2021GloKno" class="csl-entry" role="doc-biblioentry">
+            Poisot, Timothée, Gabriel Bergeron, Kevin Cazelles, Tad Dallas, Dominique Gravel, Andrew MacDonald, Benjamin Mercier, Clément Violet, and Steve Vissault. 2021. <span>“Global Knowledge Gaps in Species Interaction Networks Data.”</span> <em>Journal of Biogeography</em>, April, jbi.14127. <a href="https://doi.org/10.1111/jbi.14127">https://doi.org/10.1111/jbi.14127</a>.
+            </div>
+            <div id="ref-Poisot2021ImpMam" class="csl-entry" role="doc-biblioentry">
+            Poisot, Timothée, Marie-Andrée Ouellet, Nardus Mollentze, Maxwell J. Farrell, Daniel J. Becker, Gregory F. Albery, Rory J. Gibb, Stephanie N. Seifert, and Colin J. Carlson. 2021. <span>“Imputing the Mammalian Virome with Linear Filtering and Singular Value Decomposition.”</span> <em>arXiv:2105.14973 [q-Bio]</em>, May. <a href="http://arxiv.org/abs/2105.14973">http://arxiv.org/abs/2105.14973</a>.
+            </div>
+            <div id="ref-Poisot2015SpeWhy" class="csl-entry" role="doc-biblioentry">
+            Poisot, Timothée, Daniel B. Stouffer, and Dominique Gravel. 2015. <span>“Beyond Species: Why Ecological Interaction Networks Vary Through Space and Time.”</span> <em>Oikos</em> 124 (3): 243–51. <a href="https://doi.org/10.1111/oik.01719">https://doi.org/10.1111/oik.01719</a>.
+            </div>
+            <div id="ref-Resasco2021PlaPol" class="csl-entry" role="doc-biblioentry">
+            Resasco, Julian, Natacha P. Chacoff, and Diego P. Vázquez. 2021. <span>“Plantpollinator Interactions Between Generalists Persist over Time and Space.”</span> <em>Ecology</em> 102 (6): e03359. <a href="https://doi.org/10.1002/ecy.3359">https://doi.org/10.1002/ecy.3359</a>.
+            </div>
+            <div id="ref-Savage2004EffBod" class="csl-entry" role="doc-biblioentry">
+            Savage, Van M., James F. Gillooly, James H. Brown, Geoffrey B. West, and Eric L. Charnov. 2004. <span>“Effects of Body Size and Temperature on Population Growth.”</span> <em>The American Naturalist</em> 163 (3): 429–41. <a href="https://doi.org/10.1086/381872">https://doi.org/10.1086/381872</a>.
+            </div>
+            <div id="ref-Schwarz2020TemSca" class="csl-entry" role="doc-biblioentry">
+            Schwarz, Benjamin, Diego P. Vázquez, Paul J. CaraDonna, Tiffany M. Knight, Gita Benadi, Carsten F. Dormann, Benoit Gauzens, et al. 2020. <span>“Temporal Scale-Dependence of Plantpollinator Networks.”</span> <em>Oikos</em> 129 (9): 1289–1302. <a href="https://doi.org/10.1111/oik.07303">https://doi.org/10.1111/oik.07303</a>.
+            </div>
+            <div id="ref-Stephenson2020TecAdv" class="csl-entry" role="doc-biblioentry">
+            Stephenson, PJ. 2020. <span>“Technological Advances in Biodiversity Monitoring: Applicability, Opportunities and Challenges.”</span> <em>Current Opinion in Environmental Sustainability</em> 45 (August): 36–41. <a href="https://doi.org/10.1016/j.cosust.2020.08.005">https://doi.org/10.1016/j.cosust.2020.08.005</a>.
+            </div>
+            <div id="ref-Stock2017LinFil" class="csl-entry" role="doc-biblioentry">
+            Stock, Michiel, Timothée Poisot, Willem Waegeman, and Bernard De Baets. 2017. <span>“Linear Filtering Reveals False Negatives in Species Interaction Data.”</span> <em>Scientific Reports</em> 7 (1): 45908. <a href="https://doi.org/10.1038/srep45908">https://doi.org/10.1038/srep45908</a>.
+            </div>
+            <div id="ref-Strydom2021RoaPre" class="csl-entry" role="doc-biblioentry">
+            Strydom, Tanya, Michael David Catchen, Francis Banville, Dominique Caron, Gabriel Dansereau, Philippe Desjardins-Proulx, Norma Forero, et al. 2021. <span>“A Roadmap Toward Predicting Species Interaction Networks (Across Space and Time).”</span> Preprint. EcoEvoRxiv. <a href="https://doi.org/10.32942/osf.io/eu7k3">https://doi.org/10.32942/osf.io/eu7k3</a>.
+            </div>
+            <div id="ref-Thompson2017DisGov" class="csl-entry" role="doc-biblioentry">
+            Thompson, Patrick L., and Andrew Gonzalez. 2017. <span>“Dispersal Governs the Reorganization of Ecological Networks Under Environmental Change.”</span> <em>Nature Ecology &amp; Evolution</em> 1 (6): 1–8. <a href="https://doi.org/10.1038/s41559-017-0162">https://doi.org/10.1038/s41559-017-0162</a>.
+            </div>
+            <div id="ref-Thompson2000ResSol" class="csl-entry" role="doc-biblioentry">
+            Thompson, Ross M., and Colin R. Townsend. 2000. <span>“Is Resolution the Solution?: The Effect of Taxonomic Resolution on the Calculated Properties of Three Stream Food Webs.”</span> <em>Freshwater Biology</em> 44 (3): 413–22. <a href="https://doi.org/10.1046/j.1365-2427.2000.00579.x">https://doi.org/10.1046/j.1365-2427.2000.00579.x</a>.
+            </div>
+            <div id="ref-Volkov2003NeuThe" class="csl-entry" role="doc-biblioentry">
+            Volkov, Igor, Jayanth R. Banavar, Stephen P. Hubbell, and Amos Maritan. 2003. <span>“Neutral Theory and Relative Species Abundance in Ecology.”</span> <em>Nature</em> 424 (6952): 1035–37. <a href="https://doi.org/10.1038/nature01883">https://doi.org/10.1038/nature01883</a>.
+            </div>
+            <div id="ref-Walther1995SamEff" class="csl-entry" role="doc-biblioentry">
+            Walther, B. A., P. Cotgreave, R. D. Price, R. D. Gregory, and D. H. Clayton. 1995. <span>“Sampling Effort and Parasite Species Richness.”</span> <em>Parasitology Today</em> 11 (8): 306–10. <a href="https://doi.org/10.1016/0169-4758(95)80047-6">https://doi.org/10.1016/0169-4758(95)80047-6</a>.
+            </div>
+            <div id="ref-Williams2002TwoDeg" class="csl-entry" role="doc-biblioentry">
+            Williams, R. J., E. L. Berlow, J. A. Dunne, A.-L. Barabasi, and N. D. Martinez. 2002. <span>“Two Degrees of Separation in Complex Food Webs.”</span> <em>Proceedings of the National Academy of Sciences</em> 99 (20): 12913–16. <a href="https://doi.org/10.1073/pnas.192448799">https://doi.org/10.1073/pnas.192448799</a>.
+            </div>
+            <div id="ref-Williams2000SimRul" class="csl-entry" role="doc-biblioentry">
+            Williams, Richard J., and Neo D. Martinez. 2000. <span>“Simple Rules Yield Complex Food Webs.”</span> <em>Nature</em> 404 (6774): 180–83. <a href="https://doi.org/10.1038/35004572">https://doi.org/10.1038/35004572</a>.
+            </div>
+            <div id="ref-Willott2001SpeAcc" class="csl-entry" role="doc-biblioentry">
+            Willott, S. J. 2001. <span>“Species Accumulation Curves and the Measure of Sampling Effort.”</span> <em>Journal of Applied Ecology</em> 38 (2): 484–86. <a href="https://doi.org/10.1046/j.1365-2664.2001.00589.x">https://doi.org/10.1046/j.1365-2664.2001.00589.x</a>.
+            </div>
+            <div id="ref-Young2021RecPla" class="csl-entry" role="doc-biblioentry">
+            Young, Jean-Gabriel, Fernanda S. Valdovinos, and M. E. J. Newman. 2021. <span>“Reconstruction of Plantpollinator Networks from Observational Data.”</span> <em>Nature Communications</em> 12 (1): 3911. <a href="https://doi.org/10.1038/s41467-021-24149-x">https://doi.org/10.1038/s41467-021-24149-x</a>.
+            </div>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="container">
+            <h2>Affiliations</h2>
+            <sup>1</sup>&nbsp;McGill University; <sup>2</sup>&nbsp;Québec Centre for Biodiversity Sciences; <sup>3</sup>&nbsp;Université de Montréal
+            <br />
+            
+        </div>
+    </footer>
+
+</body>
+</html>

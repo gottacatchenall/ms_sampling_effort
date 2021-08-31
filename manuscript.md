@@ -57,29 +57,27 @@ This is compounded by semantic confusion about the definition of "interaction".
 Here distinguish between: a species _occurring_, a species being _observed
 occurring_, two species being observed _co-occurring_, and two species being
 observed _interacting_ (@fig:taxonomy). In this manuscript, we refer to species
-either as "interacting" (two species co-occur and possibly interact) or
-"not-interacting" (two species that, regardless of whether they co-occur,
-neither exhibits any meaningful effect on the biomass of the other). In
-@fig:taxonomy we see that, under our definition, observing two species
+either as "interacting"---two species co-occur (and, at least sometimes,
+interact)---or "not-interacting" (two species that, regardless of whether they
+co-occur, neither exhibits any meaningful effect on the biomass of the other).
+In @fig:taxonomy we see that, under our definition, observing two species
 co-occurring is a prerequisite for observing an interaction between two species.
 But species are not observed with equal probability but instead in proportion to
 their relative biomass---you are much more likely to observe a species of high
 relative abundance than one of very low relative abundance [@Poisot2015SpeWhy].
-This assumes positive or negative associations in co-occurrence
-[@Cazelles2016TheSpe] do not cause the joint probability of observing two
-species together to diverge from the marginal probability of seeing either
-species (perhaps  because this interaction is "important" for both species), but
-later we show increasing strength of associations leads to increasing
-probability of false-negatives in interaction data. Further observed
-co-occurrence is often equated with meaningful interaction strength, but this is
-not necessarily the case [@Blanchet2020CooNot; @Strydom2021RoaPre]. Bears and
-salmon _interact_---a bear and the microbes in the soil of a dens interact, but
-less so.
+This assumes that there are no associations in species co-occurrence due to an
+interaction (perhaps because this interaction is "important" for both species)
+[@Cazelles2016TheSpe], but here we show increasing strength of associations
+leads to increasing probability of false-negatives in interaction data. Further
+observed co-occurrence is often equated with meaningful interaction strength,
+but this is not necessarily the case [@Blanchet2020CooNot; @Strydom2021RoaPre].
+Bears and salmon _interact_---a bear and the microbes in the soil of a dens
+interact, but less so.
 
 ![Taxonomy of false-negatives in data for two hypothetical species A and B,
 where in reality A and B do interact in some capacity.](./figures/concept_v3.png){#fig:taxonomy}
 
-Here, we show that the probability of observing a true "not-interaction" between
+Here, we show that the probability of observing a actual "non-interaction" between
 species depends on sampling effort, and suggest that surveys of species
 interactions can benefit from simulation modeling of detection probability
 [@Jordano2016SamNet]. We demonstrate that the realized false-negative rate of
@@ -320,16 +318,15 @@ Degree-centrality captures a different aspect of network structure than
 connectance, more indicative of meso-level properties that describe local
 'regions' of nodes interact. Spectral radius (equivalent to the magnitude of the
 largest eigenvalue of $A$) is a measure of global structure, and demonstrates
-much more variability in response to false-negatives. For example, if a
-false-negative splits a metaweb into two components, becomes the largest
-eigenvalue of those two components. Also note that the form of this error
-function varies little as species richness changes (_supplemental figure 2_).
-Practically, @fig:properties shows us that different scales of measuring network
-structure vary in their response to false negatives---connectance responds
-roughly linearly to false negatives, whereas mean-degree-centrality decisively
-does not. This highlights the practical effect that false negatives may
-exacerbate the difficulty of detecting or predicting indirect interactions
-[@Williams2002TwoDeg].
+the most variability in response to false-negatives. For example, if a
+false-negative splits a metaweb into two components, spectral-radius becomes the
+largest eigenvalue of each of those two components. Also note that the form of
+this error function varies little as species richness changes (_supplemental
+figure 2_). Practically, @fig:properties shows us that different scales of
+measuring network structure vary in their response to false
+negatives---connectance responds roughly linearly to false negatives, whereas
+mean-degree-centrality decisively does not. This implies that false-negatives
+adversely could effect indirect interactions [@Williams2002TwoDeg].
 
 ## Effects of false negatives on ability to make predictions
 
@@ -365,7 +362,7 @@ data. Replica of figure 1 in
 Interestingly, the performance of the model from @Strydom2021RoaPre changes
 little with many added false-negatives, which is good evidence in favor
 neural-networks as a class of model for interaction detection. Again, similar to
-our caveat in the previous section, this data is _already_ likely to have many
+our caveat in the previous section, this dazta is _already_ likely to have many
 false-negatives, so the effects of adding more as we do in this illustration
 might be mitigated because there are already non-simulated false-negatives in
 the original data which impact the models performance, even in the $p_{fn} = 0$
